@@ -110,6 +110,7 @@ enyo.kind({
 				lumberjack.preferences.set("username", this.$.usernameInput.get("value"));
 				lumberjack.preferences.set("password", this.$.passwordInput.get("value"));
 
+				this.hide();
 				this.doLoginSuccess();
 			}
 		}, this);

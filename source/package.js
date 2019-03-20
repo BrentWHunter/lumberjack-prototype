@@ -48,7 +48,7 @@ enyo.depends(
 	// View kind definitions for report module
 	"report",
 	// View kind definitions for placement module
-	"placement",
+	"issuer",
 	// View kind definitions for login view
 	"login",
 	// Include our default entry point
