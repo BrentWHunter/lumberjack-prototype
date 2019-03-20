@@ -1,0 +1,17 @@
+enyo.depends(
+	"adddocumentpopup.js",
+    "addpaymentpopup.js",
+    "migratesubscriptionspanel.js",
+    "assignpaymentpopup.js",
+    "subscriptionfiltersettingspopup.js",
+    "subscriberlistpanel.js",
+    "subscriberdetailpanel.js",
+    "dashboardpanel.js",
+    "closeplacementpanel.js",
+    "csvexportpanel.js",
+    "placementinfopanel.js",
+    "placementview.js",
+    "addrefundpopup.js",
+    "correctentrypopup.js",
+    "duplicatewarnpopup.js"
+);

@@ -1,0 +1,11 @@
+enyo.depends(
+	"data.js",
+	"countrycodes.js",
+	"preferences.js",
+	"subscriptionModel.js",
+	"transfermodel.js",
+	"contactmodel.js",
+	"filtersettingsmodel.js",
+	"optionmodel.js",
+	"warrantmodel.js"
+);

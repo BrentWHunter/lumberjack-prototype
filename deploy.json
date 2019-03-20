@@ -1,0 +1,6 @@
+{
+	"enyo": "./enyo",
+	"packagejs": "./package.js",
+	"assets": ["./icon.png", "./index.html", "./printableCharts.html", "./d3print.css", "./assets", "./polymer-components"],
+	"libs": ["./lib/onyx", "./lib/layout"]
+}

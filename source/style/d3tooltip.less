@@ -1,0 +1,187 @@
+/*
+	Overriding Enyo CSS
+*/
+
+#app_mainView_control, #app_mainView_button {
+	vertical-align: bottom;
+}
+
+/*
+	Chart CSS!
+*/
+#d3chartdiv {
+	width: 1430px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.axis {
+	/*pointer-events: none;*/
+	shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+}
+
+.axis text {
+	font-family: sans-serif;
+	font-size: 10px;
+}
+
+#companyHeaderLogo {
+	padding: 10px;
+	margin-left: 20px;
+	max-height: 100px;
+	position: relative;
+	float: left;
+}
+
+#greenhillEquityHeaderLogo {
+	padding: 10px;
+	margin-left: 20px;
+	max-height: 100px;
+	position: relative;
+	float: right;
+}
+
+.footer img {
+	max-height: 100px;
+	width: auto;
+	margin: 1em;
+	float: right;
+}
+
+.reportHeader p {
+	display: inline-block;
+	font-family: 'Helvetica Neue', 'Nimbus Sans L', Arial, sans-serif;
+	font-size: 2em;
+	margin-top: 30px;
+}
+
+.reportHeader .date {
+	display: inline-block;
+	text-align: right;
+	margin-top: 30px;
+	margin-right: 30px;
+	float: right;
+	font-size: 1.5em;
+}
+
+.reportHeader {
+	text-align: center;
+	/*
+	background: #4c4c4c;
+	color: white;
+	*/
+}
+
+#d3tooltip {
+	font-family: sans-serif;
+	font-size: 11px;
+	color: red;
+	background-color: white;
+	position: absolute;
+	z-index: 10;
+	visibility: hidden;
+	border-style: solid;
+	border-width: 1px;
+	padding: 1px;
+}
+
+#d3tooltip h3, #d3tooltip h4 {
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+#d3tooltip h4 {
+	text-align: left;
+	padding-top: 0.5em;
+}
+
+#d3tooltip p {
+	margin: 0;
+	padding: 0;
+}
+
+.chartTitleSecondLine select {
+	background-color: #666666;
+	color: white;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1px;
+	stroke: #666666;
+}
+
+.placementArc, .countriesArc, .legendColorBlock {
+	opacity: 0.75;
+	stroke-width: 1px;
+	stroke: white;
+}
+
+.chartContainer::before {
+	content: "";
+	display: table;
+}
+
+.chartContainer::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.chartContainer {
+	padding: 0.5em;
+}
+
+.chartContainer h2 {
+	text-align: center;
+	font-family: 'Helvetica Neue', 'Nimbus Sans L', Arial, sans-serif;
+	background: #4c4c4c
+		url(../lib/onyx/images/gradient.png)
+		repeat-x 0 bottom;
+	color: white;
+	margin-top: -0.05em;
+	padding-bottom: 3px;
+}
+
+.summaryTableHeader {
+	font-family: 'Helvetica Neue', 'Nimbus Sans L', Arial, sans-serif;
+	background-color: darkgrey;
+	font-size: 1.4em;
+	padding: 5px;
+}
+
+.summaryGroupHeader {
+	font-weight: 500;
+	text-align: center;
+	background-color: darkgrey;
+	padding: 2px;
+	padding-bottom: 4px;
+	margin-top: 5px;
+}
+
+.subscriptionBarValue {
+	font-family: sans-serif;
+	font-size: 10px;
+}
+
+.chartTitleSecondLine {
+	font-size: 0.75em;
+}
+
+.divrow {
+	display: table-row;
+}
+
+.fundsPromisedChart, .fundsReceivedChart, .fundsOutstandingChart, .subscriptionHistoryChart, .paymentHistoryChart {
+	display: table-cell;
+}
