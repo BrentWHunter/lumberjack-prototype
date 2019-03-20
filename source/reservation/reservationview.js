@@ -1,7 +1,7 @@
-/* global quantum,PouchDB,alertify,console */
+/* global lumberjack,PouchDB,alertify,console */
 
 enyo.kind({
-	name: "quantum.ReservationView",
+	name: "lumberjack.ReservationView",
 	kind: "FittableRows",
 	fit: true,
 
@@ -30,7 +30,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{name: "leftButton", kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", ontap: "buttonfix", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{name: "leftMenu", kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{name: "leftMenu", kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -51,16 +51,16 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Reservations Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Reservations Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.ReservationDashboardPanel", onViewItemDetail: "handleViewItemDetail"},
-			{name: "detailPanel", kind: "quantum.ReservationDetailPanel", onGoBack: "handleGoBack"}
+			{name: "dashboardPanel", kind: "lumberjack.ReservationDashboardPanel", onViewItemDetail: "handleViewItemDetail"},
+			{name: "detailPanel", kind: "lumberjack.ReservationDetailPanel", onGoBack: "handleGoBack"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -99,12 +99,12 @@ enyo.kind({
 	rendered: function(inSender, inEvent)
 	{
 		this.set("showing", false);
-		this.set("database", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("reservationDatabase"), {skip_setup: true}));
-		this.$.versionString.set("content", quantum.versionString);
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
+		this.set("database", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("reservationDatabase"), {skip_setup: true}));
+		this.$.versionString.set("content", lumberjack.versionString);
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.$.loadingPopup.show();
 		this.populateReservations(enyo.bind(this, function(){
 			this.setShowingForRoles();
@@ -112,8 +112,8 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 			this.dashboardButtonTapped();
 			this.resize();
-			quantum.preferences.set("lastModule", "reservation");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "reservation");
+			lumberjack.preferences.commit();
 			if (this.get("targetReservation"))
 			{
 				var filteredCollection = this.get("reservationCollection").filter(enyo.bind(this, function(value, index, array){
@@ -142,7 +142,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -171,7 +171,7 @@ enyo.kind({
 
 	dashboardButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "reservation")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "reservation")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -199,10 +199,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "reservation")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "reservation")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "reservationDetail", icon: "assets/icons/reservation-detail-icon.png", content: "Reservation Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "reservationDetail", icon: "assets/icons/reservation-detail-icon.png", content: "Reservation Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.detailPanel.set("reservationCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("detailPanel"));
@@ -236,10 +236,10 @@ enyo.kind({
 
 	handleGoHome: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "reservation"))
+		if (!lumberjack.hasRole(["admins","users","auditors"], "reservation"))
 		{
-			quantum.preferences.set("lastModule", "");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "");
+			lumberjack.preferences.commit();
 			this.doRequestChangeModule();
 		}
 		else
@@ -277,7 +277,7 @@ enyo.kind({
 		this.set("reservationCollection", null);
 
 		//Get data from database and load it into collection
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -290,17 +290,17 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
+			lumberjack.preferences.set("roles", response.roles);
 
 			this.set("loadingData", true);
 			this.$.placementDatabasePicker.set("selected", null);
 			this.$.placementDatabasePicker.destroyClientControls();
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "getreservations",
+				url: lumberjack.preferences.get("apiServer") + "getreservations",
 				cacheBust: false,
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 		    });
 
@@ -345,10 +345,10 @@ enyo.kind({
 					placements.sort(sortByDisplayNameFunction);
 
 					//Need to do a second pass on this because we need to determine active after sort (and if)
-					if (quantum.preferences.get("placementDatabase"))
+					if (lumberjack.preferences.get("placementDatabase"))
 					{
 						placements.forEach(function(value, index, array){
-							if (value.database === quantum.preferences.get("placementDatabase"))
+							if (value.database === lumberjack.preferences.get("placementDatabase"))
 							{
 								value.active = true;
 							}
@@ -377,15 +377,15 @@ enyo.kind({
 				});
 				
 				this.set("reservationCollection", new enyo.Collection(sortedDocs));
-				this.set("selectedPlacement", quantum.preferences.get("placementDatabase") ? quantum.preferences.get("placementDatabase") : Object.keys(response.placements)[0]); //Cheat.
+				this.set("selectedPlacement", lumberjack.preferences.get("placementDatabase") ? lumberjack.preferences.get("placementDatabase") : Object.keys(response.placements)[0]); //Cheat.
 
-				quantum.preferences.commit();
+				lumberjack.preferences.commit();
 				callback();
 
 				this.updateChangesFeed();
 		    }));
 
-		    request.go({companyID: quantum.preferences.get("company")});
+		    request.go({companyID: lumberjack.preferences.get("company")});
 		}));
 	},
 
@@ -407,11 +407,11 @@ enyo.kind({
 			return 0;
 		};
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: quantum.preferences.get("reservationDatabase")
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: lumberjack.preferences.get("reservationDatabase")
 			}
 		}));
 

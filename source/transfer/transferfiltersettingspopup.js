@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.TransferFilterSettingsPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.TransferFilterSettingsPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onFilterSettingsChanged: "",
@@ -26,27 +26,27 @@ enyo.kind({
 				{style: "font-size: 20px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Subscription Statuses"},
 				{kind: "enyo.FittableColumns", style: "padding-top: 5px;" , components: [
 					{components: [
-						{kind:"quantum.Checkbox", name:"fundsOnlyCheckbox", content:"Funds Only", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-						{kind:"quantum.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-						{kind:"quantum.Checkbox", name:"completeDocsAllFundsCheckbox", content:"Complete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+						{kind:"lumberjack.Checkbox", name:"fundsOnlyCheckbox", content:"Funds Only", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+						{kind:"lumberjack.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+						{kind:"lumberjack.Checkbox", name:"completeDocsAllFundsCheckbox", content:"Complete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 					]},
 					{style: "margin-left: 20px;", components: [
-						{kind:"quantum.Checkbox", name:"transferAgentCheckbox", content:"With Transfer Agent", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-						{kind:"quantum.Checkbox", name:"lawyerCheckbox", content:"With Lawyer", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+						{kind:"lumberjack.Checkbox", name:"transferAgentCheckbox", content:"With Transfer Agent", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+						{kind:"lumberjack.Checkbox", name:"lawyerCheckbox", content:"With Lawyer", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 					]},
 					{style: "margin-left: 20px;", components: [
-						{kind:"quantum.Checkbox", name:"cancelledCheckbox", content:"Cancelled", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-						{kind:"quantum.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-						{kind:"quantum.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+						{kind:"lumberjack.Checkbox", name:"cancelledCheckbox", content:"Cancelled", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+						{kind:"lumberjack.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+						{kind:"lumberjack.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 					]}
 				]},
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "saveButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Save"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "saveButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "saveButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Save"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "saveButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings:[

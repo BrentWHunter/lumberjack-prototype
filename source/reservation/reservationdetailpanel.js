@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ReservationDetailPanel",
+	name: "lumberjack.ReservationDetailPanel",
 	kind: "enyo.Scroller",
 	//fit: true,
 
@@ -25,17 +25,17 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Reservation Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				{name: "saveChangesButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Save Changes", ontap: "handleSaveEntryButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				{name: "saveChangesButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Save Changes", ontap: "handleSaveEntryButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]}
 		]},
 		{kind:"enyo.FittableColumns", style: "padding-top: 5px;", components:[
 			{style: "width: 50%;", components: [
-				{kind: "quantum.Input", name:"reservationNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Reservation Name"},
-				{kind: "quantum.Input", name:"emailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Email Address"},
-				{kind: "quantum.Input", name:"cellPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Cell Phone"},
-				{kind: "quantum.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"number", label:"Number of Shares"},
+				{kind: "lumberjack.Input", name:"reservationNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Reservation Name"},
+				{kind: "lumberjack.Input", name:"emailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Email Address"},
+				{kind: "lumberjack.Input", name:"cellPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Cell Phone"},
+				{kind: "lumberjack.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"number", label:"Number of Shares"},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{style: "line-height: 38px; width: 170px;", content: "Date/Time Reserved"},
 					{name: "dateTimeLabel", style: "margin-left: 10px; line-height: 38px; width: 350px;"}
@@ -48,15 +48,15 @@ enyo.kind({
 					]}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 20px;", components: [
-					{name: "viewSubscriptionButton", kind: "quantum.Button", style: "line-height: 34px;", content: "View Subscription", ontap: "handleViewSubscriptionButtonTapped"},
-					{name: "resendNotificationButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 34px;", content: "Resend Notification", ontap: "handleResendNotificationButtonTapped"},
-					{name: "getReservationLinkButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 34px;", enabledClasses: "button copy-button", content: "Copy Reservation Link", ontap: "handleCopyReservationLinkButtonTapped"},
-					{name: "cancelReservationButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin-left: 10px; line-height: 34px;", content: "Cancel Reservation", ontap: "handleCancelReservationButtonTapped"}
+					{name: "viewSubscriptionButton", kind: "lumberjack.Button", style: "line-height: 34px;", content: "View Subscription", ontap: "handleViewSubscriptionButtonTapped"},
+					{name: "resendNotificationButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 34px;", content: "Resend Notification", ontap: "handleResendNotificationButtonTapped"},
+					{name: "getReservationLinkButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 34px;", enabledClasses: "button copy-button", content: "Copy Reservation Link", ontap: "handleCopyReservationLinkButtonTapped"},
+					{name: "cancelReservationButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin-left: 10px; line-height: 34px;", content: "Cancel Reservation", ontap: "handleCancelReservationButtonTapped"}
 				]}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"}
 	],
 	bindings: [
 		{from: ".activeEntry.name", to: ".$.reservationNameInput.value", transform: function(val) {
@@ -151,7 +151,7 @@ enyo.kind({
 	//Setup
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "reservation")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "reservation")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 
@@ -204,7 +204,7 @@ enyo.kind({
 		//These ones get disabled on invalid placement status/subscription exists
 		for (var key in this.$)
 		{
-			if( this.$[key].kind === "quantum.Input" || 
+			if( this.$[key].kind === "lumberjack.Input" || 
 				this.$[key].name === "salespersonPickerButton" ||
 				this.$[key].name === "saveChangesButton" ||
 				this.$[key].name === "cancelReservationButton")
@@ -227,7 +227,7 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], "reservation");
+		return lumberjack.hasRole(["admins","users"], "reservation");
 	},
 
 	populateSalespeople: function() {
@@ -260,7 +260,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
@@ -301,20 +301,20 @@ enyo.kind({
 
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show($L("Saving..."));
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "savereservation",
+			url: lumberjack.preferences.get("apiServer") + "savereservation",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				reservation: tempEntry
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -380,7 +380,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}
 		else { this.nextEntry(inSender, inEvent); }
@@ -400,7 +400,7 @@ enyo.kind({
 				this.$.previous_saveChangesPopup.hide();
 				this.$.previous_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "previous_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "previous_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.previous_saveChangesPopup.show("Save changes?");
 		}
 		else { this.previousEntry(inSender, inEvent); }
@@ -460,7 +460,7 @@ enyo.kind({
 				this.$.cancelReservationPopup.hide();
 				this.$.cancelReservationPopup.destroy();
 			}
-			this.createComponent({name: "cancelReservationPopup", kind: "quantum.ConfirmPopup", onYes: "cancelReservation", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "cancelReservationPopup", kind: "lumberjack.ConfirmPopup", onYes: "cancelReservation", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.cancelReservationPopup.show("Are you sure that you want to cancel this reservation? This action cannot be undone.");
 		}
 	},
@@ -469,20 +469,20 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show($L("Cancelling..."));
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelreservation",
+			url: lumberjack.preferences.get("apiServer") + "cancelreservation",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				reservationID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -518,20 +518,20 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Sending");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "resendreservationnotification",
+			url: lumberjack.preferences.get("apiServer") + "resendreservationnotification",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				reservationID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -573,7 +573,7 @@ enyo.kind({
 					this.$.saveChangesPopup.hide();
 					this.$.saveChangesPopup.destroy();
 				}
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
 				this.$.saveChangesPopup.show("Must save changes before resending notification. Save changes?");
 			}
 			else { inEvent.callback(); }

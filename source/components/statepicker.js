@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.StatePicker",
+	name: "lumberjack.StatePicker",
 
 	published: 
 	{

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.WarrantsDashboardPanel",
+	name: "lumberjack.WarrantsDashboardPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -26,11 +26,11 @@ enyo.kind({
 				{name: "searchInput", style: "width: 100%;", kind: "onyx.Input", oninput: "handleSearchInputChanged"}
 			]},
 			{style: "margin-left: 10px; line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]},
 			{fit: true},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
+				{kind: "lumberjack.Button", style: "margin: 0; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
 					{kind: "enyo.Image", style: "width: 24px; height: 24px;", src: "assets/icons/filter-icon.png"}
 				]}
 			]}
@@ -56,8 +56,8 @@ enyo.kind({
 			]}
 		]},
 		{name: "noWarrantsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Warrants Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "changeFilterSettingsPopup", kind: "quantum.WarrantFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "changeFilterSettingsPopup", kind: "lumberjack.WarrantFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
 	],
 
 	bindings: [
@@ -65,7 +65,7 @@ enyo.kind({
 
 	activate: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant")) { this.doGoHome(); return; }
 
 		this.scrollToTop();
 		this.$.warrantRepeater.setCount(0);
@@ -112,7 +112,7 @@ enyo.kind({
 	{
 		if (this.get("filterSettings") == null)
 		{
-			this.set("filterSettings", new quantum.WarrantFilterSettingsModel({}));
+			this.set("filterSettings", new lumberjack.WarrantFilterSettingsModel({}));
 		}
 		var filterSettings = this.get("filterSettings");
 
@@ -206,7 +206,7 @@ enyo.kind({
 
 			return allowedByFilterSettings && allowedBySearchValue;
 		}));
-		this.set("filteredWarrantCollection", new quantum.WarrantCollection(results));
+		this.set("filteredWarrantCollection", new lumberjack.WarrantCollection(results));
 
 		this.$.noWarrantsLabel.set("showing", this.get("filteredWarrantCollection").length === 0);
 		this.$.warrantRepeater.set("showing", this.get("filteredWarrantCollection").length > 0);
@@ -216,7 +216,7 @@ enyo.kind({
 
 	setupWarrantRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant")) { return; }
 
 		if (inEvent.item == null) { return; }
 
@@ -236,7 +236,7 @@ enyo.kind({
 		inEvent.item.$.exerciseCurrency.set("content", warrant.get("exerciseCurrency") || "");
 		inEvent.item.$.dateIssued.set("content", moment(warrant.get("dateIssued") || "").format("YYYY/MM/DD"));
 		inEvent.item.$.expiryDate.set("content", moment(warrant.get("expiryDate") || "").format("YYYY/MM/DD"));
-		inEvent.item.$.status.set("content", quantum.warrantStatusLookup(warrant.get("status")));
+		inEvent.item.$.status.set("content", lumberjack.warrantStatusLookup(warrant.get("status")));
 	},
 
 	handleWarrantRepeaterItemTapped: function(inSender, inEvent)

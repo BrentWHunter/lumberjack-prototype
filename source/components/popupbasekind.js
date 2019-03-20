@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Popup",
+	name: "lumberjack.Popup",
 	kind: "enyo.Control",
 	zIndex: 999,
 

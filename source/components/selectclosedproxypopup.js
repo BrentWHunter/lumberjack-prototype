@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.SelectClosedProxyPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.SelectClosedProxyPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onProxySelected: "",
@@ -33,11 +33,11 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "selectButton", kind: "quantum.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "selectButton", kind: "lumberjack.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -60,10 +60,10 @@ enyo.kind({
 
 	loadProxies: function() {
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getproxydropdowndata",
+			url: lumberjack.preferences.get("apiServer") + "getproxydropdowndata",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -121,7 +121,7 @@ enyo.kind({
 			}
 		}));
 
-		request.go({companyID: quantum.preferences.get("company")});
+		request.go({companyID: lumberjack.preferences.get("company")});
 	},
 
 	setupProxyRepeaterItem: function(inSender, inEvent)

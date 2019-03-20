@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.CurrencyPicker",
+	name: "lumberjack.CurrencyPicker",
 
 	published: 
 	{

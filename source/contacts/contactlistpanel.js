@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ContactListPanel",
+	name: "lumberjack.ContactListPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -22,9 +22,9 @@ enyo.kind({
 				{name: "searchInput", style: "width: 100%;", kind: "onyx.Input", oninput: "handleSearchInputChanged"}
 			]},
 			{style: "margin-left: 10px; line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]},
-			{kind: "quantum.Checkbox", name: "newOnlyCheckbox", content: "New Contacts Only", columnStyle: "margin-left: 10px; margin-top: 2px;", contentStyle: "margin-left:10px;", onchange: "handleSearchInputChanged"}
+			{kind: "lumberjack.Checkbox", name: "newOnlyCheckbox", content: "New Contacts Only", columnStyle: "margin-left: 10px; margin-top: 2px;", contentStyle: "margin-left:10px;", onchange: "handleSearchInputChanged"}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px; background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
 			{content: "Contact Name", style: "width: 250px;"},
@@ -76,7 +76,7 @@ enyo.kind({
 			]}
 		]},
 		{name: "noContactsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Contacts Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	setShowingForRoles: function()
@@ -86,7 +86,7 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "contact")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "contact")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -142,7 +142,7 @@ enyo.kind({
 				return false;
 			}));
 
-			this.set("filteredContactCollection", new quantum.ContactCollection(results));
+			this.set("filteredContactCollection", new lumberjack.ContactCollection(results));
 		}
 		else
 		{
@@ -157,7 +157,7 @@ enyo.kind({
 
 	setupContactRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "contact")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "contact")) { return; }
 		
 		if (!inEvent.item) {return true;}
 

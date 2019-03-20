@@ -1,7 +1,7 @@
 enyo.kind({
-	name: "quantum.Application",
+	name: "lumberjack.Application",
 	kind: "enyo.Application",
-	view: "quantum.LoginView",
+	view: "lumberjack.LoginView",
 
 	handlers: {
 		onLoginSuccessful: "handleModeSwitch",
@@ -35,7 +35,7 @@ enyo.kind({
 
 	loadCompanies: function(companyID, mode, target, record) {
 		var request = new enyo.Ajax({
-		  url: quantum.preferences.get("apiServer") + "getcompanies",
+		  url: lumberjack.preferences.get("apiServer") + "getcompanies",
 		  cacheBust: false
 		});
 
@@ -69,11 +69,11 @@ enyo.kind({
 
 			this.handleChangeModule({}, {target: mode, targetDetail: target, record: record});
 
-			//Don't commit quantum.preferences because it breaks something and forces you to the login screen
+			//Don't commit lumberjack.preferences because it breaks something and forces you to the login screen
 			this.render();
 		}));
 
-		request.go({username: quantum.preferences.get("username"), password: quantum.preferences.get("password")});
+		request.go({username: lumberjack.preferences.get("username"), password: lumberjack.preferences.get("password")});
 	},
 
 	handleModeSwitch: function(inSender, inEvent) {
@@ -89,9 +89,9 @@ enyo.kind({
 		{
 			this.loadCompanies(this.getQueryVariable("company"), this.getQueryVariable("mode"), this.getQueryVariable("target"), this.getQueryVariable("record"));
 		}
-		else if(quantum.preferences.get("lastModule"))
+		else if(lumberjack.preferences.get("lastModule"))
 		{
-			this.handleChangeModule({}, {target: quantum.preferences.get("lastModule")});
+			this.handleChangeModule({}, {target: lumberjack.preferences.get("lastModule")});
 		}
 		else
 		{
@@ -108,7 +108,7 @@ enyo.kind({
 		if (this.$.selectCompanyPopup) {this.$.selectCompanyPopup.destroy();}
 		this.view.createComponent({
 			name: "selectCompanyPopup",
-			kind: "quantum.SelectCompanyPopup",
+			kind: "lumberjack.SelectCompanyPopup",
 			onCompanySelected: "handleCompanySelected",
 			onCancel: inEvent.allowCancel ? "" : "handleRequiredPopupCancelled",
 			onHide: "handlePopupHidden"},
@@ -121,35 +121,35 @@ enyo.kind({
 
 		if (inEvent.target === "placement" || inEvent.target === "placements")
 		{
-			this.set("view", new quantum.PlacementView({owner:this, targetPlacement: inEvent.targetDetail || null, targetSubscriber: inEvent.record || null}));
+			this.set("view", new lumberjack.PlacementView({owner:this, targetPlacement: inEvent.targetDetail || null, targetSubscriber: inEvent.record || null}));
 		}
 		else if (inEvent.target === "transfer" || inEvent.target === "transfers")
 		{
-			this.set("view", new quantum.TransferView({owner:this, targetTransfer: inEvent.targetDetail || null}));
+			this.set("view", new lumberjack.TransferView({owner:this, targetTransfer: inEvent.targetDetail || null}));
 		}
 		else if (inEvent.target === "contact" || inEvent.target === "contacts")
 		{
-			this.set("view", new quantum.ContactsView({owner:this, targetContact: inEvent.targetDetail || null}));
+			this.set("view", new lumberjack.ContactsView({owner:this, targetContact: inEvent.targetDetail || null}));
 		}
 		else if (inEvent.target === "option"|| inEvent.target === "options")
 		{
-			this.set("view", new quantum.OptionsView({owner:this, targetOption: inEvent.targetDetail || null}));
+			this.set("view", new lumberjack.OptionsView({owner:this, targetOption: inEvent.targetDetail || null}));
 		}
 		else if (inEvent.target === "warrant" || inEvent.target === "warrants")
 		{
-			this.set("view", new quantum.WarrantsView({owner:this, targetWarrant: inEvent.targetDetail || null}));
+			this.set("view", new lumberjack.WarrantsView({owner:this, targetWarrant: inEvent.targetDetail || null}));
 		}
 		else if (inEvent.target === "proxy" || inEvent.target === "proxies")
 		{
-			this.set("view", new quantum.ProxyView({owner:this, targetProxy: inEvent.targetDetail || null, targetRecord: inEvent.record || null}));
+			this.set("view", new lumberjack.ProxyView({owner:this, targetProxy: inEvent.targetDetail || null, targetRecord: inEvent.record || null}));
 		}
 		else if (inEvent.target === "reservation" || inEvent.target === "reservations")
 		{
-			this.set("view", new quantum.ReservationView({owner:this, targetReservation: inEvent.targetDetail || null}));
+			this.set("view", new lumberjack.ReservationView({owner:this, targetReservation: inEvent.targetDetail || null}));
 		}
 		else
 		{
-			this.set("view", new quantum.LoginView({owner:this}));
+			this.set("view", new lumberjack.LoginView({owner:this}));
 		}
 
 		this.render();
@@ -159,11 +159,11 @@ enyo.kind({
 	{
 		var company = inEvent.company;
 		this.setupCompany(company);
-		quantum.preferences.commit({success: enyo.bind(this, function(){
+		lumberjack.preferences.commit({success: enyo.bind(this, function(){
 			if (this.$.selectCompanyPopup) {this.$.selectCompanyPopup.hide();}
-			if (quantum.preferences.get("lastModule"))
+			if (lumberjack.preferences.get("lastModule"))
 			{
-				this.handleChangeModule({}, {target: quantum.preferences.get("lastModule")});
+				this.handleChangeModule({}, {target: lumberjack.preferences.get("lastModule")});
 			}
 			else
 			{
@@ -177,14 +177,14 @@ enyo.kind({
 		if (this.$.loadingPopup) {this.$.loadingPopup.destroy();}
 		this.view.createComponent({
 			name: "loadingPopup",
-			kind: "quantum.LoadingPopup",
+			kind: "lumberjack.LoadingPopup",
 			onHide: "handlePopupHidden"},
 		{owner:this});
 		this.get("view").hide();
 		history.replaceState(null, "", location.href.split("?")[0]); //Clear the query string to prevent abuse a little bit.
 		this.$.loadingPopup.show("Logging Out");
 		setTimeout(function() {
-			quantum.preferences.destroy({commit: true, success: function() {
+			lumberjack.preferences.destroy({commit: true, success: function() {
 				location.reload();
 			}});
 		}, 100);
@@ -196,7 +196,7 @@ enyo.kind({
 		if (this.$.selectModulePopup) {this.$.selectModulePopup.destroy();}
 		this.view.createComponent({
 			name: "selectModulePopup",
-			kind: "quantum.SelectModulePopup",
+			kind: "lumberjack.SelectModulePopup",
 			onChangeModule: "handleChangeModule",
 			onCancel: "handleChangeCompany",
 			onHide: "handlePopupHidden"},
@@ -214,7 +214,7 @@ enyo.kind({
 	{
 		//If something has happened that broke one of the required popups, then re-render, and force a re-login.
 		this.clearChangesFeed();
-		this.set("view", new quantum.LoginView({owner:this}));
+		this.set("view", new lumberjack.LoginView({owner:this}));
 		this.render();
 		return true;
 	},
@@ -252,56 +252,56 @@ enyo.kind({
 	handleSetViewToReport: function()
 	{
 		this.clearChangesFeed();
-		this.set("view", new quantum.ReportView({owner:this}));
+		this.set("view", new lumberjack.ReportView({owner:this}));
 		this.render();
 	},
 
 	setupCompany: function(company)
 	{
-		quantum.preferences.set("company", company.companyID);
-		quantum.preferences.set("companyName", company.name);
-		quantum.preferences.set("contactDatabase", company.contactDatabase);
-		quantum.preferences.set("optionDatabase", company.optionDatabase);
-		quantum.preferences.set("reservationDatabase", company.reservationDatabase);
-		quantum.preferences.set("transferDatabase", company.transferDatabase);
-		quantum.preferences.set("warrantDatabase", company.warrantDatabase);
-		quantum.preferences.set("proxies", company.proxies);
-		quantum.preferences.set("placements", company.placements);
-		quantum.preferences.set("proxyDatabase", null);
-		quantum.preferences.set("placementDatabase", null);
+		lumberjack.preferences.set("company", company.companyID);
+		lumberjack.preferences.set("companyName", company.name);
+		lumberjack.preferences.set("contactDatabase", company.contactDatabase);
+		lumberjack.preferences.set("optionDatabase", company.optionDatabase);
+		lumberjack.preferences.set("reservationDatabase", company.reservationDatabase);
+		lumberjack.preferences.set("transferDatabase", company.transferDatabase);
+		lumberjack.preferences.set("warrantDatabase", company.warrantDatabase);
+		lumberjack.preferences.set("proxies", company.proxies);
+		lumberjack.preferences.set("placements", company.placements);
+		lumberjack.preferences.set("proxyDatabase", null);
+		lumberjack.preferences.set("placementDatabase", null);
 
 		if (company.placements.length === 1)
 		{
-			quantum.preferences.set("placementDatabase", company.placements[0]);
+			lumberjack.preferences.set("placementDatabase", company.placements[0]);
 		}
 		else
 		{
-			quantum.preferences.set("placementDatabase", null);
+			lumberjack.preferences.set("placementDatabase", null);
 		}
 
 		if (company.proxies.length === 1)
 		{
-			quantum.preferences.set("proxyDatabase", company.proxies[0]);
+			lumberjack.preferences.set("proxyDatabase", company.proxies[0]);
 		}
 		else
 		{
-			quantum.preferences.set("proxyDatabase", null);
+			lumberjack.preferences.set("proxyDatabase", null);
 		}
 	}
 });
 
-var quantum;
+var lumberjack;
 
-quantum.fixShim = function()
+lumberjack.fixShim = function()
 {
 	//This works around a bug where the shim is sometimes not shown correctly the first time that we have a dialog over a dialog.
-	var loadingPopup = new quantum.LoadingPopup();
+	var loadingPopup = new lumberjack.LoadingPopup();
 	loadingPopup.show();
 	loadingPopup.hide();
 	loadingPopup.destroy();
 };
 
-quantum.subscriptionStatusLookup = function(status)
+lumberjack.subscriptionStatusLookup = function(status)
 {
 	switch(status)
 	{
@@ -330,7 +330,7 @@ quantum.subscriptionStatusLookup = function(status)
 	}
 };
 
-quantum.transferStatusLookup = function(status)
+lumberjack.transferStatusLookup = function(status)
 {
 	switch(status)
 	{
@@ -357,7 +357,7 @@ quantum.transferStatusLookup = function(status)
 	}
 };
 
-quantum.warrantStatusLookup = function(status)
+lumberjack.warrantStatusLookup = function(status)
 {
 	switch(status)
 	{
@@ -380,7 +380,7 @@ quantum.warrantStatusLookup = function(status)
 	}
 };
 
-quantum.paymentTypeLookup = function(paymentType)
+lumberjack.paymentTypeLookup = function(paymentType)
 {
 	switch(paymentType)
 	{
@@ -411,27 +411,27 @@ quantum.paymentTypeLookup = function(paymentType)
 	}
 };
 
-quantum.loadFile = function(url, callback){
+lumberjack.loadFile = function(url, callback){
 	JSZipUtils.getBinaryContent(url,function(err,data){
 		callback(null,data);
 	});
 };
 
-quantum.hasRole = function(roles, module)
+lumberjack.hasRole = function(roles, module)
 {
 	try
 	{
-		var company = quantum.preferences.get("company");
+		var company = lumberjack.preferences.get("company");
 
 		var assignedRoles = [];
-		for (var i = 0; i < quantum.preferences.get("roles").length; i++)
+		for (var i = 0; i < lumberjack.preferences.get("roles").length; i++)
 		{
-			if (quantum.preferences.get("roles")[i].startsWith(company))
+			if (lumberjack.preferences.get("roles")[i].startsWith(company))
 			{
-				assignedRoles.push(quantum.preferences.get("roles")[i]);
+				assignedRoles.push(lumberjack.preferences.get("roles")[i]);
 			}
 
-			if(!module && roles.indexOf(quantum.preferences.get("roles")[i]) !== -1)
+			if(!module && roles.indexOf(lumberjack.preferences.get("roles")[i]) !== -1)
 			{
 				return true;
 			}
@@ -453,7 +453,7 @@ quantum.hasRole = function(roles, module)
 	return false;
 };
 
-quantum.parseInt = function(value)
+lumberjack.parseInt = function(value)
 {
 	try
 	{
@@ -478,7 +478,7 @@ quantum.parseInt = function(value)
 	}
 };
 
-quantum.parseFloat = function(value)
+lumberjack.parseFloat = function(value)
 {
 	try
 	{
@@ -503,12 +503,12 @@ quantum.parseFloat = function(value)
 	}
 };
 
-quantum.formatCurrency = function(value)
+lumberjack.formatCurrency = function(value)
 {
 	return numeral(value).format("0,0[.]00[00]");
 };
 
-quantum.b64ToBlob = function(b64Data, contentType, sliceSize) {
+lumberjack.b64ToBlob = function(b64Data, contentType, sliceSize) {
   contentType = contentType || '';
   sliceSize = sliceSize || 512;
 
@@ -532,7 +532,7 @@ quantum.b64ToBlob = function(b64Data, contentType, sliceSize) {
   return blob;
 };
 
-quantum.dataURIToBlob = function (dataURI) {
+lumberjack.dataURIToBlob = function (dataURI) {
   // convert base64 to raw binary data held in a string
   // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
   var byteString = atob(dataURI.split(',')[1]);
@@ -557,9 +557,9 @@ quantum.dataURIToBlob = function (dataURI) {
   // return bb.getBlob(mimeString);
 };
 
-quantum.databaseSchemaVersion = "2.0.2";
-quantum.serviceVersion = "1.7.22";
-quantum.versionString = "Version " + quantum.serviceVersion + " - Copyright 2019 Greenhill Equity Solutions Ltd.";
+lumberjack.databaseSchemaVersion = "2.0.2";
+lumberjack.serviceVersion = "1.7.22";
+lumberjack.versionString = "Version " + lumberjack.serviceVersion + " - Copyright 2019 Greenhill Equity Solutions Ltd.";
 
 enyo.ready(function () {
 	try {
@@ -569,8 +569,8 @@ enyo.ready(function () {
 	{
 		//if there's an error, it's probably already loaded.
 	}
-	quantum.preferences = new quantum.PreferencesModel();
-	quantum.preferences.fetch({success: function(){new quantum.Application({name: "app"});}});
+	lumberjack.preferences = new lumberjack.PreferencesModel();
+	lumberjack.preferences.fetch({success: function(){new lumberjack.Application({name: "app"});}});
 
 	// Set up audit "plugin".
 	var pouchBulkDocs = PouchDB.prototype.bulkDocs;
@@ -603,11 +603,11 @@ enyo.ready(function () {
 				delete docs[i].auditTime;
 			}
 			docs[i].audit = {
-				user: quantum.preferences.get("username"),
+				user: lumberjack.preferences.get("username"),
 				timestamp: moment().valueOf(),
-				databaseSchemaVersion: quantum.databaseSchemaVersion,
+				databaseSchemaVersion: lumberjack.databaseSchemaVersion,
 				service: "Quantum",
-				serviceVersion: quantum.serviceVersion
+				serviceVersion: lumberjack.serviceVersion
 			};
 		}
 

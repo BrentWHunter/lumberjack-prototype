@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ProxyInfoPanel",
+	name: "lumberjack.ProxyInfoPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -20,14 +20,14 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Proxy Information"},
 			{fit: true}
 		]},
-		{kind: "quantum.Input", name:"proxyNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Name", disabled:true},
-		{kind: "quantum.Input", name:"proxyStatusInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Status", disabled:true},
-		{kind: "quantum.Input", name:"companyContactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Company Contact Person", disabled:true},
-		{kind: "quantum.Input", name:"companyContactPersonEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Company Contact Person Email", disabled:true},
-		{kind: "quantum.Input", name:"meetingDateTimeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Meeting Date/Time", disabled:true},
-		{kind: "quantum.Input", name:"meetingLocationInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Meeting Location", disabled:true},
-		{kind: "quantum.Input", name:"proxyStartDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Start Date", disabled:true},
-		{kind: "quantum.Input", name:"proxyEndDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy End Date", disabled:true},
+		{kind: "lumberjack.Input", name:"proxyNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Name", disabled:true},
+		{kind: "lumberjack.Input", name:"proxyStatusInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Status", disabled:true},
+		{kind: "lumberjack.Input", name:"companyContactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Company Contact Person", disabled:true},
+		{kind: "lumberjack.Input", name:"companyContactPersonEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Company Contact Person Email", disabled:true},
+		{kind: "lumberjack.Input", name:"meetingDateTimeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Meeting Date/Time", disabled:true},
+		{kind: "lumberjack.Input", name:"meetingLocationInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Meeting Location", disabled:true},
+		{kind: "lumberjack.Input", name:"proxyStartDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy Start Date", disabled:true},
+		{kind: "lumberjack.Input", name:"proxyEndDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 220px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Proxy End Date", disabled:true},
 		{name: "proxyQuestionsSection", components: [
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 25px;", content: "Proxy Questions"},
 			{kind: "enyo.FittableColumns", style: "background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
@@ -57,7 +57,7 @@ enyo.kind({
 						{content: "Information Circular"}
 					]},
 					{style: "width: 150px; line-height: 34px;", components: [
-						{name: "downloadInformationCircularDocumentButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadInformationCircularButtonTapped"}
+						{name: "downloadInformationCircularDocumentButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadInformationCircularButtonTapped"}
 					]}
 				]},
 				{name: "proxyFormDocumentItem", style: "background-color: lightgrey; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; padding: 5px;", selected: false, layoutKind: "enyo.FittableColumnsLayout", components: [
@@ -65,13 +65,13 @@ enyo.kind({
 						{content: "Proxy Form"}
 					]},
 					{style: "width: 150px; line-height: 34px;", components: [
-						{name: "downloadProxyFormDocumentButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadProxyFormButtonTapped"}
+						{name: "downloadProxyFormDocumentButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadProxyFormButtonTapped"}
 					]}
 				]}
 			]}
 		]},
 
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -179,7 +179,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
@@ -188,15 +188,15 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins"], "proxy")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins"], "proxy")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 
 		this.set("proxyInfo", null);
-		this.set("proxyInfo", quantum.preferences.get("proxyInfo"));
+		this.set("proxyInfo", lumberjack.preferences.get("proxyInfo"));
 		//console.log(this.get("placementInfo"));
 
-		this.$.proxyQuestionsRepeater.setCount(quantum.preferences.get("proxyInfo").questions.length);
+		this.$.proxyQuestionsRepeater.setCount(lumberjack.preferences.get("proxyInfo").questions.length);
 	},
 
 	/******************
@@ -215,11 +215,11 @@ enyo.kind({
 
 	setupProxyQuestionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins"], "proxy")) { return; }
 
 		if (!inEvent.item) {return true;}
 	
-		var questions = quantum.preferences.get("proxyInfo").questions;
+		var questions = lumberjack.preferences.get("proxyInfo").questions;
 		inEvent.item.$.questionItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 
 		inEvent.item.$.questionNumber.set("content", inEvent.index + 1 + ".");
@@ -244,7 +244,7 @@ enyo.kind({
 	downloadInformationCircularButtonTapped: function(inSender, inEvent)
 	{
 		this.$.loadingPopup.show("Downloading");
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response)
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response)
 		{
 			if (err)
 			{
@@ -275,7 +275,7 @@ enyo.kind({
 	downloadProxyFormButtonTapped: function(inSender, inEvent)
 	{
 		this.$.loadingPopup.show("Downloading");
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response)
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response)
 		{
 			if (err)
 			{

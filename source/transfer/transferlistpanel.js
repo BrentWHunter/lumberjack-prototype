@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferListPanel",
+	name: "lumberjack.TransferListPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -30,26 +30,26 @@ enyo.kind({
 				{style: "margin-left: 10px; margin-right: 10px; width: 100px;", kind: "onyx.InputDecorator", components: [
 					{name: "fromDateInput", style: "width: 100%;", kind: "onyx.Input", ontap: "handleFromDateInputTapped", attributes: {readonly:true}}
 				]},
-				{name: "fromCalendarPopup", kind: "quantum.CalendarPopup", onSelect: "fromCalendarDateChanged"}
+				{name: "fromCalendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "fromCalendarDateChanged"}
 			]},
 			{style: "line-height: 38px; font-size: 18px;", content: "To:"},
 			{components: [
 				{style: "margin-left: 10px; margin-right: 10px; width: 100px;", kind: "onyx.InputDecorator", components: [
 					{name: "toDateInput", style: "width: 100%;", kind: "onyx.Input", ontap: "handleToDateInputTapped", attributes: {readonly:true}}
 				]},
-				{name: "toCalendarPopup", kind: "quantum.CalendarPopup", onSelect: "toCalendarDateChanged"}
+				{name: "toCalendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "toCalendarDateChanged"}
 			]},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]},
 			{fit: true},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin-right: 4px; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
+				{kind: "lumberjack.Button", style: "margin-right: 4px; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
 					{kind: "enyo.Image", style: "width: 24px; height: 24px;", src: "assets/icons/filter-icon.png"}
 				]}
 			]},
 			{style: "line-height: 34px;", showing: false, name: "newTransferButton", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "New Transfer", ontap: "handleNewTransferButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "New Transfer", ontap: "handleNewTransferButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px; background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
@@ -73,8 +73,8 @@ enyo.kind({
 			]}
 		]},
 		{name: "noTransfersLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Transfers Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "changeFilterSettingsPopup", kind: "quantum.TransferFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "changeFilterSettingsPopup", kind: "lumberjack.TransferFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
 	],
 
 	bindings: [
@@ -88,12 +88,12 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.newTransferButton.set("showing", quantum.hasRole(["admins","users"], "transfer"));
+		this.$.newTransferButton.set("showing", lumberjack.hasRole(["admins","users"], "transfer"));
 	},
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -105,7 +105,7 @@ enyo.kind({
 
 	handleChangeFilterSettingsButtonTapped: function(inSender, inEvent)
 	{
-		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new quantum.TransferFilterSettingsModel({}));
+		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new lumberjack.TransferFilterSettingsModel({}));
 		return;
 	},
 
@@ -171,7 +171,7 @@ enyo.kind({
 
 	populateTransfers: function()
 	{
-		if (!this.get("filterSettings")) {this.set("filterSettings", new quantum.TransferFilterSettingsModel({}));}
+		if (!this.get("filterSettings")) {this.set("filterSettings", new lumberjack.TransferFilterSettingsModel({}));}
 		var filteredByDate = this.get("transferCollection").filter(function(element) {
 			try
 			{
@@ -194,7 +194,7 @@ enyo.kind({
 
 		if (this.$.searchInput.get("value") !== "")
 		{
-			var results = new quantum.TransferCollection(filteredByDate).filter(function(element) {
+			var results = new lumberjack.TransferCollection(filteredByDate).filter(function(element) {
 				var searchValue = this.$.searchInput.get("value").toLowerCase();
 				var containsSearchValue = function(str) {
 					try
@@ -207,18 +207,18 @@ enyo.kind({
 				return (
 					containsSearchValue(element.get("seller").name) ||
 					containsSearchValue(element.get("buyer").name) ||
-					containsSearchValue(quantum.transferStatusLookup(element.get("transferStatus"))) ||
+					containsSearchValue(lumberjack.transferStatusLookup(element.get("transferStatus"))) ||
 					containsSearchValue(numeral(element.get("numShares")).format("0,0")) ||
-					containsSearchValue("$" + quantum.formatCurrency(element.get("pricePerShare"))) ||
-					containsSearchValue("$" + quantum.formatCurrency(element.get("totalPurchasePrice")))
+					containsSearchValue("$" + lumberjack.formatCurrency(element.get("pricePerShare"))) ||
+					containsSearchValue("$" + lumberjack.formatCurrency(element.get("totalPurchasePrice")))
 				);
 			}, this);
 
-			this.set("filteredTransferCollection", new quantum.TransferCollection(results));
+			this.set("filteredTransferCollection", new lumberjack.TransferCollection(results));
 		}
 		else
 		{
-			this.set("filteredTransferCollection", new quantum.TransferCollection(filteredByDate));
+			this.set("filteredTransferCollection", new lumberjack.TransferCollection(filteredByDate));
 		}
 
 		this.$.noTransfersLabel.set("showing", this.get("filteredTransferCollection").length === 0);
@@ -229,7 +229,7 @@ enyo.kind({
 
 	setupTransferRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { return true; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { return true; }
 		
 		if (!inEvent.item) { return true; }
 
@@ -238,10 +238,10 @@ enyo.kind({
 		inEvent.item.$.transferDate.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("transactionDate") ? moment(this.get("filteredTransferCollection").at(inEvent.index).get("transactionDate")).format("YYYY/MM/DD") : "");
 		inEvent.item.$.sellerName.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("seller").name || "");
 		inEvent.item.$.buyerName.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("buyer").name || "");
-		inEvent.item.$.transferStatus.set("content", quantum.transferStatusLookup(this.get("filteredTransferCollection").at(inEvent.index).get("transferStatus")));
+		inEvent.item.$.transferStatus.set("content", lumberjack.transferStatusLookup(this.get("filteredTransferCollection").at(inEvent.index).get("transferStatus")));
 		inEvent.item.$.numShares.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("numShares") ? numeral(this.get("filteredTransferCollection").at(inEvent.index).get("numShares")).format('0,0') : "0");
-		inEvent.item.$.pricePerShare.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare") ? "$" + quantum.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare")) : "$0");
-		inEvent.item.$.transferDollarAmount.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice") ? "$" + quantum.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice")) : "$0");
+		inEvent.item.$.pricePerShare.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare") ? "$" + lumberjack.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare")) : "$0");
+		inEvent.item.$.transferDollarAmount.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice") ? "$" + lumberjack.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice")) : "$0");
 		return true;
 	},
 

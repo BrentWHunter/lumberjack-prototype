@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ModulesSection",
+	name: "lumberjack.ModulesSection",
 
 	events: {
 		onChangeModule: ""

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.FamilyTrust",
+	name: "lumberjack.FamilyTrust",
 
 	published:
 	{
@@ -105,8 +105,8 @@ enyo.kind({
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
-			{kind: "quantum.Input", name:"addSettlorInput", columnStyle:"", labelStyle:"line-height: 30px; width: 95px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Settlor Name", required:true},
-			{name: "addSettlorButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Settlor"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addSettlorButtonTapped"}
+			{kind: "lumberjack.Input", name:"addSettlorInput", columnStyle:"", labelStyle:"line-height: 30px; width: 95px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Settlor Name", required:true},
+			{name: "addSettlorButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Settlor"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addSettlorButtonTapped"}
 		]},
 		{content: "Trustees", style: "margin-top: 10px; font-size: 16px; font-weight: bold; width: 300px; text-align: center;"},
 		{name: "noTrusteesItem", content: "No Assigned Trustees", style: "margin-top: 10px; width: 300px; text-align: center;"},
@@ -134,8 +134,8 @@ enyo.kind({
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
-			{kind: "quantum.Input", name:"addTrusteeInput", columnStyle:"", labelStyle:"line-height: 30px; width: 95px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Trustee Name", required:true},
-			{name: "addTrusteeButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Trustee"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addTrusteeButtonTapped"}
+			{kind: "lumberjack.Input", name:"addTrusteeInput", columnStyle:"", labelStyle:"line-height: 30px; width: 95px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Trustee Name", required:true},
+			{name: "addTrusteeButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Trustee"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addTrusteeButtonTapped"}
 		]},
 		{content: "Beneficiary Categories", style: "margin-top: 10px; font-size: 16px; font-weight: bold; width: 300px; text-align: center;"},
 		{name: "noBeneficiaryCategoriesItem", content: "No Assigned Categories", style: "margin-top: 10px; width: 300px; text-align: center;"},
@@ -150,7 +150,7 @@ enyo.kind({
 				{name: "beneficiaryCategoriesPickerButton", style: "width: 300px;"},
 				{name: "beneficiaryCategoriesPicker", kind: "onyx.Picker"}
 			]},
-			{name: "addBeneficiaryCategoryButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Beneficary Category"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addBeneficiaryCategoryButtonTapped"}
+			{name: "addBeneficiaryCategoryButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Beneficary Category"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addBeneficiaryCategoryButtonTapped"}
 		]}
 	],
 

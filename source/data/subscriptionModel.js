@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.SubscriptionModel",
+	name: "lumberjack.SubscriptionModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -105,7 +105,7 @@ enyo.kind({
 		{
 			data.subscriptionInfo.clientIdentityValidator = {};
 		}
-		data.subscriptionInfo.clientIdentityValidator = new quantum.ClientIdentityValidatorModel(data.subscriptionInfo.clientIdentityValidator);
+		data.subscriptionInfo.clientIdentityValidator = new lumberjack.ClientIdentityValidatorModel(data.subscriptionInfo.clientIdentityValidator);
 
 		if (!Array.isArray(data.documentsReceived))
 		{
@@ -132,7 +132,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.ClientIdentityValidatorModel",
+	name: "lumberjack.ClientIdentityValidatorModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -265,10 +265,10 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.SubscriptionCollection",
+	name: "lumberjack.SubscriptionCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.SubscriptionModel",
+	model: "lumberjack.SubscriptionModel",
 
 	calculateTotalSharesComplete: function(country, isDAP)
 	{
@@ -303,9 +303,9 @@ enyo.kind({
 			{
 				if ((value.get("subscriptionInfo").subscriptionStatus === "complete" || (isDAP && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds")) && value.get("contactInfo").addressInfo.country === country) 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
 					}
 				}
 			}
@@ -313,9 +313,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus === "complete" || (isDAP && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds"))
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
 					}
 				}
 			}
@@ -453,9 +453,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus !== "cancelled" && value.get("subscriptionInfo").subscriptionStatus !== "closed" && value.get("contactInfo").addressInfo.country === country) 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").fundsReceived)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").fundsReceived);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived);
 					}
 				}
 			}
@@ -463,9 +463,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus !== "cancelled" && value.get("subscriptionInfo").subscriptionStatus !== "closed") 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").fundsReceived)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").fundsReceived);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived);
 					}
 				}	
 			}
@@ -483,9 +483,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus === "closed" && value.get("contactInfo").addressInfo.country === country) 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").fundsReceived)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").fundsReceived);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived);
 					}
 				}
 			}
@@ -493,9 +493,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus === "closed") 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").fundsReceived)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").fundsReceived);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").fundsReceived);
 					}
 				}	
 			}
@@ -513,9 +513,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus !== "cancelled" && value.get("contactInfo").addressInfo.country === country) 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
 					}
 				}
 			}
@@ -523,9 +523,9 @@ enyo.kind({
 			{
 				if (value.get("subscriptionInfo").subscriptionStatus !== "cancelled") 
 				{
-					if(!isNaN(quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
+					if(!isNaN(lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount)))
 					{
-						total = total + quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
+						total = total + lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount);
 					}
 				}
 			}
@@ -545,7 +545,7 @@ enyo.kind({
 				//[countryName, fundsDelivered, fundsOutstanding]
 				if (!statuses[value.get("subscriptionInfo").subscriptionStatus])
 				{
-					statuses[value.get("subscriptionInfo").subscriptionStatus] = [quantum.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus), 1];
+					statuses[value.get("subscriptionInfo").subscriptionStatus] = [lumberjack.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus), 1];
 				}
 				else
 				{
@@ -574,7 +574,7 @@ enyo.kind({
 				//[countryName, fundsDelivered, fundsOutstanding]
 				if (!statuses[value.get("subscriptionInfo").subscriptionStatus])
 				{
-					statuses[value.get("subscriptionInfo").subscriptionStatus] = [quantum.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus), numeral(value.get("subscriptionInfo").fundsReceived).value(), numeral(value.get("subscriptionInfo").subscriberDollarAmount - value.get("subscriptionInfo").fundsReceived).value()];
+					statuses[value.get("subscriptionInfo").subscriptionStatus] = [lumberjack.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus), numeral(value.get("subscriptionInfo").fundsReceived).value(), numeral(value.get("subscriptionInfo").subscriberDollarAmount - value.get("subscriptionInfo").fundsReceived).value()];
 				}
 				else
 				{
@@ -654,8 +654,8 @@ enyo.kind({
 				var subscription = {
 					subscriberName: value.get("contactInfo").subscriberName,
 					numberOfShares: numeral(value.get("subscriptionInfo").numShares).format('0,0'),
-					shareDesignation: quantum.preferences.get("placementInfo").shareDesignation,
-					shareTotalCost: "$" + quantum.formatCurrency(value.get("subscriptionInfo").numShares * quantum.preferences.get("placementInfo").sharePrice)
+					shareDesignation: lumberjack.preferences.get("placementInfo").shareDesignation,
+					shareTotalCost: "$" + lumberjack.formatCurrency(value.get("subscriptionInfo").numShares * lumberjack.preferences.get("placementInfo").sharePrice)
 				};
 
 				data.subscriptions.push(subscription);
@@ -683,8 +683,8 @@ enyo.kind({
 				var subscription = {
 					subscriberName: value.get("contactInfo").subscriberName,
 					numberOfShares: numeral(value.get("subscriptionInfo").numShares).format('0,0'),
-					shareDesignation: quantum.preferences.get("placementInfo").shareDesignation,
-					shareTotalCost: "$" + quantum.formatCurrency(value.get("subscriptionInfo").numShares * quantum.preferences.get("placementInfo").sharePrice)
+					shareDesignation: lumberjack.preferences.get("placementInfo").shareDesignation,
+					shareTotalCost: "$" + lumberjack.formatCurrency(value.get("subscriptionInfo").numShares * lumberjack.preferences.get("placementInfo").sharePrice)
 				};
 
 				data.subscriptions.push(subscription);
@@ -746,12 +746,12 @@ enyo.kind({
 					registrationAddress: subscriberAddress,
 					deliveryAddress: mailingAddress,
 					numberOfShares: numeral(value.get("subscriptionInfo").numShares).format('0,0'),
-					holdPeriodExpiry: quantum.preferences.get("placementInfo").treasuryOrderInfo.holdPeriodExpiry,
-					registrationMethod: quantum.preferences.get("placementInfo").treasuryOrderInfo.registrationMethod,
+					holdPeriodExpiry: lumberjack.preferences.get("placementInfo").treasuryOrderInfo.holdPeriodExpiry,
+					registrationMethod: lumberjack.preferences.get("placementInfo").treasuryOrderInfo.registrationMethod,
 					coveredShares: "",
 					acquisitionDate: value.get("contactInfo").addressInfo.country === "USA" ? closingDate.format("MMMM D, YYYY") : "",
-					acquisitionPrice: value.get("contactInfo").addressInfo.country === "USA" ? "$" + quantum.formatCurrency(quantum.preferences.get("placementInfo").sharePrice) : "",
-					placementCurrency: value.get("contactInfo").addressInfo.country === "USA" ? quantum.preferences.get("placementInfo").placementCurrency : ""
+					acquisitionPrice: value.get("contactInfo").addressInfo.country === "USA" ? "$" + lumberjack.formatCurrency(lumberjack.preferences.get("placementInfo").sharePrice) : "",
+					placementCurrency: value.get("contactInfo").addressInfo.country === "USA" ? lumberjack.preferences.get("placementInfo").placementCurrency : ""
 				};
 
 				data.placements.push(placement);

@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.AssignPaymentPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.AssignPaymentPopup",
 
 	published: {
 		subscriptionCollection: null,
@@ -20,7 +20,7 @@ enyo.kind({
 			{style: "font-size: 24px; text-align: center;", content: "Assign Payment"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Amount", style: "width: 130px; line-height: 34px;"},
-				{kind: "quantum.Input", name:"paymentAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 220px;", inputStyle: "margin-left: 10px; width: 220px;", type:"text", label:"$", required:true}
+				{kind: "lumberjack.Input", name:"paymentAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 220px;", inputStyle: "margin-left: 10px; width: 220px;", type:"text", label:"$", required:true}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Subscription", style: "line-height: 38px; width: 150px;"},
@@ -30,10 +30,10 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 10px;", components: [
-				{kind: "quantum.Button", enabledClasses: "button primary", content: "Assign", ontap: "handleAddButtonTapped"},
-				{kind: "quantum.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
+				{kind: "lumberjack.Button", enabledClasses: "button primary", content: "Assign", ontap: "handleAddButtonTapped"},
+				{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
 			]},
-			{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+			{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 		]}
 	],
 
@@ -42,7 +42,7 @@ enyo.kind({
 		this.populateSubscribersDropdown();
 		this.$.paymentAmountInput.set("value", this.get("payment").amount);
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 	},
 
 	validateInputs: function()
@@ -68,7 +68,7 @@ enyo.kind({
 
 	assignPayment: function(){
 		var data = {
-			amount: quantum.parseFloat(this.$.paymentAmountInput.get("value")),
+			amount: lumberjack.parseFloat(this.$.paymentAmountInput.get("value")),
 			targetID: this.$.subscriberPicker.get("selected").subscriberID,
 			payment: this.get("payment")
 		};
@@ -81,13 +81,13 @@ enyo.kind({
 	{
 		if (!this.validateInputs()) { return; }
 
-		if (quantum.parseFloat(this.$.subscriberPicker.get("selected").fundsReceived) + quantum.parseFloat(this.$.paymentAmountInput.get("value")) > quantum.parseFloat(this.$.subscriberPicker.get("selected").subscriberDollarAmount)) {
+		if (lumberjack.parseFloat(this.$.subscriberPicker.get("selected").fundsReceived) + lumberjack.parseFloat(this.$.paymentAmountInput.get("value")) > lumberjack.parseFloat(this.$.subscriberPicker.get("selected").subscriberDollarAmount)) {
 			if (this.$.confirmOverAssignPaymentPopup)
 			{
 				this.$.confirmOverAssignPaymentPopup.hide();
 				this.$.confirmOverAssignPaymentPopup.destroy();
 			}
-			this.createComponent({name: "confirmOverAssignPaymentPopup", kind: "quantum.ConfirmPopup", onYes: "assignPayment", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "confirmOverAssignPaymentPopup", kind: "lumberjack.ConfirmPopup", onYes: "assignPayment", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.confirmOverAssignPaymentPopup.show("Are you sure that you want to assign more funds than the value of the subscription?");
 		}
 		else

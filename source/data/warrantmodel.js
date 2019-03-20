@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.WarrantModel",
+	name: "lumberjack.WarrantModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -20,8 +20,8 @@ enyo.kind({
 		treasuryOrderDoc: null,// <Object>
 		documentsReceived: null,// <Array>
 		paymentsReceived: null,// <Array>
-		pendingTransactions: null,// <quantum.WarrantTransactionCollection>
-		cancelledTransactions: null// <quantum.WarrantTransactionCollection>
+		pendingTransactions: null,// <lumberjack.WarrantTransactionCollection>
+		cancelledTransactions: null// <lumberjack.WarrantTransactionCollection>
 	},
 
 	parse: function(data)
@@ -106,7 +106,7 @@ enyo.kind({
 			// will cause the same array to be shared across all instances of this model.
 			data.pendingTransactions = [];
 		}
-		data.pendingTransactions = new quantum.WarrantTransactionCollection(data.pendingTransactions);
+		data.pendingTransactions = new lumberjack.WarrantTransactionCollection(data.pendingTransactions);
 
 		if (data.cancelledTransactions == null)
 		{
@@ -114,21 +114,21 @@ enyo.kind({
 			// will cause the same array to be shared across all instances of this model.
 			data.cancelledTransactions = [];
 		}
-		data.cancelledTransactions = new quantum.WarrantTransactionCollection(data.cancelledTransactions);
+		data.cancelledTransactions = new lumberjack.WarrantTransactionCollection(data.cancelledTransactions);
 
 		return data;
 	}
 });
 
 enyo.kind({
-	name: "quantum.WarrantCollection",
+	name: "lumberjack.WarrantCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.WarrantModel"
+	model: "lumberjack.WarrantModel"
 });
 
 enyo.kind({
-	name: "quantum.WarrantTransactionModel",
+	name: "lumberjack.WarrantTransactionModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -206,8 +206,8 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.WarrantTransactionCollection",
+	name: "lumberjack.WarrantTransactionCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.WarrantTransactionModel"
+	model: "lumberjack.WarrantTransactionModel"
 });

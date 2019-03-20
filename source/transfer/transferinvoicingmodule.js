@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferInvoicingModule",
+	name: "lumberjack.TransferInvoicingModule",
 	fit: true,
 
 	published: {
@@ -44,20 +44,20 @@ enyo.kind({
 		]},
 		{kind: "enyo.FittableColumns",  components: [
 			{style: "width: 50%;", components: [
-				{kind: "quantum.Input", name:"sellerBaseFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Base Fee"},
-				{kind: "quantum.Input", name:"sellerDiscountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Discount"},
-				{kind: "quantum.Input", name:"sellerTaxesInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Taxes"},
-				{kind: "quantum.Input", name:"sellerTotalFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Total Fee"},				
-				{kind: "quantum.Button", name: "generateSellerInvoiceButton", ontap: "handleGenerateSellerInvoiceButtonTapped", content: "Generate Seller Invoice"},
-				{kind: "quantum.Button", name: "downloadSellerInvoiceButton", style: "margin-left: 10px;", ontap: "handleDownloadSellerInvoiceButtonTapped", content: "Download Seller Invoice"}
+				{kind: "lumberjack.Input", name:"sellerBaseFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Base Fee"},
+				{kind: "lumberjack.Input", name:"sellerDiscountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Discount"},
+				{kind: "lumberjack.Input", name:"sellerTaxesInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Taxes"},
+				{kind: "lumberjack.Input", name:"sellerTotalFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Total Fee"},				
+				{kind: "lumberjack.Button", name: "generateSellerInvoiceButton", ontap: "handleGenerateSellerInvoiceButtonTapped", content: "Generate Seller Invoice"},
+				{kind: "lumberjack.Button", name: "downloadSellerInvoiceButton", style: "margin-left: 10px;", ontap: "handleDownloadSellerInvoiceButtonTapped", content: "Download Seller Invoice"}
 			]},
 			{style: "width: 50%;", components: [
-				{kind: "quantum.Input", name:"buyerBaseFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Base Fee"},
-				{kind: "quantum.Input", name:"buyerDiscountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Discount"},
-				{kind: "quantum.Input", name:"buyerTaxesInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Taxes"},
-				{kind: "quantum.Input", name:"buyerTotalFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Total Fee"},
-				{kind: "quantum.Button", name: "generateBuyerInvoiceButton", ontap: "handleGenerateBuyerInvoiceButtonTapped", content: "Generate Buyer Invoice"},
-				{kind: "quantum.Button", name: "downloadBuyerInvoiceButton", style: "margin-left: 10px;", ontap: "handleDownloadBuyerInvoiceButtonTapped", content: "Download Buyer Invoice"}
+				{kind: "lumberjack.Input", name:"buyerBaseFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Base Fee"},
+				{kind: "lumberjack.Input", name:"buyerDiscountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Discount"},
+				{kind: "lumberjack.Input", name:"buyerTaxesInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Taxes"},
+				{kind: "lumberjack.Input", name:"buyerTotalFeeInput", disabled: true, columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Total Fee"},
+				{kind: "lumberjack.Button", name: "generateBuyerInvoiceButton", ontap: "handleGenerateBuyerInvoiceButtonTapped", content: "Generate Buyer Invoice"},
+				{kind: "lumberjack.Button", name: "downloadBuyerInvoiceButton", style: "margin-left: 10px;", ontap: "handleDownloadBuyerInvoiceButtonTapped", content: "Download Buyer Invoice"}
 			]}
 		]}
 	],
@@ -108,11 +108,11 @@ enyo.kind({
 		}},		
 		{from: ".sellerDiscount", to: ".$.sellerDiscountInput.value", oneWay: false, transform: function(v){
 			this.$.sellerDiscountInput.clearBorderError();
-			return quantum.parseFloat(v);
+			return lumberjack.parseFloat(v);
 		}},
 		{from: ".buyerDiscount", to: ".$.buyerDiscountInput.value", oneWay: false, transform: function(v){
 			this.$.buyerDiscountInput.clearBorderError();
-			return quantum.parseFloat(v);
+			return lumberjack.parseFloat(v);
 		}},
 		{from: ".feesPaidBy", to: ".$.feesPaidByGroupbox.active", oneWay: false, transform: function(v,d){
 			if (d === "source")

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferView",
+	name: "lumberjack.TransferView",
 	kind: "FittableRows",
 	fit: true,
 	_reportWindow: null,
@@ -29,7 +29,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -48,18 +48,18 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Transfers Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Transfers Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.TransferDashboardPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
-			{name: "listPanel", kind: "quantum.TransferListPanel", onViewItemDetail: "handleViewItemDetail", onCreateNewTransfer: "createTransferButtonTapped"},
-			{name: "createTransferPanel", kind: "quantum.TransferDetailPanel", mode: "add", onGoBack: "handleGoBack"},
-			{name: "transferDetailPanel", kind: "quantum.TransferDetailPanel", onGoBack: "handleGoBack"}
+			{name: "dashboardPanel", kind: "lumberjack.TransferDashboardPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
+			{name: "listPanel", kind: "lumberjack.TransferListPanel", onViewItemDetail: "handleViewItemDetail", onCreateNewTransfer: "createTransferButtonTapped"},
+			{name: "createTransferPanel", kind: "lumberjack.TransferDetailPanel", mode: "add", onGoBack: "handleGoBack"},
+			{name: "transferDetailPanel", kind: "lumberjack.TransferDetailPanel", onGoBack: "handleGoBack"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -88,18 +88,18 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.createTransferMenuItem.set("showing", quantum.hasRole(["admins"], "transfer"));
+		this.$.createTransferMenuItem.set("showing", lumberjack.hasRole(["admins"], "transfer"));
 	},
 
 	rendered: function(inSender, inEvent)
 	{
 		this.set("showing", false);
-		this.set("database", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("transferDatabase"), {skip_setup: true}));
-		this.$.versionString.set("content", quantum.versionString);
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
+		this.set("database", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("transferDatabase"), {skip_setup: true}));
+		this.$.versionString.set("content", lumberjack.versionString);
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
     	this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.setShowingForRoles();
 		this.resize();
 		this.$.loadingPopup.show();
@@ -109,15 +109,15 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 			this.dashboardButtonTapped();
 			this.resize();
-			quantum.preferences.set("lastModule", "transfer");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "transfer");
+			lumberjack.preferences.commit();
 			if (this.get("targetTransfer"))
 			{
 				var filteredCollection = this.get("transferCollection").filter(enyo.bind(this, function(value, index, array){
 					return value.get("_id") === this.get("targetTransfer");
 				}));
 
-				filteredCollection = new quantum.TransferCollection(filteredCollection);
+				filteredCollection = new lumberjack.TransferCollection(filteredCollection);
 
 				if (filteredCollection.length > 0)
 				{
@@ -139,7 +139,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -168,7 +168,7 @@ enyo.kind({
 
 	createTransferButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
 		{
@@ -181,7 +181,7 @@ enyo.kind({
 		}
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "createTransfer", icon: "assets/icons/create-transfer-icon.png", content: "Create Transfer", ontap: "createTransferBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "createTransfer", icon: "assets/icons/create-transfer-icon.png", content: "Create Transfer", ontap: "createTransferBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("createTransferPanel"));
 		this.$.createTransferPanel.activate(null);
@@ -217,7 +217,7 @@ enyo.kind({
 
 	transfersButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -233,7 +233,7 @@ enyo.kind({
 				}
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "transfers", icon: "assets/icons/list-icon.png", content: "Transfers", ontap: "transfersBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "transfers", icon: "assets/icons/list-icon.png", content: "Transfers", ontap: "transfersBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
 			this.$.listPanel.activate();
@@ -285,10 +285,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "transferDetail", icon: "assets/icons/transfer-detail-icon.png", content: "Transfer Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "transferDetail", icon: "assets/icons/transfer-detail-icon.png", content: "Transfer Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.transferDetailPanel.set("transferCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("transferDetailPanel"));
@@ -315,10 +315,10 @@ enyo.kind({
 		//I wish that we could do await/async here, but no dice with Enyo, so we do it the old fashoned way :S
 		//Load Lawyers so that we can populate the appropriate dropdowns
 		var lawFirmsRequest = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getlawfirms",
+			url: lumberjack.preferences.get("apiServer") + "getlawfirms",
 			cacheBust: false,
     		headers:{
-   				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+   				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
    			}
 		});
 
@@ -349,10 +349,10 @@ enyo.kind({
 				
 				//Load the approvers so that we can populate the dropdown
 				var approversRequest = new enyo.Ajax({
-					url: quantum.preferences.get("apiServer") + "gettransferapprovers",
+					url: lumberjack.preferences.get("apiServer") + "gettransferapprovers",
 					cacheBust: false,
 		    		headers:{
-		   				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+		   				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 		   			}
 				});
 
@@ -381,10 +381,10 @@ enyo.kind({
 
 						//Load the POA Recipients so that we can populate the dropdown
 						var poaRecipientsRequest = new enyo.Ajax({
-							url: quantum.preferences.get("apiServer") + "getpoarecipients",
+							url: lumberjack.preferences.get("apiServer") + "getpoarecipients",
 							cacheBust: false,
 				    		headers:{
-				   				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				   				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				   			}
 						});
 
@@ -413,10 +413,10 @@ enyo.kind({
 
 								//Load the principals so that we can populate the dropdown
 								var request = new enyo.Ajax({
-									url: quantum.preferences.get("apiServer") + "getprincipals",
+									url: lumberjack.preferences.get("apiServer") + "getprincipals",
 									cacheBust: false,
 						    		headers:{
-						   				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+						   				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 						   			}
 								});
 
@@ -443,7 +443,7 @@ enyo.kind({
 									{
 										this.set("principals", response.principals);
 										//Get data from database and load it into collection
-										this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+										this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 											if (err)
 											{
 												alertify.error("Login Failed");
@@ -514,11 +514,11 @@ enyo.kind({
 
 													var sortedDocs = docs.sort(sortByTransactionDate);
 
-													this.set("transferCollection", new quantum.TransferCollection(docs));
+													this.set("transferCollection", new lumberjack.TransferCollection(docs));
 												}
 												else
 												{
-													this.set("transferCollection", new quantum.TransferCollection());
+													this.set("transferCollection", new lumberjack.TransferCollection());
 												}
 												
 												callback();
@@ -529,25 +529,25 @@ enyo.kind({
 								}));
 
 								request.go({
-									companyID: quantum.preferences.get("company")
+									companyID: lumberjack.preferences.get("company")
 								});
 							}
 						}));
 						
 						poaRecipientsRequest.go({
-							companyID: quantum.preferences.get("company")
+							companyID: lumberjack.preferences.get("company")
 						});
 					}
 				}));
 
 				approversRequest.go({
-					companyID: quantum.preferences.get("company")
+					companyID: lumberjack.preferences.get("company")
 				});
 			}
 		}));
 
 		lawFirmsRequest.go({
-			companyID: quantum.preferences.get("company")
+			companyID: lumberjack.preferences.get("company")
 		});
 	},
 
@@ -585,11 +585,11 @@ enyo.kind({
 			catch (err) { return 0; }
 		};
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: quantum.preferences.get("transferDatabase")
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: lumberjack.preferences.get("transferDatabase")
 			}
 		}));
 
@@ -651,7 +651,7 @@ enyo.kind({
 
 				// The ugly hack of manually calling "parse" below is necessary since enyo doesn't call the model's "parse" on a merge.
 				// NOTE: Merge isn't guaranteed to work the way we want it to. 
-				this.get("transferCollection").add(new quantum.TransferModel().parse(change.doc), {merge: true});
+				this.get("transferCollection").add(new lumberjack.TransferModel().parse(change.doc), {merge: true});
 				this.get("transferCollection").sort(sortByTransactionDate);
 
 				if (this.$.dataPanels.getActive() === this.$.transferDetailPanel)
@@ -659,7 +659,7 @@ enyo.kind({
 					if (this.$.transferDetailPanel.get("activeEntry").get("_id") === findResult.get("_id"))
 					{
 						alertify.message("Entry updated from<br />another terminal.");
-						this.$.transferDetailPanel.activate(new quantum.TransferModel(change.doc));
+						this.$.transferDetailPanel.activate(new lumberjack.TransferModel(change.doc));
 					}
 				}
 				else if (this.$.dataPanels.getActive() === this.$.listPanel)
@@ -709,7 +709,7 @@ enyo.kind({
 
 	handleTransferSelected: function(inSender, inEvent)
 	{
-		quantum.preferences.commit({success: enyo.bind(this, function() {
+		lumberjack.preferences.commit({success: enyo.bind(this, function() {
 			this.render();
 		})});
 

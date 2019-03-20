@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.VerifyInvestorSection",
+	name: "lumberjack.VerifyInvestorSection",
 
 	published: {
 		activeEntry: null,
@@ -43,15 +43,15 @@ enyo.kind({
 			{name: "lastUpdatedTimestampLabel", style: "line-height: 20px; margin-left: 10px;"}
 		]},
 		{style: "margin-top: 10px;", components: [
-			{name: "sendEmailButton", kind: "quantum.Button", content: "Send Account Link Request", ontap: "handleSendEmailButtonTapped"},
-			{name: "getLinkButton", kind: "quantum.Button", style: "margin-left: 10px;", enabledClasses: "button copy-button", content: "Get Account Link", ontap: "handleGetLinkButtonTapped"},
-			{name: "sendVerificationRequestButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Send Verification Request", ontap: "handleSendVerificationRequestButtonTapped"},
-			{name: "refreshStatusButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Refresh Status", ontap: "handleRefreshStatusButtonTapped"},
-			{name: "sendReminderEmailButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Send Reminder Email", ontap: "handleSendReminderEmailButtonTapped"},
-			{name: "viewSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleViewSignedButtonTapped"},
-			{name: "downloadSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedButtonTapped"}
+			{name: "sendEmailButton", kind: "lumberjack.Button", content: "Send Account Link Request", ontap: "handleSendEmailButtonTapped"},
+			{name: "getLinkButton", kind: "lumberjack.Button", style: "margin-left: 10px;", enabledClasses: "button copy-button", content: "Get Account Link", ontap: "handleGetLinkButtonTapped"},
+			{name: "sendVerificationRequestButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Send Verification Request", ontap: "handleSendVerificationRequestButtonTapped"},
+			{name: "refreshStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Refresh Status", ontap: "handleRefreshStatusButtonTapped"},
+			{name: "sendReminderEmailButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Send Reminder Email", ontap: "handleSendReminderEmailButtonTapped"},
+			{name: "viewSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleViewSignedButtonTapped"},
+			{name: "downloadSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedButtonTapped"}
 		]},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"}
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"}
 	],
 
 	bindings: [
@@ -253,12 +253,12 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "GET",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -273,7 +273,7 @@ enyo.kind({
 
 			this.hideLoadingPopup();
 			//At the moment, this only needs to work with files from the Twilight/Clients API.
-			saveAs(quantum.b64ToBlob(response.file.content, response.file.contentType), response.file.fileName);
+			saveAs(lumberjack.b64ToBlob(response.file.content, response.file.contentType), response.file.fileName);
 
 			callback();
 		}));
@@ -315,13 +315,13 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -377,12 +377,12 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "GET",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -458,13 +458,13 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -521,13 +521,13 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -592,13 +592,13 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -654,12 +654,12 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + route,
+			url: lumberjack.preferences.get("apiServer") + route,
 			method: "GET",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -674,7 +674,7 @@ enyo.kind({
 
 			this.hideLoadingPopup();
 			//At the moment, this only needs to work with files from the Twilight/Clients API.
-			window.open(URL.createObjectURL(quantum.b64ToBlob(response.file.content, response.file.contentType)));
+			window.open(URL.createObjectURL(lumberjack.b64ToBlob(response.file.content, response.file.contentType)));
 
 			callback();
 		}));
@@ -752,7 +752,7 @@ enyo.kind({
 	{
 		this.hideLoadingPopup();
 
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"}, {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"}, {owner:this});
 		this.$.loadingPopup.show($L(message));
 	}
 });

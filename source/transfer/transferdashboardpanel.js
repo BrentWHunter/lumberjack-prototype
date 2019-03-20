@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferDashboardPanel",
+	name: "lumberjack.TransferDashboardPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -41,9 +41,9 @@ enyo.kind({
 					{name: "currency", style: "width: 75px;"},
 					{name: "dateReceived", style: "width: 150px;"},
 					{name: "additionalInformation", fit: true},
-					{kind: "quantum.Button", enabledClasses: "button danger", style: "margin-left: 10px;", content: "Delete", ontap: "handleDeletePaymentButtonTapped"},
-					{kind: "quantum.Button", style: "margin-left: 10px;", content: "View", ontap: "handleViewPaymentButtonTapped"},
-					{kind: "quantum.Button", style: "margin-left: 10px;", content: "Assign", ontap: "handleAssignPaymentButtonTapped"}
+					{kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin-left: 10px;", content: "Delete", ontap: "handleDeletePaymentButtonTapped"},
+					{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View", ontap: "handleViewPaymentButtonTapped"},
+					{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Assign", ontap: "handleAssignPaymentButtonTapped"}
 				]}
 			]}
 		]},
@@ -71,7 +71,7 @@ enyo.kind({
 			]}
 		]},
 		{name: "noTransfersLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Transfers Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -86,13 +86,13 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		//this.$.emailClosedSubscribersButton.set("showing", quantum.hasRole(["admins"], "transfer"));
-		this.$.unassignedPaymentsSection.set("showing", this.$.unassignedPaymentsSection.get("showing") && quantum.hasRole(["admins","users"], "transfer"));
+		//this.$.emailClosedSubscribersButton.set("showing", lumberjack.hasRole(["admins"], "transfer"));
+		this.$.unassignedPaymentsSection.set("showing", this.$.unassignedPaymentsSection.get("showing") && lumberjack.hasRole(["admins","users"], "transfer"));
 	},
 
 	activate: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 		
@@ -129,7 +129,7 @@ enyo.kind({
 			catch (err) { return true; }
 		});
 
-		this.set("filteredTransferCollection", new quantum.TransferCollection(filteredByStatus));
+		this.set("filteredTransferCollection", new lumberjack.TransferCollection(filteredByStatus));
 		this.$.noTransfersLabel.set("showing", this.get("filteredTransferCollection").length === 0);
 		this.$.incompleteTransferRepeater.setCount(this.get("filteredTransferCollection").length);
 		this.set("populatingCollection", false);
@@ -144,10 +144,10 @@ enyo.kind({
 		inEvent.item.$.transferDate.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("transactionDate") ? moment(this.get("filteredTransferCollection").at(inEvent.index).get("transactionDate")).format("YYYY/MM/DD") : "");
 		inEvent.item.$.sellerName.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("seller").name || "");
 		inEvent.item.$.buyerName.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("buyer").name || "");
-		inEvent.item.$.transferStatus.set("content", quantum.transferStatusLookup(this.get("filteredTransferCollection").at(inEvent.index).get("transferStatus")));
+		inEvent.item.$.transferStatus.set("content", lumberjack.transferStatusLookup(this.get("filteredTransferCollection").at(inEvent.index).get("transferStatus")));
 		inEvent.item.$.numShares.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("numShares") ? numeral(this.get("filteredTransferCollection").at(inEvent.index).get("numShares")).format('0,0') : "0");
-		inEvent.item.$.pricePerShare.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare") ? "$" + quantum.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare")) : "$0");
-		inEvent.item.$.transferDollarAmount.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice") ? "$" + quantum.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice")) : "$0");
+		inEvent.item.$.pricePerShare.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare") ? "$" + lumberjack.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("pricePerShare")) : "$0");
+		inEvent.item.$.transferDollarAmount.set("content", this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice") ? "$" + lumberjack.formatCurrency(this.get("filteredTransferCollection").at(inEvent.index).get("totalPurchasePrice")) : "$0");
 		return true;
 	},
 
@@ -162,7 +162,7 @@ enyo.kind({
 
 	populateUnassignedPayments: function()
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		if (!this.get("unassignedPayments")) {return true;}
 		this.set("populatingPayments", true);
@@ -178,14 +178,14 @@ enyo.kind({
 
 	setupUnassignedPaymentRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		if (!inEvent.item) {return true;}
 
 		inEvent.item.$.paymentItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 
 		inEvent.item.$.paymentFrom.set("content", this.get("unassignedPayments").payments[inEvent.index].sender);
-		inEvent.item.$.paymentAmount.set("content", "$" + quantum.formatCurrency(this.get("unassignedPayments").payments[inEvent.index].amount));
+		inEvent.item.$.paymentAmount.set("content", "$" + lumberjack.formatCurrency(this.get("unassignedPayments").payments[inEvent.index].amount));
 		inEvent.item.$.currency.set("content", this.get("unassignedPayments").payments[inEvent.index].currency);
 		inEvent.item.$.dateReceived.set("content", this.get("unassignedPayments").payments[inEvent.index].valueDate);
 		inEvent.item.$.additionalInformation.set("content", this.get("unassignedPayments").payments[inEvent.index].additionalInformation);
@@ -194,20 +194,20 @@ enyo.kind({
 
 	handleAssignPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		if (this.$.assignPaymentPopup) {
 			this.$.assignPaymentPopup.hide();
 			this.$.assignPaymentPopup.destroy();
 		}
-		this.createComponent({name: "assignPaymentPopup", kind: "quantum.AssignPaymentPopup", transferCollection: this.get("filteredTransferCollection"), payment: this.get("unassignedPayments").payments[inEvent.index], onAssignPayment: "handleAssignPayment", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "assignPaymentPopup", kind: "lumberjack.AssignPaymentPopup", transferCollection: this.get("filteredTransferCollection"), payment: this.get("unassignedPayments").payments[inEvent.index], onAssignPayment: "handleAssignPayment", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.assignPaymentPopup.show();
 	},
 
 	handleAssignPayment: function(inSender, inEvent)
 	{
 		this.set("populatingPayments", true);
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -242,7 +242,7 @@ enyo.kind({
 				fileType: "application/pdf"
 			});
 
-			transferResult.set("fundsReceived", quantum.parseFloat(transferResult.get("fundsReceived")) + paymentToAssign.amount);
+			transferResult.set("fundsReceived", lumberjack.parseFloat(transferResult.get("fundsReceived")) + paymentToAssign.amount);
 
 			if (!transferResult.get("_attachments")) {transferResult.set("_attachments", {});}
 
@@ -310,10 +310,10 @@ enyo.kind({
 
 	handleDeletePaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		this.set("populatingPayments", true);
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -352,10 +352,10 @@ enyo.kind({
 
 	handleViewPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "transfer")) { return; }
 
 		this.set("populatingPayments", true);
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");

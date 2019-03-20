@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ProxyDashboardPanel",
+	name: "lumberjack.ProxyDashboardPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -125,7 +125,7 @@ enyo.kind({
 			]},
 			{name: "noResultsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Results"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -139,7 +139,7 @@ enyo.kind({
 
 	activate: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { this.doGoHome(); return; }
 
 		this._totalShares = 0;
 		this._sharesVoted = 0;
@@ -149,7 +149,7 @@ enyo.kind({
 
 		this.setShowingForRoles();
 
-		quantum.preferences.get("proxyInfo").questions.forEach(enyo.bind(this, function(value, index, array){
+		lumberjack.preferences.get("proxyInfo").questions.forEach(enyo.bind(this, function(value, index, array){
 			this._questions.push({
 				id: value.id,
 				type: value.type,
@@ -378,13 +378,13 @@ enyo.kind({
 
 	setupProxyQuestionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins", "users", "auditors"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins", "users", "auditors"], "proxy")) { return; }
 
 		if (!inEvent.item) {return true;}
 		//Cheat, since we need to run this operation as part of setting up the header anyways.
 		this.$.proxyQuestionsHeaderContainer.createComponent({content: "Q" + (inEvent.index + 1), style: "width: 75px; text-align: center;"}, {owner: this.$.proxyQuestionsHeaderContainer});
 		
-		// var questions = quantum.preferences.get("proxyInfo").questions;
+		// var questions = lumberjack.preferences.get("proxyInfo").questions;
 		var questions = this._questions;
 		inEvent.item.$.questionItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ColumnCheckbox",
+	name: "lumberjack.ColumnCheckbox",
 	published:
 	{
 		disabled: false,

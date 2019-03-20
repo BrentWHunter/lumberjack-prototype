@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.ConfirmPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.ConfirmPopup",
+	kind: "lumberjack.Popup",
 	_returnValue: null,
 
 	handlers: {
@@ -23,8 +23,8 @@ enyo.kind({
 		{style: "max-width: 980px; padding: 10px; text-align: center;", components: [
 			{name: "displayMessage", style: "font-size: 24px;"},
 			{style: "margin-top: 10px;", components: [
-				{name: "yesButton", kind: "quantum.Button", style: "margin-right: 5px; font-size: 18px;", ontap: "yesButtonTapped"},
-				{name: "noButton", kind: "quantum.Button", style: "margin-left: 5px; font-size: 18px;", ontap: "noButtonTapped"}
+				{name: "yesButton", kind: "lumberjack.Button", style: "margin-right: 5px; font-size: 18px;", ontap: "yesButtonTapped"},
+				{name: "noButton", kind: "lumberjack.Button", style: "margin-left: 5px; font-size: 18px;", ontap: "noButtonTapped"}
 			]}
 		]}
 	],

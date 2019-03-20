@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.SelectReportPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.SelectReportPopup",
+	kind: "lumberjack.Popup",
 	_loaded: false,
 
 	events: {
@@ -24,7 +24,7 @@ enyo.kind({
 				{name: "reportDatabasePicker", kind: "onyx.Picker"}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "selectButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Select"), style: "width: 100px; height: 40px;", ontap: "selectButtonTapped"}
+				{name: "selectButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Select"), style: "width: 100px; height: 40px;", ontap: "selectButtonTapped"}
 			]}
 		]}
 	],
@@ -39,7 +39,7 @@ enyo.kind({
 		{
 			if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 			if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-			this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.loadingPopup.show($L("Loading..."));
 
 			this.loadReports(enyo.bind(this, function(reports){
@@ -67,16 +67,16 @@ enyo.kind({
 		if (this.$.loadingPopup) {this.$.loadingPopup.destroy();}
 		this.createComponent({
 			name: "loadingPopup",
-			kind: "quantum.LoadingPopup",
+			kind: "lumberjack.LoadingPopup",
 			onHide: "handlePopupHidden"},
 		{owner:this});
 
 		this.$.loadingPopup.show("Loading Reports");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getreports",
+			url: lumberjack.preferences.get("apiServer") + "getreports",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -108,7 +108,7 @@ enyo.kind({
 			callback(response.reports);
 		}));
 
-		request.go({company: quantum.preferences.get("company")});
+		request.go({company: lumberjack.preferences.get("company")});
 	},
 
 	selectButtonTapped: function(inSender, inEvent)

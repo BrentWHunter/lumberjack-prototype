@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionFilterSettingsModel",
+	name: "lumberjack.OptionFilterSettingsModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -32,7 +32,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.SubscriptionFilterSettingsModel",
+	name: "lumberjack.SubscriptionFilterSettingsModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -68,7 +68,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.TransferFilterSettingsModel",
+	name: "lumberjack.TransferFilterSettingsModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -87,7 +87,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.WarrantFilterSettingsModel",
+	name: "lumberjack.WarrantFilterSettingsModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {

@@ -1,6 +1,6 @@
-/* global quantum,alertify */
+/* global lumberjack,alertify */
 enyo.kind({
-	name: "quantum.CSVExportPanel",
+	name: "lumberjack.CSVExportPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -25,40 +25,40 @@ enyo.kind({
 		]},
 		{kind: "enyo.FittableColumns", style: "padding-top: 5px;" , components: [
 			{kind: "enyo.FittableRows", classes: "csvCheckbox", components: [
-				{kind:"quantum.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allCheckSubscription"},
-				{kind:"quantum.Checkbox", name:"allExceptCancelledStatusesCheckbox", content:"All Non-Cancelled Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allNonCancelledCheck"}
+				{kind:"lumberjack.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allCheckSubscription"},
+				{kind:"lumberjack.Checkbox", name:"allExceptCancelledStatusesCheckbox", content:"All Non-Cancelled Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allNonCancelledCheck"}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-left: 15px; padding: 0 10px 10px 10px;; border: 1px solid black; max-width: 1000px;" , components: [
 				{components: [
-					{kind:"quantum.Checkbox", name:"incompleteDocsNoFundsCheckbox", content:"Incomplete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"incompleteDocsPartialFundsCheckbox", content:"Incomplete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"completeDocsNoFundsCheckbox", content:"Complete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsNoFundsCheckbox", content:"Incomplete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsPartialFundsCheckbox", content:"Incomplete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"completeDocsNoFundsCheckbox", content:"Complete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 				]},
 				{style: "margin-left: 20px;", components: [
-					{kind:"quantum.Checkbox", name:"completeDocsPartialFundsCheckbox", content:"Complete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"pendingCancellationCheckbox", content:"Pending Cancellation", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+					{kind:"lumberjack.Checkbox", name:"completeDocsPartialFundsCheckbox", content:"Complete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"pendingCancellationCheckbox", content:"Pending Cancellation", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 				]},
 				{style: "margin-left: 20px;", components: [
-					{kind:"quantum.Checkbox", name:"cancelledCheckbox", content:"Cancelled", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"closedCheckbox", content:"Closed", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+					{kind:"lumberjack.Checkbox", name:"cancelledCheckbox", content:"Cancelled", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"closedCheckbox", content:"Closed", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 				]}
 			]}
 		]},
 		{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 10px", content: "Select Countries"},
 		{kind: "enyo.FittableColumns", style: "padding-top: 5px;", components: [
 			{kind: "enyo.FittableRows", classes: "csvCheckbox", components: [
-				{kind:"quantum.Checkbox", name:"allCountriesCheckbox", content:"All Countries", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"allCheckCountries"},
-				{kind:"quantum.Checkbox", name:"allNonUSorCanadaCheckbox", content:"All Non US/Canada", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"nonCanUSACheckCountries"}
+				{kind:"lumberjack.Checkbox", name:"allCountriesCheckbox", content:"All Countries", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"allCheckCountries"},
+				{kind:"lumberjack.Checkbox", name:"allNonUSorCanadaCheckbox", content:"All Non US/Canada", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"nonCanUSACheckCountries"}
 			]},
 			{style: "margin-left: 15px; padding: 0 10px 10px 0; border: 1px solid black; max-width: 1000px;", components: [
-				{name: "newBoxesCountry", kind: "quantum.CountryCheckboxes", onAllCountriesChecked: "allCheckCountries", onAllNonUSorCanadaChecked: "nonCanUSACheckCountries", onNeitherChecked: "handleNeitherChecked"}
+				{name: "newBoxesCountry", kind: "lumberjack.CountryCheckboxes", onAllCountriesChecked: "allCheckCountries", onAllNonUSorCanadaChecked: "nonCanUSACheckCountries", onNeitherChecked: "handleNeitherChecked"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-			{kind: "quantum.Button", enabledClasses: "button primary", style: "line-height: 30px; margin-top: 10px", content: "Generate CSV", ontap: "checkedBoxes"}
+			{kind: "lumberjack.Button", enabledClasses: "button primary", style: "line-height: 30px; margin-top: 10px", content: "Generate CSV", ontap: "checkedBoxes"}
 		]}
 	],
 
@@ -69,7 +69,7 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
 
 		if (this.get("subscriptionCollection")) {
 			this.$.newBoxesCountry.set("countriesArray", this.get("subscriptionCollection").getSubscriberCountries());
@@ -242,7 +242,7 @@ enyo.kind({
 			outputForCSV = outputForCSV.concat(results);
 		}));
 
-		this.doRequestGenerateCSVFile({rawCollection: new quantum.SubscriptionCollection(outputForCSV).raw(), filename: "Placement Records Export.csv"});
+		this.doRequestGenerateCSVFile({rawCollection: new lumberjack.SubscriptionCollection(outputForCSV).raw(), filename: "Placement Records Export.csv"});
 	},
 
 	checkedBoxes: function(inSender, inEvent)

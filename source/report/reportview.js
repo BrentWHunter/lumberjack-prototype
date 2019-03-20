@@ -1,4 +1,4 @@
-/* global quantum,d3,alertify,console,numeral */
+/* global lumberjack,d3,alertify,console,numeral */
 /**
 	--Data rows used--
 		jurisdiction
@@ -15,7 +15,7 @@
 */
 
 enyo.kind({
-	name: "quantum.ReportView",
+	name: "lumberjack.ReportView",
 	kind: "FittableRows",
 
 	small: 200,
@@ -60,7 +60,7 @@ enyo.kind({
 			]}
 		]},
 	    { name: "d3", kind:"Scroller", fit: true },
-	    {name: "loadingPopup", kind: "quantum.LoadingPopup"}
+	    {name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	printDocument: function() {
@@ -84,10 +84,10 @@ enyo.kind({
 
 	rendered: function(inSender, inEvent) {
 		this.inherited(arguments);
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 		this.countryCodeLookup = {};
 		this.countryCodeLookup.getFullCountryNameFromThreeDigitCountryCode = function(code) {
-			var countryCodeLookup = quantum.CountryCodes.get("countries");
+			var countryCodeLookup = lumberjack.CountryCodes.get("countries");
 			var i = 0;
 			while(i < countryCodeLookup.length) {
 				if (countryCodeLookup[i].threeLetterCode === code) {
@@ -130,10 +130,10 @@ enyo.kind({
 		this.$.loadingPopup.show();
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatereport",
+			url: lumberjack.preferences.get("apiServer") + "generatereport",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 	    });
 
@@ -174,7 +174,7 @@ enyo.kind({
 			this.resize();
 		}));
 
-	    request.go({placementID: quantum.preferences.get("placementDatabase")});
+	    request.go({placementID: lumberjack.preferences.get("placementDatabase")});
 	},
 
 	// Scrub out the non-data rows, preserve settings as a special element
@@ -623,7 +623,7 @@ enyo.kind({
 					.attr("opacity", 1);
 
 				var dollarFormat = d3.format("$,.0f");
-				var sum = quantum.parseInt(sumLabel.text().replace(/[$,]/g, ""));
+				var sum = lumberjack.parseInt(sumLabel.text().replace(/[$,]/g, ""));
 				var total = sum + amount;
 				if(total < 0)
 					{total = 0;}
@@ -1082,7 +1082,7 @@ enyo.kind({
 
 		svg.select(".subscriptionChartAxisX").selectAll(".tick").each(function(d) {
 			var opacity = 1;
-			if((quantum.parseInt(d) % 10 <= 0))
+			if((lumberjack.parseInt(d) % 10 <= 0))
 				{opacity = 0.5;}
 			else
 				{opacity = 0.25;}
@@ -1254,7 +1254,7 @@ enyo.kind({
 						var payment = {};
 						//payment.payee = e.displayName;
 						payment.date = moment(p.receivedDate).format("YYYY/MM/DD");
-						payment.amount = quantum.parseInt(p.amount);
+						payment.amount = lumberjack.parseInt(p.amount);
 						payment.type = p.paymentType;
 						payments.push(payment);
 					}
@@ -1363,7 +1363,7 @@ enyo.kind({
 			var dropdown = d3.select("#" + dropdownHtmlId);
 			var that = this;
 			dropdown.on("change", function() {
-				var e = quantum.parseInt(this.options[this.selectedIndex].text);
+				var e = lumberjack.parseInt(this.options[this.selectedIndex].text);
 				that.changeDaysHistory(e, dimensions, className);
 			});
 

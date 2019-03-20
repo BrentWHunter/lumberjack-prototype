@@ -1,6 +1,6 @@
-/* global moment,numeral,console,JSON,quantum,alertify */
+/* global moment,numeral,console,JSON,lumberjack,alertify */
 enyo.kind({
-	name: "quantum.SubscriberDetailPanel",
+	name: "lumberjack.SubscriberDetailPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -55,30 +55,30 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Subscriber Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				{name: "deleteEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
-				{name: "correctEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Correct Entry", ontap: "handleCorrectEntryButtonTapped"},
-				{name: "saveEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
-				//{name: "createContactButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Create Contact", ontap: "handleCreateContactButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				{name: "deleteEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
+				{name: "correctEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Correct Entry", ontap: "handleCorrectEntryButtonTapped"},
+				{name: "saveEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
+				//{name: "createContactButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Create Contact", ontap: "handleCreateContactButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", components: [
 			{style: "width: 50%; padding-right: 5px; min-width: 480px;", components: [
-				{kind: "quantum.Input", name:"subscriberNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Subscriber Name", required:true},
-				{kind: "quantum.Input", name:"displayNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Display Name", required:true},
+				{kind: "lumberjack.Input", name:"subscriberNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Subscriber Name", required:true},
+				{kind: "lumberjack.Input", name:"displayNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Display Name", required:true},
 				{name: "corporateContactSection", components: [
-					{kind: "quantum.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
-					{kind: "quantum.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true}
+					{kind: "lumberjack.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
+					{kind: "lumberjack.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Date of Birth", style: "line-height: 28px; width: 170px;"},
-					{kind: "quantum.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
 				]},
-				{kind: "quantum.Input", name:"referrerInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Referrer", required:true},
-				{kind: "quantum.Input", name:"salespersonNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Salesperson Name", required:true},
+				{kind: "lumberjack.Input", name:"referrerInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Referrer", required:true},
+				{kind: "lumberjack.Input", name:"salespersonNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Salesperson Name", required:true},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Notes", style: "line-height: 30px; width: 170px;"},
 					{kind: "onyx.InputDecorator", style: "margin-left: 10px; width: 295px; height: 100px;", components: [
@@ -133,28 +133,28 @@ enyo.kind({
 					]}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-					{name: "renewSubscriptionButton", kind: "quantum.Button", style: "margin-left: 180px; line-height: 34px;", content: "Renew Subscription", ontap: "handleRenewSubscriptionButtonTapped"},
-					{name: "cancelSubscriptionButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 34px;", content: "Cancel Subscription", ontap: "handleCancelSubscriptionButtonTapped"}
+					{name: "renewSubscriptionButton", kind: "lumberjack.Button", style: "margin-left: 180px; line-height: 34px;", content: "Renew Subscription", ontap: "handleRenewSubscriptionButtonTapped"},
+					{name: "cancelSubscriptionButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 34px;", content: "Cancel Subscription", ontap: "handleCancelSubscriptionButtonTapped"}
 				]},
-				{kind: "quantum.Input", name:"subscriptionPricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Share Price ($)", required:true, inputMaxLength:12},
-				{kind: "quantum.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Number of Shares", required:true, onblur:"handleSubscriptionAmountUpdated", inputMaxLength:12, onkeydown: "validateNumberInput"},
-				{kind: "quantum.Input", name:"subscriberDollarAmountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Subscription Amount ($)", required:true, onblur:"handleSubscriptionAmountUpdated", inputMaxLength:12, onkeydown: "validateDecimalInput"},
-				{kind: "quantum.Input", name:"fundsReceivedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Funds Received ($)", required:true, inputMaxLength:12},
-				{kind: "quantum.Input", name:"contactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Contact ID", required:true, inputMaxLength:12},
+				{kind: "lumberjack.Input", name:"subscriptionPricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Share Price ($)", required:true, inputMaxLength:12},
+				{kind: "lumberjack.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Number of Shares", required:true, onblur:"handleSubscriptionAmountUpdated", inputMaxLength:12, onkeydown: "validateNumberInput"},
+				{kind: "lumberjack.Input", name:"subscriberDollarAmountInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Subscription Amount ($)", required:true, onblur:"handleSubscriptionAmountUpdated", inputMaxLength:12, onkeydown: "validateDecimalInput"},
+				{kind: "lumberjack.Input", name:"fundsReceivedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Funds Received ($)", required:true, inputMaxLength:12},
+				{kind: "lumberjack.Input", name:"contactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Contact ID", required:true, inputMaxLength:12},
 				{name: "subscriptionCreatedSection", kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Subscription Created", style: "line-height: 30px; width: 170px;"},
 					{name: "subscriptionCreatedLabel", style: "line-height: 30px; margin-left: 10px;"}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Contact Information", style: "line-height: 30px; width: 170px;"},
-					{name: "searchShareholdersButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 34px;", content: "Search Contacts", ontap: "handleSearchShareholdersButtonTapped"},
-					{name: "viewContactButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 34px; width: 150px;", content: "View Contact", ontap: "handleViewContactButtonTapped"}
+					{name: "searchShareholdersButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 34px;", content: "Search Contacts", ontap: "handleSearchShareholdersButtonTapped"},
+					{name: "viewContactButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 34px; width: 150px;", content: "View Contact", ontap: "handleViewContactButtonTapped"}
 				]}
 			]}
 		]},
-		{name: "contactInfoSection", kind: "quantum.ContactInfo"},
-		{name: "addressInfoSection", kind: "quantum.AddressInfo"},
-		{name: "validateAddressButton", kind: "quantum.Button", style: "margin-top: 10px; line-height: 34px; width: 150px;", content: "Validate Address", ontap: "handleValidateAddressButtonTapped"},
+		{name: "contactInfoSection", kind: "lumberjack.ContactInfo"},
+		{name: "addressInfoSection", kind: "lumberjack.AddressInfo"},
+		{name: "validateAddressButton", kind: "lumberjack.Button", style: "margin-top: 10px; line-height: 34px; width: 150px;", content: "Validate Address", ontap: "handleValidateAddressButtonTapped"},
 		{name: "exemptionTypeSection", style: "margin-top: 25px;", components: [
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Investor Exemption"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
@@ -165,7 +165,7 @@ enyo.kind({
 					{name: "nonAccreditedInvestorRadioOption", content: 'Non-Accredited Investor', value: "nonAccredited"}
 				]}
 			]},
-			{name: "investorSection", kind:"quantum.Investor", style: "margin-top: 10px;"},
+			{name: "investorSection", kind:"lumberjack.Investor", style: "margin-top: 10px;"},
 			{name: "thirdPartyAccreditationPackageSection", style: "margin-top: 25px;", components: [
 				{style: "font-size: 25px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 25px;", content: "Third Party Accredited Investor Verification"},
 				{kind: "enyo.FittableColumns", components: [
@@ -209,22 +209,22 @@ enyo.kind({
 									]}
 								]}
 							]},
-							{kind: "quantum.Input", name: "verifierNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Name", required:true},
-							{kind: "quantum.Input", name: "verifierFirmNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Firm Name", required:true},
-							{kind: "quantum.Input", name: "verifierPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Phone Number", required:true},
-							{kind: "quantum.Input", name: "verifierEmailAddressInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"email", label:"Verifier Email Address", required:true}
+							{kind: "lumberjack.Input", name: "verifierNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Name", required:true},
+							{kind: "lumberjack.Input", name: "verifierFirmNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Firm Name", required:true},
+							{kind: "lumberjack.Input", name: "verifierPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Verifier Phone Number", required:true},
+							{kind: "lumberjack.Input", name: "verifierEmailAddressInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"email", label:"Verifier Email Address", required:true}
 						]}
 					]},
 					{name: "thirdPartyAccreditationVerifierInformationRightColumn", style: "width: 50%; padding-right: 5px;", components: [
-						{name: "verifierAddress", kind: "quantum.AddressInfo", hideMailingAddressSection: true, hideHeader: true}
+						{name: "verifierAddress", kind: "lumberjack.AddressInfo", hideMailingAddressSection: true, hideHeader: true}
 					]}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-					{kind: "quantum.SupportingDocuments", name: "thirdPartySupportingDocuments", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddDocument: "handleAddThirdPartyDocument"}
+					{kind: "lumberjack.SupportingDocuments", name: "thirdPartySupportingDocuments", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddDocument: "handleAddThirdPartyDocument"}
 				]},
 				{name: "thirdPartyAccreditationDocumentSection", style: "margin-top: 25px;", components: [
-					{name: "thirdPartyAccreditationAdobeDocumentSection", kind: "quantum.AdobeDocumentSection", header: "Third Party Verification Package", idKey: "subscriberID", subIdKey: "placementID", onPromptSaveRequired: "handlePromptSaveRequired", routeCancel: "cancelsubscriberthirdpartyaccreditationpackage", routeDownloadSigned: "getsignedsubscriberthirdpartyaccreditationpackage", routeDownloadUnsigned: "getunsignedsubscriberthirdpartyaccreditationpackage", routeGenerate: "generatesubscriberthirdpartyaccreditationpackage", routeGetStatus: "getsubscriberthirdpartyaccreditationpackagestatus", routeRefreshStatus: "refreshsubscriberthirdpartyaccreditationpackagestatus", routeSend: "sendsubscriberthirdpartyaccreditationpackage", routeSendReminder: "sendsubscriberthirdpartyaccreditationpackagereminder", routeViewSigned: "getsignedsubscriberthirdpartyaccreditationpackage", routeViewUnsigned: "getunsignedsubscriberthirdpartyaccreditationpackage"},
-					{name: "thirdPartyAccreditationVerifyInvestorDocumentSection", kind: "quantum.VerifyInvestorSection", header: "VerifyInvestor.com Verification", idKey: "subscriptionID", subIdKey: "placementID", onPromptSaveRequired: "handlePromptSaveRequired", routeSendAccountLinkRequest: "placements/sendverifyinvestoraccountlinkrequest", routeGetAccountLink: "placements/getverifyinvestoraccountlink", routeSendVerificationRequestLink: "placements/sendverifyinvestorverificationrequest", routeRefreshStatus: "placements/refreshverifyinvestorverificationrequeststatus", routeSendReminderEmail: "placements/sendverifyinvestorverificationrequestreminderemail", routeViewSigned: "placements/getcompletedverifyinvestorverificationdocument", routeDownloadSigned: "placements/getcompletedverifyinvestorverificationdocument"}
+					{name: "thirdPartyAccreditationAdobeDocumentSection", kind: "lumberjack.AdobeDocumentSection", header: "Third Party Verification Package", idKey: "subscriberID", subIdKey: "placementID", onPromptSaveRequired: "handlePromptSaveRequired", routeCancel: "cancelsubscriberthirdpartyaccreditationpackage", routeDownloadSigned: "getsignedsubscriberthirdpartyaccreditationpackage", routeDownloadUnsigned: "getunsignedsubscriberthirdpartyaccreditationpackage", routeGenerate: "generatesubscriberthirdpartyaccreditationpackage", routeGetStatus: "getsubscriberthirdpartyaccreditationpackagestatus", routeRefreshStatus: "refreshsubscriberthirdpartyaccreditationpackagestatus", routeSend: "sendsubscriberthirdpartyaccreditationpackage", routeSendReminder: "sendsubscriberthirdpartyaccreditationpackagereminder", routeViewSigned: "getsignedsubscriberthirdpartyaccreditationpackage", routeViewUnsigned: "getunsignedsubscriberthirdpartyaccreditationpackage"},
+					{name: "thirdPartyAccreditationVerifyInvestorDocumentSection", kind: "lumberjack.VerifyInvestorSection", header: "VerifyInvestor.com Verification", idKey: "subscriptionID", subIdKey: "placementID", onPromptSaveRequired: "handlePromptSaveRequired", routeSendAccountLinkRequest: "placements/sendverifyinvestoraccountlinkrequest", routeGetAccountLink: "placements/getverifyinvestoraccountlink", routeSendVerificationRequestLink: "placements/sendverifyinvestorverificationrequest", routeRefreshStatus: "placements/refreshverifyinvestorverificationrequeststatus", routeSendReminderEmail: "placements/sendverifyinvestorverificationrequestreminderemail", routeViewSigned: "placements/getcompletedverifyinvestorverificationdocument", routeDownloadSigned: "placements/getcompletedverifyinvestorverificationdocument"}
 				]}
 			]}
 		]},
@@ -247,14 +247,14 @@ enyo.kind({
 				{name: "subscriptionAgreementSignedTimestampLabel", style: "line-height: 30px; margin-left: 10px;"}
 			]},
 			{style: "margin-top: 10px;", components: [
-				{name: "generateDocumentButton", kind: "quantum.Button", content: "Generate Subscription Document", ontap: "handleGenerateDocumentButtonTapped"},
-				{name: "downloadUnsignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Download Unsigned Document", ontap: "handleDownloadUnsignedDocumentTapped"},
-				{name: "sendForSignatureButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Send for Signature", ontap: "handleSendForSignatureButtonTapped"},
-				{name: "viewDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"},
-				{name: "sendReminderButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Send Reminder", ontap: "handleSendReminderButtonTapped"},
-				{name: "refreshDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Refresh Document Status", ontap: "handleRefreshDocumentStatusButtonTapped"},
-				{name: "viewSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"},
-				{name: "downloadSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"}
+				{name: "generateDocumentButton", kind: "lumberjack.Button", content: "Generate Subscription Document", ontap: "handleGenerateDocumentButtonTapped"},
+				{name: "downloadUnsignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Download Unsigned Document", ontap: "handleDownloadUnsignedDocumentTapped"},
+				{name: "sendForSignatureButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Send for Signature", ontap: "handleSendForSignatureButtonTapped"},
+				{name: "viewDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"},
+				{name: "sendReminderButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Send Reminder", ontap: "handleSendReminderButtonTapped"},
+				{name: "refreshDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Refresh Document Status", ontap: "handleRefreshDocumentStatusButtonTapped"},
+				{name: "viewSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"},
+				{name: "downloadSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
@@ -268,14 +268,14 @@ enyo.kind({
 					{name: "documentItem", style: "background-color: white; border-bottom: 1px solid black; padding: 5px;", selected: false, layoutKind: "enyo.FittableColumnsLayout", components: [
 						{name: "description", style: "width: 300px; line-height: 34px;"},
 						{name: "dateReceived", style: "width: 90px; line-height: 34px;"},
-						{name: "viewButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewDocumentButtonTapped"},
-						{name: "downloadButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadDocumentButtonTapped"},
-						{name: "deleteButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deleteDocumentButtonTapped"}
+						{name: "viewButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewDocumentButtonTapped"},
+						{name: "downloadButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadDocumentButtonTapped"},
+						{name: "deleteButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deleteDocumentButtonTapped"}
 					]}
 				]},
 				{name: "noDocumentsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Documents Received"},
 				{style: "margin-top: 10px;", components: [
-					{name: "addDocumentButton", kind: "quantum.Button", enabledClasses: "button primary", content: "Add Document", ontap: "handleAddDocumentButtonTapped"}
+					{name: "addDocumentButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: "Add Document", ontap: "handleAddDocumentButtonTapped"}
 				]}
 			]},
 			{style: "width: 50%; padding-left: 5px; min-width: 725px;", showing: false, name: "receivedPaymentsSection", components: [
@@ -290,19 +290,19 @@ enyo.kind({
 						{name: "amount", style: "width: 150px; line-height: 34px;"},
 						{name: "paymentType", style: "width: 200px; line-height: 34px;"},
 						{name: "dateReceived", style: "width: 90px; line-height: 34px;"},
-						{name: "viewButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewPaymentButtonTapped"},
-						{name: "downloadButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadPaymentButtonTapped"},
-						{name: "deleteButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deletePaymentButtonTapped"}
+						{name: "viewButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewPaymentButtonTapped"},
+						{name: "downloadButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadPaymentButtonTapped"},
+						{name: "deleteButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deletePaymentButtonTapped"}
 					]}
 				]},
 				{name: "noPaymentsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Payments Received"},
-				{name: "addPaymentButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-top: 10px;", content: "Add Payment", ontap: "handleAddPaymentButtonTapped"},
-				{name: "addRefundButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-top: 10px; margin-left: 10px;", content: "Reverse Payment", ontap: "handleAddRefundButtonTapped"}
+				{name: "addPaymentButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-top: 10px;", content: "Add Payment", ontap: "handleAddPaymentButtonTapped"},
+				{name: "addRefundButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-top: 10px; margin-left: 10px;", content: "Reverse Payment", ontap: "handleAddRefundButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"},
-		{name: "shareholderSearchPopup", kind: "quantum.ShareholderSearchPopup", onShareholderSelected: "handleShareholderSelected", onCreateNewContact: "handleCreateNewContact", searchRoles: ["any"]}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"},
+		{name: "shareholderSearchPopup", kind: "lumberjack.ShareholderSearchPopup", onShareholderSelected: "handleShareholderSelected", onCreateNewContact: "handleCreateNewContact", searchRoles: ["any"]}
 	],
 
 	bindings: [
@@ -927,7 +927,7 @@ enyo.kind({
 
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
@@ -936,20 +936,20 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins"], "placement") || (quantum.hasRole(["users"], "placement") && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "closed");
+		return lumberjack.hasRole(["admins"], "placement") || (lumberjack.hasRole(["users"], "placement") && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "closed");
 	},
 
 	setShowingForRoles: function()
 	{
-		this.$.deleteEntryButton.set("showing", quantum.hasRole(["_admin"]));
-		this.$.correctEntryButton.set("showing", quantum.hasRole(["admins"], "placement"));
+		this.$.deleteEntryButton.set("showing", lumberjack.hasRole(["_admin"]));
+		this.$.correctEntryButton.set("showing", lumberjack.hasRole(["admins"], "placement"));
 		this.$.saveEntryButton.set("showing", this.canEdit());
 		this.$.addDocumentButton.set("showing", this.canEdit());
-		this.$.receivedPaymentsSection.set("showing", quantum.hasRole(["admins","users"], "placement"));
+		this.$.receivedPaymentsSection.set("showing", lumberjack.hasRole(["admins","users"], "placement"));
 		this.$.addPaymentButton.set("showing", this.canEdit());
-		this.$.addRefundButton.set("showing", quantum.hasRole(["admins"], "placement"));
+		this.$.addRefundButton.set("showing", lumberjack.hasRole(["admins"], "placement"));
 		//If the placement is in closing/closed remove the shareholder search button.
-		if(quantum.preferences.get("placementInfo").closingDocumentID && Object.keys(quantum.preferences.get("placementInfo").closingDocumentID).length > 0)
+		if(lumberjack.preferences.get("placementInfo").closingDocumentID && Object.keys(lumberjack.preferences.get("placementInfo").closingDocumentID).length > 0)
 		{
 			this.$.searchShareholdersButton.set("showing", false);
 		}
@@ -959,7 +959,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input" || this.$[key].kind === "onyx.Input" || this.$[key].kind === "quantum.Button" || this.$[key].kind === "quantum.Checkbox"  || this.$[key].kind === "onyx.Checkbox")
+			if(this.$[key].kind === "lumberjack.Input" || this.$[key].kind === "onyx.Input" || this.$[key].kind === "lumberjack.Button" || this.$[key].kind === "lumberjack.Checkbox"  || this.$[key].kind === "onyx.Checkbox")
 			{
 				if(this.$[key].name !== "nextEntryButton" && this.$[key].name !== "previousEntryButton")
 				{
@@ -986,7 +986,7 @@ enyo.kind({
 
 		// this.$.accreditedInvestorRadioOption.set("disabled", disabled);
 
-		// if(quantum.preferences.get("placementInfo").allowFriendsAndFamily === true)
+		// if(lumberjack.preferences.get("placementInfo").allowFriendsAndFamily === true)
 		// {
 		// 	this.$.friendsAndFamilyRadioOption.set("disabled", disabled);
 		// }
@@ -995,7 +995,7 @@ enyo.kind({
 		// 	this.$.friendsAndFamilyRadioOption.set("disabled", true);
 		// }
 
-		// if(quantum.preferences.get("placementInfo").allowNonAccredited === true)
+		// if(lumberjack.preferences.get("placementInfo").allowNonAccredited === true)
 		// {
 		// 	this.$.nonAccreditedInvestorRadioOption.set("disabled", disabled);
 		// }
@@ -1172,7 +1172,7 @@ enyo.kind({
 		}
 
 		//Prevent Issues when already in closing
-		if(quantum.preferences.get("placementInfo").closingDocumentID && Object.keys(quantum.preferences.get("placementInfo").closingDocumentID).length > 0)
+		if(lumberjack.preferences.get("placementInfo").closingDocumentID && Object.keys(lumberjack.preferences.get("placementInfo").closingDocumentID).length > 0)
 		{
 			this.$.renewSubscriptionButton.set("disabled", true);
 		}
@@ -1191,7 +1191,7 @@ enyo.kind({
 
 		for (var i = 0; i < this.get("paymentsReceived").length; i++)
 		{
-			tempFunds += quantum.parseFloat(this.get("paymentsReceived")[i].amount);
+			tempFunds += lumberjack.parseFloat(this.get("paymentsReceived")[i].amount);
 		}
 
 		if (tempFunds >= this.get("activeEntry").get("subscriberDollarAmount"))
@@ -1203,7 +1203,7 @@ enyo.kind({
 		{
 			this.$.addRefundButton.set("disabled", true);
 		}
-		else if(tempFunds > 0 && quantum.hasRole(["admins"], "placement") && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "closed" && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "cancelled")
+		else if(tempFunds > 0 && lumberjack.hasRole(["admins"], "placement") && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "closed" && this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== "cancelled")
 		{
 			this.$.addRefundButton.set("disabled", false);
 		}
@@ -1222,16 +1222,16 @@ enyo.kind({
 
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 
 		// The "activeEntry" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("activeEntry", null);
-		this.set("activeEntry", new quantum.SubscriptionModel({}));
+		this.set("activeEntry", new lumberjack.SubscriptionModel({}));
 		if (activeEntry != null) { this.set("activeEntry", activeEntry); }
 
-		this.$.subscriptionPricePerShareInput.set("value", numeral(quantum.preferences.get("placementInfo").sharePrice).format("0.00[000]"));
+		this.$.subscriptionPricePerShareInput.set("value", numeral(lumberjack.preferences.get("placementInfo").sharePrice).format("0.00[000]"));
 
 		//Force render for disabled inputs to work around case 253
 		//this.$.subscriptionPricePerShareInput.render();
@@ -1261,10 +1261,10 @@ enyo.kind({
 
 		for (var i = 0; i < this.get("paymentsReceived").length; i++)
 		{
-			tempFunds += quantum.parseFloat(this.get("paymentsReceived")[i].amount);
+			tempFunds += lumberjack.parseFloat(this.get("paymentsReceived")[i].amount);
 		}
 
-		this.$.fundsReceivedInput.set("value", quantum.parseFloat(tempFunds).toFixed(2));
+		this.$.fundsReceivedInput.set("value", lumberjack.parseFloat(tempFunds).toFixed(2));
 		this.$.thirdPartySupportingDocuments.refreshRepeater();
 	},
 
@@ -1281,16 +1281,16 @@ enyo.kind({
 
 	handleSubscriptionAmountUpdated: function(inSender, inEvent)
 	{
-		var subscriptionPrice = quantum.parseFloat(this.$.subscriptionPricePerShareInput.get("value"));
+		var subscriptionPrice = lumberjack.parseFloat(this.$.subscriptionPricePerShareInput.get("value"));
 		//Bail on error
 		if (subscriptionPrice <= 0) {
 			return;
 		}
-		else if(quantum.parseFloat(this.$.subscriberDollarAmountInput.get("value")) <= 0)
+		else if(lumberjack.parseFloat(this.$.subscriberDollarAmountInput.get("value")) <= 0)
 		{
 			this.$.subscriberDollarAmountInput.set("value", numeral(this.get("activeEntry").get("subscriberDollarAmount")).format("0[.]00"));
 		}
-		else if(quantum.parseInt(this.$.numSharesInput.get("value")) <= 0)
+		else if(lumberjack.parseInt(this.$.numSharesInput.get("value")) <= 0)
 		{
 			this.$.numSharesInput.set("value", numeral(this.get("activeEntry").get("numShares")).format("0"));
 		}
@@ -1298,10 +1298,10 @@ enyo.kind({
 		switch (inSender.name)
 		{
 			case "numSharesInput":
-				this.$.subscriberDollarAmountInput.set("value", numeral(quantum.parseInt(this.$.numSharesInput.get("value")) * subscriptionPrice).format("0[.]00"));
+				this.$.subscriberDollarAmountInput.set("value", numeral(lumberjack.parseInt(this.$.numSharesInput.get("value")) * subscriptionPrice).format("0[.]00"));
 				break;
 			case "subscriberDollarAmountInput":
-				this.$.numSharesInput.set("value", numeral(quantum.parseFloat(this.$.subscriberDollarAmountInput.get("value")) / subscriptionPrice).format("0"));
+				this.$.numSharesInput.set("value", numeral(lumberjack.parseFloat(this.$.subscriberDollarAmountInput.get("value")) / subscriptionPrice).format("0"));
 				break;
 		}
 	},
@@ -1312,7 +1312,7 @@ enyo.kind({
 
 	showThirdPartyAccreditationPackageSection: function()
 	{
-		return this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && quantum.preferences.get("placementInfo") && quantum.preferences.get("placementInfo").is506cFinancing; 
+		return this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && lumberjack.preferences.get("placementInfo") && lumberjack.preferences.get("placementInfo").is506cFinancing; 
 	},
 
 	showExemptionTypeSection: function()
@@ -1342,7 +1342,7 @@ enyo.kind({
 
 	disableAdobeVerificationType: function()
 	{
-		if (!(quantum.preferences.get("placementInfo") && quantum.preferences.get("placementInfo").is506cFinancing) || this.get("exemptionType") !== "accreditedInvestor")
+		if (!(lumberjack.preferences.get("placementInfo") && lumberjack.preferences.get("placementInfo").is506cFinancing) || this.get("exemptionType") !== "accreditedInvestor")
 		{
 			return false;
 		}
@@ -1414,7 +1414,7 @@ enyo.kind({
 			this.$.addDocumentPopup.hide();
 			this.$.addDocumentPopup.destroy();
 		}
-		this.createComponent({name: "addDocumentPopup", kind: "quantum.AddDocumentPopup", onAddDocument: "handleAddDocument", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addDocumentPopup", kind: "lumberjack.AddDocumentPopup", onAddDocument: "handleAddDocument", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addDocumentPopup.show();
 	},
 
@@ -1426,7 +1426,7 @@ enyo.kind({
 			this.$.addPaymentPopup.hide();
 			this.$.addPaymentPopup.destroy();
 		}
-		this.createComponent({name: "addPaymentPopup", kind: "quantum.AddPaymentPopup", onAddPayment: "handleAddPayment", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addPaymentPopup", kind: "lumberjack.AddPaymentPopup", onAddPayment: "handleAddPayment", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addPaymentPopup.show();
 	},
 
@@ -1438,7 +1438,7 @@ enyo.kind({
 			this.$.addRefundPopup.hide();
 			this.$.addRefundPopup.destroy();
 		}
-		this.createComponent({name: "addRefundPopup", kind: "quantum.AddRefundPopup", defaultRefund: this.$.fundsReceivedInput.get("value"), onAddRefund: "handleAddPayment", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addRefundPopup", kind: "lumberjack.AddRefundPopup", defaultRefund: this.$.fundsReceivedInput.get("value"), onAddRefund: "handleAddPayment", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addRefundPopup.show();
 	},
 
@@ -1446,9 +1446,9 @@ enyo.kind({
 	{
 		if (this.$.subscriberNameInput.get("value").trim().length > 0)
 		{
-			if (quantum.preferences.get("company"))
+			if (lumberjack.preferences.get("company"))
 			{
-				this.$.shareholderSearchPopup.show(this.$.subscriberNameInput.get("value").trim(), quantum.preferences.get("company"));
+				this.$.shareholderSearchPopup.show(this.$.subscriberNameInput.get("value").trim(), lumberjack.preferences.get("company"));
 			}
 			else
 			{
@@ -1543,7 +1543,7 @@ enyo.kind({
 			this.$.birthMonthInput.setBorderError();
 			this.$.birthDayInput.setBorderError();
 		}
-		if(this.$.birthYearInput.get("value") < 1900 || this.$.birthYearInput.get("value") > quantum.parseInt(moment().format('YYYY')))
+		if(this.$.birthYearInput.get("value") < 1900 || this.$.birthYearInput.get("value") > lumberjack.parseInt(moment().format('YYYY')))
 		{
 			isValid = false;
 			this.$.birthYearInput.setBorderError();
@@ -1577,21 +1577,21 @@ enyo.kind({
 		}
 
 		// Share Price ($):
-		if (this.$.subscriptionPricePerShareInput.get("value").trim() === "" || isNaN(this.$.subscriptionPricePerShareInput.get("value"))|| quantum.parseFloat(this.$.subscriptionPricePerShareInput.get("value")) <= 0)
+		if (this.$.subscriptionPricePerShareInput.get("value").trim() === "" || isNaN(this.$.subscriptionPricePerShareInput.get("value"))|| lumberjack.parseFloat(this.$.subscriptionPricePerShareInput.get("value")) <= 0)
 		{
 			isValid = false;
 			this.$.subscriptionPricePerShareInput.setBorderError();
 		}
 
 		// Number of Shares:
-		if (this.$.numSharesInput.get("value").trim() === "" || isNaN(this.$.numSharesInput.get("value")) || quantum.parseInt(this.$.numSharesInput.get("value")) <= 0)
+		if (this.$.numSharesInput.get("value").trim() === "" || isNaN(this.$.numSharesInput.get("value")) || lumberjack.parseInt(this.$.numSharesInput.get("value")) <= 0)
 		{
 			isValid = false;
 			this.$.numSharesInput.setBorderError();
 		}
 
 		// Subscription Amount ($):
-		if (this.$.subscriberDollarAmountInput.get("value").trim() === "" || isNaN(this.$.subscriberDollarAmountInput.get("value")) || quantum.parseFloat(this.$.subscriberDollarAmountInput.get("value")) <= 0)
+		if (this.$.subscriberDollarAmountInput.get("value").trim() === "" || isNaN(this.$.subscriberDollarAmountInput.get("value")) || lumberjack.parseFloat(this.$.subscriberDollarAmountInput.get("value")) <= 0)
 		{
 			isValid = false;
 			this.$.subscriberDollarAmountInput.setBorderError();
@@ -1600,7 +1600,7 @@ enyo.kind({
 		// Funds Received ($):
 		if (!this.$.fundsReceivedInput.validate()){isValid = false;}
 
-		if( numeral(quantum.parseInt(this.$.numSharesInput.get("value")) * quantum.parseFloat(this.$.subscriptionPricePerShareInput.get("value"))).format("0.00") != numeral(this.$.subscriberDollarAmountInput.get("value")).format("0.00"))
+		if( numeral(lumberjack.parseInt(this.$.numSharesInput.get("value")) * lumberjack.parseFloat(this.$.subscriptionPricePerShareInput.get("value"))).format("0.00") != numeral(this.$.subscriberDollarAmountInput.get("value")).format("0.00"))
 		{
 			isValid = false;
 			this.$.numSharesInput.setBorderError();
@@ -1608,7 +1608,7 @@ enyo.kind({
 			this.$.subscriptionPricePerShareInput.setBorderError();
 		}
 
-		if(quantum.parseFloat(this.$.fundsReceivedInput.get("value")) < 0)
+		if(lumberjack.parseFloat(this.$.fundsReceivedInput.get("value")) < 0)
 		{
 			isValid = false;
 			this.$.fundsReceivedInput.setBorderError();
@@ -1620,7 +1620,7 @@ enyo.kind({
 		}
 
 		//Third Party Verifier
-		if (this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && quantum.preferences.get("placementInfo").is506cFinancing)
+		if (this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && lumberjack.preferences.get("placementInfo").is506cFinancing)
 		{
 			if (this.get("verificationSource") === "")
 			{
@@ -1698,7 +1698,7 @@ enyo.kind({
 		var fundsReceived = 0;
 		for(var i = 0; i < this.get("paymentsReceived").length; i++)
 		{
-			fundsReceived = fundsReceived + quantum.parseFloat(this.get("paymentsReceived")[i].amount);
+			fundsReceived = fundsReceived + lumberjack.parseFloat(this.get("paymentsReceived")[i].amount);
 		}
 
 		if(!this.get("subscriptionAgreementGenerated") || (this.get("subscriptionAgreementGenerated") && !this.get("subscriptionAgreementSent")))
@@ -1717,7 +1717,7 @@ enyo.kind({
 			validMatrix['completeDocsPartialFunds'] = false;
 			validMatrix['complete'] = false;
 		}
-		else if(quantum.preferences.get("placementInfo").is506cFinancing && this.get("jurisdiction") === "usa" && this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.get("verificationStatus") !== "verified" && this.get("subscriptionAgreementSigned"))
+		else if(lumberjack.preferences.get("placementInfo").is506cFinancing && this.get("jurisdiction") === "usa" && this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.get("verificationStatus") !== "verified" && this.get("subscriptionAgreementSigned"))
 		{
 			//Do nothing? All of the below scenarios are acceptable.
 		}
@@ -1735,7 +1735,7 @@ enyo.kind({
 			validMatrix['incompleteDocsNoFunds'] = false;
 			validMatrix['complete'] = false;
 		}
-		else if(!quantum.preferences.get("placementInfo").dapPlacement && fundsReceived <= 0)
+		else if(!lumberjack.preferences.get("placementInfo").dapPlacement && fundsReceived <= 0)
 		{
 			validMatrix['incompleteDocsPartialFunds'] = false;
 			validMatrix['incompleteDocsAllFunds'] = false;
@@ -1750,7 +1750,7 @@ enyo.kind({
 			validMatrix['completeDocsPartialFunds'] = false;
 		}
 
-		if (quantum.preferences.get("placementInfo").is506cFinancing && this.get("jurisdiction") === "usa" && this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.get("verificationStatus") !== "verified")
+		if (lumberjack.preferences.get("placementInfo").is506cFinancing && this.get("jurisdiction") === "usa" && this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.get("verificationStatus") !== "verified")
 		{
 			validMatrix['completeDocsNoFunds'] = false;
 			validMatrix['completeDocsPartialFunds'] = false;
@@ -1844,12 +1844,12 @@ enyo.kind({
 				{
 					this.get("activeEntry").get("subscriptionInfo").subscriptionStatus = "cancelled";
 				}
-				if(this.get("activeEntry").get("subscriptionInfo").numShares !== quantum.parseInt(this.$.numSharesInput.get("value")))
+				if(this.get("activeEntry").get("subscriptionInfo").numShares !== lumberjack.parseInt(this.$.numSharesInput.get("value")))
 				{
 					updateShares = true;
 				}
-				this.get("activeEntry").get("subscriptionInfo").numShares = quantum.parseInt(this.$.numSharesInput.get("value"));
-				this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount = quantum.parseFloat(this.$.subscriberDollarAmountInput.get("value"));
+				this.get("activeEntry").get("subscriptionInfo").numShares = lumberjack.parseInt(this.$.numSharesInput.get("value"));
+				this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount = lumberjack.parseFloat(this.$.subscriberDollarAmountInput.get("value"));
 				this.get("activeEntry").get("subscriptionInfo").referrer = this.$.referrerInput.get("value");
 				this.get("activeEntry").get("subscriptionInfo").salespersonName = this.$.salespersonNameInput.get("value");
 				this.get("activeEntry").get("subscriptionInfo").notes = this.$.notesInput.get("value");
@@ -1859,7 +1859,7 @@ enyo.kind({
 				this.get("activeEntry").get("subscriptionInfo").accreditedInvestorQualificationDetail = this.$.investorSection.getAccreditedInvestorQualificationDetail();
 				this.get("activeEntry").get("contactInfo").contactID = this.$.contactIDInput.get("value");
 
-				if (this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && quantum.preferences.get("placementInfo").is506cFinancing)
+				if (this.get("jurisdiction") === "usa" && this.get("exemptionType") === "accreditedInvestor" && lumberjack.preferences.get("placementInfo").is506cFinancing)
 				{
 					this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.set("type", this.$.verifierTypePicker.get("selected").value);
 					this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.set("verificationStatus", this.$.verificationStatusPicker.get("selected").value);
@@ -2025,13 +2025,13 @@ enyo.kind({
 					var sumTotal = 0.00;
 					for(var i = 0; i < this.get("activeEntry").get("paymentsReceived").length; i++)
 					{
-						sumTotal = sumTotal + quantum.parseFloat(this.get("activeEntry").get("paymentsReceived")[i].amount);
+						sumTotal = sumTotal + lumberjack.parseFloat(this.get("activeEntry").get("paymentsReceived")[i].amount);
 					}
-					this.get("activeEntry").get("subscriptionInfo").fundsReceived = quantum.parseFloat(quantum.parseFloat(sumTotal).toFixed(2));
+					this.get("activeEntry").get("subscriptionInfo").fundsReceived = lumberjack.parseFloat(lumberjack.parseFloat(sumTotal).toFixed(2));
 				}
 			}
 
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -2064,9 +2064,9 @@ enyo.kind({
 							cacheBust: false,
 							contentType: "application/json",
 							method: "POST",
-							url: quantum.preferences.get("apiServer") + "mailDaemon",
+							url: lumberjack.preferences.get("apiServer") + "mailDaemon",
 							headers:{
-								"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+								"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 							}
 						};
 
@@ -2079,9 +2079,9 @@ enyo.kind({
 						{
 							tempVars.subscriberName = this.get("activeEntry").get("contactInfo").subscriberName;
 						}
-						tempVars.newPaymentAmount = quantum.formatCurrency(this.paymentDelta);
-						tempVars.paymentRemaining = quantum.formatCurrency(quantum.parseFloat(this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount) - quantum.parseFloat(this.get("activeEntry").get("subscriptionInfo").fundsReceived));
-						tempVars.companyName = quantum.preferences.attributes.placementInfo.companyInfo.companyName;
+						tempVars.newPaymentAmount = lumberjack.formatCurrency(this.paymentDelta);
+						tempVars.paymentRemaining = lumberjack.formatCurrency(lumberjack.parseFloat(this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount) - lumberjack.parseFloat(this.get("activeEntry").get("subscriptionInfo").fundsReceived));
+						tempVars.companyName = lumberjack.preferences.attributes.placementInfo.companyInfo.companyName;
 						ajaxProperties.postBody = {data: tempVars, placement:this.get("activeEntry").get("target"), record: this.get("activeEntry").get("_id"), templateName: "Funds Received"};
 
 						var ajax = new enyo.Ajax(ajaxProperties);
@@ -2113,9 +2113,9 @@ enyo.kind({
 								cacheBust: false,
 								contentType: "application/json",
 								method: "POST",
-								url: quantum.preferences.get("apiServer") + "sendsalespersonmessagesubscriber",
+								url: lumberjack.preferences.get("apiServer") + "sendsalespersonmessagesubscriber",
 								headers:{
-									"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+									"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 								}
 							};
 
@@ -2133,9 +2133,9 @@ enyo.kind({
 							cacheBust: false,
 							contentType: "application/json",
 							method: "POST",
-							url: quantum.preferences.get("apiServer") + "mailDaemon",
+							url: lumberjack.preferences.get("apiServer") + "mailDaemon",
 							headers:{
-								"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+								"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 							}
 						};
 
@@ -2148,7 +2148,7 @@ enyo.kind({
 						{
 							tempVars.subscriberName = this.get("activeEntry").get("contactInfo").subscriberName;
 						}
-						tempVars.companyName = quantum.preferences.attributes.placementInfo.companyInfo.companyName;
+						tempVars.companyName = lumberjack.preferences.attributes.placementInfo.companyInfo.companyName;
 						ajaxProperties.postBody = {data: tempVars, placement:this.get("activeEntry").get("target"), record: this.get("activeEntry").get("_id"), templateName: templateName};
 
 						var ajax = new enyo.Ajax(ajaxProperties);
@@ -2179,9 +2179,9 @@ enyo.kind({
 								cacheBust: false,
 								contentType: "application/json",
 								method: "POST",
-								url: quantum.preferences.get("apiServer") + "sendsalespersonmessagesubscriber",
+								url: lumberjack.preferences.get("apiServer") + "sendsalespersonmessagesubscriber",
 								headers:{
-									"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+									"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 								}
 							};
 
@@ -2314,15 +2314,15 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Cancelling");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelsubscriptionagreement",
+			url: lumberjack.preferences.get("apiServer") + "cancelsubscriptionagreement",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
 		});
@@ -2365,7 +2365,7 @@ enyo.kind({
 
 	handleRenewSubscriptionButtonTapped: function(inSender, inEvent)
 	{
-		if(quantum.preferences.get("placementInfo").closingDocumentID && Object.keys(quantum.preferences.get("placementInfo").closingDocumentID).length > 0)
+		if(lumberjack.preferences.get("placementInfo").closingDocumentID && Object.keys(lumberjack.preferences.get("placementInfo").closingDocumentID).length > 0)
 		{
 			alertify.error("Cannot Renew when placement is in closing");
 			return;
@@ -2425,7 +2425,7 @@ enyo.kind({
 		//this.set("subscriptionAgreementSent", false);
 		//this.set("subscriptionAgreementSigned", false);
 
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		if (this.$.confirmCancelEntryPopup)
 		{
@@ -2433,26 +2433,26 @@ enyo.kind({
 			this.$.confirmCancelEntryPopup.destroy();
 		}
 
-		this.createComponent({name: "confirmCancelEntryPopup", kind: "quantum.ConfirmPopup", onYes: "cancelEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmCancelEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "cancelEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmCancelEntryPopup.show("Cancel Entry? This cannot be undone.");
 	},
 
 	correctEntry: function()
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		if (this.$.correctEntryPopup)
 		{
 			this.$.correctEntryPopup.hide();
 			this.$.correctEntryPopup.destroy();
 		}
-		this.createComponent({name: "correctEntryPopup", kind: "quantum.CorrectEntryPopup", onHide: "handlePopupHidden", activeEntry: this.get("activeEntry")} , {owner:this});
+		this.createComponent({name: "correctEntryPopup", kind: "lumberjack.CorrectEntryPopup", onHide: "handlePopupHidden", activeEntry: this.get("activeEntry")} , {owner:this});
 		this.$.correctEntryPopup.show();
 	},
 
 	handleCorrectEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		if (this.isDirty())
 		{
@@ -2461,7 +2461,7 @@ enyo.kind({
 				this.$.correct_saveChangesPopup.hide();
 				this.$.correct_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "correct_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.correctEntry), onNo: "correctEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "correct_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.correctEntry), onNo: "correctEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.correct_saveChangesPopup.show("Save changes?");
 		}
 		else
@@ -2472,14 +2472,14 @@ enyo.kind({
 
 	handleDeleteEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["_admin"])) { return; }
+		if (!lumberjack.hasRole(["_admin"])) { return; }
 
 		if (this.$.confirmDeleteEntryPopup)
 		{
 			this.$.confirmDeleteEntryPopup.hide();
 			this.$.confirmDeleteEntryPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteEntryPopup", kind: "quantum.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteEntryPopup.show("Delete Entry? This cannot be undone.");
 	},
 
@@ -2488,15 +2488,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Deleting...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "deletesubscription",
+			url: lumberjack.preferences.get("apiServer") + "deletesubscription",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				subscriptionID: this.get("activeEntry").get("_id")
 			}
 		});
@@ -2542,16 +2542,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Creating...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "newcontactfromsubscriber",
+			url: lumberjack.preferences.get("apiServer") + "newcontactfromsubscriber",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
 		});
@@ -2601,16 +2601,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Creating...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "createcontactsubscriptionrecord",
+			url: lumberjack.preferences.get("apiServer") + "createcontactsubscriptionrecord",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				contactID: this.$.contactIDInput.get("value"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
@@ -2658,16 +2658,16 @@ enyo.kind({
 		}
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "updatecontactsubscriptionrecord",
+			url: lumberjack.preferences.get("apiServer") + "updatecontactsubscriptionrecord",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				numShares: this.get("activeEntry").get("subscriptionInfo").numShares,
 				contactID: this.$.contactIDInput.get("value"),
 				subscriberID: this.get("activeEntry").get("_id")
@@ -2712,16 +2712,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Updating Contact...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelcontactsubscriptionrecord",
+			url: lumberjack.preferences.get("apiServer") + "cancelcontactsubscriptionrecord",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				contactID: this.$.contactIDInput.get("value"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
@@ -2772,16 +2772,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Updating Contact...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "reactivatecontactsubscriptionrecord",
+			url: lumberjack.preferences.get("apiServer") + "reactivatecontactsubscriptionrecord",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				contactID: this.$.contactIDInput.get("value"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
@@ -2832,16 +2832,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Removing...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "deletecontactsubscriptionrecord",
+			url: lumberjack.preferences.get("apiServer") + "deletecontactsubscriptionrecord",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
-				placementID: quantum.preferences.get("placementDatabase"),
+				companyID: lumberjack.preferences.get("company"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				contactID: this.get("activeEntry").get("contactInfo").contactID,
 				subscriberID: this.get("activeEntry").get("_id")
 			}
@@ -2892,7 +2892,7 @@ enyo.kind({
 
 			//TODO: Third party dirty checking
 
-			if (this.get("jurisdiction") === "usa" && quantum.preferences.get("placementInfo").is506cFinancing)
+			if (this.get("jurisdiction") === "usa" && lumberjack.preferences.get("placementInfo").is506cFinancing)
 			{
 				var isDirty_thirdPartyVerificationArray = [
 					this.get("activeEntry").get("subscriptionInfo").clientIdentityValidator.get("type") !== (this.$.verifierTypePicker.get("selected")?this.$.verifierTypePicker.get("selected").value:null),
@@ -2927,9 +2927,9 @@ enyo.kind({
 				this.get("activeEntry").get("subscriptionInfo").jurisdiction !== (this.$.jurisdictionPicker.get("selected")?this.$.jurisdictionPicker.get("selected").value:null),
 				this.get("activeEntry").get("subscriptionInfo").subscriptionType !== (this.$.subscriptionTypePicker.get("selected")?this.$.subscriptionTypePicker.get("selected").value:null),
 				this.get("activeEntry").get("subscriptionInfo").subscriptionStatus !== (this.$.subscriptionStatusPicker.get("selected")?this.$.subscriptionStatusPicker.get("selected").value:null),
-				this.get("activeEntry").get("subscriptionInfo").numShares !== quantum.parseInt(this.$.numSharesInput.get("value")),
-				this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount !== quantum.parseFloat(this.$.subscriberDollarAmountInput.get("value")),
-				this.get("activeEntry").get("subscriptionInfo").fundsReceived !== quantum.parseFloat(this.$.fundsReceivedInput.get("value")),
+				this.get("activeEntry").get("subscriptionInfo").numShares !== lumberjack.parseInt(this.$.numSharesInput.get("value")),
+				this.get("activeEntry").get("subscriptionInfo").subscriberDollarAmount !== lumberjack.parseFloat(this.$.subscriberDollarAmountInput.get("value")),
+				this.get("activeEntry").get("subscriptionInfo").fundsReceived !== lumberjack.parseFloat(this.$.fundsReceivedInput.get("value")),
 				this.get("activeEntry").get("subscriptionInfo").referrer !== this.$.referrerInput.get("value"),
 				this.get("activeEntry").get("subscriptionInfo").salespersonName !== this.$.salespersonNameInput.get("value"),
 				this.get("activeEntry").get("subscriptionInfo").notes !== this.$.notesInput.get("value"),
@@ -2965,7 +2965,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.nextEntry), onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.nextEntry), onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}
 		else { this.nextEntry(inSender, inEvent); }
@@ -2985,7 +2985,7 @@ enyo.kind({
 				this.$.previous_saveChangesPopup.hide();
 				this.$.previous_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "previous_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.previousEntry), onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "previous_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.previousEntry), onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.previous_saveChangesPopup.show("Save changes?");
 		}
 		else { this.previousEntry(inSender, inEvent); }
@@ -3015,7 +3015,7 @@ enyo.kind({
 
 		inEvent.item.$.deleteButton.set("showing", this.canEdit());
 
-		if( (this.get("documentsReceived")[inEvent.index].localDownload !== true && !quantum.hasRole(["admins"], "placement") ) || this.get("activeEntry").get("subscriptionInfo").subscriptionStatus === "closed")
+		if( (this.get("documentsReceived")[inEvent.index].localDownload !== true && !lumberjack.hasRole(["admins"], "placement") ) || this.get("activeEntry").get("subscriptionInfo").subscriptionStatus === "closed")
 		{
 			inEvent.item.$.deleteButton.set("disabled", true);
 		}
@@ -3036,7 +3036,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3084,7 +3084,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3122,7 +3122,7 @@ enyo.kind({
 			this.$.confirmDeleteDocumentPopup.hide();
 			this.$.confirmDeleteDocumentPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteDocumentPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "deleteDocument", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteDocumentPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "deleteDocument", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteDocumentPopup.show("Delete Document? You must save entry to make this permament.", inEvent.index);
 	},
 
@@ -3172,7 +3172,7 @@ enyo.kind({
 					that.$.showDocumentPopup.hide();
 					that.$.showDocumentPopup.destroy();
 				}
-				that.createComponent({name: "showDocumentPopup", kind: "quantum.docxPopup"}, {owner:that});
+				that.createComponent({name: "showDocumentPopup", kind: "lumberjack.docxPopup"}, {owner:that});
 				that.$.showDocumentPopup.$.main.addContent(DOCXfileContents);
 				that.$.showDocumentPopup.show();
 			}
@@ -3256,7 +3256,7 @@ enyo.kind({
 		if (this.get("activeEntry").get("_attachments") && this.get("activeEntry").get("_attachments")[this.get("activeEntry").get("subscriptionAgreementDoc").signedAttachmentID])
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3307,7 +3307,7 @@ enyo.kind({
 		if (this.get("activeEntry").get("_attachments") && this.get("activeEntry").get("_attachments")[this.get("activeEntry").get("subscriptionAgreementDoc").unsignedAttachmentID])
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3331,11 +3331,11 @@ enyo.kind({
 
 					this.$.loadingPopup.hide();
 
-					saveAs(quantum.b64ToBlob(response._attachments[response.subscriptionAgreementDoc.unsignedAttachmentID].data, response._attachments[response.subscriptionAgreementDoc.unsignedAttachmentID].content_type), response.subscriptionAgreementDoc.unsignedFileName);
+					saveAs(lumberjack.b64ToBlob(response._attachments[response.subscriptionAgreementDoc.unsignedAttachmentID].data, response._attachments[response.subscriptionAgreementDoc.unsignedAttachmentID].content_type), response.subscriptionAgreementDoc.unsignedFileName);
 
 					if (response.supportingAccreditedInvestorQuestionnaires) {
 						response.supportingAccreditedInvestorQuestionnaires.forEach(enyo.bind(this, function(value, index, array){
-							saveAs(quantum.b64ToBlob(response._attachments[value.attachmentID].data, response._attachments[value.attachmentID].content_type), value.attachmentName);
+							saveAs(lumberjack.b64ToBlob(response._attachments[value.attachmentID].data, response._attachments[value.attachmentID].content_type), value.attachmentName);
 						}));
 					}
 				}));
@@ -3380,7 +3380,7 @@ enyo.kind({
 				this.$.generate_saveChangesPopup.hide();
 				this.$.generate_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "generate_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleGenerateDocumentButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "generate_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleGenerateDocumentButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
 			this.$.generate_saveChangesPopup.show("Must save changes before generating subscription agreement. Save changes?");
 			return;
 		}
@@ -3389,15 +3389,15 @@ enyo.kind({
 			this.$.loadingPopup.show("Generating");
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "generatesubscriptionagreement",
+				url: lumberjack.preferences.get("apiServer") + "generatesubscriptionagreement",
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				},
 				postBody: {
-					placementID: quantum.preferences.get("placementDatabase"),
+					placementID: lumberjack.preferences.get("placementDatabase"),
 					subscriptionID: this.get("activeEntry").get("_id")
 				}
 			});
@@ -3439,7 +3439,7 @@ enyo.kind({
 				this.$.signature_saveChangesPopup.hide();
 				this.$.signature_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "signature_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleSendForSignatureButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "signature_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleSendForSignatureButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
 			this.$.signature_saveChangesPopup.show("Must save changes before sending for signature. Save changes?");
 			return;
 		}
@@ -3448,15 +3448,15 @@ enyo.kind({
 			this.$.loadingPopup.show("Sending");
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "sendsubscriptionagreement",
+				url: lumberjack.preferences.get("apiServer") + "sendsubscriptionagreement",
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				},
 				postBody: {
-					placementID: quantum.preferences.get("placementDatabase"),
+					placementID: lumberjack.preferences.get("placementDatabase"),
 					subscriberID: this.get("activeEntry").get("_id")
 				}
 			});
@@ -3494,10 +3494,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getsubscriptionagreementstatus",
+			url: lumberjack.preferences.get("apiServer") + "getsubscriptionagreementstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -3525,7 +3525,7 @@ enyo.kind({
 			this.$.documentStatusPopup.show(response.response);
 		}));
 
-		request.go({placementID: quantum.preferences.get("placementDatabase"),
+		request.go({placementID: lumberjack.preferences.get("placementDatabase"),
 		subscriberID: this.get("activeEntry").get("_id")});
 	},
 
@@ -3538,7 +3538,7 @@ enyo.kind({
 				this.$.refreshStatus_saveChangesPopup.hide();
 				this.$.refreshStatus_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "refreshStatus_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleRefreshDocumentStatusButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "refreshStatus_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,this.handleRefreshDocumentStatusButtonTapped), onHide: "handlePopupHidden"} , {owner:this});
 			this.$.refreshStatus_saveChangesPopup.show("Must save changes before refreshing document status. Save changes?");
 			return;
 		}
@@ -3547,10 +3547,10 @@ enyo.kind({
 			this.$.loadingPopup.show("Loading");
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "refreshsubscriptionagreementstatus",
+				url: lumberjack.preferences.get("apiServer") + "refreshsubscriptionagreementstatus",
 				cacheBust: false,
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			});
 
@@ -3578,7 +3578,7 @@ enyo.kind({
 				alertify.success("Successfully updated document status.");
 			}));
 
-			request.go({placementID: quantum.preferences.get("placementDatabase"),
+			request.go({placementID: lumberjack.preferences.get("placementDatabase"),
 			subscriberID: this.get("activeEntry").get("_id")});
 		}
 	},
@@ -3588,17 +3588,17 @@ enyo.kind({
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendsubscriptionreminder",
+			url: lumberjack.preferences.get("apiServer") + "sendsubscriptionreminder",
 			contentType: "application/json",
 			method: "POST",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
 		request.postBody = {
-			placementID: quantum.preferences.get("placementDatabase"),
+			placementID: lumberjack.preferences.get("placementDatabase"),
 			subscriberID: this.get("activeEntry").get("_id")
 		};
 
@@ -3649,7 +3649,7 @@ enyo.kind({
 				this.$.generate_saveChangesPopup.hide();
 				this.$.generate_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "generate_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,inEvent.callback), onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "generate_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: enyo.bind(this,inEvent.callback), onHide: "handlePopupHidden"} , {owner:this});
 			this.$.generate_saveChangesPopup.show("Must save changes before operating on Third Party Verification Package. Save changes?");
 		}
 		else if (this.canEdit())
@@ -3664,15 +3664,15 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Cancelling");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelsubscriberthirdpartyaccreditationpackage",
+			url: lumberjack.preferences.get("apiServer") + "cancelsubscriberthirdpartyaccreditationpackage",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				subscriberID: this.get("activeEntry").get("_id")
 			}
 		});
@@ -3719,14 +3719,14 @@ enyo.kind({
 
 	setupPaymentRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "placement")) { return; }
 
 		if (!inEvent.item) {return true;}
 
 		inEvent.item.$.paymentItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 
-		inEvent.item.$.amount.set("content", "$" + quantum.formatCurrency(this.get("paymentsReceived")[inEvent.index].amount));
-		inEvent.item.$.paymentType.set("content", quantum.paymentTypeLookup(this.get("paymentsReceived")[inEvent.index].paymentType));
+		inEvent.item.$.amount.set("content", "$" + lumberjack.formatCurrency(this.get("paymentsReceived")[inEvent.index].amount));
+		inEvent.item.$.paymentType.set("content", lumberjack.paymentTypeLookup(this.get("paymentsReceived")[inEvent.index].paymentType));
 		if(moment(this.get("paymentsReceived")[inEvent.index].receivedDate).isValid()){
 			inEvent.item.$.dateReceived.set("content", moment(this.get("paymentsReceived")[inEvent.index].receivedDate).format("YYYY/MM/DD"));
 		}else{
@@ -3744,7 +3744,7 @@ enyo.kind({
 
 	viewPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "placement")) { return; }
 
 		if (this.get("paymentsReceived")[inEvent.index].localDownload)
 		{
@@ -3757,7 +3757,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Loading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3797,7 +3797,7 @@ enyo.kind({
 
 	downloadPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "placement")) { return; }
 
 		if (this.get("paymentsReceived")[inEvent.index].localDownload)
 		{
@@ -3807,7 +3807,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -3845,7 +3845,7 @@ enyo.kind({
 			this.$.confirmDeletePaymentPopup.hide();
 			this.$.confirmDeletePaymentPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeletePaymentPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "deletePayment", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeletePaymentPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "deletePayment", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeletePaymentPopup.show("Delete? You must save entry to make this permament.", inEvent.index);
 	},
 
@@ -3861,7 +3861,7 @@ enyo.kind({
 			});
 
 			this.get("paymentsToUpload").splice(this.get("paymentsToUpload").indexOf(result), 1);
-			this.paymentDelta -= quantum.parseFloat(itemToFind.amount);
+			this.paymentDelta -= lumberjack.parseFloat(itemToFind.amount);
 			this.get("paymentsReceived").splice(inEvent.returnValue, 1);
 			alertify.success("Payment Deleted");
 			this.refreshRepeaters();
@@ -3869,7 +3869,7 @@ enyo.kind({
 		else
 		{
 			this.paymentsToDelete.push(this.get("paymentsReceived")[inEvent.returnValue].attachmentID);
-			this.paymentDelta -= quantum.parseFloat(itemToFind.amount);
+			this.paymentDelta -= lumberjack.parseFloat(itemToFind.amount);
 			this.get("paymentsReceived").splice(inEvent.returnValue, 1);
 			this.refreshRepeaters();
 		}
@@ -3906,7 +3906,7 @@ enyo.kind({
 			fileData: inEvent.payload.fileData,
 			localDownload: true
 		});
-		this.paymentDelta += quantum.parseFloat(inEvent.payload.amount);
+		this.paymentDelta += lumberjack.parseFloat(inEvent.payload.amount);
 		this.setDisabledForStatus();
 		this.refreshRepeaters();
 		alertify.success("Payment Uploaded!");

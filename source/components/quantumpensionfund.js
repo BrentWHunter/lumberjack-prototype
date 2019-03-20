@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.PensionFund",
+	name: "lumberjack.PensionFund",
 
 	published:
 	{
@@ -24,7 +24,7 @@ enyo.kind({
 					{name: "jurisdictionName", style: "width: 348px; line-height: 34px; font-size: 16px;"},
 					{name: "deleteButton", kind: "enyo.Button", classes: "button danger", style: "line-height: 30px;", content: "Delete", ontap: "deleteJurisdictionButtonTapped"}
 				]},
-				{kind: "quantum.Input", name:"assignedCategoriesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 120px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Fund Categories", required:true, oninput: "handleAssignedCategoriesInputChanged"}
+				{kind: "lumberjack.Input", name:"assignedCategoriesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 120px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Fund Categories", required:true, oninput: "handleAssignedCategoriesInputChanged"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
@@ -32,7 +32,7 @@ enyo.kind({
 				{name: "pensionFundJurisdictionPickerButton", style: "width: 300px;"},
 				{name: "pensionFundJurisdictionPicker", kind: "onyx.Picker"}
 			]},
-			{name: "addJurisdictionButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addJurisdictionButtonTapped"}
+			{name: "addJurisdictionButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addJurisdictionButtonTapped"}
 		]}
 	],
 

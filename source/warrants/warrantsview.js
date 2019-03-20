@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.WarrantsView",
+	name: "lumberjack.WarrantsView",
 	kind: "FittableRows",
 	fit: true,
 	_reportWindow: null,
@@ -36,7 +36,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -55,20 +55,20 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Warrants Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Warrants Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.WarrantsDashboardPanel"},
-			{name: "addWarrantPanel", kind: "quantum.WarrantDetailPanel", mode: "add"},
-			{name: "warrantDetailPanel", kind: "quantum.WarrantDetailPanel", mode: "edit"},
-			{name: "addTransactionPanel", kind: "quantum.WarrantTransactionPanel", mode: "add"},
-			{name: "pendingTransactionDetailPanel", kind: "quantum.WarrantTransactionPanel", mode: "pending"},
-			{name: "cancelledTransactionDetailPanel", kind: "quantum.WarrantTransactionPanel", mode: "cancelled"}
+			{name: "dashboardPanel", kind: "lumberjack.WarrantsDashboardPanel"},
+			{name: "addWarrantPanel", kind: "lumberjack.WarrantDetailPanel", mode: "add"},
+			{name: "warrantDetailPanel", kind: "lumberjack.WarrantDetailPanel", mode: "edit"},
+			{name: "addTransactionPanel", kind: "lumberjack.WarrantTransactionPanel", mode: "add"},
+			{name: "pendingTransactionDetailPanel", kind: "lumberjack.WarrantTransactionPanel", mode: "pending"},
+			{name: "cancelledTransactionDetailPanel", kind: "lumberjack.WarrantTransactionPanel", mode: "cancelled"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -128,10 +128,10 @@ enyo.kind({
 
 	handleGoHome: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant"))
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant"))
 		{
-			quantum.preferences.set("lastModule", "");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "");
+			lumberjack.preferences.commit();
 			this.doRequestChangeModule();
 		}
 		else
@@ -148,10 +148,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant")) { return true; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant")) { return true; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "warrantDetail", icon: "assets/icons/warrants-icon.png", content: "Warrant Detail", ontap: "warrantDetailBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "warrantDetail", icon: "assets/icons/warrants-icon.png", content: "Warrant Detail", ontap: "warrantDetailBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		var panelName = "warrantDetailPanel";
 		this.$[panelName].set("warrantCollection", inEvent.collection);
@@ -167,7 +167,7 @@ enyo.kind({
 		inEvent.item = this.get("warrantCollection").find(function(element, index, array) {
 			return element.get("_id") === inEvent.id;
 		});
-		inEvent.collection = new quantum.WarrantCollection([]);
+		inEvent.collection = new lumberjack.WarrantCollection([]);
 
 		// Clear the last breadcrumb before a new one is added.
 		this.clearBreadcrumbs(this.$.breadcrumbToolbar.controls.length - 1);
@@ -180,7 +180,7 @@ enyo.kind({
 
 	handlePromptSaveRequired: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "warrant")) { return true; }
+		if (!lumberjack.hasRole(["admins","users"], "warrant")) { return true; }
 
 		if (this.$.saveChangesPopup != null)
 		{
@@ -192,7 +192,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Changes must be saved before proceeding. Save changes now?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:inEvent.callback}); },
 					no: function() {}
@@ -208,16 +208,16 @@ enyo.kind({
 
 	handleAddTransaction: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "warrant")) { return true; }
+		if (!lumberjack.hasRole(["admins","users"], "warrant")) { return true; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "addTransaction", icon: "assets/icons/add-warrant-icon.png", content: "Add Transaction", ontap: "addTransactionBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "addTransaction", icon: "assets/icons/add-warrant-icon.png", content: "Add Transaction", ontap: "addTransactionBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			var panelName = "addTransactionPanel";
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName(panelName));
-			this.$[panelName].activate(new quantum.WarrantTransactionModel({}));
+			this.$[panelName].activate(new lumberjack.WarrantTransactionModel({}));
 		}));
 
 		// Stop further DOM event bubbling.
@@ -226,7 +226,7 @@ enyo.kind({
 
 	handleViewTransaction: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant")) { return true; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant")) { return true; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -245,7 +245,7 @@ enyo.kind({
 				return;
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "transactionDetail", icon: "assets/icons/warrants-icon.png", content: "Transaction Detail", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "transactionDetail", icon: "assets/icons/warrants-icon.png", content: "Transaction Detail", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName(panelName));
 			this.$[panelName].activate(inEvent.item);
@@ -257,19 +257,19 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.addWarrantMenuItem.set("showing", quantum.hasRole(["admins"], "warrant"));
+		this.$.addWarrantMenuItem.set("showing", lumberjack.hasRole(["admins"], "warrant"));
 	},
 
 	rendered: function(inSender, inEvent)
 	{
 		this.set("showing", false);
-		this.set("database", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("warrantDatabase"), {skip_setup: true}));
-		this.set("contactDatabase", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("contactDatabase"), {skip_setup: true}));
-		this.$.versionString.set("content", quantum.versionString);
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
+		this.set("database", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("warrantDatabase"), {skip_setup: true}));
+		this.set("contactDatabase", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("contactDatabase"), {skip_setup: true}));
+		this.$.versionString.set("content", lumberjack.versionString);
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.setShowingForRoles();
 		this.resize();
 		this.$.loadingPopup.show();
@@ -278,15 +278,15 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 			this.dashboardButtonTapped();
 			this.resize();
-			quantum.preferences.set("lastModule", "warrant");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "warrant");
+			lumberjack.preferences.commit();
 			if (this.get("targetWarrant"))
 			{
 				var filteredCollection = this.get("warrantCollection").filter(enyo.bind(this, function(value, index, array) {
 					return value.get("_id") === this.get("targetWarrant");
 				}));
 
-				filteredCollection = new quantum.WarrantCollection(filteredCollection);
+				filteredCollection = new lumberjack.WarrantCollection(filteredCollection);
 
 				if (filteredCollection.length > 0)
 				{
@@ -325,7 +325,7 @@ enyo.kind({
 
 	addWarrantButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "warrant")) { return; }
+		if (!lumberjack.hasRole(["admins"], "warrant")) { return; }
 
 		for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
 		{
@@ -338,11 +338,11 @@ enyo.kind({
 		}
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "addWarrant", icon: "assets/icons/add-warrant-icon.png", content: "Add Warrant", ontap: "addWarrantBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "addWarrant", icon: "assets/icons/add-warrant-icon.png", content: "Add Warrant", ontap: "addWarrantBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		var panelName = "addWarrantPanel";
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName(panelName));
-		this.$[panelName].activate(new quantum.WarrantModel({}));
+		this.$[panelName].activate(new lumberjack.WarrantModel({}));
 	},
 
 	addWarrantBreadcrumbTapped: function(inSender, inEvent)
@@ -390,7 +390,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -465,7 +465,7 @@ enyo.kind({
 		this.set("holderContactMap", null);
 
 		// Get data from database and load it into collection.
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 			if (err)
 			{
 				alertify.error("Login failed.");
@@ -478,8 +478,8 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
-			quantum.preferences.commit();
+			lumberjack.preferences.set("roles", response.roles);
+			lumberjack.preferences.commit();
 
 			this.get("database").query("onlyDocs", {include_docs: true}, enyo.bind(this, function(err, response) {
 				if (err)
@@ -515,7 +515,7 @@ enyo.kind({
 
 					docs.sort(this.sortWarrants);
 
-					this.set("warrantCollection", new quantum.WarrantCollection(docs));
+					this.set("warrantCollection", new lumberjack.WarrantCollection(docs));
 
 					this.populateHolderContactMap(holderContactMap, enyo.bind(this, function(result) {
 						if (result.err)
@@ -530,7 +530,7 @@ enyo.kind({
 				}
 				else
 				{
-					this.set("warrantCollection", new quantum.WarrantCollection());
+					this.set("warrantCollection", new lumberjack.WarrantCollection());
 					this.set("holderContactMap", {});
 					callback();
 					this.updateChangesFeed();
@@ -579,11 +579,11 @@ enyo.kind({
 			this.set("changesFeed", null);
 		}
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: quantum.preferences.get("warrantDatabase")
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: lumberjack.preferences.get("warrantDatabase")
 			}
 		}));
 
@@ -660,7 +660,7 @@ enyo.kind({
 				// Update the existing model and collection.
 
 				// The ugly hack of manually calling "parse" below is necessary since enyo doesn't call the model's "parse" on a merge.
-				this.get("warrantCollection").add(new quantum.WarrantModel().parse(change.doc), {merge: true});
+				this.get("warrantCollection").add(new lumberjack.WarrantModel().parse(change.doc), {merge: true});
 				this.get("warrantCollection").sort(this.sortWarrants);
 
 				var refreshUI_update = enyo.bind(this, function() {

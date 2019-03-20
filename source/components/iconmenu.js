@@ -48,7 +48,7 @@ enyo.kind(
 	/**
 	* @private
 	*/
-	name: 'quantum.IconMenu',
+	name: 'lumberjack.IconMenu',
 
 	/**
 	* @private
@@ -98,7 +98,7 @@ enyo.kind(
 	* @private
 	*/
 	components: [
-		{kind: "quantum.ModulesSection", onChangeModule: "handleChangeModule"}
+		{kind: "lumberjack.ModulesSection", onChangeModule: "handleChangeModule"}
 	],
 
 	/**

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.AddressInfo",
+	name: "lumberjack.AddressInfo",
 
 	published: {
 		activeEntry: null,
@@ -11,62 +11,62 @@ enyo.kind({
 		{name: "wrapper", kind: "enyo.FittableColumns", components: [
 			{style: "width: 50%; padding-right: 5px; min-width: 480px;", components: [
 				{name: "registeredAddressHeader", style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Registered Address"},
-				{kind: "quantum.Input", name:"addressLine1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 1", required:true, inputMaxLength:35},
-				{kind: "quantum.Input", name:"addressLine2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 2", required:false, inputMaxLength:35},
-				{kind: "quantum.Input", name:"addressLine3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 3", required:false, inputMaxLength:35},
-				{kind: "quantum.Input", name:"cityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"City", required:true, inputMaxLength:31},
+				{kind: "lumberjack.Input", name:"addressLine1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 1", required:true, inputMaxLength:35},
+				{kind: "lumberjack.Input", name:"addressLine2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 2", required:false, inputMaxLength:35},
+				{kind: "lumberjack.Input", name:"addressLine3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Address Line 3", required:false, inputMaxLength:35},
+				{kind: "lumberjack.Input", name:"cityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"City", required:true, inputMaxLength:31},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Country", style: "line-height: 40px; width: 170px;"},
-					{name: "countryPicker", kind: "quantum.CountryPicker", style: "margin-left: 10px; width: 295px;"}
+					{name: "countryPicker", kind: "lumberjack.CountryPicker", style: "margin-left: 10px; width: 295px;"}
 				]},
 				{name: "addressCanadaSection", components:[
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 						{content: "Province", style: "line-height: 40px; width: 170px;"},
-						{name: "provincePicker", kind: "quantum.ProvincePicker", style: "margin-left: 10px; width: 295px;"}
+						{name: "provincePicker", kind: "lumberjack.ProvincePicker", style: "margin-left: 10px; width: 295px;"}
 					]},
-					{kind: "quantum.Input", name:"postalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true, inputMaxLength:7}
+					{kind: "lumberjack.Input", name:"postalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true, inputMaxLength:7}
 				]},
 				{name: "addressUsaSection", components:[
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 						{content: "State", style: "line-height: 40px; width: 170px;"},
-						{name: "statePicker", kind: "quantum.StatePicker", style: "margin-left: 10px; width: 295px;"}
+						{name: "statePicker", kind: "lumberjack.StatePicker", style: "margin-left: 10px; width: 295px;"}
 					]},
-					{kind: "quantum.Input", name:"zipCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Zip Code", required:true, inputMaxLength:5}
+					{kind: "lumberjack.Input", name:"zipCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Zip Code", required:true, inputMaxLength:5}
 				]},
 				{name: "addressInternationalSection", components:[
-					{kind: "quantum.Input", name:"internationalProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Province/State/Prefecture", required:true},
-					{kind: "quantum.Input", name:"internationalPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true}
+					{kind: "lumberjack.Input", name:"internationalProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Province/State/Prefecture", required:true},
+					{kind: "lumberjack.Input", name:"internationalPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:295px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true}
 				]}
 			]},
 			{name: "mailingAddressSection", style: "width: 50%; padding-left: 5px;", components: [
 				{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Mailing Address"},
-				{kind:"quantum.Checkbox", name:"mailingAddressCheckbox", content:"Mailing Address is different from registration address.", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"},
+				{kind:"lumberjack.Checkbox", name:"mailingAddressCheckbox", content:"Mailing Address is different from registration address.", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"},
 				{name: "altAddressSection", components:[
-					{kind: "quantum.Input", name:"altAddressLine1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 1", required:true, inputMaxLength:35},
-					{kind: "quantum.Input", name:"altAddressLine2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 2", required:false, inputMaxLength:35},
-					{kind: "quantum.Input", name:"altAddressLine3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 3", required:false, inputMaxLength:35},
-					{kind: "quantum.Input", name:"altCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"City", required:true, inputMaxLength:31},
+					{kind: "lumberjack.Input", name:"altAddressLine1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 1", required:true, inputMaxLength:35},
+					{kind: "lumberjack.Input", name:"altAddressLine2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 2", required:false, inputMaxLength:35},
+					{kind: "lumberjack.Input", name:"altAddressLine3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"Address Line 3", required:false, inputMaxLength:35},
+					{kind: "lumberjack.Input", name:"altCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 320px;", type:"text", label:"City", required:true, inputMaxLength:31},
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 						{content: "Country", style: "line-height: 40px; width: 170px;"},
-						{name: "altCountryPicker", kind: "quantum.CountryPicker", style: "margin-left: 10px; width: 320px;"}
+						{name: "altCountryPicker", kind: "lumberjack.CountryPicker", style: "margin-left: 10px; width: 320px;"}
 					]},
 					{name: "altAddressCanadaSection", components:[
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "Province", style: "line-height: 40px; width: 170px;"},
-							{name: "altProvincePicker", kind: "quantum.ProvincePicker", style: "margin-left: 10px; width: 320px;"}
+							{name: "altProvincePicker", kind: "lumberjack.ProvincePicker", style: "margin-left: 10px; width: 320px;"}
 						]},
-						{kind: "quantum.Input", name:"altPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true, inputMaxLength:7}
+						{kind: "lumberjack.Input", name:"altPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true, inputMaxLength:7}
 					]},
 					{name: "altAddressUsaSection", components:[
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "State", style: "line-height: 40px; width: 170px;"},
-							{name: "altStatePicker", kind: "quantum.StatePicker", style: "margin-left: 10px; width: 320px;"}
+							{name: "altStatePicker", kind: "lumberjack.StatePicker", style: "margin-left: 10px; width: 320px;"}
 						]},
-						{kind: "quantum.Input", name:"altZipCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Zip Code", required:true, inputMaxLength:5}
+						{kind: "lumberjack.Input", name:"altZipCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Zip Code", required:true, inputMaxLength:5}
 					]},
 					{name: "altAddressInternationalSection", components:[
-						{kind: "quantum.Input", name:"altInternationalProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Province/State/Prefecture", required:true},
-						{kind: "quantum.Input", name:"altInternationalPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true}
+						{kind: "lumberjack.Input", name:"altInternationalProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Province/State/Prefecture", required:true},
+						{kind: "lumberjack.Input", name:"altInternationalPostalCodeInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px; width:320px;", inputStyle: "width: 100%", type:"text", label:"Postal Code", required:true}
 					]}
 				]}
 			]}
@@ -318,7 +318,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input" || this.$[key].kind === "quantum.Checkbox")
+			if(this.$[key].kind === "lumberjack.Input" || this.$[key].kind === "lumberjack.Checkbox")
 			{
 				this.$[key].set("disabled",disabled);
 			}
@@ -357,7 +357,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.WarrantDetailPanel",
+	name: "lumberjack.WarrantDetailPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -28,22 +28,22 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Warrant Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				{name: "expireEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Expire Entry", ontap: "handleExpireEntryButtonTapped"},
-				{name: "saveEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				{name: "expireEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Expire Entry", ontap: "handleExpireEntryButtonTapped"},
+				{name: "saveEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]},
 			{name: "addButtons", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
-				{name: "addEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
+				{name: "addEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
 			]}
 		]},
 		{kind:"enyo.FittableColumns", components:[
 			{style: "width: 50%;", components: [
-				{kind: "quantum.Input", name:"dateIssuedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Issuance Date", required:true, ontap: "handleDateIssuedInputTapped", readonly:true},
-				{name: "calendarPopup", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged"},
-				{kind: "quantum.Input", name:"expiryDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Expiration Date", required:true, ontap: "handleExpiryDateInputTapped", readonly:true},
-				{name: "calendarPopup2", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged2"},
+				{kind: "lumberjack.Input", name:"dateIssuedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Issuance Date", required:true, ontap: "handleDateIssuedInputTapped", readonly:true},
+				{name: "calendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged"},
+				{kind: "lumberjack.Input", name:"expiryDateInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Expiration Date", required:true, ontap: "handleExpiryDateInputTapped", readonly:true},
+				{name: "calendarPopup2", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged2"},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Warrant Status", style: "line-height: 38px; width: 170px;"},
 					{kind: "onyx.PickerDecorator", style: "margin-left: 10px; width: 350px;", components: [
@@ -59,11 +59,11 @@ enyo.kind({
 						]}
 					]}
 				]},
-				{kind: "quantum.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"int", label:"Number of Shares", required:true, inputMaxLength:10},
-				{kind: "quantum.Input", name:"exercisePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"float", label:"Price per Share", required:true, inputMaxLength:10},
+				{kind: "lumberjack.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"int", label:"Number of Shares", required:true, inputMaxLength:10},
+				{kind: "lumberjack.Input", name:"exercisePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"float", label:"Price per Share", required:true, inputMaxLength:10},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Exercise Currency", style: "line-height: 38px; width: 170px;"},
-					{kind: "quantum.CurrencyPicker", name: "exerciseCurrencyPicker", style: "margin-left: 10px; width: 350px;"}
+					{kind: "lumberjack.CurrencyPicker", name: "exerciseCurrencyPicker", style: "margin-left: 10px; width: 350px;"}
 				]}
 			]},
 			{style: "margin-left: 1%; width: 49%;", components: []}
@@ -73,13 +73,13 @@ enyo.kind({
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Warrant Holder Details"},
 					{fit: true},
-					{name: "viewHolderButton", kind: "quantum.Button", style: "height: 30px;", content: "View Holder", ontap: "handleViewHolderButtonTapped"},
-					{name: "searchHolderButton", kind: "quantum.Button", style: "height: 30px;", content: "Search Holders", ontap: "handleSearchHolderButtonTapped"}
+					{name: "viewHolderButton", kind: "lumberjack.Button", style: "height: 30px;", content: "View Holder", ontap: "handleViewHolderButtonTapped"},
+					{name: "searchHolderButton", kind: "lumberjack.Button", style: "height: 30px;", content: "Search Holders", ontap: "handleSearchHolderButtonTapped"}
 				]},
-				{kind: "quantum.Input", name:"holderNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Holder Name", required:true},
-				{kind: "quantum.Input", name:"holderEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Holder Email Address", required:true},
-				{kind: "quantum.Input", name:"holderPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Holder Phone Number", required:true},
-				{kind: "quantum.Input", name:"holderContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Holder Contact ID", required:true}
+				{kind: "lumberjack.Input", name:"holderNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Holder Name", required:true},
+				{kind: "lumberjack.Input", name:"holderEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Holder Email Address", required:true},
+				{kind: "lumberjack.Input", name:"holderPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Holder Phone Number", required:true},
+				{kind: "lumberjack.Input", name:"holderContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Holder Contact ID", required:true}
 			]},
 			{style: "margin-left: 1%; width: 49%;", components: []}
 		]},
@@ -88,15 +88,15 @@ enyo.kind({
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Warrant Tree Navigation"}
 				]},
-				{name: "viewRootButton", kind: "quantum.Button", style: "margin-top: 10px;", content: "View Root", ontap: "handleViewRootButtonTapped"},
-				{name: "viewParentButton", kind: "quantum.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Parent", ontap: "handleViewParentButtonTapped"},
-				{name: "viewChild1Button", kind: "quantum.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Child #1", ontap: "handleViewChild1ButtonTapped"},
-				{name: "viewChild2Button", kind: "quantum.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Child #2", ontap: "handleViewChild2ButtonTapped"}
+				{name: "viewRootButton", kind: "lumberjack.Button", style: "margin-top: 10px;", content: "View Root", ontap: "handleViewRootButtonTapped"},
+				{name: "viewParentButton", kind: "lumberjack.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Parent", ontap: "handleViewParentButtonTapped"},
+				{name: "viewChild1Button", kind: "lumberjack.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Child #1", ontap: "handleViewChild1ButtonTapped"},
+				{name: "viewChild2Button", kind: "lumberjack.Button", style: "margin-top: 10px; margin-left: 10px;", content: "View Child #2", ontap: "handleViewChild2ButtonTapped"}
 			]},
 			{style: "margin-left: 1%; width: 49%;", components: []}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.AdobeDocumentSection", name: "issuanceDocSection",
+			{kind: "lumberjack.AdobeDocumentSection", name: "issuanceDocSection",
 				header: "Issuance Document",
 				// Attachment keys:
 				signedAttachmentIdKey: "signedAttachmentID",
@@ -115,7 +115,7 @@ enyo.kind({
 			}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.AdobeDocumentSection", name: "transactionDocSection",
+			{kind: "lumberjack.AdobeDocumentSection", name: "transactionDocSection",
 				header: "Transaction Document",
 				readOnly: true,
 				// Attachment keys:
@@ -128,7 +128,7 @@ enyo.kind({
 			}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.AdobeDocumentSection", name: "treasuryOrderDocSection",
+			{kind: "lumberjack.AdobeDocumentSection", name: "treasuryOrderDocSection",
 				header: "Treasury Order Document",
 				readOnly: true,
 				// Attachment keys:
@@ -142,14 +142,14 @@ enyo.kind({
 			}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.SupportingDocuments", name: "supportingDocuments", module: "warrant", style: "width: 50%", onAddDocument: "handleAddDocument", attachmentIndexKey: "attachmentID"},
-			{kind: "quantum.PaymentSection", name: "paymentSection", module: "warrant", style: "width: 50%", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", attachmentIndexKey: "attachmentID"}
+			{kind: "lumberjack.SupportingDocuments", name: "supportingDocuments", module: "warrant", style: "width: 50%", onAddDocument: "handleAddDocument", attachmentIndexKey: "attachmentID"},
+			{kind: "lumberjack.PaymentSection", name: "paymentSection", module: "warrant", style: "width: 50%", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", attachmentIndexKey: "attachmentID"}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.WarrantTransactions", name: "pendingTransactionsSection", style: "width: 50%; padding-right: 5px;", mode: "pending"},
-			{kind: "quantum.WarrantTransactions", name: "cancelledTransactionsSection", style: "width: 50%; padding-left: 5px;", mode: "cancelled"}
+			{kind: "lumberjack.WarrantTransactions", name: "pendingTransactionsSection", style: "width: 50%; padding-right: 5px;", mode: "pending"},
+			{kind: "lumberjack.WarrantTransactions", name: "cancelledTransactionsSection", style: "width: 50%; padding-left: 5px;", mode: "cancelled"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -168,8 +168,8 @@ enyo.kind({
 		{from: ".activeEntry", to: ".$.expireEntryButton.disabled", transform: function(v) {
 			try
 			{
-				var isActionableStatus = (new quantum.WarrantFilterSettingsModel()).isActionableStatus(v.get("status"));
-				if (isActionableStatus && quantum.parseInt(v.get("numShares")) > 0)
+				var isActionableStatus = (new lumberjack.WarrantFilterSettingsModel()).isActionableStatus(v.get("status"));
+				if (isActionableStatus && lumberjack.parseInt(v.get("numShares")) > 0)
 				{
 					return false;
 				}
@@ -180,8 +180,8 @@ enyo.kind({
 		{from: ".activeEntry", to: ".$.saveEntryButton.disabled", transform: function(v) {
 			try
 			{
-				var isActionableStatus = (new quantum.WarrantFilterSettingsModel()).isActionableStatus(v.get("status"));
-				if (isActionableStatus && quantum.parseInt(v.get("numShares")) > 0)
+				var isActionableStatus = (new lumberjack.WarrantFilterSettingsModel()).isActionableStatus(v.get("status"));
+				if (isActionableStatus && lumberjack.parseInt(v.get("numShares")) > 0)
 				{
 					return false;
 				}
@@ -329,7 +329,7 @@ enyo.kind({
 			try
 			{
 				var data = this.get("holderContactMap");
-				if (this.get("mode") === "edit" && data != null && v instanceof quantum.WarrantModel)
+				if (this.get("mode") === "edit" && data != null && v instanceof lumberjack.WarrantModel)
 				{
 					return data[v.get("holderContactID")].contactName;
 				}
@@ -341,7 +341,7 @@ enyo.kind({
 			try
 			{
 				var data = this.get("holderContactMap");
-				if (this.get("mode") === "edit" && data != null && v instanceof quantum.WarrantModel)
+				if (this.get("mode") === "edit" && data != null && v instanceof lumberjack.WarrantModel)
 				{
 					return data[v.get("holderContactID")].emailAddress;
 				}
@@ -353,7 +353,7 @@ enyo.kind({
 			try
 			{
 				var data = this.get("holderContactMap");
-				if (this.get("mode") === "edit" && data != null && v instanceof quantum.WarrantModel)
+				if (this.get("mode") === "edit" && data != null && v instanceof lumberjack.WarrantModel)
 				{
 					return data[v.get("holderContactID")].phoneNumber;
 				}
@@ -510,7 +510,7 @@ enyo.kind({
 			try
 			{
 				var data = v.get("status");
-				if ((new quantum.WarrantFilterSettingsModel()).isActionableStatus(data))
+				if ((new lumberjack.WarrantFilterSettingsModel()).isActionableStatus(data))
 				{
 					return false;
 				}
@@ -536,7 +536,7 @@ enyo.kind({
 		{from: "activeEntry", to: ".$.paymentSection.purchaseTotal", transform: function(v) {
 			try
 			{
-				return quantum.parseInt(v.get("numShares")) * quantum.parseFloat(v.get("exercisePrice"));
+				return lumberjack.parseInt(v.get("numShares")) * lumberjack.parseFloat(v.get("exercisePrice"));
 			}
 			catch (err) { return 0; }
 		}},
@@ -563,7 +563,7 @@ enyo.kind({
 			try
 			{
 				var data = v.get("status");
-				if ((data === "active" || data === "pendingTransaction") && quantum.parseInt(v.get("numShares")) > 0)
+				if ((data === "active" || data === "pendingTransaction") && lumberjack.parseInt(v.get("numShares")) > 0)
 				{
 					return false;
 				}
@@ -594,7 +594,7 @@ enyo.kind({
 		for (var key in this.$)
 		{
 			var control = this.$[key];
-			if (control.kind === "quantum.Input")
+			if (control.kind === "lumberjack.Input")
 			{
 				control.clearBorderError();
 			}
@@ -602,7 +602,7 @@ enyo.kind({
 			{
 				control.parent.applyStyle("border", null);
 			}
-			else if (control.kind === "quantum.CurrencyPicker")
+			else if (control.kind === "lumberjack.CurrencyPicker")
 			{
 				control.applyStyle("border", null);
 			}
@@ -611,12 +611,12 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], "warrant");
+		return lumberjack.hasRole(["admins","users"], "warrant");
 	},
 
 	setShowingForRoles: function()
 	{
-		this.$.expireEntryButton.set("showing", quantum.hasRole(["admins"], "warrant"));
+		this.$.expireEntryButton.set("showing", lumberjack.hasRole(["admins"], "warrant"));
 		this.$.saveEntryButton.set("showing", this.canEdit());
 
 		this.$.addEntryButton.set("showing", this.canEdit());
@@ -656,7 +656,7 @@ enyo.kind({
 
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "warrant"))
+		if (!lumberjack.hasRole(["admins","users","auditors"], "warrant"))
 		{
 			// Setting the "activeEntry" to null before navigating away prevents a prompt to save changes.
 			this.set("activeEntry", null);
@@ -668,7 +668,7 @@ enyo.kind({
 
 		// The "activeEntry" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("activeEntry", null);
-		this.set("activeEntry", new quantum.WarrantModel({}));
+		this.set("activeEntry", new lumberjack.WarrantModel({}));
 		if (activeEntry != null) { this.set("activeEntry", activeEntry); }
 
 		// Set "newWarrantID" to null here so that it doesn't persist if anything goes wrong.
@@ -714,7 +714,7 @@ enyo.kind({
 
 		var flagAsInvalid = function(control, doNotUseParent) {
 			isValid = false;
-			if (control.kind === "quantum.Input")
+			if (control.kind === "lumberjack.Input")
 			{
 				control.setBorderError();
 			}
@@ -753,7 +753,7 @@ enyo.kind({
 
 		// Number of Shares:
 		if (!this.$.numSharesInput.validate()) { isValid = false; }
-		else if (quantum.parseInt(this.$.numSharesInput.get("value")) <= 0)
+		else if (lumberjack.parseInt(this.$.numSharesInput.get("value")) <= 0)
 		{
 			isValid = false;
 			this.$.numSharesInput.setBorderError();
@@ -761,7 +761,7 @@ enyo.kind({
 
 		// Price per Share:
 		if (!this.$.exercisePriceInput.validate()) { isValid = false; }
-		else if (quantum.parseFloat(this.$.exercisePriceInput.get("value")) <= 0)
+		else if (lumberjack.parseFloat(this.$.exercisePriceInput.get("value")) <= 0)
 		{
 			isValid = false;
 			this.$.exercisePriceInput.setBorderError();
@@ -804,8 +804,8 @@ enyo.kind({
 			ae.dateIssued = this.get("dateIssued").valueOf();
 			ae.expiryDate = this.get("expiryDate").valueOf();
 			ae.status = this.getSelected(this.$.statusPicker);
-			ae.numShares = quantum.parseInt(this.$.numSharesInput.get("value"));
-			ae.exercisePrice = quantum.parseFloat(this.$.exercisePriceInput.get("value"));
+			ae.numShares = lumberjack.parseInt(this.$.numSharesInput.get("value"));
+			ae.exercisePrice = lumberjack.parseFloat(this.$.exercisePriceInput.get("value"));
 			ae.exerciseCurrency = this.getSelected(this.$.exerciseCurrencyPicker);
 			ae.holderContactID = this.$.holderContactIDInput.get("value");
 		}
@@ -859,7 +859,7 @@ enyo.kind({
 			};
 		});
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 			if (err)
 			{
 				alertify.error("Login failed.");
@@ -923,19 +923,19 @@ enyo.kind({
 		});
 
 		var parameters = {
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			contactID: contactID,
 			warrantID: warrantID
 		};
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "addwarranttocontact",
+			url: lumberjack.preferences.get("apiServer") + "addwarranttocontact",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -959,7 +959,7 @@ enyo.kind({
 
 	handleExpireEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "warrant")) { return; }
+		if (!lumberjack.hasRole(["admins"], "warrant")) { return; }
 
 		var componentName = "confirmExpireEntryPopup";
 
@@ -968,7 +968,7 @@ enyo.kind({
 			this.$[componentName].hide();
 			this.$[componentName].destroy();
 		}
-		this.createComponent({name: componentName, kind: "quantum.ConfirmPopup", onYes: "expireEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: componentName, kind: "lumberjack.ConfirmPopup", onYes: "expireEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$[componentName].show("Expire entire Warrant tree? This cannot be undone.");
 	},
 
@@ -988,18 +988,18 @@ enyo.kind({
 		});
 
 		var parameters = {
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			warrantID: this.get("activeEntry").get("_id")
 		};
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "expirewarrant",
+			url: lumberjack.preferences.get("apiServer") + "expirewarrant",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: parameters,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1029,8 +1029,8 @@ enyo.kind({
 			data.get("dateIssued") !== this.get("dateIssued").valueOf() ||
 			data.get("expiryDate") !== this.get("expiryDate").valueOf() ||
 			data.get("status") !== this.getSelected(this.$.statusPicker) ||
-			data.get("numShares") !== quantum.parseInt(this.$.numSharesInput.get("value")) ||
-			data.get("exercisePrice") !== quantum.parseFloat(this.$.exercisePriceInput.get("value")) ||
+			data.get("numShares") !== lumberjack.parseInt(this.$.numSharesInput.get("value")) ||
+			data.get("exercisePrice") !== lumberjack.parseFloat(this.$.exercisePriceInput.get("value")) ||
 			data.get("exerciseCurrency") !== this.getSelected(this.$.exerciseCurrencyPicker) ||
 			data.get("holderContactID") !== this.$.holderContactIDInput.get("value") ||
 			this.$.supportingDocuments.isDirty() ||
@@ -1054,7 +1054,7 @@ enyo.kind({
 				this.$[componentName].hide();
 				this.$[componentName].destroy();
 			}
-			this.createComponent({name: componentName, kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: functionName, onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: componentName, kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: functionName, onHide: "handlePopupHidden"} , {owner:this});
 			this.$[componentName].show("Save changes?");
 		}
 		else { this[functionName](inSender, inEvent); }
@@ -1170,8 +1170,8 @@ enyo.kind({
 			this.$[componentName].hide();
 			this.$[componentName].destroy();
 		}
-		this.createComponent({name: componentName, kind: "quantum.ShareholderSearchPopup", allowNewContact: false, enableSearch: true, searchRoles: ["warrantholder"], onShareholderSelected: "handleHolderSelected", onHide: "handlePopupHidden"});
-		this.$[componentName].show(this.$.holderNameInput.get("value"), quantum.preferences.get("company"));
+		this.createComponent({name: componentName, kind: "lumberjack.ShareholderSearchPopup", allowNewContact: false, enableSearch: true, searchRoles: ["warrantholder"], onShareholderSelected: "handleHolderSelected", onHide: "handlePopupHidden"});
+		this.$[componentName].show(this.$.holderNameInput.get("value"), lumberjack.preferences.get("company"));
 	},
 
 	handleHolderSelected: function(inSender, inEvent)

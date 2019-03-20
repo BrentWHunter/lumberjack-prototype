@@ -1,8 +1,8 @@
-/* global quantum, alertify */
+/* global lumberjack, alertify */
 
 enyo.kind({
-	name: "quantum.SelectModulePopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.SelectModulePopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onCancel: "",
@@ -19,9 +19,9 @@ enyo.kind({
 			{style: "text-align: center; font-size: 24px;", components: [
 				{style: "", content: "Select Module"}
 			]},
-			{kind: "quantum.ModulesSection", style: "margin-top: 15px;", onChangeModule: "handleChangeModule"},
+			{kind: "lumberjack.ModulesSection", style: "margin-top: 15px;", onChangeModule: "handleChangeModule"},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px; margin-right: 10px;", ontap: "cancelButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px; margin-right: 10px;", ontap: "cancelButtonTapped"}
 			]}
 		]}
 	],

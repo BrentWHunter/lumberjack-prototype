@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.CorrectEntryPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.CorrectEntryPopup",
 
 	handlers: {
 		onHide: "handleHide"
@@ -17,25 +17,25 @@ enyo.kind({
 	subComponents: [
 		{style: "text-align: center; margin-top: 10px;", components: [
 			{style: "width: 50%; padding-right: 5px; min-width: 480px;", components: [
-				{kind: "quantum.Input", name:"subscriberNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Subscriber Name", required:true},
-				{kind: "quantum.Input", name:"displayNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Display Name", required:true},
+				{kind: "lumberjack.Input", name:"subscriberNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Subscriber Name", required:true},
+				{kind: "lumberjack.Input", name:"displayNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Display Name", required:true},
 				{name: "corporateContactSection", components: [
-					{kind: "quantum.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
-					{kind: "quantum.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true}
+					{kind: "lumberjack.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
+					{kind: "lumberjack.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Date of Birth", style: "line-height: 28px; width: 170px;"},
-					{kind: "quantum.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
 				]}
 			]},
-			{name: "contactInfoSection", kind: "quantum.ContactInfo"},
-			{name: "addressInfoSection", kind: "quantum.AddressInfo"},
-			{kind: "quantum.Button", style: "margin-top: 10px;", enabledClasses: "button primary", content: "Update", ontap: "handleUpdateButtonTapped"},
-			{kind: "quantum.Button", style: "margin-top: 10px; margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
+			{name: "contactInfoSection", kind: "lumberjack.ContactInfo"},
+			{name: "addressInfoSection", kind: "lumberjack.AddressInfo"},
+			{kind: "lumberjack.Button", style: "margin-top: 10px;", enabledClasses: "button primary", content: "Update", ontap: "handleUpdateButtonTapped"},
+			{kind: "lumberjack.Button", style: "margin-top: 10px; margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings:[
@@ -106,9 +106,9 @@ enyo.kind({
 	show: function()
 	{
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 
-		if (!quantum.hasRole(["admins"], "placement")) { alertify.error("User does not have permissions to access this functionality."); this.hide(); return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { alertify.error("User does not have permissions to access this functionality."); this.hide(); return; }
 	},
 
 	handleCancelButtonTapped: function(inSender, inEvent)
@@ -129,15 +129,15 @@ enyo.kind({
 			this.$.contactInfoSection.updateActiveEntry();
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "correctsubscription",
+				url: lumberjack.preferences.get("apiServer") + "correctsubscription",
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				},
 				postBody: {
-					placementID: quantum.preferences.get("placementDatabase"),
+					placementID: lumberjack.preferences.get("placementDatabase"),
 					activeEntry: this.get("activeEntry")
 				}
 			});
@@ -184,7 +184,7 @@ enyo.kind({
 
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}

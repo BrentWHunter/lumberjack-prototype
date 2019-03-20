@@ -1,6 +1,6 @@
-/* global numeral,quantum */
+/* global numeral,lumberjack */
 enyo.kind({
-	name: "quantum.SubscriberInformationModule",
+	name: "lumberjack.SubscriberInformationModule",
 
 	events: {
 		onViewEventDetail: ""
@@ -25,7 +25,7 @@ enyo.kind({
 				{name: "placementName", style: "width: 500px; line-height: 34px;"},
 				{name: "numShares", style: "width: 150px; line-height: 34px;"},
 				{name: "pricePerShare", style: "width: 150px; line-height: 34px;"},
-				{name: "viewButton", kind: "quantum.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewDetailButtonTapped"}
+				{name: "viewButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewDetailButtonTapped"}
 			]}
 		]},
 		{name: "noHistoryLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Shareholder History"}
@@ -42,7 +42,7 @@ enyo.kind({
 				catch (e)
 				{
 					//When all else fails, return an empty collection
-					return new quantum.ContactSubscriptionCollection();
+					return new lumberjack.ContactSubscriptionCollection();
 				}
 			}
 			else if (this.get("mode") === "cancelled")
@@ -53,13 +53,13 @@ enyo.kind({
 				catch (e)
 				{
 					//When all else fails, return an empty collection
-					return new quantum.ContactSubscriptionCollection();
+					return new lumberjack.ContactSubscriptionCollection();
 				}
 			}
 			else
 			{
 				//When all else fails, return an empty collection
-				return new quantum.ContactSubscriptionCollection();
+				return new lumberjack.ContactSubscriptionCollection();
 			}
 		}},
 		{from: ".subscriptions", to: ".$.subscriptionRepeater.count", transform: function(v){
@@ -85,7 +85,7 @@ enyo.kind({
 
 		inEvent.item.$.placementName.set("content", subscriptionDataItem.get("placementName"));
 		inEvent.item.$.numShares.set("content", numeral(subscriptionDataItem.get("numShares")).format("0,0"));
-		inEvent.item.$.pricePerShare.set("content", "$" + quantum.formatCurrency(subscriptionDataItem.get("pricePerShare")));
+		inEvent.item.$.pricePerShare.set("content", "$" + lumberjack.formatCurrency(subscriptionDataItem.get("pricePerShare")));
 
 		inEvent.item.$.viewButton.set("disabled", subscriptionDataItem.get("sourceDatabase") === "" || subscriptionDataItem.get("sourceRecord") === "");
 

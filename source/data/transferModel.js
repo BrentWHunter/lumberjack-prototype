@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferModel",
+	name: "lumberjack.TransferModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -155,8 +155,8 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.TransferCollection",
+	name: "lumberjack.TransferCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.TransferModel"
+	model: "lumberjack.TransferModel"
 });

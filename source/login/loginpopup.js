@@ -1,8 +1,8 @@
-/* global quantum, alertify */
+/* global lumberjack, alertify */
 
 enyo.kind({
-	name: "quantum.LoginPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.LoginPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onLoginSuccess: ""
@@ -31,7 +31,7 @@ enyo.kind({
 			]},
 			{name: "loginFailedLabel", style: "text-align: center; margin-top: 15px; color: red; font-size: 16px;", showing: false},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "loginButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Login"), style: "width: 100px; height: 40px;", ontap: "loginButtonTapped"}
+				{name: "loginButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Login"), style: "width: 100px; height: 40px;", ontap: "loginButtonTapped"}
 			]}
 		]}
 	],
@@ -60,7 +60,7 @@ enyo.kind({
 	handleLogin:function()
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show($L("Logging in..."));
 
 		var loginData = {
@@ -72,7 +72,7 @@ enyo.kind({
 			cacheBust: false,
 			contentType: "application/json",
 			method: "POST",
-			url: quantum.preferences.get("apiServer") + "auth/login"
+			url: lumberjack.preferences.get("apiServer") + "auth/login"
 		};
 
 		ajaxProperties.postBody = loginData;
@@ -116,10 +116,10 @@ enyo.kind({
 				{
 					alertify.success("Logged In");
 
-					quantum.preferences.set("roles", response.roles);
-					quantum.preferences.set("userData", response);
-					quantum.preferences.set("username", response.token);
-					quantum.preferences.set("password", response.password);
+					lumberjack.preferences.set("roles", response.roles);
+					lumberjack.preferences.set("userData", response);
+					lumberjack.preferences.set("username", response.token);
+					lumberjack.preferences.set("password", response.password);
 
 					this.getCompanies();
 				}
@@ -132,10 +132,10 @@ enyo.kind({
 	getCompanies: function()
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getcompanies",
+			url: lumberjack.preferences.get("apiServer") + "getcompanies",
 			cacheBust: false,
 			headers:{
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			}
 		});
 

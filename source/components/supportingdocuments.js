@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.SupportingDocuments",
+	name: "lumberjack.SupportingDocuments",
 
 	published: {
 		activeEntry: null,
@@ -31,17 +31,17 @@ enyo.kind({
 				{name: "documentItem", style: "background-color: white; border-bottom: 1px solid black; padding: 5px;", selected: false, layoutKind: "enyo.FittableColumnsLayout", components: [
 					{name: "description", style: "width: 300px; line-height: 34px;"},
 					{name: "dateReceived", style: "width: 90px; line-height: 34px;"},
-					{name: "viewButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewDocumentButtonTapped"},
-					{name: "downloadButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadDocumentButtonTapped"},
-					{name: "deleteButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deleteDocumentButtonTapped"}
+					{name: "viewButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewDocumentButtonTapped"},
+					{name: "downloadButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadDocumentButtonTapped"},
+					{name: "deleteButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deleteDocumentButtonTapped"}
 				]}
 			]},
 			{name: "noDocumentsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Documents Received"},
 			{style: "margin-top: 10px;", components: [
-				{name: "addDocumentButton", kind: "quantum.Button", enabledClasses: "button primary", content: "Add Document", ontap: "handleAddDocumentButtonTapped"}
+				{name: "addDocumentButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: "Add Document", ontap: "handleAddDocumentButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings:[
@@ -77,7 +77,7 @@ enyo.kind({
 					that.$.showDocumentPopup.hide();
 					that.$.showDocumentPopup.destroy();
 				}
-				that.createComponent({name: "showDocumentPopup", kind: "quantum.docxPopup"}, {owner:that});
+				that.createComponent({name: "showDocumentPopup", kind: "lumberjack.docxPopup"}, {owner:that});
 				that.$.showDocumentPopup.$.main.addContent(DOCXfileContents);
 				that.$.showDocumentPopup.show();
 			}
@@ -95,7 +95,7 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], this.get("module")) && !this.get("readOnly");
+		return lumberjack.hasRole(["admins","users"], this.get("module")) && !this.get("readOnly");
 	},
 
 	handleAddDocumentButtonTapped: function(inSender, inEvent)
@@ -107,7 +107,7 @@ enyo.kind({
 			this.$.addDocumentPopup.hide();
 			this.$.addDocumentPopup.destroy();
 		}
-		this.createComponent({name: "addDocumentPopup", kind: "quantum.AddDocumentPopup", onAddDocument: "", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addDocumentPopup", kind: "lumberjack.AddDocumentPopup", onAddDocument: "", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addDocumentPopup.show();
 	},
 
@@ -128,7 +128,7 @@ enyo.kind({
 			inEvent.item.$.dateReceived.set("content", moment(this.get("documentsReceived")[inEvent.index].receivedDate).format("YYYY/MM/DD"));
 		}
 
-		if (this.get("documentsReceived")[inEvent.index].localDownload !== true && !quantum.hasRole(["admins"], this.get("module")))
+		if (this.get("documentsReceived")[inEvent.index].localDownload !== true && !lumberjack.hasRole(["admins"], this.get("module")))
 		{	
 			inEvent.item.$.deleteButton.set("disabled", true);
 		}
@@ -158,7 +158,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -213,7 +213,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -251,7 +251,7 @@ enyo.kind({
 			this.$.confirmDeleteDocumentPopup.hide();
 			this.$.confirmDeleteDocumentPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteDocumentPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "deleteDocument", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteDocumentPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "deleteDocument", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteDocumentPopup.show("Delete Document? You must save entry to make this permament.", inEvent.index);
 	},
 

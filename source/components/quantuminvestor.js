@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Investor",
+	name: "lumberjack.Investor",
 
 	handlers: 
 	{
@@ -37,15 +37,15 @@ enyo.kind({
 			{style: "font-weight: bold; font-size: 18px;", content: "Family, Friends, and Business Associates Status"},
 			{style: "margin-top: 10px;", content: "Please select applicable checkbox", allowHtml: true},
 			{kind: "enyo.Group", allowHighlanderDeactivate: true, groupName: "friendsAndFamilyCheckboxes", components: [
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyA", detail: "ffA", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(a) a director, executive officer or control person of the Company or affiliate"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyB", detail: "ffB", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(b) a spouse, parent, grandparent, brother, sister or child of a director, executive officer or control person of the Company, or affiliate"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyC", detail: "ffC", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(c) a parent, grandparent, brother, sister or child of the spouse of a director, executive officer or control person of the Company or affiliate"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyD", detail: "ffD", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(d) a close personal friend of a director, executive officer or control person of the Company or affiliate who will provide a signed statement if requested"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyE", detail: "ffE", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(e) a close business associate of a director, executive officer or control person of the Company or affiliate who will provide a signed statement if requested"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyF", detail: "ffF", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(f) a founder of the Company or a spouse, parent, grandparent, brother, sister, child, close personal friend or close business associate of a founder of the Company;"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyG", detail: "ffG", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(g) a parent, grandparent, brother, sister or child of a spouse of a founder of the Company;"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyH", detail: "ffH", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(h) a person of which a majority of the voting securities are beneficially owned by, or a majority of the directors are, persons described in paragraphs (a) to (g)"},
-				{kind:"quantum.ColumnCheckbox", name: "friendsAndFamilyI", detail: "ffI", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(i) a trust or estate of which all of the beneficiaries or a majority of the trustees or executors are persons described in paragraphs (a) to (g)."}
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyA", detail: "ffA", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(a) a director, executive officer or control person of the Company or affiliate"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyB", detail: "ffB", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(b) a spouse, parent, grandparent, brother, sister or child of a director, executive officer or control person of the Company, or affiliate"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyC", detail: "ffC", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(c) a parent, grandparent, brother, sister or child of the spouse of a director, executive officer or control person of the Company or affiliate"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyD", detail: "ffD", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(d) a close personal friend of a director, executive officer or control person of the Company or affiliate who will provide a signed statement if requested"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyE", detail: "ffE", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(e) a close business associate of a director, executive officer or control person of the Company or affiliate who will provide a signed statement if requested"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyF", detail: "ffF", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(f) a founder of the Company or a spouse, parent, grandparent, brother, sister, child, close personal friend or close business associate of a founder of the Company;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyG", detail: "ffG", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(g) a parent, grandparent, brother, sister or child of a spouse of a founder of the Company;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyH", detail: "ffH", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(h) a person of which a majority of the voting securities are beneficially owned by, or a majority of the directors are, persons described in paragraphs (a) to (g)"},
+				{kind:"lumberjack.ColumnCheckbox", name: "friendsAndFamilyI", detail: "ffI", groupName: "friendsAndFamilyCheckboxes", disabled: true, content: "(i) a trust or estate of which all of the beneficiaries or a majority of the trustees or executors are persons described in paragraphs (a) to (g)."}
 			]},
 			{style: "font-weight: bold; font-size: 18px; margin-top: 15px;", content: "Friends, Family, and Business Associates Relationship"},
 			{style: "margin-top: 10px;", components: [
@@ -96,109 +96,109 @@ enyo.kind({
 		{name: "accreditedInvestorSection", style: "margin-top: 10px;", components: [
 			{name: "accreditedInvestorInstructionsLabel", style: "margin-top: 10px;", content: "Please select all applicable checkboxes"},
 			{name: "usaIndividualAccreditedInvestorSection", kind: "enyo.FittableRows", style: "margin-top: 10px;", components: [
-				{kind:"quantum.ColumnCheckbox", name: "usa5A", detail: "usa5A", content: "A natural person whose individual net worth, or joint net worth with that person’s spouse, at the time of purchase, exceeds US$1,000,000 (note: for the purposes of calculating net worth, (i) the person’s primary residence shall not be included as an asset; (ii) indebtedness that is secured by the person’s primary residence, up to the estimated fair market value of the primary residence at the time of this certification, shall not be included as a liability (except that if the amount of such indebtedness outstanding at the time of this certification exceeds the amount outstanding 60 days before such time, other than as a result of the acquisition of the primary residence, the amount of such excess shall be included as a liability); and (iii) indebtedness that is secured by the person’s primary residence in excess of the estimated fair market value of the primary residence shall be included as a liability);"},
-				{kind:"quantum.ColumnCheckbox", name: "usa5B", detail: "usa5B", content: "A natural person who had an individual income in excess of US $200,000 in each of the two most recent years or joint income with that person’s spouse in excess of US $300,000 in each of those years and has a reasonable expectation of reaching the same income level in the current year;"}
+				{kind:"lumberjack.ColumnCheckbox", name: "usa5A", detail: "usa5A", content: "A natural person whose individual net worth, or joint net worth with that person’s spouse, at the time of purchase, exceeds US$1,000,000 (note: for the purposes of calculating net worth, (i) the person’s primary residence shall not be included as an asset; (ii) indebtedness that is secured by the person’s primary residence, up to the estimated fair market value of the primary residence at the time of this certification, shall not be included as a liability (except that if the amount of such indebtedness outstanding at the time of this certification exceeds the amount outstanding 60 days before such time, other than as a result of the acquisition of the primary residence, the amount of such excess shall be included as a liability); and (iii) indebtedness that is secured by the person’s primary residence in excess of the estimated fair market value of the primary residence shall be included as a liability);"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa5B", detail: "usa5B", content: "A natural person who had an individual income in excess of US $200,000 in each of the two most recent years or joint income with that person’s spouse in excess of US $300,000 in each of those years and has a reasonable expectation of reaching the same income level in the current year;"}
 			]},
 			{name: "usaCorporateAccreditedInvestorSection", kind: "enyo.FittableRows", style: "margin-top: 10px;", components: [
-				{kind:"quantum.ColumnCheckbox", name: "usa6A", detail: "usa6A", content: "An organization described in Section 501(c)(3) of the United States Internal Revenue Code, a corporation, a Massachusetts or similar business trust or partnership, not formed for the specific purpose of acquiring the Shares, with total assets in excess of US $5,000,000;"},
-				{kind:"quantum.ColumnCheckbox", name: "usa6B", detail: "usa6B", content: "A trust that (a) has total assets in excess of US $5,000,000, (b) was not formed for the specific purpose of acquiring the Shares and (c) is directed in its purchases of securities by a person who has such knowledge and experience in financial and business matters that he/she is capable of evaluating the merits and risks of an investment in the Shares;"},
-				{kind:"quantum.ColumnCheckbox", name: "usa6C", detail: "usa6C", content: "An investment company registered under the Investment Company Act of 1940 or a business development company as defined in Section 2(a)(48) of that Act;"},
-				{kind:"quantum.ColumnCheckbox", name: "usa6D", detail: "usa6D", content: "A Small Business Investment Company licensed by the U.S. Small Business Administration under Section 301(c) or (d) of the Small Business Investment Act of 1958;"},
-				{kind:"quantum.ColumnCheckbox", name: "usa6E", detail: "usa6E", content: "A private business development company as defined in Section 202(a)(22) of the Investment Advisors Act of 1940; or"},
-				{kind:"quantum.ColumnCheckbox", name: "usa6F", detail: "usa6F", content: "An entity in which all of the equity owners satisfy the requirements of one or more of the foregoing categories."},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6A", detail: "usa6A", content: "An organization described in Section 501(c)(3) of the United States Internal Revenue Code, a corporation, a Massachusetts or similar business trust or partnership, not formed for the specific purpose of acquiring the Shares, with total assets in excess of US $5,000,000;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6B", detail: "usa6B", content: "A trust that (a) has total assets in excess of US $5,000,000, (b) was not formed for the specific purpose of acquiring the Shares and (c) is directed in its purchases of securities by a person who has such knowledge and experience in financial and business matters that he/she is capable of evaluating the merits and risks of an investment in the Shares;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6C", detail: "usa6C", content: "An investment company registered under the Investment Company Act of 1940 or a business development company as defined in Section 2(a)(48) of that Act;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6D", detail: "usa6D", content: "A Small Business Investment Company licensed by the U.S. Small Business Administration under Section 301(c) or (d) of the Small Business Investment Act of 1958;"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6E", detail: "usa6E", content: "A private business development company as defined in Section 202(a)(22) of the Investment Advisors Act of 1940; or"},
+				{kind:"lumberjack.ColumnCheckbox", name: "usa6F", detail: "usa6F", content: "An entity in which all of the equity owners satisfy the requirements of one or more of the foregoing categories."},
 				{name: "usa6FDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "usa6FDetail", kind: "quantum.Usa6F"}
+					{name: "usa6FDetail", kind: "lumberjack.Usa6F"}
 				]}
 			]},
 			{name: "canadaIndividualAccreditedInvestorSection", kind: "enyo.FittableRows", style: "margin-top: 10px;", components: [
-				{kind:"quantum.ColumnCheckbox", name: "canadaIndividualD", detail: "canadaD", content: "(d) except in Ontario, a person registered under the securities legislation of a jurisdiction of Canada as an adviser or dealer,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaIndividualD", detail: "canadaD", content: "(d) except in Ontario, a person registered under the securities legislation of a jurisdiction of Canada as an adviser or dealer,"},
 				{name: "canadaIndividualDDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaIndividualDDetail", kind: "quantum.AdvisorDealer"}
+					{name: "canadaIndividualDDetail", kind: "lumberjack.AdvisorDealer"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaIndividualD1", detail: "canadaD1", content: "(d.1) in Ontario, a person or company registered under the securities legislation of a province or territory of Canada as an adviser or dealer, except as otherwise prescribed by the regulations,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaIndividualD1", detail: "canadaD1", content: "(d.1) in Ontario, a person or company registered under the securities legislation of a province or territory of Canada as an adviser or dealer, except as otherwise prescribed by the regulations,"},
 				{name: "canadaIndividualD1Drawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaIndividualD1Detail", kind: "quantum.AdvisorDealer"}
+					{name: "canadaIndividualD1Detail", kind: "lumberjack.AdvisorDealer"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaE", detail: "canadaE", content: "(e) an individual registered under the securities legislation of a jurisdiction of Canada as a representative of a person referred to in paragraph (d),"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaE", detail: "canadaE", content: "(e) an individual registered under the securities legislation of a jurisdiction of Canada as a representative of a person referred to in paragraph (d),"},
 				{name: "canadaEDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaEDetail", kind: "quantum.AdvisorDealer"}
+					{name: "canadaEDetail", kind: "lumberjack.AdvisorDealer"}
 				]},					
-				{kind:"quantum.ColumnCheckbox", name: "canadaE1", detail: "canadaE1", content: "(e.1) an individual formerly registered under the securities legislation of a jurisdiction of Canada, other than an individual formerly registered solely as a representative of a limited market dealer under one or both of the Securities Act (Ontario) or the Securities Act (Newfoundland and Labrador),"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaJ", detail: "canadaJ", content: "(j) an individual who, either alone or with a spouse, beneficially owns financial assets having an aggregate realizable value that, before taxes, but net of any related liabilities, exceeds $1,000,000,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaJ1", detail: "canadaJ1", content: "(j.1) an individual who beneficially owns financial assets having an aggregate realizable value that, before taxes but net of any related liabilities, exceeds $5,000,000,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaK", detail: "canadaK", content: "(k) an individual whose net income before taxes exceeded $200,000 in each of the two most recent calendar years and who reasonably expects to exceed that net income level in the current calendar year,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaK1", detail: "canadaK1", content: "(k.1) an individual whose net income before taxes combined with that of a spouse exceeded $300,000 in each of the two most recent calendar years and who reasonably expects to exceed that net income level in the current calendar year,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaL", detail: "canadaL", content: "(l) an individual who, either alone or with a spouse, has net assets of at least $5,000,000,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaIndividualQ", detail: "canadaQ", content: "(q) a person acting on behalf of a fully managed account managed by that person, if that person is registered or authorized to carry on business as an adviser or the equivalent under the securities legislation of a jurisdiction of Canada or a foreign jurisdiction,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaE1", detail: "canadaE1", content: "(e.1) an individual formerly registered under the securities legislation of a jurisdiction of Canada, other than an individual formerly registered solely as a representative of a limited market dealer under one or both of the Securities Act (Ontario) or the Securities Act (Newfoundland and Labrador),"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaJ", detail: "canadaJ", content: "(j) an individual who, either alone or with a spouse, beneficially owns financial assets having an aggregate realizable value that, before taxes, but net of any related liabilities, exceeds $1,000,000,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaJ1", detail: "canadaJ1", content: "(j.1) an individual who beneficially owns financial assets having an aggregate realizable value that, before taxes but net of any related liabilities, exceeds $5,000,000,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaK", detail: "canadaK", content: "(k) an individual whose net income before taxes exceeded $200,000 in each of the two most recent calendar years and who reasonably expects to exceed that net income level in the current calendar year,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaK1", detail: "canadaK1", content: "(k.1) an individual whose net income before taxes combined with that of a spouse exceeded $300,000 in each of the two most recent calendar years and who reasonably expects to exceed that net income level in the current calendar year,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaL", detail: "canadaL", content: "(l) an individual who, either alone or with a spouse, has net assets of at least $5,000,000,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaIndividualQ", detail: "canadaQ", content: "(q) a person acting on behalf of a fully managed account managed by that person, if that person is registered or authorized to carry on business as an adviser or the equivalent under the securities legislation of a jurisdiction of Canada or a foreign jurisdiction,"},
 				{name: "canadaIndividualQDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaIndividualQDetail", kind: "quantum.ForeignAdvisorDealer"}
+					{name: "canadaIndividualQDetail", kind: "lumberjack.ForeignAdvisorDealer"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaIndividualV", detail: "canadaV", content: "(v) a person that is recognized or designated by the securities regulatory authority or, except in Ontario and Quebec, the regulator as an accredited investor, or"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaIndividualV1", detail: "canadaV1", content: "(v.1) in Ontario, a person or company that is recognized or designated by the Commission as an accredited investor."}
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaIndividualV", detail: "canadaV", content: "(v) a person that is recognized or designated by the securities regulatory authority or, except in Ontario and Quebec, the regulator as an accredited investor, or"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaIndividualV1", detail: "canadaV1", content: "(v.1) in Ontario, a person or company that is recognized or designated by the Commission as an accredited investor."}
 			]},
 			{name: "canadaCorporateAccreditedInvestorSection", kind: "enyo.FittableRows", style: "margin-top: 10px;", components: [
 				{style: "margin-top: 10px;", content: "Note: Options relevant only to individual/joint subscriptions are not displayed"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaA", detail: "canadaA", content: "(a) except in Ontario, a Canadian financial institution or an authorized foreign bank listed in Schedule III of the Bank Act (Canada),"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaA1", detail: "canadaA1", content: "(a.1) in Ontario, a financial institution described in paragraph 1, 2 or 3 of subsection 73.1 (1) of the Securities Act (Ontario),"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaB", detail: "canadaB", content: "(b) except in Ontario, the Business Development Bank of Canada incorporated under the Business Development Bank of Canada Act (Canada),"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaB1", detail: "canadaB1", content: "(b.1) in Ontario, the Business Development Bank of Canada,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaC", detail: "canadaC", content: "(c) except in Ontario, a subsidiary of any person referred to in paragraph (a) or (b), if the person owns all of the voting securities of the subsidiary, except the voting securities required by law to be owned by directors of that subsidiary,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaC1", detail: "canadaC1", content: "(c.1) in Ontario, a subsidiary of any person or company referred to in clause (a.1) or (b.1), if the person or company owns all of the voting securities of the subsidiary, except the voting securities required by law to be owned by directors of that subsidiary,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaCorporateD", detail: "canadaD", content: "(d) except in Ontario, a person registered under the securities legislation of a jurisdiction of Canada as an adviser or dealer,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaA", detail: "canadaA", content: "(a) except in Ontario, a Canadian financial institution or an authorized foreign bank listed in Schedule III of the Bank Act (Canada),"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaA1", detail: "canadaA1", content: "(a.1) in Ontario, a financial institution described in paragraph 1, 2 or 3 of subsection 73.1 (1) of the Securities Act (Ontario),"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaB", detail: "canadaB", content: "(b) except in Ontario, the Business Development Bank of Canada incorporated under the Business Development Bank of Canada Act (Canada),"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaB1", detail: "canadaB1", content: "(b.1) in Ontario, the Business Development Bank of Canada,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaC", detail: "canadaC", content: "(c) except in Ontario, a subsidiary of any person referred to in paragraph (a) or (b), if the person owns all of the voting securities of the subsidiary, except the voting securities required by law to be owned by directors of that subsidiary,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaC1", detail: "canadaC1", content: "(c.1) in Ontario, a subsidiary of any person or company referred to in clause (a.1) or (b.1), if the person or company owns all of the voting securities of the subsidiary, except the voting securities required by law to be owned by directors of that subsidiary,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaCorporateD", detail: "canadaD", content: "(d) except in Ontario, a person registered under the securities legislation of a jurisdiction of Canada as an adviser or dealer,"},
 				{name: "canadaCorporateDDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaCorporateDDetail", kind: "quantum.AdvisorDealer", mode: "corporate"}
+					{name: "canadaCorporateDDetail", kind: "lumberjack.AdvisorDealer", mode: "corporate"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaCorporateD1", detail: "canadaD1", content: "(d.1) in Ontario, a person or company registered under the securities legislation of a province or territory of Canada as an adviser or dealer, except as otherwise prescribed by the regulations,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaCorporateD1", detail: "canadaD1", content: "(d.1) in Ontario, a person or company registered under the securities legislation of a province or territory of Canada as an adviser or dealer, except as otherwise prescribed by the regulations,"},
 				{name: "canadaCorporateD1Drawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaCorporateD1Detail", kind: "quantum.AdvisorDealer", mode: "corporate"}
+					{name: "canadaCorporateD1Detail", kind: "lumberjack.AdvisorDealer", mode: "corporate"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaF", detail: "canadaF", content: "(f) except in Ontario, the Government of Canada or a jurisdiction of Canada, or any crown corporation, agency or wholly-owned entity of the Government of Canada or a jurisdiction of Canada,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaF1", detail: "canadaF1", content: "(f.1) in Ontario, the Government of Canada, the government of a province or territory of Canada, or any Crown corporation, agency or wholly owned entity of the Government of Canada or of the government of a province or territory of Canada,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaG", detail: "canadaG", content: "(g) a municipality, public board or commission in Canada and a metropolitan community, school board, the Comité de gestion de la taxe scolaire de l’île de Montréal or an intermunicipal management board in Québec,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaH", detail: "canadaH", content: "(h) any national, federal, state, provincial, territorial or municipal government of or in any foreign jurisdiction, or any agency of that government,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaI", detail: "canadaI", content: "(i) except in Ontario, a pension fund that is regulated by the Office of the Superintendent of Financial Institutions (Canada) or a pension commission or similar regulatory authority of a jurisdiction of Canada,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaF", detail: "canadaF", content: "(f) except in Ontario, the Government of Canada or a jurisdiction of Canada, or any crown corporation, agency or wholly-owned entity of the Government of Canada or a jurisdiction of Canada,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaF1", detail: "canadaF1", content: "(f.1) in Ontario, the Government of Canada, the government of a province or territory of Canada, or any Crown corporation, agency or wholly owned entity of the Government of Canada or of the government of a province or territory of Canada,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaG", detail: "canadaG", content: "(g) a municipality, public board or commission in Canada and a metropolitan community, school board, the Comité de gestion de la taxe scolaire de l’île de Montréal or an intermunicipal management board in Québec,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaH", detail: "canadaH", content: "(h) any national, federal, state, provincial, territorial or municipal government of or in any foreign jurisdiction, or any agency of that government,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaI", detail: "canadaI", content: "(i) except in Ontario, a pension fund that is regulated by the Office of the Superintendent of Financial Institutions (Canada) or a pension commission or similar regulatory authority of a jurisdiction of Canada,"},
 				{name: "canadaIDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaIDetail", kind: "quantum.PensionFund"}
+					{name: "canadaIDetail", kind: "lumberjack.PensionFund"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaI1", detail: "canadaI1", content: "(i.1) in Ontario, a pension fund that is regulated by either the Office of the Superintendent of Financial Institutions (Canada) or a pension commission or similar regulatory authority of a province or territory of Canada,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaI1", detail: "canadaI1", content: "(i.1) in Ontario, a pension fund that is regulated by either the Office of the Superintendent of Financial Institutions (Canada) or a pension commission or similar regulatory authority of a province or territory of Canada,"},
 				{name: "canadaI1Drawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaI1Detail", kind: "quantum.PensionFund"}
+					{name: "canadaI1Detail", kind: "lumberjack.PensionFund"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaM", detail: "canadaM", content: "(m) a person, other than an individual or investment fund, that has net assets of at least $5,000,000 as shown on its most recently prepared financial statements,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaM", detail: "canadaM", content: "(m) a person, other than an individual or investment fund, that has net assets of at least $5,000,000 as shown on its most recently prepared financial statements,"},
 				{name: "canadaMDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaMDetail", kind: "quantum.LargeAssetNonIndividual"}
+					{name: "canadaMDetail", kind: "lumberjack.LargeAssetNonIndividual"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaN", detail: "canadaN", content: "(n) an investment fund that distributes or has distributed its securities only to: (i) a person that is or was an accredited investor at the time of the distribution, (ii) a person that acquires or acquired securities in the circumstances referred to in sections 2.10 [Minimum amount investment] or 2.19 [Additional investment in investment funds] of NI 45-106, or (iii) a person described in paragraph (i) or (ii) immediately above that acquires or acquired securities under section 2.18 [Investment fund reinvestment] of NI 45-106,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaO", detail: "canadaO", content: "(o) an investment fund that distributes or has distributed securities under a prospectus in a jurisdiction of Canada for which the regulator or, in Quebec, the securities regulatory authority, has issued a receipt,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaP", detail: "canadaP", content: "(p) a trust company or trust corporation registered or authorized to carry on business under the Trust and Loan Companies Act (Canada) or under comparable legislation in a jurisdiction of Canada or a foreign jurisdiction, acting on behalf of a fully managed account managed by the trust company or trust corporation, as the case may be,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaN", detail: "canadaN", content: "(n) an investment fund that distributes or has distributed its securities only to: (i) a person that is or was an accredited investor at the time of the distribution, (ii) a person that acquires or acquired securities in the circumstances referred to in sections 2.10 [Minimum amount investment] or 2.19 [Additional investment in investment funds] of NI 45-106, or (iii) a person described in paragraph (i) or (ii) immediately above that acquires or acquired securities under section 2.18 [Investment fund reinvestment] of NI 45-106,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaO", detail: "canadaO", content: "(o) an investment fund that distributes or has distributed securities under a prospectus in a jurisdiction of Canada for which the regulator or, in Quebec, the securities regulatory authority, has issued a receipt,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaP", detail: "canadaP", content: "(p) a trust company or trust corporation registered or authorized to carry on business under the Trust and Loan Companies Act (Canada) or under comparable legislation in a jurisdiction of Canada or a foreign jurisdiction, acting on behalf of a fully managed account managed by the trust company or trust corporation, as the case may be,"},
 				{name: "canadaPDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaPDetail", kind: "quantum.TrustCompany"}
+					{name: "canadaPDetail", kind: "lumberjack.TrustCompany"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaCorporateQ", detail: "canadaQ", content: "(q) a person acting on behalf of a fully managed account managed by that person, if that person is registered or authorized to carry on business as an adviser or the equivalent under the securities legislation of a jurisdiction of Canada or a foreign jurisdiction,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaCorporateQ", detail: "canadaQ", content: "(q) a person acting on behalf of a fully managed account managed by that person, if that person is registered or authorized to carry on business as an adviser or the equivalent under the securities legislation of a jurisdiction of Canada or a foreign jurisdiction,"},
 				{name: "canadaCorporateQDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaCorporateQDetail", kind: "quantum.ForeignAdvisorDealer"}
+					{name: "canadaCorporateQDetail", kind: "lumberjack.ForeignAdvisorDealer"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaR", detail: "canadaR", content: "(r) a registered charity under the Income Tax Act (Canada) that, in regard to the trade, has obtained advice from an eligibility adviser or an adviser registered under the securities legislation of the jurisdiction of the registered charity to give advice on the securities being traded,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaR", detail: "canadaR", content: "(r) a registered charity under the Income Tax Act (Canada) that, in regard to the trade, has obtained advice from an eligibility adviser or an adviser registered under the securities legislation of the jurisdiction of the registered charity to give advice on the securities being traded,"},
 				{name: "canadaRDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaRDetail", kind: "quantum.Charity"}
+					{name: "canadaRDetail", kind: "lumberjack.Charity"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaS", detail: "canadaS", content: "(s) an entity organized in a foreign jurisdiction that is analogous to any of the entities referred to in paragraphs (a) to (d) or paragraph (i) [and in Ontario, paragraphs (a.1) to (d.1) or paragraph (i.1)] in form and function,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaS", detail: "canadaS", content: "(s) an entity organized in a foreign jurisdiction that is analogous to any of the entities referred to in paragraphs (a) to (d) or paragraph (i) [and in Ontario, paragraphs (a.1) to (d.1) or paragraph (i.1)] in form and function,"},
 				{name: "canadaSDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaSDetail", kind: "quantum.ForeignBank"}
+					{name: "canadaSDetail", kind: "lumberjack.ForeignBank"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaT", detail: "canadaT", content: "(t) a person in respect of which all of the owners of interests, direct, indirect or beneficial, except the voting securities required by law to be owned by directors, are persons that are accredited investors,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaT", detail: "canadaT", content: "(t) a person in respect of which all of the owners of interests, direct, indirect or beneficial, except the voting securities required by law to be owned by directors, are persons that are accredited investors,"},
 				{name: "canadaTDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaTDetail", kind: "quantum.CanadaT"}
+					{name: "canadaTDetail", kind: "lumberjack.CanadaT"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaU", detail: "canadaU", content: "(u) an investment fund that is advised by a person registered as an adviser or a person that is exempt from registration as an adviser,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaU", detail: "canadaU", content: "(u) an investment fund that is advised by a person registered as an adviser or a person that is exempt from registration as an adviser,"},
 				{name: "canadaUDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaUDetail", kind: "quantum.InvestmentFund"}
+					{name: "canadaUDetail", kind: "lumberjack.InvestmentFund"}
 				]},
-				{kind:"quantum.ColumnCheckbox", name: "canadaCorporateV", detail: "canadaV", content: "(v) a person that is recognized or designated by the securities regulatory authority or, except in Ontario and Quebec, the regulator as an accredited investor,"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaCorporateV1", detail: "canadaV1", content: "(v.1) in Ontario, a person or company that is recognized or designated by the Commission as an accredited investor, or"},
-				{kind:"quantum.ColumnCheckbox", name: "canadaW", detail: "canadaW", content: "(w) a trust established by an accredited investor for the benefit of the accredited investor’s family members of which a majority of the trustees are accredited investors and all of the beneficiaries are the accredited investor’s spouse, a former spouse of the accredited investor or a parent, grandparent, brother, sister, child or grandchild of that accredited investor, of that accredited investor’s spouse or of that accredited investor’s former spouse."},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaCorporateV", detail: "canadaV", content: "(v) a person that is recognized or designated by the securities regulatory authority or, except in Ontario and Quebec, the regulator as an accredited investor,"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaCorporateV1", detail: "canadaV1", content: "(v.1) in Ontario, a person or company that is recognized or designated by the Commission as an accredited investor, or"},
+				{kind:"lumberjack.ColumnCheckbox", name: "canadaW", detail: "canadaW", content: "(w) a trust established by an accredited investor for the benefit of the accredited investor’s family members of which a majority of the trustees are accredited investors and all of the beneficiaries are the accredited investor’s spouse, a former spouse of the accredited investor or a parent, grandparent, brother, sister, child or grandchild of that accredited investor, of that accredited investor’s spouse or of that accredited investor’s former spouse."},
 				{name: "canadaWDrawer", kind: "enyo.Drawer", style: "margin-top: 10px; margin-left:10px; padding-left:15px;", components: [
-					{name: "canadaWDetail", kind: "quantum.FamilyTrust"}
+					{name: "canadaWDetail", kind: "lumberjack.FamilyTrust"}
 				]}
 			]},
 			{name: "canadaDefinitionsSection", style: "margin-top: 20px;", components: [

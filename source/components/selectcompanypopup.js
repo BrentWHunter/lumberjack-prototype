@@ -1,8 +1,8 @@
-/* global quantum, alertify */
+/* global lumberjack, alertify */
 
 enyo.kind({
-	name: "quantum.SelectCompanyPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.SelectCompanyPopup",
+	kind: "lumberjack.Popup",
 	_loaded: false,
 
 	events: {
@@ -26,8 +26,8 @@ enyo.kind({
 				{name: "companyPicker", kind: "onyx.Picker"}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px; margin-right: 10px;", ontap: "cancelButtonTapped"},
-				{name: "selectButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Select"), style: "width: 100px; height: 40px;", ontap: "selectButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px; margin-right: 10px;", ontap: "cancelButtonTapped"},
+				{name: "selectButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Select"), style: "width: 100px; height: 40px;", ontap: "selectButtonTapped"}
 			]}
 		]}
 	],
@@ -43,7 +43,7 @@ enyo.kind({
 			this.$.cancelButton.set("showing", allowCancel);
 			if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 			if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-			this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.loadingPopup.show($L("Loading..."));
 
 			this.loadCompanies(enyo.bind(this, function(companies){
@@ -67,10 +67,10 @@ enyo.kind({
 
 	loadCompanies: function(callback) {
 		var request = new enyo.Ajax({
-	      url: quantum.preferences.get("apiServer") + "getcompanies",
+	      url: lumberjack.preferences.get("apiServer") + "getcompanies",
 	      cacheBust: false,
 	      headers:{
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			}
 	    });
 

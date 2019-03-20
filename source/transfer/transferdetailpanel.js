@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.TransferDetailPanel",
+	name: "lumberjack.TransferDetailPanel",
 	kind: "enyo.Scroller",
 	//fit: true,
 
@@ -49,20 +49,20 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Transfer Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				//{name: "deleteEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
-				{name: "saveEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				//{name: "deleteEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
+				{name: "saveEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]},
 			{name: "addButtons", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
-				{name: "addEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
+				{name: "addEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", components: [
 			{style: "width: 50%; min-width: 530px;", components: [
-				{kind: "quantum.Input", name:"dateReceivedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Transaction Date", required:true, ontap: "handleDateReceivedInputTapped", readonly:true},
-				{name: "calendarPopup", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged"},
+				{kind: "lumberjack.Input", name:"dateReceivedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Transaction Date", required:true, ontap: "handleDateReceivedInputTapped", readonly:true},
+				{name: "calendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged"},
 				{name: "transferStatusContainer", kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Transfer Status", style: "line-height: 38px; width: 170px;"},
 					{kind: "onyx.PickerDecorator", style: "margin-left: 10px; width: 350px;", components: [
@@ -100,14 +100,14 @@ enyo.kind({
 					]}
 				]},
 				{name: "customCheckboxesSection", kind: "enyo.FittableColumns", style: "margin-top: 10px; margin-left: 180px;", showing: false, components: [
-					{name: "psaCheckbox", kind: "quantum.Checkbox", content: "PSA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
-					{name: "psa2SCheckbox", kind: "quantum.Checkbox", content: "PSA2S", contentStyle: "margin-right: 4px; margin-left: 4px;", showing: false},
-					{name: "psa2BCheckbox", kind: "quantum.Checkbox", content: "PSA2B", contentStyle: "margin-right: 4px; margin-left: 4px;", showing: false},
-					{name: "loiCheckbox", kind: "quantum.Checkbox", content: "LOI", contentStyle: "margin-right: 4px; margin-left: 4px;"},
-					{name: "poaCheckbox", kind: "quantum.Checkbox", content: "POA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
-					{name: "staCheckbox", kind: "quantum.Checkbox", content: "STA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
-					{name: "stfCheckbox", kind: "quantum.Checkbox", content: "STF", contentStyle: "margin-right: 4px; margin-left: 4px;"},
-					{name: "lgoCheckbox", kind: "quantum.Checkbox", content: "LGO", contentStyle: "margin-right: 4px; margin-left: 4px;"}
+					{name: "psaCheckbox", kind: "lumberjack.Checkbox", content: "PSA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
+					{name: "psa2SCheckbox", kind: "lumberjack.Checkbox", content: "PSA2S", contentStyle: "margin-right: 4px; margin-left: 4px;", showing: false},
+					{name: "psa2BCheckbox", kind: "lumberjack.Checkbox", content: "PSA2B", contentStyle: "margin-right: 4px; margin-left: 4px;", showing: false},
+					{name: "loiCheckbox", kind: "lumberjack.Checkbox", content: "LOI", contentStyle: "margin-right: 4px; margin-left: 4px;"},
+					{name: "poaCheckbox", kind: "lumberjack.Checkbox", content: "POA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
+					{name: "staCheckbox", kind: "lumberjack.Checkbox", content: "STA", contentStyle: "margin-right: 4px; margin-left: 4px;"},
+					{name: "stfCheckbox", kind: "lumberjack.Checkbox", content: "STF", contentStyle: "margin-right: 4px; margin-left: 4px;"},
+					{name: "lgoCheckbox", kind: "lumberjack.Checkbox", content: "LGO", contentStyle: "margin-right: 4px; margin-left: 4px;"}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Transfer Approval Type", style: "line-height: 38px; width: 170px;"},
@@ -119,13 +119,13 @@ enyo.kind({
 						]}
 					]}
 				]},
-				{kind: "quantum.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Number of Shares", required:true, inputMaxLength:10, onkeydown: "validateNumberInput"},
-				{kind: "quantum.Input", name:"classSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Class of Shares", required:true},
-				{kind: "quantum.Input", name:"pricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Sell Price per Share", required:true, inputMaxLength:10, onkeydown: "validateDecimalInput"},
-				{kind: "quantum.Input", name:"buyPricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buy Price per Share", inputMaxLength:10, onkeydown: "validateDecimalInput"},
-				{kind: "quantum.Input", name:"purchasePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Purchase Price", required:true},
-				{kind: "quantum.Input", name:"companyNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Company Name", required:true},
-				{kind: "quantum.Input", name:"certificateNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Certificate Number", required:true},
+				{kind: "lumberjack.Input", name:"numSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Number of Shares", required:true, inputMaxLength:10, onkeydown: "validateNumberInput"},
+				{kind: "lumberjack.Input", name:"classSharesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Class of Shares", required:true},
+				{kind: "lumberjack.Input", name:"pricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Sell Price per Share", required:true, inputMaxLength:10, onkeydown: "validateDecimalInput"},
+				{kind: "lumberjack.Input", name:"buyPricePerShareInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buy Price per Share", inputMaxLength:10, onkeydown: "validateDecimalInput"},
+				{kind: "lumberjack.Input", name:"purchasePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Purchase Price", required:true},
+				{kind: "lumberjack.Input", name:"companyNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Company Name", required:true},
+				{kind: "lumberjack.Input", name:"certificateNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Certificate Number", required:true},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Notes", style: "line-height: 30px; width: 170px;"},
 					{kind: "onyx.InputDecorator", style: "margin-left: 10px; width: 295px; height: 100px;", components: [
@@ -179,9 +179,9 @@ enyo.kind({
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Seller Details"},
 					{fit: true},
-					{name: "viewSellerButton", kind: "quantum.Button", style: "height: 30px;", content: "View Contact", ontap: "handleViewContact"},
-					{name: "refreshSellerButton", kind: "quantum.Button", style: "height: 30px; margin-left: 10px;", content: "Refresh Contact", ontap: "handleRefreshContactButtonTapped"},
-					{name: "searchSellerButton", kind: "quantum.Button", style: "height: 30px; margin-left: 10px;", content: "Search Sellers", ontap: "handleSearchSellerButtonTapped"}
+					{name: "viewSellerButton", kind: "lumberjack.Button", style: "height: 30px;", content: "View Contact", ontap: "handleViewContact"},
+					{name: "refreshSellerButton", kind: "lumberjack.Button", style: "height: 30px; margin-left: 10px;", content: "Refresh Contact", ontap: "handleRefreshContactButtonTapped"},
+					{name: "searchSellerButton", kind: "lumberjack.Button", style: "height: 30px; margin-left: 10px;", content: "Search Sellers", ontap: "handleSearchSellerButtonTapped"}
 				]},
 				{name: "sellerSection", components:[
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
@@ -194,47 +194,47 @@ enyo.kind({
 							]}
 						]}
 					]},
-					{kind: "quantum.Input", name:"sellerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Name", required:true},
+					{kind: "lumberjack.Input", name:"sellerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Name", required:true},
 					{kind: "enyo.Drawer", name:"sellerDrawer", open: false, components:[
-						{kind: "quantum.Input", name:"sellerSignatoryNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Signatory Name", required:true},
-						{kind: "quantum.Input", name:"sellerSignatoryTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Signatory Title", required:true}
+						{kind: "lumberjack.Input", name:"sellerSignatoryNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Signatory Name", required:true},
+						{kind: "lumberjack.Input", name:"sellerSignatoryTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Signatory Title", required:true}
 					]},
-					{kind: "quantum.Input", name:"sellerAddress1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 1", required:true},
-					{kind: "quantum.Input", name:"sellerAddress2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 2", required:false},
-					{kind: "quantum.Input", name:"sellerAddress3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 3", required:false},
-					{kind: "quantum.Input", name:"sellerCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller City", required:true},
+					{kind: "lumberjack.Input", name:"sellerAddress1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 1", required:true},
+					{kind: "lumberjack.Input", name:"sellerAddress2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 2", required:false},
+					{kind: "lumberjack.Input", name:"sellerAddress3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller Address Line 3", required:false},
+					{kind: "lumberjack.Input", name:"sellerCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller City", required:true},
 					{name: "sellerInternationalStateProvince", showing: false, components: [
-						{kind: "quantum.Input", name:"sellerStateProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller State/Province", required:true}
+						{kind: "lumberjack.Input", name:"sellerStateProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Seller State/Province", required:true}
 					]},
 					{name: "sellerCanadaStateProvince", showing: false, components: [
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "Seller Province", style: "line-height: 42px; width: 170px;"},
-							{name: "sellerProvincePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.ProvincePicker"}
+							{name: "sellerProvincePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.ProvincePicker"}
 						]}
 					]},
 					{name: "sellerUSAStateProvince", showing: false, components: [
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "Seller State", style: "line-height: 42px; width: 170px;"},
-							{name: "sellerStatePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.StatePicker"}
+							{name: "sellerStatePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.StatePicker"}
 						]}
 					]},
-					{kind: "quantum.Input", name:"sellerZipPostalInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"", required:true},
+					{kind: "lumberjack.Input", name:"sellerZipPostalInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"", required:true},
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 						{content: "Seller Country", style: "line-height: 42px; width: 170px;"},
-						{name: "sellerCountryPicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.CountryPicker"}
+						{name: "sellerCountryPicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.CountryPicker"}
 					]},
-					{kind: "quantum.Input", name:"sellerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Seller Email Address", required:true},
-					{kind: "quantum.Input", name:"sellerPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Seller Phone Number", required:true},
-					{kind: "quantum.Input", name:"sellerContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Seller Contact ID", required:true}
+					{kind: "lumberjack.Input", name:"sellerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Seller Email Address", required:true},
+					{kind: "lumberjack.Input", name:"sellerPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Seller Phone Number", required:true},
+					{kind: "lumberjack.Input", name:"sellerContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Seller Contact ID", required:true}
 				]}
 			]},
 			{style: "margin-left: 1%; width: 49%;", components: [
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Buyer Details"},
 					{fit: true},
-					{name: "viewBuyerButton", kind: "quantum.Button", style: "height: 30px;", content: "View Contact", ontap: "handleViewContact"},
-					{name: "refreshBuyerButton", kind: "quantum.Button", style: "height: 30px; margin-left: 10px;", content: "Refresh Contact", ontap: "handleRefreshContactButtonTapped"},
-					{name: "searchBuyerButton", kind: "quantum.Button", style: "height: 30px; margin-left: 10px;", content: "Search Buyers", ontap: "handleSearchBuyerButtonTapped"}
+					{name: "viewBuyerButton", kind: "lumberjack.Button", style: "height: 30px;", content: "View Contact", ontap: "handleViewContact"},
+					{name: "refreshBuyerButton", kind: "lumberjack.Button", style: "height: 30px; margin-left: 10px;", content: "Refresh Contact", ontap: "handleRefreshContactButtonTapped"},
+					{name: "searchBuyerButton", kind: "lumberjack.Button", style: "height: 30px; margin-left: 10px;", content: "Search Buyers", ontap: "handleSearchBuyerButtonTapped"}
 				]},
 				{name: "buyerSection", components:[
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
@@ -247,48 +247,48 @@ enyo.kind({
 							]}
 						]}
 					]},
-					{kind: "quantum.Input", name:"buyerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Name", required:true},
+					{kind: "lumberjack.Input", name:"buyerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Name", required:true},
 					{kind: "enyo.Drawer", name:"buyerDrawer", open: false, components:[
-						{kind: "quantum.Input", name:"buyerSignatoryNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Signatory Name", required:true},
-						{kind: "quantum.Input", name:"buyerSignatoryTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Signatory Title", required:true}
+						{kind: "lumberjack.Input", name:"buyerSignatoryNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Signatory Name", required:true},
+						{kind: "lumberjack.Input", name:"buyerSignatoryTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Signatory Title", required:true}
 					]},
-					{kind: "quantum.Input", name:"buyerAddress1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 1", required:true},
-					{kind: "quantum.Input", name:"buyerAddress2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 2", required:false},
-					{kind: "quantum.Input", name:"buyerAddress3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 3", required:false},
-					{kind: "quantum.Input", name:"buyerCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer City", required:true},
+					{kind: "lumberjack.Input", name:"buyerAddress1Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 1", required:true},
+					{kind: "lumberjack.Input", name:"buyerAddress2Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 2", required:false},
+					{kind: "lumberjack.Input", name:"buyerAddress3Input", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Address Line 3", required:false},
+					{kind: "lumberjack.Input", name:"buyerCityInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer City", required:true},
 					{name: "buyerInternationalStateProvince", showing: false, components: [
-						{kind: "quantum.Input", name:"buyerStateProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer State/Province", required:true}
+						{kind: "lumberjack.Input", name:"buyerStateProvinceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer State/Province", required:true}
 					]},
 					{name: "buyerCanadaStateProvince", showing: false, components: [
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "Buyer Province", style: "line-height: 42px; width: 170px;"},
-							{name: "buyerProvincePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.ProvincePicker"}
+							{name: "buyerProvincePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.ProvincePicker"}
 						]}
 					]},
 					{name: "buyerUSAStateProvince", showing: false, components: [
 						{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 							{content: "Buyer State", style: "line-height: 42px; width: 170px;"},
-							{name: "buyerStatePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.StatePicker"}
+							{name: "buyerStatePicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.StatePicker"}
 						]}
 					]},
-					{kind: "quantum.Input", name:"buyerZipPostalInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"", required:true},
+					{kind: "lumberjack.Input", name:"buyerZipPostalInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"", required:true},
 					{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 						{content: "Buyer Country", style: "line-height: 42px; width: 170px;"},
-						{name: "buyerCountryPicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "quantum.CountryPicker"}
+						{name: "buyerCountryPicker", disabled: true, style: "margin-left: 10px; width: 350px;", kind: "lumberjack.CountryPicker"}
 					]},
-					{kind: "quantum.Input", name:"buyerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Buyer Email Address", required:true},
-					{kind: "quantum.Input", name:"buyerPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Buyer Phone Number", required:true},
-					{kind: "quantum.Input", name:"buyerContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Contact ID", showing: false, required:true}
+					{kind: "lumberjack.Input", name:"buyerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", label:"Buyer Email Address", required:true},
+					{kind: "lumberjack.Input", name:"buyerPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", label:"Buyer Phone Number", required:true},
+					{kind: "lumberjack.Input", name:"buyerContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Buyer Contact ID", showing: false, required:true}
 				]}
 			]}
 		]},
 		{name: "editSection", components:[
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 15px;", content: "Transfer Documents"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{name: "generateDocumentsButton", kind: "quantum.Button", enabledClasses: "button primary", style: "line-height: 30px;", content: "Generate Documents", ontap: "handleGenerateDocuments"},
-				{name: "sendDocumentsButton", kind: "quantum.Button", style: "line-height: 30px; margin-left: 10px;", content: "Send Documents", ontap: "handleSendDocuments"},
-				{name: "cancelDocumentsButton", kind: "quantum.Button", style: "line-height: 30px; margin-left: 10px;", content: "Cancel All", ontap: "handleCancelDocuments"},
-				{name: "sendToLawyerButton", kind: "quantum.Button", style: "line-height: 30px; margin-left: 10px;", content: "Send To Lawyer", ontap: "handlePostToLawyer", disabled: true}
+				{name: "generateDocumentsButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "line-height: 30px;", content: "Generate Documents", ontap: "handleGenerateDocuments"},
+				{name: "sendDocumentsButton", kind: "lumberjack.Button", style: "line-height: 30px; margin-left: 10px;", content: "Send Documents", ontap: "handleSendDocuments"},
+				{name: "cancelDocumentsButton", kind: "lumberjack.Button", style: "line-height: 30px; margin-left: 10px;", content: "Cancel All", ontap: "handleCancelDocuments"},
+				{name: "sendToLawyerButton", kind: "lumberjack.Button", style: "line-height: 30px; margin-left: 10px;", content: "Send To Lawyer", ontap: "handlePostToLawyer", disabled: true}
 			]},
 			{style: "margin-top: 10px; min-width: 955px; border: 1px solid black; display: inline-block;", components: [
 				{name: "purchaseAndSaleAgreementSection", style: "background-color: white; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
@@ -296,52 +296,52 @@ enyo.kind({
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "purchaseAndSaleAgreementStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "purchaseAndSaleAgreementDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "purchaseAndSaleAgreementDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
-					{name: "purchaseAndSaleAgreementResendButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
-					{name: "purchaseAndSaleAgreementStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
-					{name: "purchaseAndSaleAgreementUpdateStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
+					{name: "purchaseAndSaleAgreementDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "purchaseAndSaleAgreementDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "purchaseAndSaleAgreementResendButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
+					{name: "purchaseAndSaleAgreementStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
+					{name: "purchaseAndSaleAgreementUpdateStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
 				]},
 				{name: "sellerPurchaseAndSaleAgreementSection", style: "background-color: white; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
 					{content: "Seller Purchase and Sale Agreement", style: "line-height: 30px; width: 250px; display: inline-block;"},
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "sellerPurchaseAndSaleAgreementStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "sellerPurchaseAndSaleAgreementDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "sellerPurchaseAndSaleAgreementDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
-					{name: "sellerPurchaseAndSaleAgreementResendButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
-					{name: "sellerPurchaseAndSaleAgreementStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
-					{name: "sellerPurchaseAndSaleAgreementUpdateStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
+					{name: "sellerPurchaseAndSaleAgreementDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "sellerPurchaseAndSaleAgreementDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "sellerPurchaseAndSaleAgreementResendButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
+					{name: "sellerPurchaseAndSaleAgreementStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
+					{name: "sellerPurchaseAndSaleAgreementUpdateStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
 				]},
 				{name: "buyerPurchaseAndSaleAgreementSection", style: "background-color: white; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
 					{content: "Buyer Purchase and Sale Agreement", style: "line-height: 30px; width: 250px; display: inline-block;"},
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "buyerPurchaseAndSaleAgreementStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "buyerPurchaseAndSaleAgreementDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "buyerPurchaseAndSaleAgreementDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
-					{name: "buyerPurchaseAndSaleAgreementResendButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
-					{name: "buyerPurchaseAndSaleAgreementStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
-					{name: "buyerPurchaseAndSaleAgreementUpdateStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
+					{name: "buyerPurchaseAndSaleAgreementDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "buyerPurchaseAndSaleAgreementDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "buyerPurchaseAndSaleAgreementResendButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
+					{name: "buyerPurchaseAndSaleAgreementStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
+					{name: "buyerPurchaseAndSaleAgreementUpdateStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
 				]},
 				{name: "letterOfInstructionSection",style: "background-color: lightgrey; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
 					{content: "Letter of Instruction", style: "line-height: 30px; width: 250px; display: inline-block;"},
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "letterOfInstructionStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "letterOfInstructionDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "letterOfInstructionDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
-					{name: "letterOfInstructionResendButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
-					{name: "letterOfInstructionStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
-					{name: "letterOfInstructionUpdateStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
+					{name: "letterOfInstructionDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "letterOfInstructionDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "letterOfInstructionResendButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
+					{name: "letterOfInstructionStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
+					{name: "letterOfInstructionUpdateStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
 				]},
 				{name: "powerOfAttorneySection",kind: "enyo.FittableColumns", style: "background-color: white; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
 					{content: "Power of Attorney", style: "line-height: 30px; width: 250px; display: inline-block;"},
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "powerOfAttorneyStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "powerOfAttorneyDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "powerOfAttorneyDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "powerOfAttorneyDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "powerOfAttorneyDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
 					{style: "width: 300px; line-height: 30px; margin-left: 10px;", components: [
 						{kind: "onyx.InputDecorator", alwaysLooksFocused: true, style: "padding: 0; background-color: transparent; border-color: transparent; box-shadow: none;", components: [
 							{name: "poaUploadDocumentInput", kind: "enyo.Input", attributes: {"type": "file", "accept": "application/pdf"}, onchange: "handleDocumentUpload"}
@@ -353,19 +353,19 @@ enyo.kind({
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "shareTransferApprovalStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "shareTransferApprovalDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "shareTransferApprovalDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
-					{name: "shareTransferApprovalResendButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
-					{name: "shareTransferApprovalStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
-					{name: "shareTransferApprovalUpdateStatusButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
+					{name: "shareTransferApprovalDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "shareTransferApprovalDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "shareTransferApprovalResendButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Send Reminder", ontap: "handleResendDocument"},
+					{name: "shareTransferApprovalStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Status", ontap: "handleGetDocumentStatus"},
+					{name: "shareTransferApprovalUpdateStatusButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Refresh Status", ontap: "handleUpdateDocumentStatus"}
 				]},
 				{name: "securitiesTransferFormSection", kind: "enyo.FittableColumns", style: "background-color: white; line-height: 30px; padding: 3px 5px; border-bottom: 1px solid black;", components: [
 					{content: "Securities Transfer Form", style: "line-height: 30px; width: 250px; display: inline-block;"},
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "securitiesTransferFormStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "securitiesTransferFormDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "securitiesTransferFormDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "securitiesTransferFormDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "securitiesTransferFormDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
 					{style: "width: 300px; line-height: 30px; margin-left: 10px;", components: [
 						{kind: "onyx.InputDecorator", alwaysLooksFocused: true, style: "padding: 0; background-color: transparent; border-color: transparent; box-shadow: none;", components: [
 							{name: "stfUploadDocumentInput", kind: "enyo.Input", attributes: {"type": "file", "accept": "application/pdf"}, onchange: "handleDocumentUpload"}
@@ -377,8 +377,8 @@ enyo.kind({
 					{style: "line-height: 30px; display: inline-block;", components: [
 						{name: "legalOpinionStatusIcon", kind: "enyo.Image", style: "height: 16px; width: 16px;"}
 					]},
-					{name: "legalOpinionDownloadUnsignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
-					{name: "legalOpinionDownloadSignedButton", kind: "quantum.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
+					{name: "legalOpinionDownloadUnsignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Unsigned", ontap: "handleDownloadDocument"},
+					{name: "legalOpinionDownloadSignedButton", kind: "lumberjack.Button", style: "line-height: 30px; display: inline-block; margin-left: 10px;", content: "Download Signed", ontap: "handleDownloadSignedDocument"},
 					{style: "width: 300px; line-height: 30px; margin-left: 10px;", components: [
 						{kind: "onyx.InputDecorator", alwaysLooksFocused: true, style: "padding: 0; background-color: transparent; border-color: transparent; box-shadow: none;", components: [
 							{name: "lgoUploadDocumentInput", kind: "enyo.Input", attributes: {"type": "file", "accept": "application/pdf"}, onchange: "handleDocumentUpload"}
@@ -387,15 +387,15 @@ enyo.kind({
 				]}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-				{kind: "quantum.SupportingDocuments", name: "supportingDocuments", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddDocument: "handleAddDocument"},
-				{kind: "quantum.PaymentSection", name: "paymentSection", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", onDeletePayment: "handleDeletePayment"}
+				{kind: "lumberjack.SupportingDocuments", name: "supportingDocuments", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddDocument: "handleAddDocument"},
+				{kind: "lumberjack.PaymentSection", name: "paymentSection", module: "transfer", style: "width: 50%", attachmentIndexKey: "name", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", onDeletePayment: "handleDeletePayment"}
 			]}
 		]},
 		{style: "margin-top: 25px;", components: [
-			{name: "transferInvoicingModule", kind: "quantum.TransferInvoicingModule", onRequestGenerateSellerInvoice: "handleRequestGenerateSellerInvoice", onRequestGenerateBuyerInvoice: "handleRequestGenerateBuyerInvoice", onRequestDownloadBuyerInvoice: "handleRequestDownloadBuyerInvoice", onRequestDownloadSellerInvoice: "handleRequestDownloadSellerInvoice"}
+			{name: "transferInvoicingModule", kind: "lumberjack.TransferInvoicingModule", onRequestGenerateSellerInvoice: "handleRequestGenerateSellerInvoice", onRequestGenerateBuyerInvoice: "handleRequestGenerateBuyerInvoice", onRequestDownloadBuyerInvoice: "handleRequestDownloadBuyerInvoice", onRequestDownloadSellerInvoice: "handleRequestDownloadSellerInvoice"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"}
 	],
 
 	observers: {
@@ -1035,7 +1035,7 @@ enyo.kind({
 		{from: ".totalPurchasePrice", to: ".$.purchasePriceInput.value", transform: function(v) {
 			try
 			{
-				if (v != null && !isNaN(v)) { return quantum.formatCurrency(v); }
+				if (v != null && !isNaN(v)) { return lumberjack.formatCurrency(v); }
 				else { throw null; }
 			}
 			catch (err) { return ""; }
@@ -1690,7 +1690,7 @@ enyo.kind({
 			fileData: inEvent.payload.fileData,
 			localDownload: true
 		});
-		this.paymentDelta += quantum.parseFloat(inEvent.payload.amount);
+		this.paymentDelta += lumberjack.parseFloat(inEvent.payload.amount);
 		this.$.paymentSection.refreshRepeater();
 		this.$.paymentSection.disableForFunds();
 		alertify.success("Payment Uploaded!");
@@ -1747,7 +1747,7 @@ enyo.kind({
 
 	handleDeletePayment: function(inSender, inEvent)
 	{
-		this.paymentDelta -= quantum.parseFloat(inEvent.payment.amount);	
+		this.paymentDelta -= lumberjack.parseFloat(inEvent.payment.amount);	
 	},
 
 	getActiveEntryDocument: function(name)
@@ -1783,7 +1783,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
@@ -1796,7 +1796,7 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], "transfer");
+		return lumberjack.hasRole(["admins","users"], "transfer");
 	},
 
 	setShowingForRoles: function()
@@ -1834,7 +1834,7 @@ enyo.kind({
 		}
 
 		// Only admins can delete a transfer.
-		//this.$.deleteEntryButton.set("showing", quantum.hasRole(["admins"], "transfer"));
+		//this.$.deleteEntryButton.set("showing", lumberjack.hasRole(["admins"], "transfer"));
 		this.resize();
 	},
 
@@ -2027,7 +2027,7 @@ enyo.kind({
 		//First, Disable Everything
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input" || this.$[key].kind === "quantum.Button" || this.$[key].kind === "enyo.Input")
+			if(this.$[key].kind === "lumberjack.Input" || this.$[key].kind === "lumberjack.Button" || this.$[key].kind === "enyo.Input")
 			{
 				if(this.$[key].name !== "nextEntryButton" && this.$[key].name !== "previousEntryButton")
 				{
@@ -2114,17 +2114,17 @@ enyo.kind({
 
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "transfer")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 		this.populatePrincipalsDropdown();
 
 		// The "activeEntry" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("activeEntry", null);
-		this.set("activeEntry", new quantum.TransferModel({}));
+		this.set("activeEntry", new lumberjack.TransferModel({}));
 		if (activeEntry != null) { this.set("activeEntry", activeEntry); }
 
-		this.$.companyNameInput.set("value", quantum.preferences.get("companyName"));
+		this.$.companyNameInput.set("value", lumberjack.preferences.get("companyName"));
 		this.set("paymentDelta", 0);
 
 		this.setShowingForRoles();
@@ -2188,11 +2188,11 @@ enyo.kind({
 		}
 		else if(this.getSelected(this.$.transferTypePicker) === "order")
 		{
-			return quantum.parseInt(this.get("numShares")) * quantum.parseFloat(this.get("buyPricePerShare"));
+			return lumberjack.parseInt(this.get("numShares")) * lumberjack.parseFloat(this.get("buyPricePerShare"));
 		}
 		else 
 		{
-			var retVal = quantum.parseInt(this.get("numShares")) * quantum.parseFloat(this.get("pricePerShare"));
+			var retVal = lumberjack.parseInt(this.get("numShares")) * lumberjack.parseFloat(this.get("pricePerShare"));
 			return isNaN(retVal) ? 0 : retVal;
 		}
 	},
@@ -2224,14 +2224,14 @@ enyo.kind({
 	/*
 	handleDeleteEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "transfer")) { return; }
+		if (!lumberjack.hasRole(["admins"], "transfer")) { return; }
 
 		if (this.$.confirmDeleteEntryPopup)
 		{
 			this.$.confirmDeleteEntryPopup.hide();
 			this.$.confirmDeleteEntryPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteEntryPopup", kind: "quantum.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteEntryPopup.show("Delete Entry? This cannot be undone.");
 	},
 	*/
@@ -2300,8 +2300,8 @@ enyo.kind({
 			this.$.shareholderSearchPopup.destroy();
 		}
 
-		this.createComponent({name: "shareholderSearchPopup", kind: "quantum.ShareholderSearchPopup", title: "Search Sellers", allowNewContact: false, enableSearch: true, typeFilter: ["seller"], onShareholderSelected: "handleSellingShareholderSelected", onHide: "handlePopupHidden"});
-		this.$.shareholderSearchPopup.show(this.$.sellerNameInput.get("value"), quantum.preferences.get("company"));
+		this.createComponent({name: "shareholderSearchPopup", kind: "lumberjack.ShareholderSearchPopup", title: "Search Sellers", allowNewContact: false, enableSearch: true, typeFilter: ["seller"], onShareholderSelected: "handleSellingShareholderSelected", onHide: "handlePopupHidden"});
+		this.$.shareholderSearchPopup.show(this.$.sellerNameInput.get("value"), lumberjack.preferences.get("company"));
 	},
 
 	handleSellingShareholderSelected: function(inSender, inEvent)
@@ -2380,10 +2380,10 @@ enyo.kind({
 
 		this.$.loadingPopup.show("Loading...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "findcontactbyid",
+			url: lumberjack.preferences.get("apiServer") + "findcontactbyid",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2408,17 +2408,17 @@ enyo.kind({
 			{
 				if(inEvent.originator.name === "refreshSellerButton")
 				{
-					this.handleSellingShareholderSelected(inSender, {shareholder: new quantum.ContactModel(response.record)})
+					this.handleSellingShareholderSelected(inSender, {shareholder: new lumberjack.ContactModel(response.record)})
 				}
 				else if(inEvent.originator.name === "refreshBuyerButton")
 				{
-					this.handleBuyingShareholderSelected(inSender, {shareholder: new quantum.ContactModel(response.record)})
+					this.handleBuyingShareholderSelected(inSender, {shareholder: new lumberjack.ContactModel(response.record)})
 				}
 			}
 		}));
 
 		request.go({
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			searchID: contactID
 		});
 	},
@@ -2447,8 +2447,8 @@ enyo.kind({
 			this.$.shareholderSearchPopup.destroy();
 		}
 
-		this.createComponent({name: "shareholderSearchPopup", kind: "quantum.ShareholderSearchPopup",title: "Search Buyers", allowNewContact: false, enableSearch: true, searchRoles: ["buyer"], onShareholderSelected: "handleBuyingShareholderSelected", onHide: "handlePopupHidden"});
-		this.$.shareholderSearchPopup.show(this.$.buyerNameInput.get("value"), quantum.preferences.get("company"));
+		this.createComponent({name: "shareholderSearchPopup", kind: "lumberjack.ShareholderSearchPopup",title: "Search Buyers", allowNewContact: false, enableSearch: true, searchRoles: ["buyer"], onShareholderSelected: "handleBuyingShareholderSelected", onHide: "handlePopupHidden"});
+		this.$.shareholderSearchPopup.show(this.$.buyerNameInput.get("value"), lumberjack.preferences.get("company"));
 	},
 
 	handleBuyingShareholderSelected: function(inSender, inEvent)
@@ -2530,7 +2530,7 @@ enyo.kind({
 
 		var flagAsInvalid = function(control, doNotUseParent) {
 			isValid = false;
-			if(control.kind === "quantum.Input"){
+			if(control.kind === "lumberjack.Input"){
 				control.setBorderError();
 			}
 			else if (doNotUseParent === true)
@@ -3007,12 +3007,12 @@ enyo.kind({
 	rollback: function(database, record, revision)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "rollback",
+			url: lumberjack.preferences.get("apiServer") + "rollback",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
 				databaseID: database,
@@ -3117,15 +3117,15 @@ enyo.kind({
 
 		this.$.loadingPopup.show("Updating Contact Information.");
 		var sellerRequest = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + sellerRoute,
+			url: lumberjack.preferences.get("apiServer") + sellerRoute,
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				transferID: this.get("tempEntry")._id,
 				contactID: this.get("tempEntry").seller.contactID
 			}
@@ -3145,7 +3145,7 @@ enyo.kind({
 			}
 			else
 			{
-				this.rollback(quantum.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
+				this.rollback(lumberjack.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
 			}
 			console.log(request, response);
 			return;
@@ -3163,7 +3163,7 @@ enyo.kind({
 				}
 				else
 				{
-					this.rollback(quantum.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
+					this.rollback(lumberjack.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
 				}
 				console.log(request, response);
 				return;
@@ -3174,15 +3174,15 @@ enyo.kind({
 			var sellerRevision = response.rev;
 
 			var buyerRequest = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + buyerRoute,
+				url: lumberjack.preferences.get("apiServer") + buyerRoute,
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				},
 				postBody: {
-					companyID: quantum.preferences.get("company"),
+					companyID: lumberjack.preferences.get("company"),
 					transferID: this.get("tempEntry")._id,
 					contactID: this.get("tempEntry").buyer.contactID
 				}
@@ -3196,14 +3196,14 @@ enyo.kind({
 					return;
 				}
 				//Rollback seller and activeEntry
-				this.rollback(quantum.preferences.get("contactDatabase"), this.get("activeEntry").get("seller").contactID, sellerRevision);
+				this.rollback(lumberjack.preferences.get("contactDatabase"), this.get("activeEntry").get("seller").contactID, sellerRevision);
 				if(this.mode === "add")
 				{
 					this.rollbackAdd();
 				}
 				else
 				{
-					this.rollback(quantum.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
+					this.rollback(lumberjack.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
 				}
 				console.log(request, response);
 				return;
@@ -3216,14 +3216,14 @@ enyo.kind({
 					alertify.error("Failed to update buyer transaction record.");
 					console.log(request, response);
 					//Rollback seller and activeEntry
-					this.rollback(quantum.preferences.get("contactDatabase"), this.get("activeEntry").get("seller").contactID, sellerRevision);
+					this.rollback(lumberjack.preferences.get("contactDatabase"), this.get("activeEntry").get("seller").contactID, sellerRevision);
 					if(this.mode === "add")
 					{
 						this.rollbackAdd();
 					}
 					else
 					{
-						this.rollback(quantum.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
+						this.rollback(lumberjack.preferences.get("transferDatabase"), this.get("tempEntry")._id, this.get("tempEntry").rollbackRevision);
 					}
 					return;
 				}
@@ -3243,7 +3243,7 @@ enyo.kind({
 
 					this.set("activeEntry", null)
 
-					filteredCollection = new quantum.TransferCollection(filteredCollection);
+					filteredCollection = new lumberjack.TransferCollection(filteredCollection);
 
 					if (filteredCollection.length > 0)
 					{
@@ -3271,11 +3271,11 @@ enyo.kind({
 		tempEntry.transferType = this.getSelected(this.$.transferTypePicker);
 		tempEntry.principalID = this.getSelected(this.$.principalPicker);
 		tempEntry.transferApprovalType = this.getSelected(this.$.transferApprovalTypePicker);
-		tempEntry.numShares = quantum.parseInt(this.get("numShares"));
+		tempEntry.numShares = lumberjack.parseInt(this.get("numShares"));
 		tempEntry.classOfShares = this.$.classSharesInput.get("value");
-		tempEntry.pricePerShare = quantum.parseFloat(this.get("pricePerShare"));
-		tempEntry.buyPricePerShare = quantum.parseFloat(this.get("buyPricePerShare"));
-		tempEntry.totalPurchasePrice = quantum.parseFloat(this.get("totalPurchasePrice"));
+		tempEntry.pricePerShare = lumberjack.parseFloat(this.get("pricePerShare"));
+		tempEntry.buyPricePerShare = lumberjack.parseFloat(this.get("buyPricePerShare"));
+		tempEntry.totalPurchasePrice = lumberjack.parseFloat(this.get("totalPurchasePrice"));
 		tempEntry.companyName = this.$.companyNameInput.get("value");
 		tempEntry.certificateNumber = this.$.certificateNumberInput.get("value");
 		tempEntry.notes = this.$.notesInput.get("value");
@@ -3592,7 +3592,7 @@ enyo.kind({
 			tempEntry._id = uuid.v4().replace(/-/g,"");
 		}
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -3634,9 +3634,9 @@ enyo.kind({
 						cacheBust: false,
 						contentType: "application/json",
 						method: "POST",
-						url: quantum.preferences.get("apiServer") + "mailDaemon",
+						url: lumberjack.preferences.get("apiServer") + "mailDaemon",
 						headers:{
-							"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+							"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 						}
 					};
 
@@ -3649,11 +3649,11 @@ enyo.kind({
 					{
 						tempVars.buyerName = this.get("activeEntry").get("buyer").name;
 					}
-					tempVars.newPaymentAmount = quantum.formatCurrency(this.paymentDelta);
-					tempVars.paymentRemaining = quantum.formatCurrency(quantum.parseFloat(this.get("activeEntry").get("totalPurchasePrice")) - this.$.paymentSection.calculateFundsPaid());
+					tempVars.newPaymentAmount = lumberjack.formatCurrency(this.paymentDelta);
+					tempVars.paymentRemaining = lumberjack.formatCurrency(lumberjack.parseFloat(this.get("activeEntry").get("totalPurchasePrice")) - this.$.paymentSection.calculateFundsPaid());
 					tempVars.companyName = this.get("activeEntry").get("companyName");
 					tempVars.emailType = "transferBuyer";
-					ajaxProperties.postBody = {data: tempVars, placement:quantum.preferences.get("transferDatabase"), record: this.get("activeEntry").get("_id"), templateName: "Transfer Funds Received"};
+					ajaxProperties.postBody = {data: tempVars, placement:lumberjack.preferences.get("transferDatabase"), record: this.get("activeEntry").get("_id"), templateName: "Transfer Funds Received"};
 
 					var ajax = new enyo.Ajax(ajaxProperties);
 
@@ -3682,7 +3682,7 @@ enyo.kind({
 
 				if(this.get("mode") === "add")
 				{
-					this.activate(new quantum.TransferModel(tempEntry));
+					this.activate(new lumberjack.TransferModel(tempEntry));
 				}
 			}));
 		}));
@@ -3714,11 +3714,11 @@ enyo.kind({
 			data.get("transferType") !== this.getSelected(this.$.transferTypePicker),
 			data.get("principalID") !== this.getSelected(this.$.principalPicker),
 			data.get("transferApprovalType") !== this.getSelected(this.$.transferApprovalTypePicker),
-			data.get("numShares") !== quantum.parseInt(this.get("numShares")),
+			data.get("numShares") !== lumberjack.parseInt(this.get("numShares")),
 			data.get("classOfShares") !== this.$.classSharesInput.get("value"),
-			data.get("pricePerShare") !== quantum.parseFloat(this.get("pricePerShare")),
-			data.get("buyPricePerShare") !== quantum.parseFloat(this.get("buyPricePerShare")),
-			data.get("totalPurchasePrice") !== quantum.parseFloat(this.get("totalPurchasePrice")),
+			data.get("pricePerShare") !== lumberjack.parseFloat(this.get("pricePerShare")),
+			data.get("buyPricePerShare") !== lumberjack.parseFloat(this.get("buyPricePerShare")),
+			data.get("totalPurchasePrice") !== lumberjack.parseFloat(this.get("totalPurchasePrice")),
 			//data.get("companyName") !== this.$.companyNameInput.get("value"),
 			data.get("certificateNumber") !== this.$.certificateNumberInput.get("value"),
 			data.get("notes") !== this.$.notesInput.get("value"),
@@ -3781,7 +3781,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}
 		else { this.nextEntry(inSender, inEvent); }
@@ -3801,7 +3801,7 @@ enyo.kind({
 				this.$.previous_saveChangesPopup.hide();
 				this.$.previous_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "previous_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "previous_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.previous_saveChangesPopup.show("Save changes?");
 		}
 		else { this.previousEntry(inSender, inEvent); }
@@ -3872,7 +3872,7 @@ enyo.kind({
 				this.$.generateSaveChangesPopup.hide();
 				this.$.generateSaveChangesPopup.destroy();
 			}
-			this.createComponent({name: "generateSaveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "generateSaveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.generateSaveChangesPopup.show("You Must Save Before Generating Documents, Save?");
 			return;
 		}
@@ -3880,15 +3880,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Generating...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatetransferdocs",
+			url: lumberjack.preferences.get("apiServer") + "generatetransferdocs",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferID: this.get("activeEntry").get("_id")
 			}
 		});
@@ -3938,15 +3938,15 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show();
 		var lawyerPackage = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendlawyerpackage",
+			url: lumberjack.preferences.get("apiServer") + "sendlawyerpackage",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferId: this.get("activeEntry").get("_id")
 			}
 		});
@@ -3989,7 +3989,7 @@ enyo.kind({
 		{
 			this.$.loadingPopup.show("Downloading");
 
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -4029,7 +4029,7 @@ enyo.kind({
 
 		this.$.loadingPopup.show("Downloading");
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -4065,15 +4065,15 @@ enyo.kind({
 
 		this.$.loadingPopup.show("Sending Adobe Reminder...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendtransferreminder",
+			url: lumberjack.preferences.get("apiServer") + "sendtransferreminder",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferId: this.get("activeEntry").get("_id"),
 				agreementId: adobeAgreementId
 			}
@@ -4128,7 +4128,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "handlePopupHidden", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "handlePopupHidden", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}else{
 			var adobeAgreementId = this.getActiveEntryDocument(inEvent.originator.name).adobe.agreementId;
@@ -4224,15 +4224,15 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Cancelling Transfer Document(s)...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "canceltransferdoc",
+			url: lumberjack.preferences.get("apiServer") + "canceltransferdoc",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				agreementId: adobeAgreementId
 			}
 		});
@@ -4267,10 +4267,10 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Loading...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "gettransferdocstatus",
+			url: lumberjack.preferences.get("apiServer") + "gettransferdocstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -4298,7 +4298,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			transferDatabase: quantum.preferences.get("transferDatabase"),
+			transferDatabase: lumberjack.preferences.get("transferDatabase"),
 			agreementId: adobeAgreementId
 		});
 	},
@@ -4307,10 +4307,10 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Loading...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "refreshtransferdocstatus",
+			url: lumberjack.preferences.get("apiServer") + "refreshtransferdocstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -4338,7 +4338,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			transferDatabase: quantum.preferences.get("transferDatabase"),
+			transferDatabase: lumberjack.preferences.get("transferDatabase"),
 			agreementId: adobeAgreementId,
 			transferId: this.get("activeEntry").get("_id")
 		});
@@ -4355,15 +4355,15 @@ enyo.kind({
 
 		this.$.loadingPopup.show("Sending Transfer Document(s)...");
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendtransferdoc",
+			url: lumberjack.preferences.get("apiServer") + "sendtransferdoc",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferId: this.get("activeEntry").get("_id"),
 				documentName: this.getActiveEntryDocument(name).unsignedFileName,
 				documentType: name
@@ -4412,7 +4412,7 @@ enyo.kind({
 				this.$.generateSellerInvoice_saveChangesPopup.hide();
 				this.$.generateSellerInvoice_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "generateSellerInvoice_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "generateSellerInvoice_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.generateSellerInvoice_saveChangesPopup.show("Must Save Changes Before Generating Invoice. Save changes?");
 		}
 		else { this.generateSellerInvoice(inSender, inEvent); }
@@ -4421,16 +4421,16 @@ enyo.kind({
 	generateSellerInvoice: function(inSender, inEvent)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatetransferinvoice",
+			url: lumberjack.preferences.get("apiServer") + "generatetransferinvoice",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
 				type: "seller",
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferId: this.get("activeEntry").get("_id")
 			}
 		});
@@ -4472,7 +4472,7 @@ enyo.kind({
 				this.$.generateBuyerInvoice_saveChangesPopup.hide();
 				this.$.generateBuyerInvoice_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "generateBuyerInvoice_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "generateBuyerInvoice_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.generateBuyerInvoice_saveChangesPopup.show("Must Save Changes Before Generating Invoice. Save changes?");
 		}
 		else { this.generateBuyerInvoice(inSender, inEvent); }
@@ -4481,16 +4481,16 @@ enyo.kind({
 	generateBuyerInvoice: function(inSender, inEvent)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatetransferinvoice",
+			url: lumberjack.preferences.get("apiServer") + "generatetransferinvoice",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			},
 			postBody: {
 				type: "buyer",
-				transferDatabase: quantum.preferences.get("transferDatabase"),
+				transferDatabase: lumberjack.preferences.get("transferDatabase"),
 				transferId: this.get("activeEntry").get("_id")
 			}
 		});
@@ -4526,11 +4526,11 @@ enyo.kind({
 	handleRequestDownloadBuyerInvoice: function(inSender, inEvent)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "downloadtransferinvoice",
+			url: lumberjack.preferences.get("apiServer") + "downloadtransferinvoice",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -4554,22 +4554,22 @@ enyo.kind({
 			}
 			else
 			{
-				saveAs(quantum.b64ToBlob(response.fileData, "application/pdf"), response.fileName);
+				saveAs(lumberjack.b64ToBlob(response.fileData, "application/pdf"), response.fileName);
 			}
 		}));
 
 		this.$.loadingPopup.show("Downloading");
-		request.go({type: "buyer", transferDatabase: quantum.preferences.get("transferDatabase"), transferId: this.get("activeEntry").get("_id")});
+		request.go({type: "buyer", transferDatabase: lumberjack.preferences.get("transferDatabase"), transferId: this.get("activeEntry").get("_id")});
 	},
 
 	handleRequestDownloadSellerInvoice: function(inSender, inEvent)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "downloadtransferinvoice",
+			url: lumberjack.preferences.get("apiServer") + "downloadtransferinvoice",
 			cacheBust: false,
 			contentType: "application/json",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -4593,12 +4593,12 @@ enyo.kind({
 			}
 			else
 			{
-				saveAs(quantum.b64ToBlob(response.fileData, "application/pdf"), response.fileName);
+				saveAs(lumberjack.b64ToBlob(response.fileData, "application/pdf"), response.fileName);
 			}
 		}));
 
 		this.$.loadingPopup.show("Downloading");
-		request.go({type: "seller", transferDatabase: quantum.preferences.get("transferDatabase"), transferId: this.get("activeEntry").get("_id")});
+		request.go({type: "seller", transferDatabase: lumberjack.preferences.get("transferDatabase"), transferId: this.get("activeEntry").get("_id")});
 	},
 
 	/**********************

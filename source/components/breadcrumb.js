@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Breadcrumb",
+	name: "lumberjack.Breadcrumb",
 	kind: "enyo.FittableColumns", 
 	classes: "breadcrumb", 
 

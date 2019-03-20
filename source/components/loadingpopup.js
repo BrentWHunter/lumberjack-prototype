@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.LoadingPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.LoadingPopup",
 	zIndex: 1234,
 
 	subComponents: [

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ContactDetailPanel",
+	name: "lumberjack.ContactDetailPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -30,28 +30,28 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "General Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				{name: "deleteEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
-				{name: "saveEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				{name: "deleteEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px;", content: "Delete Entry", ontap: "handleDeleteEntryButtonTapped"},
+				{name: "saveEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px;", content: "Save Entry", ontap: "handleSaveEntryButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]},
 			{name: "addButtons", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
-				{name: "addEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
+				{name: "addEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", components: [
 			{style: "width: 50%; padding-right: 5px;", components: [
-				{kind: "quantum.Input", name:"contactNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Name", required:true},
+				{kind: "lumberjack.Input", name:"contactNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Name", required:true},
 				{name: "corporateContactSection", components: [
-					{kind: "quantum.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
-					{kind: "quantum.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true},
+					{kind: "lumberjack.Input", name:"contactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person", required:true},
+					{kind: "lumberjack.Input", name:"contactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Contact Person Title", required:true},
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Date of Birth", style: "line-height: 28px; width: 170px;"},
-					{kind: "quantum.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
-					{kind: "quantum.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthDayInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 10px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"", placeholder: "DD", required:true, inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthMonthInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 35px; margin-right: 3px;", inputStyle: "width: 35px; text-align: center;", type:"text", label:"/", required:true, placeholder: "MM", inputMaxLength:2, onkeydown: "validateNumberInput"},
+					{kind: "lumberjack.Input", name:"birthYearInput", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 28px;", decoratorStyle: "margin-left: 3px; width: 50px; margin-right: 3px;", inputStyle: "width: 50px; text-align: center;", type:"text", label:"/", required:true, placeholder: "YYYY", inputMaxLength:4, onkeydown: "validateNumberInput"},
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Contact Jurisdiction", style: "line-height: 38px; width: 170px;"},
@@ -77,20 +77,20 @@ enyo.kind({
 			]},
 			{style: "width: 50%; padding-left: 5px;", components: [
 				{content: "Roles", style: "margin-top: 20px; font-size: 18px;"},
-				{kind:"quantum.Checkbox", name:"shareholderRoleCheckbox", content:"Shareholder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", disabled: true, onActivate: "handleRoleCheckboxActivated"},
-				{kind:"quantum.Checkbox", name:"subscriberRoleCheckbox", content:"Subscriber", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", disabled: true, onActivate: "handleRoleCheckboxActivated"},
-				{kind:"quantum.Checkbox", name:"buyerRoleCheckbox", content:"Buyer", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"},
-				{kind:"quantum.Checkbox", name:"optionholderRoleCheckbox", content:"Option Holder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"},
-				{kind:"quantum.Checkbox", name:"warrantholderRoleCheckbox", content:"Warrant Holder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"}
+				{kind:"lumberjack.Checkbox", name:"shareholderRoleCheckbox", content:"Shareholder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", disabled: true, onActivate: "handleRoleCheckboxActivated"},
+				{kind:"lumberjack.Checkbox", name:"subscriberRoleCheckbox", content:"Subscriber", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", disabled: true, onActivate: "handleRoleCheckboxActivated"},
+				{kind:"lumberjack.Checkbox", name:"buyerRoleCheckbox", content:"Buyer", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"},
+				{kind:"lumberjack.Checkbox", name:"optionholderRoleCheckbox", content:"Option Holder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"},
+				{kind:"lumberjack.Checkbox", name:"warrantholderRoleCheckbox", content:"Warrant Holder", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onActivate: "handleRoleCheckboxActivated"}
 			]}
 		]},
-		{name: "contactInfoSection", kind: "quantum.ContactInfo"},
-		{name: "addressInfoSection", kind: "quantum.AddressInfo"},
-		{name: "shareholderInformationSection", kind: "quantum.ShareholderInformationModule"},
-		{name: "activeSubscriberInformationSection", kind: "quantum.SubscriberInformationModule", title: "Active Subscriptions"},
-		{name: "cancelledSubscriberInformationSection", kind: "quantum.SubscriberInformationModule", mode: "cancelled", title: "Cancelled Subscriptions"},
-		{name: "buyerInformationSection", kind: "quantum.BuyerInformationModule", onRequestSave: "handleRequestSave", onDownloadDocument: "handleDownloadDocument"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "contactInfoSection", kind: "lumberjack.ContactInfo"},
+		{name: "addressInfoSection", kind: "lumberjack.AddressInfo"},
+		{name: "shareholderInformationSection", kind: "lumberjack.ShareholderInformationModule"},
+		{name: "activeSubscriberInformationSection", kind: "lumberjack.SubscriberInformationModule", title: "Active Subscriptions"},
+		{name: "cancelledSubscriberInformationSection", kind: "lumberjack.SubscriberInformationModule", mode: "cancelled", title: "Cancelled Subscriptions"},
+		{name: "buyerInformationSection", kind: "lumberjack.BuyerInformationModule", onRequestSave: "handleRequestSave", onDownloadDocument: "handleDownloadDocument"},
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -345,7 +345,7 @@ enyo.kind({
 
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
@@ -354,12 +354,12 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins"], "contact");
+		return lumberjack.hasRole(["admins"], "contact");
 	},
 
 	setShowingForRoles: function()
 	{
-		this.$.deleteEntryButton.set("showing", quantum.hasRole(["admins"], "contact"));
+		this.$.deleteEntryButton.set("showing", lumberjack.hasRole(["admins"], "contact"));
 		this.$.saveEntryButton.set("showing", this.canEdit());
 	},
 
@@ -438,13 +438,13 @@ enyo.kind({
 
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "contact")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "contact")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 
 		// The "activeEntry" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("activeEntry", null);
-		this.set("activeEntry", new quantum.ContactModel({}));
+		this.set("activeEntry", new lumberjack.ContactModel({}));
 		if (activeEntry != null) { this.set("activeEntry", activeEntry); }
 
 		this.initEntryAttributes(this.get("activeEntry"));
@@ -499,7 +499,7 @@ enyo.kind({
 			this.$.birthMonthInput.setBorderError();
 			this.$.birthDayInput.setBorderError();
 		}
-		if(this.$.birthYearInput.get("value") < 1900 || this.$.birthYearInput.get("value") > quantum.parseInt(moment().format('YYYY')))
+		if(this.$.birthYearInput.get("value") < 1900 || this.$.birthYearInput.get("value") > lumberjack.parseInt(moment().format('YYYY')))
 		{
 			isValid = false;
 			this.$.birthYearInput.setBorderError();
@@ -624,7 +624,7 @@ enyo.kind({
 			this.get("activeEntry").set("newContactFlag", false);
 		}
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -660,21 +660,21 @@ enyo.kind({
 
 	handleDeleteEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "contact")) { return; }
+		if (!lumberjack.hasRole(["admins"], "contact")) { return; }
 
 		if (this.$.confirmDeleteEntryPopup)
 		{
 			this.$.confirmDeleteEntryPopup.hide();
 			this.$.confirmDeleteEntryPopup.destroy();
 		}
-   		this.createComponent({name: "confirmDeleteEntryPopup", kind: "quantum.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
+   		this.createComponent({name: "confirmDeleteEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
    		this.$.confirmDeleteEntryPopup.show("Delete Entry? This cannot be undone.");
 	},
 
 	deleteEntry: function(inSender, inEvent){
 		this.$.loadingPopup.show("Deleting...");
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -746,7 +746,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}
 		else { this.nextEntry(inSender, inEvent); }
@@ -767,7 +767,7 @@ enyo.kind({
 				this.$.previous_saveChangesPopup.hide();
 				this.$.previous_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "previous_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "previous_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.previous_saveChangesPopup.show("Save changes?");
 		}
 		else { this.previousEntry(inSender, inEvent); }
@@ -788,7 +788,7 @@ enyo.kind({
 	{
 		if (this.get("activeEntry") && this.get("activeEntry").get("activeRoles") && this.get("activeEntry").get("activeRoles").indexOf("buyer") === -1 && inEvent.originator.owner === this.$.buyerRoleCheckbox && inEvent.originator.get("checked"))
 		{
-			this.$.buyerInformationSection.set("buyerInfo", new quantum.ContactBuyerInformationModel({}));
+			this.$.buyerInformationSection.set("buyerInfo", new lumberjack.ContactBuyerInformationModel({}));
 			this.$.buyerInformationSection.resize();
 		}
 	},
@@ -802,7 +802,7 @@ enyo.kind({
 				this.$.buyer_saveChangesPopup.hide();
 				this.$.buyer_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "buyer_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "buyer_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
 			this.$.buyer_saveChangesPopup.show("Must save changes before proceeding. Save changes?");
 		}
 		else { inEvent.callback(); }
@@ -822,7 +822,7 @@ enyo.kind({
 		if (this.get("activeEntry").get("_attachments") && this.get("activeEntry").get("_attachments")[inEvent.documentID])
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");

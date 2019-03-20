@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.OptionExercisePopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.OptionExercisePopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onExercise: "",
@@ -19,15 +19,15 @@ enyo.kind({
 		{style: "height 400px; padding: 10px;", components: [
 			{name: "popupTitle", style: "font-size: 24px; text-align: center;", content: "Exercise Shares"},
 			{name: "exerciseScroller", kind: "enyo.Scroller", style: "margin-top: 15px; width: 630px; height: 170px; background-color: #EEEEEE;", components: [
-				{name: "currentActiveSharesInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 240px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"quantum.Input", readonly:true, required:true, disabled:true, value:"", label: "Current Active Shares:"},
-				{name: "exerciseSharesInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 240px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"quantum.Input", required:true, label: "Number of Shares to Exercise:"}
+				{name: "currentActiveSharesInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 240px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"lumberjack.Input", readonly:true, required:true, disabled:true, value:"", label: "Current Active Shares:"},
+				{name: "exerciseSharesInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 240px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"lumberjack.Input", required:true, label: "Number of Shares to Exercise:"}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "exerciseButton", kind: "quantum.Button", content: $L("Exercise"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "exerciseButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "exerciseButton", kind: "lumberjack.Button", content: $L("Exercise"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "exerciseButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 	bindings: [
 		{from: ".activeShares", to: ".$.currentActiveSharesInput.value", transform: function(v) { return v; }}
@@ -47,7 +47,7 @@ enyo.kind({
 		}
 
 		var shares = this.$.exerciseSharesInput.get("value").trim();
-		var shareCount = quantum.parseInt(shares);
+		var shareCount = lumberjack.parseInt(shares);
 		if(shareCount <= 0 || shareCount > this.get("activeShares")){
 			isValid = false;
 		}

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ReservationDashboardPanel",
+	name: "lumberjack.ReservationDashboardPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -100,12 +100,12 @@ enyo.kind({
 				{name: "salespersonName", style: "width: 200px; line-height: 34px;"},
 				{name: "dateTimeReserved", style: "width: 250px; line-height: 34px;"},
 				{style: "width: 200px;", components: [
-					{name: "viewSubscriptionButton", kind: "quantum.Button", enabledClasses: "button", content: "View Subscription", ontap: "handleViewSubscriptionButtonTapped"}
+					{name: "viewSubscriptionButton", kind: "lumberjack.Button", enabledClasses: "button", content: "View Subscription", ontap: "handleViewSubscriptionButtonTapped"}
 				]}
 			]}
 		]},
 		{name: "noResultsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Results"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -120,7 +120,7 @@ enyo.kind({
 
 	activate: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "reservation")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "reservation")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 		this.buildReport();

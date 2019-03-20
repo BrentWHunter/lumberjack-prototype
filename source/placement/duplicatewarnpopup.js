@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.DuplicateWarnPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.DuplicateWarnPopup",
 
 	published: {
 		duplicateEmails: null
@@ -20,14 +20,14 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 10px;", components: [
-				{kind: "quantum.Button", enabledClasses: "button primary", content: "Okay", ontap: "handleOkButtonTapped"},
+				{kind: "lumberjack.Button", enabledClasses: "button primary", content: "Okay", ontap: "handleOkButtonTapped"},
 			]},
 		]}
 	],
 
 	setupRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return true; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return true; }
 		if (!inEvent.item) { return true; }
 
 		//Cheap Hack, probably works
@@ -61,7 +61,7 @@ enyo.kind({
 	{
 		this.set("duplicateEmails", duplicateEmails);
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.$.repeater.setCount(Object.keys(duplicateEmails).length);
 	},
 

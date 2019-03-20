@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ContactInfo",
+	name: "lumberjack.ContactInfo",
 
 	style: "margin-top: 25px;",
 
@@ -11,25 +11,25 @@ enyo.kind({
 		{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Contact Information"},
 		{kind: "enyo.FittableColumns", components: [
 			{style: "width: 50%; padding-right: 5px; min-width: 480px;", components: [
-				{kind: "quantum.Input", name:"phoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Primary Phone Number", required:true},
-				{kind: "quantum.Input", name:"businessPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Business Phone Number", required:true},
-				{kind: "quantum.Input", name:"cellPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Cell Phone Number", required:true},
-				{kind: "quantum.Input", name:"faxNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Fax Number", required:true}
+				{kind: "lumberjack.Input", name:"phoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Primary Phone Number", required:true},
+				{kind: "lumberjack.Input", name:"businessPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Business Phone Number", required:true},
+				{kind: "lumberjack.Input", name:"cellPhoneNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Cell Phone Number", required:true},
+				{kind: "lumberjack.Input", name:"faxNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"tel", label:"Fax Number", required:true}
 			]},
 			{style: "width: 50%; padding-left: 5px;", components: [
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-					{name: "emailAddressInput", kind: "quantum.Input", columnStyle:"", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 275px;", type:"email", label:"Primary Email", required:true},
-					{name: "emailAddressInputCopyButton", kind: "quantum.Button", enabledClasses: "toolbar-button", style: "margin-left: 110px;  width: 30px; height: 30px; padding: 0px 0px 0px 0px;", target: "emailAddressInput", components: [
+					{name: "emailAddressInput", kind: "lumberjack.Input", columnStyle:"", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 275px;", type:"email", label:"Primary Email", required:true},
+					{name: "emailAddressInputCopyButton", kind: "lumberjack.Button", enabledClasses: "toolbar-button", style: "margin-left: 110px;  width: 30px; height: 30px; padding: 0px 0px 0px 0px;", target: "emailAddressInput", components: [
 						{kind: "enyo.Image", src: "assets/icons/copy-clipboard-icon.png", style: "width: 14px; height: 14px;"}
 					], ontap: "handleCopyToClipboardButtonTapped"}
 				]},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-					{name: "secondaryEmailAddressInput", kind: "quantum.Input", columnStyle:"", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 275px;", type:"email", label:"Secondary Email", required:false},
-					{name: "secondaryEmailAddressInputCopyButton",kind: "quantum.Button", enabledClasses: "toolbar-button", style: "margin-left: 110px; width: 30px; height: 30px; padding: 0px 0px 0px 0px;", target: "secondaryEmailAddressInput", components: [
+					{name: "secondaryEmailAddressInput", kind: "lumberjack.Input", columnStyle:"", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 275px;", type:"email", label:"Secondary Email", required:false},
+					{name: "secondaryEmailAddressInputCopyButton",kind: "lumberjack.Button", enabledClasses: "toolbar-button", style: "margin-left: 110px; width: 30px; height: 30px; padding: 0px 0px 0px 0px;", target: "secondaryEmailAddressInput", components: [
 						{kind: "enyo.Image", src: "assets/icons/copy-clipboard-icon.png", style: "width: 14px; height: 14px;"}
 					], ontap: "handleCopyToClipboardButtonTapped"}
 				]},
-				{kind:"quantum.Checkbox", name:"emailContactCheckbox", content:"Receive correspondence by email instead of postal mail.", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"}
+				{kind:"lumberjack.Checkbox", name:"emailContactCheckbox", content:"Receive correspondence by email instead of postal mail.", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"}
 			]}
 		]}
 	],
@@ -155,7 +155,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input" || this.$[key].kind === "quantum.Checkbox")
+			if(this.$[key].kind === "lumberjack.Input" || this.$[key].kind === "lumberjack.Checkbox")
 			{
 				this.$[key].set("disabled",disabled);
 			}
@@ -166,7 +166,7 @@ enyo.kind({
 	{
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}

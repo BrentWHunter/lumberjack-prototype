@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.VestingConditionSearchPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.VestingConditionSearchPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onConditionSelected: "",
@@ -30,7 +30,7 @@ enyo.kind({
 				{kind: "onyx.InputDecorator", alwaysLooksFocused: true, components: [
 					{name: "searchInput", style: "width: 270px;", kind: "onyx.Input", value:"Default Search", onkeydown: "handleSearchKeys"}
 				]},
-				{name: "searchButton", kind: "quantum.Button", content: "Search", style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "searchButtonTapped"}
+				{name: "searchButton", kind: "lumberjack.Button", content: "Search", style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "searchButtonTapped"}
 			]},
 			{name: "vestingConditionScroller", kind: "enyo.Scroller", style: "margin-top: 15px; width: 800px; height: 600px; background-color: #EEEEEE;", components: [
 				{name: "vestingConditionRepeater", kind: "enyo.Repeater", count: 0, style: "min-width: 275px;", onSetupItem: "setupVestingConditionRepeaterItem", components: [
@@ -55,12 +55,12 @@ enyo.kind({
 				{name: "noResultsItem", showing: false, style: "text-align: center; font-size: 18px; color: black; margin-top: 10px;", content: "No Results"}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "newConditionButton", kind: "quantum.Button", content: $L("New Condition"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "newConditionButtonTapped"},
-				{name: "selectButton", kind: "quantum.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "newConditionButton", kind: "lumberjack.Button", content: $L("New Condition"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "newConditionButtonTapped"},
+				{name: "selectButton", kind: "lumberjack.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 	bindings: [
 		{from: ".selectedVestingConditionRepeaterIndex", to: ".$.selectButton.disabled", transform: function(v){
@@ -97,10 +97,10 @@ enyo.kind({
 	},
 	loadVestingConditions: function() {
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "searchvestingconditions",
+			url: lumberjack.preferences.get("apiServer") + "searchvestingconditions",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 	    });
 
@@ -137,7 +137,7 @@ enyo.kind({
 			}
 			else
 			{
-				this.set("vestingConditions", new quantum.VestingEventCollection(conditions));
+				this.set("vestingConditions", new lumberjack.VestingEventCollection(conditions));
 				this.$.vestingConditionRepeater.setCount(conditions.length);
 			}
 

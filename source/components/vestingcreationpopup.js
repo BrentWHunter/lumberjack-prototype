@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.VestingCreationPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.VestingCreationPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onCreateNewCondition: "",
@@ -15,16 +15,16 @@ enyo.kind({
 		{style: "height 400px; padding: 10px;", components: [
 			{name: "popupTitle", style: "font-size: 24px; text-align: center;", content: "Add Vesting Event"},
 			{name: "vestingConditionScroller", kind: "enyo.Scroller", style: "margin-top: 15px; width: 560px; height: 170px; background-color: #EEEEEE;", components: [
-				{name: "conditionTypeInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"quantum.Input", readonly:true, required:true, disabled:true, value:"Event", label: "Condition Type:"},
-				{name: "conditionNameInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"quantum.Input", required:true, label: "Condition Name:"},
-				{name: "conditionDescriptionInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"quantum.Input", required:true, label:"Condition Description:"}
+				{name: "conditionTypeInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"lumberjack.Input", readonly:true, required:true, disabled:true, value:"Event", label: "Condition Type:"},
+				{name: "conditionNameInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"lumberjack.Input", required:true, label: "Condition Name:"},
+				{name: "conditionDescriptionInput", type:"text", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px; color:black; padding-left:10px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", kind:"lumberjack.Input", required:true, label:"Condition Description:"}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "newConditionButton", kind: "quantum.Button", content: $L("Add Condition"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "newConditionButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "newConditionButton", kind: "lumberjack.Button", content: $L("Add Condition"), style: "margin-left: 10px; width: 150px; height: 40px;", ontap: "newConditionButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 	bindings: [
 	],

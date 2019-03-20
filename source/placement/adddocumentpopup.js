@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.AddDocumentPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.AddDocumentPopup",
 
 	published: {
 		activeDate: moment()
@@ -19,13 +19,13 @@ enyo.kind({
 			{style: "font-size: 24px; text-align: center;", content: "Add Document"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "File Description", style: "line-height: 34px; width: 150px;"},
-				{kind: "quantum.Input", name: "fileDescriptionInput", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true}
+				{kind: "lumberjack.Input", name: "fileDescriptionInput", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Date Received", style: "line-height: 34px; width: 150px;"},
 				{components: [
-					{kind: "quantum.Input", name: "dateReceivedInput", ontap: "handleDateReceivedInputTapped", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true, readonly: true},
-					{name: "calendarPopup", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged"}
+					{kind: "lumberjack.Input", name: "dateReceivedInput", ontap: "handleDateReceivedInputTapped", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true, readonly: true},
+					{name: "calendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged"}
 				]}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 7px;", components: [
@@ -35,10 +35,10 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 10px;", components: [
-				{kind: "quantum.Button", enabledClasses: "button primary", content: "Add", ontap: "handleAddButtonTapped"},
-				{kind: "quantum.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
+				{kind: "lumberjack.Button", enabledClasses: "button primary", content: "Add", ontap: "handleAddButtonTapped"},
+				{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
 			]},
-			{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+			{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 		]}
 	],
 
@@ -51,7 +51,7 @@ enyo.kind({
 	show: function()
 	{
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 	},
 
 	validateInputs: function()

@@ -1,6 +1,6 @@
-/* global quantum,alertify,numeral,console */
+/* global lumberjack,alertify,numeral,console */
 enyo.kind({
-	name: "quantum.MigrateSubscriptionsPanel",
+	name: "lumberjack.MigrateSubscriptionsPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -33,30 +33,30 @@ enyo.kind({
 			]},
 			{kind: "enyo.FittableColumns", style: "padding-top: 5px;" , components: [
 				{kind: "enyo.FittableRows", classes: "csvCheckbox", components: [
-					{kind:"quantum.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allCheckSubscription"}
+					{kind:"lumberjack.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "allCheckSubscription"}
 				]},
 				{style: "margin-left: 15px; padding: 0 10px; border: 1px solid black; max-width: 1000px;", components: [
-					{kind:"quantum.Checkbox", name:"incompleteDocsNoFundsCheckbox", content:"Incomplete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"incompleteDocsPartialFundsCheckbox", content:"Incomplete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"completeDocsNoFundsCheckbox", content:"Complete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"completeDocsPartialFundsCheckbox", content:"Complete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
-					{kind:"quantum.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsNoFundsCheckbox", content:"Incomplete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsPartialFundsCheckbox", content:"Incomplete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"incompleteDocsAllFundsCheckbox", content:"Incomplete Docs, All Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"completeDocsNoFundsCheckbox", content:"Complete Docs, No Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"completeDocsPartialFundsCheckbox", content:"Complete Docs, Partial Funds", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"completeCheckbox", content:"Complete", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"},
+					{kind:"lumberjack.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "checkBoxesForSubscription"}
 				]}
 			]},
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 10px;", content: "3. Select Countries"},
 			{kind: "enyo.FittableColumns", style: "padding-top: 5px;", components: [
 				{kind: "enyo.FittableRows", classes: "csvCheckbox", components: [
-					{kind:"quantum.Checkbox", name:"allCountriesCheckbox", content:"All Countries", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"allCheckCountries"},
-					{kind:"quantum.Checkbox", name:"allNonUSorCanadaCheckbox", content:"All Non US/Canada", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"nonCanUSACheckCountries"}
+					{kind:"lumberjack.Checkbox", name:"allCountriesCheckbox", content:"All Countries", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"allCheckCountries"},
+					{kind:"lumberjack.Checkbox", name:"allNonUSorCanadaCheckbox", content:"All Non US/Canada", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"nonCanUSACheckCountries"}
 				]},
 				{style: "margin-left: 15px; padding: 0 10px; border: 1px solid black; max-width: 1000px;", components: [
-					{name: "newBoxesCountry", kind: "quantum.CountryCheckboxes", onAllCountriesChecked: "allCheckCountries", onAllNonUSorCanadaChecked: "nonCanUSACheckCountries", onNeitherChecked: "handleNeitherChecked"}
+					{name: "newBoxesCountry", kind: "lumberjack.CountryCheckboxes", onAllCountriesChecked: "allCheckCountries", onAllNonUSorCanadaChecked: "nonCanUSACheckCountries", onNeitherChecked: "handleNeitherChecked"}
 				]}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", enabledClasses: "button primary", style: "line-height: 30px; margin-top: 10px", content: "Search Subscriptions", ontap: "checkedBoxes"}
+				{kind: "lumberjack.Button", enabledClasses: "button primary", style: "line-height: 30px; margin-top: 10px", content: "Search Subscriptions", ontap: "checkedBoxes"}
 			]}
 		]},
 		{name: "subscriptionResultsSection", showing: false, components: [
@@ -104,7 +104,7 @@ enyo.kind({
 			]}
 		]},
 		{name: "noSubscriptionsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Subscriptions Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -118,16 +118,16 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
 
 		this.$.placementDatabasePicker.set("selected", null);
 		this.$.placementDatabasePicker.destroyClientControls();
-		var placements = quantum.preferences.get("placements");
+		var placements = lumberjack.preferences.get("placements");
 		var placementItems = [];
 		var active = true;
 		for (var i = 0; i < placements.length; i++)
 		{
-			if (placements[i].status === "active" && placements[i].database !== quantum.preferences.get("placementDatabase"))
+			if (placements[i].status === "active" && placements[i].database !== lumberjack.preferences.get("placementDatabase"))
 			{
 				placementItems.push({database: placements[i].database, content: placements[i].name, active: active});
 				active = false;
@@ -291,7 +291,7 @@ enyo.kind({
 
 	setupSubscriptionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
 		if (!inEvent.item) {return true;}
 
 		var subscriptionItem = this.get("filteredSubscriptionCollection")[inEvent.index].subscription;
@@ -324,11 +324,11 @@ enyo.kind({
 		inEvent.item.$.migrateCheckbox.set("checked", subscriptionChecked);
 		inEvent.item.$.displayName.set("content", subscriptionItem.get("contactInfo").displayName ? subscriptionItem.get("contactInfo").displayName : "");
 		inEvent.item.$.contactPerson.set("content", subscriptionItem.get("contactInfo").corporateInfo.contactPerson ? subscriptionItem.get("contactInfo").corporateInfo.contactPerson : "");
-		inEvent.item.$.subscriptionStatus.set("content", quantum.subscriptionStatusLookup(subscriptionItem.get("subscriptionInfo").subscriptionStatus));
+		inEvent.item.$.subscriptionStatus.set("content", lumberjack.subscriptionStatusLookup(subscriptionItem.get("subscriptionInfo").subscriptionStatus));
 		inEvent.item.$.agreementSignatureStatusIcon.set("src", agreementSignatureStatusIconSrc);
 		inEvent.item.$.numShares.set("content", subscriptionItem.get("subscriptionInfo").numShares ? numeral(subscriptionItem.get("subscriptionInfo").numShares).format('0,0') : "0");
-		inEvent.item.$.subscriberDollarAmount.set("content", subscriptionItem.get("subscriptionInfo").subscriberDollarAmount ? "$" + quantum.formatCurrency(subscriptionItem.get("subscriptionInfo").subscriberDollarAmount) : "$0");
-		inEvent.item.$.fundsReceived.set("content", subscriptionItem.get("subscriptionInfo").fundsReceived ? "$" + quantum.formatCurrency(subscriptionItem.get("subscriptionInfo").fundsReceived) : "$0");
+		inEvent.item.$.subscriberDollarAmount.set("content", subscriptionItem.get("subscriptionInfo").subscriberDollarAmount ? "$" + lumberjack.formatCurrency(subscriptionItem.get("subscriptionInfo").subscriberDollarAmount) : "$0");
+		inEvent.item.$.fundsReceived.set("content", subscriptionItem.get("subscriptionInfo").fundsReceived ? "$" + lumberjack.formatCurrency(subscriptionItem.get("subscriptionInfo").fundsReceived) : "$0");
 		inEvent.item.$.country.set("content", subscriptionItem.get("contactInfo").addressInfo.country ? subscriptionItem.get("contactInfo").addressInfo.country : "");
 		inEvent.item.$.stateProvince.set("content", subscriptionItem.get("contactInfo").addressInfo.stateProvince ? subscriptionItem.get("contactInfo").addressInfo.stateProvince : "");
 		return true;
@@ -363,7 +363,7 @@ enyo.kind({
 
 	handleMigrateSubscriptionsButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		var subscriptionCount = 0;
 
@@ -388,7 +388,7 @@ enyo.kind({
 			this.$.confirmMigrateSubscriptionsPopup.hide();
 			this.$.confirmMigrateSubscriptionsPopup.destroy();
 		}
-		this.createComponent({name: "confirmMigrateSubscriptionsPopup", kind: "quantum.ConfirmPopup", onYes: "handleMigrateSubscriptions", onNo: "handleMigrateSubscriptionsCancelled", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmMigrateSubscriptionsPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleMigrateSubscriptions", onNo: "handleMigrateSubscriptionsCancelled", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmMigrateSubscriptionsPopup.show("Are you sure that you want to migrate " + subscriptionCount + " subscription" + (subscriptionCount > 1 ? "s" : "") + "? This cannot be undone.");
 	},
 
@@ -427,18 +427,18 @@ enyo.kind({
 			this.$.loadingPopup.resize();
 
 			var postData = {
-				url: quantum.preferences.get("apiServer") + "migratesubscription",
+				url: lumberjack.preferences.get("apiServer") + "migratesubscription",
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				},
 				postBody: {
-					sourcePlacementID: quantum.preferences.get("placementDatabase"),
+					sourcePlacementID: lumberjack.preferences.get("placementDatabase"),
 					destinationPlacementID: this.$.placementDatabasePicker.get("selected").database,
 					subscriberID: subscriptionItem.get("_id"),
-					companyID: quantum.preferences.get("company")
+					companyID: lumberjack.preferences.get("company")
 				}
 			};
 

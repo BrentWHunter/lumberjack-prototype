@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Charity",
+	name: "lumberjack.Charity",
 
 	published:
 	{
@@ -14,9 +14,9 @@ enyo.kind({
 	_validated: true,
 
 	components:[
-		{kind: "quantum.Input", name:"registrationNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Registration Number", required:true, oninput: "handleRegistrationNumberChanged"},
-		{kind: "quantum.Input", name:"advisorNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Advisor Name", required:true, oninput: "handleAdvisorNameChanged"},
-		{kind: "quantum.AdvisorDealer", name: "advisorRegistrationsSection", style: "margin-top: 10px;"}
+		{kind: "lumberjack.Input", name:"registrationNumberInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Registration Number", required:true, oninput: "handleRegistrationNumberChanged"},
+		{kind: "lumberjack.Input", name:"advisorNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Advisor Name", required:true, oninput: "handleAdvisorNameChanged"},
+		{kind: "lumberjack.AdvisorDealer", name: "advisorRegistrationsSection", style: "margin-top: 10px;"}
 	],
 
 	bindings:[

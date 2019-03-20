@@ -1,7 +1,7 @@
-/* global quantum,PouchDB,alertify,Papa,saveAs,console */
+/* global lumberjack,PouchDB,alertify,Papa,saveAs,console */
 
 enyo.kind({
-	name: "quantum.PlacementView",
+	name: "lumberjack.PlacementView",
 	kind: "FittableRows",
 	fit: true,
 	_reportWindow: null,
@@ -33,7 +33,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{name: "leftButton", kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", ontap: "buttonfix", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{name: "leftMenu", kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{name: "leftMenu", kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -65,23 +65,23 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Placements Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Placements Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.DashboardPanel", onViewItemDetail: "handleViewItemDetail", onRefreshUnassignedPayments: "handleRefreshUnassignedPayments"},
-			//{name: "addPanel", kind: "quantum.SubscriberDetailPanel", mode: "add", onGoBack: "handleGoBack"},
-			{name: "listPanel", kind: "quantum.SubscriberListPanel", onViewItemDetail: "handleViewItemDetail", onAddNewSubscription: "addEntryButtonTapped"},
-			{name: "detailPanel", kind: "quantum.SubscriberDetailPanel", onGoBack: "handleGoBack"},
-			{name: "closePlacementPanel", kind: "quantum.ClosePlacementPanel", onRequestGenerateCSVFile: "generateCSVFile"},
-			{name: "csvExportPanel", kind: "quantum.CSVExportPanel", onRequestGenerateCSVFile: "generateCSVFile"},
-			{name: "migrateSubscriptionsPanel", kind: "quantum.MigrateSubscriptionsPanel"},
-			{name: "placementInfoPanel", kind: "quantum.PlacementInfoPanel"}
+			{name: "dashboardPanel", kind: "lumberjack.DashboardPanel", onViewItemDetail: "handleViewItemDetail", onRefreshUnassignedPayments: "handleRefreshUnassignedPayments"},
+			//{name: "addPanel", kind: "lumberjack.SubscriberDetailPanel", mode: "add", onGoBack: "handleGoBack"},
+			{name: "listPanel", kind: "lumberjack.SubscriberListPanel", onViewItemDetail: "handleViewItemDetail", onAddNewSubscription: "addEntryButtonTapped"},
+			{name: "detailPanel", kind: "lumberjack.SubscriberDetailPanel", onGoBack: "handleGoBack"},
+			{name: "closePlacementPanel", kind: "lumberjack.ClosePlacementPanel", onRequestGenerateCSVFile: "generateCSVFile"},
+			{name: "csvExportPanel", kind: "lumberjack.CSVExportPanel", onRequestGenerateCSVFile: "generateCSVFile"},
+			{name: "migrateSubscriptionsPanel", kind: "lumberjack.MigrateSubscriptionsPanel"},
+			{name: "placementInfoPanel", kind: "lumberjack.PlacementInfoPanel"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "archivedPlacementsPopup", kind: "quantum.SelectArchivedPlacementPopup", onPlacementSelected: "handleArchivedPlacementSelected", onCancel: "handleArchivedPlacementCancelled"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "archivedPlacementsPopup", kind: "lumberjack.SelectArchivedPlacementPopup", onPlacementSelected: "handleArchivedPlacementSelected", onCancel: "handleArchivedPlacementCancelled"},
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -132,25 +132,25 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.editEntryButton.set("showing", quantum.hasRole(["admins","users","auditors"], "placement"));
-		this.$.placementInfoMenuItem.set("showing", quantum.hasRole(["admins"], "placement"));
-		this.$.generateReportMenuItem.set("showing", quantum.hasRole(["admins", "users", "auditors"], "placement"));
-		this.$.generatePaymentReportMenuItem.set("showing", quantum.hasRole(["admins", "users", "auditors"], "placement"));
-		this.$.migrateSubscriptionsMenuItem.set("showing", quantum.hasRole(["admins"], "placement"));
-		this.$.exportCsvMenuItem.set("showing", quantum.hasRole(["admins"], "placement"));
-		this.$.closePlacementMenuItem.set("showing", quantum.hasRole(["admins"], "placement"));
-		this.$.refreshSubscriptionsMenuItem.set("showing", quantum.hasRole(["admins","users"], "placement"));
+		this.$.editEntryButton.set("showing", lumberjack.hasRole(["admins","users","auditors"], "placement"));
+		this.$.placementInfoMenuItem.set("showing", lumberjack.hasRole(["admins"], "placement"));
+		this.$.generateReportMenuItem.set("showing", lumberjack.hasRole(["admins", "users", "auditors"], "placement"));
+		this.$.generatePaymentReportMenuItem.set("showing", lumberjack.hasRole(["admins", "users", "auditors"], "placement"));
+		this.$.migrateSubscriptionsMenuItem.set("showing", lumberjack.hasRole(["admins"], "placement"));
+		this.$.exportCsvMenuItem.set("showing", lumberjack.hasRole(["admins"], "placement"));
+		this.$.closePlacementMenuItem.set("showing", lumberjack.hasRole(["admins"], "placement"));
+		this.$.refreshSubscriptionsMenuItem.set("showing", lumberjack.hasRole(["admins","users"], "placement"));
 	},
 
 	rendered: function(inSender, inEvent)
 	{
-		if(!quantum.preferences.get("placementDatabase") && !this.get("targetPlacement")){
+		if(!lumberjack.preferences.get("placementDatabase") && !this.get("targetPlacement")){
 			this.set("showing", false);
 			if (this.$.selectPlacementPopup) {this.$.selectPlacementPopup.hide();}
 			if (this.$.selectPlacementPopup) {this.$.selectPlacementPopup.destroy();}
 			this.createComponent({
 				name: "selectPlacementPopup",
-				kind: "quantum.SelectPlacementPopup",
+				kind: "lumberjack.SelectPlacementPopup",
 				onError: "handleSelectPlacementError",
 				onPlacementSelected: "handlePlacementSelected",
 				onArchivedPlacementSelected: "handleShowArchivedPlacementsPopup",
@@ -163,18 +163,18 @@ enyo.kind({
 		else
 		{
 			this.set("showing", false);
-			this.set("database", new PouchDB(quantum.preferences.get("server") + (this.get("targetPlacement") || quantum.preferences.get("placementDatabase")), {skip_setup: true}));
-			this.$.versionString.set("content", quantum.versionString);
-			this.$.companyName.set("content", quantum.preferences.get("companyName"));
+			this.set("database", new PouchDB(lumberjack.preferences.get("server") + (this.get("targetPlacement") || lumberjack.preferences.get("placementDatabase")), {skip_setup: true}));
+			this.$.versionString.set("content", lumberjack.versionString);
+			this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 			this.inherited(arguments);
-			quantum.fixShim();
+			lumberjack.fixShim();
 			this.$.loadingPopup.show();
 			this.populateSubscriptions(enyo.bind(this, function(){
 				this.populateSalespeople(enyo.bind(this, function(){
-					quantum.preferences.set("lastModule", "placement");
-					quantum.preferences.commit();
-					if (quantum.hasRole(["reporting"], "placement"))
+					lumberjack.preferences.set("lastModule", "placement");
+					lumberjack.preferences.commit();
+					if (lumberjack.hasRole(["reporting"], "placement"))
 					{
 						this.doSetViewToReport();
 					}
@@ -191,7 +191,7 @@ enyo.kind({
 								return value.get("_id") === this.get("targetSubscriber");
 							}));
 
-							filteredCollection = new quantum.SubscriptionCollection(filteredCollection);
+							filteredCollection = new lumberjack.SubscriptionCollection(filteredCollection);
 
 							if (filteredCollection && filteredCollection.length > 0)
 							{
@@ -216,7 +216,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -226,9 +226,9 @@ enyo.kind({
 		}
 		else if (_panel === this.$.placementInfoPanel)
 		{
-			if (quantum.hasRole(["admins"], "placement") && _panel.isDirty())
+			if (lumberjack.hasRole(["admins"], "placement") && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSavePlacementButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -257,7 +257,7 @@ enyo.kind({
 
 	// addEntryButtonTapped: function(inSender, inEvent)
 	// {
-	// 	if (!quantum.hasRole(["admins","users"], "placement")) { return; }
+	// 	if (!lumberjack.hasRole(["admins","users"], "placement")) { return; }
 
 	// 	for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
 	// 	{
@@ -271,10 +271,10 @@ enyo.kind({
 	// 	}
 
 	// 	this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-	// 	this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "addSubscriber", icon: "assets/icons/add-subscriber-icon.png", content: "Add Subscriber", ontap: "addSubscriptionBreadcrumbTapped", last: true}, {owner: this});
+	// 	this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "addSubscriber", icon: "assets/icons/add-subscriber-icon.png", content: "Add Subscriber", ontap: "addSubscriptionBreadcrumbTapped", last: true}, {owner: this});
 	// 	this.$.breadcrumbToolbar.render();
 	// 	this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("addPanel"));
-	// 	this.$.addPanel.activate(new quantum.SubscriptionModel({}));
+	// 	this.$.addPanel.activate(new lumberjack.SubscriptionModel({}));
 	// },
 
 	// addSubscriptionBreadcrumbTapped: function(inSender, inEvent)
@@ -288,7 +288,7 @@ enyo.kind({
 
 	dashboardButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -300,7 +300,7 @@ enyo.kind({
 
 	editEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -317,7 +317,7 @@ enyo.kind({
 				}
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "subscriptions", icon: "assets/icons/list-icon.png", content: "Subscriptions", ontap: "subscriptionsBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "subscriptions", icon: "assets/icons/list-icon.png", content: "Subscriptions", ontap: "subscriptionsBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
 			this.$.listPanel.activate();
@@ -340,7 +340,7 @@ enyo.kind({
 
 	generatePaymentReportButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins", "auditors", "users"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins", "auditors", "users"], "placement")) { return; }
 
 		var csvCollection = [];
 
@@ -349,13 +349,13 @@ enyo.kind({
 				csvCollection.push({
 					receivedDate: innerValue.receivedDate,
 					payerName: innerValue.payerName,
-					paymentType: quantum.paymentTypeLookup(innerValue.paymentType),
+					paymentType: lumberjack.paymentTypeLookup(innerValue.paymentType),
 					paymentAmount: innerValue.amount,
 					subscriberName: value.get("contactInfo").subscriberName,
 					contactPerson: value.get("contactInfo").corporateInfo.contactPerson,
 					subscriptionAmount: value.get("subscriptionInfo").subscriberDollarAmount,
 					totalFundsReceived: value.get("subscriptionInfo").fundsReceived,
-					subsciptionStatus: quantum.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus)
+					subsciptionStatus: lumberjack.subscriptionStatusLookup(value.get("subscriptionInfo").subscriptionStatus)
 				});
 			});
 		});
@@ -373,12 +373,12 @@ enyo.kind({
 		//finally, parse the collection to CSV
 		var csv = Papa.unparse(csvCollection);
 		var output = new Blob([csv], {type: "text/csv"});
-		saveAs(new Blob([csv], {type: "text/csv"}), moment().format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").placementName + " Payment Report.csv");
+		saveAs(new Blob([csv], {type: "text/csv"}), moment().format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").placementName + " Payment Report.csv");
 	},
 
 	generateReportButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins", "auditors", "users"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins", "auditors", "users"], "placement")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -413,10 +413,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Refreshing. This may take a while...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "refreshallsubscriptionagreementstatus",
+			url: lumberjack.preferences.get("apiServer") + "refreshallsubscriptionagreementstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -445,7 +445,7 @@ enyo.kind({
 			}
 		}));
 
-		request.go({placementID: quantum.preferences.get("placementDatabase")});
+		request.go({placementID: lumberjack.preferences.get("placementDatabase")});
 	},
 
 	handleChangeCompany: function(inSender, inEvent)
@@ -458,16 +458,16 @@ enyo.kind({
 
 	handleSelectPlacementError: function(inSender, inEvent)
 	{
-		quantum.preferences.set("lastModule", "");
+		lumberjack.preferences.set("lastModule", "");
 		this.doRequestChangeModule();
 	},
 
 	handleLaunchClosePlacement: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "closePlacement", icon: "assets/icons/close-placement-icon.png", content: "Placement Status", ontap: "closePlacementBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "closePlacement", icon: "assets/icons/close-placement-icon.png", content: "Placement Status", ontap: "closePlacementBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("closePlacementPanel"));
 		this.$.closePlacementPanel.activate();
@@ -476,8 +476,8 @@ enyo.kind({
 	handlePlacementSelected: function(inSender, inEvent)
 	{
 		this.$.selectPlacementPopup.hide();
-		quantum.preferences.set("placementDatabase", inEvent.placement);
-		quantum.preferences.commit({success: enyo.bind(this, function(){
+		lumberjack.preferences.set("placementDatabase", inEvent.placement);
+		lumberjack.preferences.commit({success: enyo.bind(this, function(){
 			//Slight pause here to give the UI time to refresh
 			setTimeout(enyo.bind(this, function(){this.render();}), 50);
 		})});
@@ -492,10 +492,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "subscriberDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Subscriber Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "subscriberDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Subscriber Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.detailPanel.set("subscriptionCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("detailPanel"));
@@ -504,10 +504,10 @@ enyo.kind({
 
 	exportCSVFileButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "generateCSVFile", icon: "assets/icons/csv-export-icon.png", content: "Export CSV File", ontap: "exportCSVFileBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "generateCSVFile", icon: "assets/icons/csv-export-icon.png", content: "Export CSV File", ontap: "exportCSVFileBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("csvExportPanel"));
 		this.$.csvExportPanel.activate();
@@ -533,10 +533,10 @@ enyo.kind({
 
 	migrateSubscriptionsButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "migrateSubscriptions", icon: "assets/icons/migrate-subscriptions-icon.png", content: "Migrate Subscriptions", ontap: "migrateSubscriptionsBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "migrateSubscriptions", icon: "assets/icons/migrate-subscriptions-icon.png", content: "Migrate Subscriptions", ontap: "migrateSubscriptionsBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("migrateSubscriptionsPanel"));
 		this.$.migrateSubscriptionsPanel.activate();
@@ -562,10 +562,10 @@ enyo.kind({
 
 	placementInformationButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "placementInformation", icon: "assets/icons/information-icon.png", content: "Placement Information", ontap: "placementInformationBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "placementInformation", icon: "assets/icons/information-icon.png", content: "Placement Information", ontap: "placementInformationBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("placementInfoPanel"));
 		this.$.placementInfoPanel.activate();
@@ -622,10 +622,10 @@ enyo.kind({
 
 	handleGoHome: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement"))
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement"))
 		{
-			quantum.preferences.set("lastModule", "");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "");
+			lumberjack.preferences.commit();
 			this.doRequestChangeModule();
 		}
 		else
@@ -657,8 +657,8 @@ enyo.kind({
 				}
 				else
 				{
-					quantum.preferences.set("placementDatabase", inEvent.selected.database);
-					quantum.preferences.commit({success: enyo.bind(this, function(){
+					lumberjack.preferences.set("placementDatabase", inEvent.selected.database);
+					lumberjack.preferences.commit({success: enyo.bind(this, function(){
 						//Slight pause here to give the UI time to refresh
 						setTimeout(enyo.bind(this, function(){this.render();}), 50);
 					})});
@@ -671,8 +671,8 @@ enyo.kind({
 
 	handleArchivedPlacementSelected: function(inSender, inEvent)
 	{
-		quantum.preferences.set("placementDatabase", inEvent.database);
-		quantum.preferences.commit({success: enyo.bind(this, function(){
+		lumberjack.preferences.set("placementDatabase", inEvent.database);
+		lumberjack.preferences.commit({success: enyo.bind(this, function(){
 			//Slight pause here to give the UI time to refresh
 			setTimeout(enyo.bind(this, function(){this.render();}), 50);
 		})});
@@ -680,7 +680,7 @@ enyo.kind({
 
 	handleArchivedPlacementCancelled: function(inSender, inEvent)
 	{
-		if(!quantum.preferences.get("placementDatabase") && !this.get("targetPlacement")){
+		if(!lumberjack.preferences.get("placementDatabase") && !this.get("targetPlacement")){
 			//If we don't have a placement database at this point. Just re-render. It will force a proper re-pick of the database.
 			this.render();
 		}
@@ -688,7 +688,7 @@ enyo.kind({
 		{
 			var activePlacement = null;
 			this.$.placementDatabasePicker.controls.forEach(enyo.bind(this, function(value, index, array){
-				if (value.database && (value.database === quantum.preferences.get("placementDatabase") || value.database === this.get("targetPlacement"))){
+				if (value.database && (value.database === lumberjack.preferences.get("placementDatabase") || value.database === this.get("targetPlacement"))){
 					activePlacement = value;
 				}
 			}));
@@ -714,10 +714,10 @@ enyo.kind({
 	populateSalespeople: function(callback)
 	{
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getplacementsalespeople",
+			url: lumberjack.preferences.get("apiServer") + "getplacementsalespeople",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -750,7 +750,7 @@ enyo.kind({
 			return;		
 		}));
 
-		request.go({companyID: quantum.preferences.get("company"), placementID: quantum.preferences.get("placementDatabase")});
+		request.go({companyID: lumberjack.preferences.get("company"), placementID: lumberjack.preferences.get("placementDatabase")});
 	},
 
 	populateSubscriptions: function(callback)
@@ -759,7 +759,7 @@ enyo.kind({
 		this.set("unassignedPayments", null);
 
 		//Get data from database and load it into collection
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -772,17 +772,17 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
+			lumberjack.preferences.set("roles", response.roles);
 
 			this.set("loadingData", true);
 			this.$.placementDatabasePicker.set("selected", null);
 			this.$.placementDatabasePicker.destroyClientControls();
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "getplacements",
+				url: lumberjack.preferences.get("apiServer") + "getplacements",
 				cacheBust: false,
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			});
 
@@ -794,7 +794,7 @@ enyo.kind({
 			}));
 
 			request.response(enyo.bind(this, function(request, response){
-				quantum.preferences.set("placements", response.placements);
+				lumberjack.preferences.set("placements", response.placements);
 				if (response.placements && response.placements.length > 1)
 				{
 					var placements = [];
@@ -809,8 +809,8 @@ enyo.kind({
 						}
 						else
 						{
-							if (response.placements[i].database === quantum.preferences.get("placementDatabase")) {archivedPlacementsSelected = false;}
-							placements.push({database: response.placements[i].database, content: response.placements[i].name, active: this.get("targetPlacement") ? response.placements[i].database === this.get("targetPlacement") : response.placements[i].database === quantum.preferences.get("placementDatabase")});
+							if (response.placements[i].database === lumberjack.preferences.get("placementDatabase")) {archivedPlacementsSelected = false;}
+							placements.push({database: response.placements[i].database, content: response.placements[i].name, active: this.get("targetPlacement") ? response.placements[i].database === this.get("targetPlacement") : response.placements[i].database === lumberjack.preferences.get("placementDatabase")});
 						}
 					}
 
@@ -860,8 +860,8 @@ enyo.kind({
 								}
 								else if (rows[i].value._id === "settings")
 								{
-									quantum.preferences.set("placementInfo", rows[i].value);
-									// console.log(quantum.preferences.get(placementInfo));
+									lumberjack.preferences.set("placementInfo", rows[i].value);
+									// console.log(lumberjack.preferences.get(placementInfo));
 								}
 								else if (rows[i].value._id === "unassignedPayments")
 								{
@@ -892,11 +892,11 @@ enyo.kind({
 							if(a.contactInfo.displayName.toLowerCase() > b.contactInfo.displayName.toLowerCase()) {return 1;}
 							return 0;
 						});
-						this.set("subscriptionCollection", new quantum.SubscriptionCollection(sortedDocs));
+						this.set("subscriptionCollection", new lumberjack.SubscriptionCollection(sortedDocs));
 
-						if (quantum.preferences.get("placementInfo").companyInfo.companyLogo)
+						if (lumberjack.preferences.get("placementInfo").companyInfo.companyLogo)
 						{
-							this.get("database").getAttachment("settings", quantum.preferences.get("placementInfo").companyInfo.companyLogo, enyo.bind(this, function(err, response){
+							this.get("database").getAttachment("settings", lumberjack.preferences.get("placementInfo").companyInfo.companyLogo, enyo.bind(this, function(err, response){
 								if (err)
 								{
 									alertify.error("Settings doc get failed");
@@ -913,9 +913,9 @@ enyo.kind({
 										"data": reader.result.split(",")[1]
 									};
 									
-									quantum.preferences.get("placementInfo")._attachments[quantum.preferences.get("placementInfo").companyInfo.companyLogo] = attachment;
+									lumberjack.preferences.get("placementInfo")._attachments[lumberjack.preferences.get("placementInfo").companyInfo.companyLogo] = attachment;
 									this.$.listPanel.handleClearSearchButtonTapped();
-									quantum.preferences.commit();
+									lumberjack.preferences.commit();
 									callback();
 								});
 							}));
@@ -923,7 +923,7 @@ enyo.kind({
 						else
 						{
 							this.$.listPanel.handleClearSearchButtonTapped();
-							quantum.preferences.commit();
+							lumberjack.preferences.commit();
 							callback();
 						}
 					}
@@ -932,7 +932,7 @@ enyo.kind({
 				}));
 			}));
 
-			request.go({company: quantum.preferences.get("company")});
+			request.go({company: lumberjack.preferences.get("company")});
 		}));
 	},
 
@@ -954,11 +954,11 @@ enyo.kind({
 			return 0;
 		};
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: (this.get("targetPlacement") || quantum.preferences.get("placementDatabase"))
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: (this.get("targetPlacement") || lumberjack.preferences.get("placementDatabase"))
 			}
 		}));
 
@@ -1015,7 +1015,7 @@ enyo.kind({
 				//Update the existing model and collection.
 
 				// The ugly hack of manually calling "parse" below is necessary since enyo doesn't call the model's "parse" on a merge.
-				this.get("subscriptionCollection").add(new quantum.SubscriptionModel().parse(change.doc), {merge: true});
+				this.get("subscriptionCollection").add(new lumberjack.SubscriptionModel().parse(change.doc), {merge: true});
 				this.get("subscriptionCollection").sort(sortByDisplayNameFunction);
 
 				if (this.$.dataPanels.getActive() === this.$.dashboardPanel) {
@@ -1038,12 +1038,12 @@ enyo.kind({
 				}
 				else if (change.doc._id === "settings")
 				{
-					quantum.preferences.set("placementInfo", change.doc);
+					lumberjack.preferences.set("placementInfo", change.doc);
 
 					//Update the doc manually since we need the attachments for this one only
-					if (quantum.preferences.get("placementInfo").companyInfo.companyLogo)
+					if (lumberjack.preferences.get("placementInfo").companyInfo.companyLogo)
 					{
-						this.get("database").getAttachment("settings", quantum.preferences.get("placementInfo").companyInfo.companyLogo, enyo.bind(this, function(err, response){
+						this.get("database").getAttachment("settings", lumberjack.preferences.get("placementInfo").companyInfo.companyLogo, enyo.bind(this, function(err, response){
 							if (err)
 							{
 								alertify.error("Failed To Get Company Logo");
@@ -1059,14 +1059,14 @@ enyo.kind({
 									"data": reader.result.split(",")[1]
 								};
 								
-								quantum.preferences.get("placementInfo")._attachments[quantum.preferences.get("placementInfo").companyInfo.companyLogo] = attachment;
-								quantum.preferences.commit();
+								lumberjack.preferences.get("placementInfo")._attachments[lumberjack.preferences.get("placementInfo").companyInfo.companyLogo] = attachment;
+								lumberjack.preferences.commit();
 							});
 						}));
 					}
 					else
 					{
-						quantum.preferences.commit();
+						lumberjack.preferences.commit();
 					}
 				}
 				else if (change.doc._id === "unassignedPayments")
@@ -1103,7 +1103,7 @@ enyo.kind({
 
 	generateCSVFile: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { return; }
 
 		var rawCollection = inEvent.rawCollection;
 		var filename = inEvent.filename;
@@ -1173,7 +1173,7 @@ enyo.kind({
 		{
 			var settingsFilename = "Completed Subscribers List"+ filename.split('Completed Subscribers List')[1];
 
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 				if (err)
 				{
 					alertify.error("Login Failed");

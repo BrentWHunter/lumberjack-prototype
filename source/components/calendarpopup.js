@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.CalendarPopup",
+	name: "lumberjack.CalendarPopup",
 	kind: "onyx.Popup",
 
 	//style: "margin-left: 150px;",

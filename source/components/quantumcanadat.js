@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.CanadaT",
+	name: "lumberjack.CanadaT",
 
 	published:
 	{
@@ -147,8 +147,8 @@ enyo.kind({
 				]}
 			]}
 		]},
-		{kind: "quantum.Input", name:"addEquityOwnerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Equity Owner Name", required:true},
-		{kind: "quantum.Input", name:"equityOwnerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"email", label:"Email", required:true},
+		{kind: "lumberjack.Input", name:"addEquityOwnerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Equity Owner Name", required:true},
+		{kind: "lumberjack.Input", name:"equityOwnerEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"email", label:"Email", required:true},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 			{content: "Owner Type", style: "line-height: 30px; width: 160px;"},
 			{kind: "onyx.PickerDecorator", style: "", components: [
@@ -159,11 +159,11 @@ enyo.kind({
 				]}
 			]}
 		]},
-		{kind: "quantum.Input", name:"equityOwnerContactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Contact Person", required:true},
-		{kind: "quantum.Input", name:"equityOwnerContactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Contact Person Title", required:true},
+		{kind: "lumberjack.Input", name:"equityOwnerContactPersonInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Contact Person", required:true},
+		{kind: "lumberjack.Input", name:"equityOwnerContactPersonTitleInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 150px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Contact Person Title", required:true},
 		{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
 			{fit: true},
-			{name: "addEquityOwnerButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Equity Owner"), style: "width: 175px; height: 30px; margin-right: 8px;", ontap: "addEquityOwnerButtonTapped"}
+			{name: "addEquityOwnerButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Equity Owner"), style: "width: 175px; height: 30px; margin-right: 8px;", ontap: "addEquityOwnerButtonTapped"}
 		]}
 	],
 
@@ -448,35 +448,35 @@ enyo.kind({
 			case "canadaD":
 			case "canadaD1":
 			case "canadaE":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.AdvisorDealer", disabled: this.get("disabled"), advisorDealers: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.AdvisorDealer", disabled: this.get("disabled"), advisorDealers: detailItem[target]};
 				break;
 			case "canadaI":
 			case "canadaI1":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.PensionFund", disabled: this.get("disabled"), pensionFunds: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.PensionFund", disabled: this.get("disabled"), pensionFunds: detailItem[target]};
 				break;
 			case "canadaM":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.LargeAssetNonIndividual", disabled: this.get("disabled"), largeAssetNonIndividual: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.LargeAssetNonIndividual", disabled: this.get("disabled"), largeAssetNonIndividual: detailItem[target]};
 				break;
 			case "canadaP":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.TrustCompany", disabled: this.get("disabled"), trustCompanies: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.TrustCompany", disabled: this.get("disabled"), trustCompanies: detailItem[target]};
 				break;
 			case "canadaQ":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.ForeignAdvisorDealer", disabled: this.get("disabled"), foreignAdvisorDealers: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.ForeignAdvisorDealer", disabled: this.get("disabled"), foreignAdvisorDealers: detailItem[target]};
 				break;
 			case "canadaR":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.Charity", disabled: this.get("disabled"), charity: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.Charity", disabled: this.get("disabled"), charity: detailItem[target]};
 				break;
 			case "canadaS":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.ForeignBank", disabled: this.get("disabled"), foreignBank: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.ForeignBank", disabled: this.get("disabled"), foreignBank: detailItem[target]};
 				break;
 			case "canadaT":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.CanadaT", disabled: this.get("disabled"), canadaTs: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.CanadaT", disabled: this.get("disabled"), canadaTs: detailItem[target]};
 				break;
 			case "canadaU":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.InvestmentFund", disabled: this.get("disabled"), investmentFund: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.InvestmentFund", disabled: this.get("disabled"), investmentFund: detailItem[target]};
 				break;
 			case "canadaW":
-				qualificationDetailObject = {name: "qualificationDetail", kind: "quantum.FamilyTrust", disabled: this.get("disabled"), familyTrust: detailItem[target]};
+				qualificationDetailObject = {name: "qualificationDetail", kind: "lumberjack.FamilyTrust", disabled: this.get("disabled"), familyTrust: detailItem[target]};
 				break;
 		}
 

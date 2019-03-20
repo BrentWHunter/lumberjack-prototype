@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.SelectArchivedPlacementPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.SelectArchivedPlacementPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onPlacementSelected: "",
@@ -33,11 +33,11 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "selectButton", kind: "quantum.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "selectButton", kind: "lumberjack.Button", content: $L("Select"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "selectButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -60,10 +60,10 @@ enyo.kind({
 
 	loadPlacements: function() {
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getplacements",
+			url: lumberjack.preferences.get("apiServer") + "getplacements",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 	    });
 
@@ -121,7 +121,7 @@ enyo.kind({
 			}
 	    }));
 
-	    request.go({username: quantum.preferences.get("username"), password: quantum.preferences.get("password"), company: quantum.preferences.get("company")});
+	    request.go({username: lumberjack.preferences.get("username"), password: lumberjack.preferences.get("password"), company: lumberjack.preferences.get("company")});
 	},
 
 	setupPlacementRepeaterItem: function(inSender, inEvent)

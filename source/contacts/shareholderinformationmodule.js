@@ -1,6 +1,6 @@
 /* global numeral,moment */ 
 enyo.kind({
-	name: "quantum.ShareholderInformationModule",
+	name: "lumberjack.ShareholderInformationModule",
 
 	events: {
 		onViewEventDetail: ""
@@ -49,7 +49,7 @@ enyo.kind({
 				{name: "numShares", style: "width: 150px; line-height: 34px;"},
 				{name: "pricePerShare", style: "width: 150px; line-height: 34px;"},
 				{name: "description", style: "width: 500px; line-height: 34px;"},
-				{name: "viewButton", kind: "quantum.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewHistoryDetailButtonTapped"}
+				{name: "viewButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewHistoryDetailButtonTapped"}
 			]}
 		]},
 		{name: "noHistoryLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Shareholder History"},
@@ -68,7 +68,7 @@ enyo.kind({
 				{name: "numShares", style: "width: 150px; line-height: 34px;"},
 				{name: "pricePerShare", style: "width: 150px; line-height: 34px;"},
 				{name: "description", style: "width: 500px; line-height: 34px;"},
-				{name: "viewButton", kind: "quantum.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewPendingTransactionDetailButtonTapped"}
+				{name: "viewButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View Detail", ontap: "viewPendingTransactionDetailButtonTapped"}
 			]}
 		]},
 		{name: "noPendingTransactionsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Pending Sales"}
@@ -213,7 +213,7 @@ enyo.kind({
 		}
 		else
 		{
-			pricePerShareContent = "$" + quantum.formatCurrency(transactionHistoryItem.get("pricePerShare"));
+			pricePerShareContent = "$" + lumberjack.formatCurrency(transactionHistoryItem.get("pricePerShare"));
 		}
 		inEvent.item.$.pricePerShare.set("content", pricePerShareContent);
 		inEvent.item.$.description.set("content", transactionHistoryItem.get("description"));
@@ -255,7 +255,7 @@ enyo.kind({
 		}
 		else
 		{
-			pricePerShareContent = "$" + quantum.formatCurrency(pendingTransactionItem.get("pricePerShare"));
+			pricePerShareContent = "$" + lumberjack.formatCurrency(pendingTransactionItem.get("pricePerShare"));
 		}
 		inEvent.item.$.pricePerShare.set("content", pricePerShareContent);
 		inEvent.item.$.description.set("content", pendingTransactionItem.get("description"));

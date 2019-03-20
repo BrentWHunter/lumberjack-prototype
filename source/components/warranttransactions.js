@@ -1,6 +1,6 @@
 enyo.kind({
 
-	name: "quantum.WarrantTransactions",
+	name: "lumberjack.WarrantTransactions",
 
 	published: {
 		mode: "pending",
@@ -17,7 +17,7 @@ enyo.kind({
 			{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 				{name: "header", style: "font-size: 24px; padding-top: 6px;", content: "Transactions"},
 				{fit: true},
-				{name: "addTransactionButton", kind: "quantum.Button", style: "height: 30px;", content: "Add Transaction", ontap: "handleAddTransactionButtonTapped"}
+				{name: "addTransactionButton", kind: "lumberjack.Button", style: "height: 30px;", content: "Add Transaction", ontap: "handleAddTransactionButtonTapped"}
 			]},
 			{kind: "enyo.FittableColumns", style: "background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
 				{content: "Type", style: "width: 100px;"},
@@ -76,7 +76,7 @@ enyo.kind({
 		var transactionCollection = this.get("transactionCollection") || [];
 
 		inEvent.item.$.type.set("content", transactionCollection.at(inEvent.index).get("type"));
-		inEvent.item.$.status.set("content", quantum.subscriptionStatusLookup(transactionCollection.at(inEvent.index).get("status")));
+		inEvent.item.$.status.set("content", lumberjack.subscriptionStatusLookup(transactionCollection.at(inEvent.index).get("status")));
 		inEvent.item.$.numShares.set("content", transactionCollection.at(inEvent.index).get("numShares"));
 		inEvent.item.$.sharePrice.set("content", transactionCollection.at(inEvent.index).get("sharePrice"));
 		inEvent.item.$.currency.set("content", transactionCollection.at(inEvent.index).get("currency"));

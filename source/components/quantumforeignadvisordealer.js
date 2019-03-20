@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ForeignAdvisorDealer",
+	name: "lumberjack.ForeignAdvisorDealer",
 
 	published:
 	{
@@ -22,12 +22,12 @@ enyo.kind({
 					{name: "jurisdictionName", style: "width: 348px; line-height: 34px; font-size: 16px;"},
 					{name: "deleteButton", kind: "enyo.Button", classes: "button danger", style: "line-height: 30px;", content: "Delete", ontap: "deleteJurisdictionButtonTapped"}
 				]},
-				{kind: "quantum.Input", name:"assignedCategoriesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 120px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Fund Categories", required:true, oninput: "handleAssignedCategoriesInputChanged"}
+				{kind: "lumberjack.Input", name:"assignedCategoriesInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 120px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 295px;", type:"text", label:"Fund Categories", required:true, oninput: "handleAssignedCategoriesInputChanged"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 15px;", components: [
-			{kind: "quantum.Input", name:"addJurisdictionInput", columnStyle:"", labelStyle:"line-height: 30px; width: 75px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Jurisdiction", required:true},
-			{name: "addJurisdictionButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addJurisdictionButtonTapped"}
+			{kind: "lumberjack.Input", name:"addJurisdictionInput", columnStyle:"", labelStyle:"line-height: 30px; width: 75px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 195px;", type:"text", label:"Jurisdiction", required:true},
+			{name: "addJurisdictionButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 30px; margin-left: 30px;", ontap: "addJurisdictionButtonTapped"}
 		]}
 	],
 

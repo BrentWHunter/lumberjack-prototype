@@ -1,6 +1,6 @@
-/* global quantum */
+/* global lumberjack */
 enyo.kind({
-	name: "quantum.LoginView",
+	name: "lumberjack.LoginView",
 	kind: "FittableRows",
 
 	events:{
@@ -14,7 +14,7 @@ enyo.kind({
 	rendered: function(){
 		this.inherited(arguments);
 		moment.tz.setDefault("UTC");
-		if (quantum.preferences.get("username") && quantum.preferences.get("password") && quantum.preferences.get("lastModule"))
+		if (lumberjack.preferences.get("username") && lumberjack.preferences.get("password") && lumberjack.preferences.get("lastModule"))
 		{
 			this.doLoginSuccessful();
 		}
@@ -24,7 +24,7 @@ enyo.kind({
 			if (this.$.loginPopup) {this.$.loginPopup.destroy();}
 			this.createComponent({
 				name: "loginPopup",
-				kind: "quantum.LoginPopup",
+				kind: "lumberjack.LoginPopup",
 				onLoginSuccess: "handleLoginSuccess",
 				onHide: "handlePopupHidden"},
 			{owner:this});

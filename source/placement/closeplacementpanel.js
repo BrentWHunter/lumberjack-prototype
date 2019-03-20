@@ -1,7 +1,7 @@
-/* global numeral, moment, quantum, alertify, console, saveAs */
+/* global numeral, moment, lumberjack, alertify, console, saveAs */
 
 enyo.kind({
-	name: "quantum.ClosePlacementPanel",
+	name: "lumberjack.ClosePlacementPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -31,10 +31,10 @@ enyo.kind({
 			{name: "placementStatusDescription", style: "margin-left: 10px; display: inline-block;"}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-			{name: "allowNewSubscriptionsButton", kind: "quantum.Button", style: "line-height: 30px;", ontap: "handleAllowNewSubscriptionsButtonTapped"},
-			{name: "closePlacementButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 30px;", content: "Begin Closing Placement", ontap: "showClosePlacementSection"},
-			{name: "finishClosePlacementButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 30px;", content: "Finish Closing Placement", ontap: "showClosingPlacementSection"},
-			{name: "archivePlacementButton", kind: "quantum.Button", style: "margin-left: 10px; line-height: 30px;", content: "Archive Placement", ontap: "handleArchivePlacementButtonTapped"}
+			{name: "allowNewSubscriptionsButton", kind: "lumberjack.Button", style: "line-height: 30px;", ontap: "handleAllowNewSubscriptionsButtonTapped"},
+			{name: "closePlacementButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 30px;", content: "Begin Closing Placement", ontap: "showClosePlacementSection"},
+			{name: "finishClosePlacementButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 30px;", content: "Finish Closing Placement", ontap: "showClosingPlacementSection"},
+			{name: "archivePlacementButton", kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 30px;", content: "Archive Placement", ontap: "handleArchivePlacementButtonTapped"}
 		]},
 		{name: "closePlacementSection", showing: false, style: "margin-top: 15px;", components: [
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Step 1: Select Closing Date"},
@@ -43,38 +43,38 @@ enyo.kind({
 			]},
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 15px;", content: "Step 2: Generate Closing Documents"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Generate Subscription Acceptance", ontap: "handleGenerateSubscriptionAcceptance"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Generate Subscription Acceptance", ontap: "handleGenerateSubscriptionAcceptance"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A document accepting all of the completed subscriptions on behalf of the company."}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Generate Resolution", ontap: "handleGenerateResolution"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Generate Resolution", ontap: "handleGenerateResolution"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A directors' resolution authorizing the issuance of the shares for all completed subscriptions."}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components:[
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Generate Treasury Order", ontap: "handleGenerateTreasuryOrder"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Generate Treasury Order", ontap: "handleGenerateTreasuryOrder"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A treasury order authorizing the transfer agent to issue all of the subscribed-for shares."}
 			]},
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 15px;", content: "Step 3: Generate Subscriber Lists"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Completed Subscribers", ontap: "handleGenerateCompletedSubscribersCSVFile"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Completed Subscribers", ontap: "handleGenerateCompletedSubscribersCSVFile"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A full list of completed subscribers, necessary for the transfer agent to generate share certificates and/or DRS statements."}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Completed Subscribers - Computershare Template", ontap: "handleGenerateCompletedSubscribersComputershareTemplate"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Completed Subscribers - Computershare Template", ontap: "handleGenerateCompletedSubscribersComputershareTemplate"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A full list of completed subscribers, necessary for the transfer agent to generate share certificates and/or DRS statements in their template form."}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components:[
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Completed Subscribers (USA)", ontap: "handleGenerateCompletedSubscribersUSACSVFile"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Completed Subscribers (USA)", ontap: "handleGenerateCompletedSubscribersUSACSVFile"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A list of completed subscribers from the USA. Necessary for generating Blue Sky filings."}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "line-height: 30px;", content: "Completed Subscribers (Canada)", ontap: "handleGenerateCompletedSubscribersCanadaCSVFile"},
+				{kind: "lumberjack.Button", style: "line-height: 30px;", content: "Completed Subscribers (Canada)", ontap: "handleGenerateCompletedSubscribersCanadaCSVFile"},
 				{style: "margin-left: 10px; line-height: 32px;", content: "- A list of completed subscribers from Canada. Necessary for generating Canadian Securities filings."}
 			]},
 			{style: "font-size: 24px; padding-bottom: 5px; border-bottom: 1px solid black; margin-top: 15px;", content: "Step 4: Begin Closing Procedure"},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
-				{name: "beginClosingButton", kind: "quantum.Button", enabledClasses: "button primary", style: "line-height: 30px;", content: "Begin Closing", ontap: "requestCloseCompletedSubscriptions"},
-				{kind: "quantum.Button", style: "margin-left: 10px; line-height: 30px;", content: "Cancel", ontap: "hideClosePlacementSection"}
+				{name: "beginClosingButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "line-height: 30px;", content: "Begin Closing", ontap: "requestCloseCompletedSubscriptions"},
+				{kind: "lumberjack.Button", style: "margin-left: 10px; line-height: 30px;", content: "Cancel", ontap: "hideClosePlacementSection"}
 				//{style: "margin-left: 10px; line-height: 32px;", content: "- After all documents have been generated, mark completed subscribers as closed."}
 			]}
 		]},
@@ -100,19 +100,19 @@ enyo.kind({
 								{name: "closingDocumentStatus", content: "Generated"}
 							]},
 							{style: "width: 150px; line-height: 34px; text-align: center;", components: [
-								{name: "downloadClosingDocumentButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadClosingDocumentButtonTapped"}
+								{name: "downloadClosingDocumentButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadClosingDocumentButtonTapped"}
 							]},
 							{style: "width: 170px; line-height: 34px; text-align: center;", components: [
-								{name: "sendClosingDocumentButton", style: "width: 150px;", kind: "quantum.Button", content: "Send Document For Signing", ontap: "sendClosingDocumentButtonTapped"}
+								{name: "sendClosingDocumentButton", style: "width: 150px;", kind: "lumberjack.Button", content: "Send Document For Signing", ontap: "sendClosingDocumentButtonTapped"}
 							]},
 							{style: "width: 170px; line-height: 34px; text-align: center;", components: [
-								{name: "viewDocumentStatusButton", style: "width: 150px;", kind: "quantum.Button", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"}
+								{name: "viewDocumentStatusButton", style: "width: 150px;", kind: "lumberjack.Button", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"}
 							]},
 							{style: "width: 140px; line-height: 34px;", components: [
-								{name: "refreshClosingDocumentsButton", kind: "quantum.Button", enabledClasses: "button bg-blue fg-white", content: "Refresh Status", ontap: "refreshClosingDocuments"}
+								{name: "refreshClosingDocumentsButton", kind: "lumberjack.Button", enabledClasses: "button bg-blue fg-white", content: "Refresh Status", ontap: "refreshClosingDocuments"}
 							]},
 							{style: "width: 150px; line-height: 34px;", components: [
-								{name: "cancelClosingDocumentsButton", kind: "quantum.Button", enabledClasses: "button bg-red fg-white", content: "Cancel Document", ontap: "cancelClosingDocument"}
+								{name: "cancelClosingDocumentsButton", kind: "lumberjack.Button", enabledClasses: "button bg-red fg-white", content: "Cancel Document", ontap: "cancelClosingDocument"}
 							]}
 						]}
 					]}
@@ -131,20 +131,20 @@ enyo.kind({
 								{name: "signedClosingDocumentName", content: "Hrm"}
 							]},
 							{style: "width: 150px; line-height: 34px;", components: [
-								{name: "downloadSignedClosingDocumentButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadSignedClosingDocumentButtonTapped"}
+								{name: "downloadSignedClosingDocumentButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", content: "Download", ontap: "downloadSignedClosingDocumentButtonTapped"}
 							]}
 						]}
 					]}
 				]}
 			]},
 			{style: "font-size: 24px; padding-top: 10px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Step 3: Send Out Shareholder Letter"},
-			{name: "massMailButton", kind: "quantum.Button", content: "Mass Mail", ontap: "handleMassMailButtonTapped"},
+			{name: "massMailButton", kind: "lumberjack.Button", content: "Mass Mail", ontap: "handleMassMailButtonTapped"},
 			{name: "massMailError", style: "color: red", content: "No Shareholder Letter Uploaded", showing: false},
 			{style: "font-size: 24px; padding-top: 10px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Step 4: Close Placement"},
-			{name: "finalizePlacementButton", kind: "quantum.Button", enabledClasses: "button bg-blue fg-white", content: "Close Placement", ontap: "finalizePlacementButtonTapped"}
+			{name: "finalizePlacementButton", kind: "lumberjack.Button", enabledClasses: "button bg-blue fg-white", content: "Close Placement", ontap: "finalizePlacementButtonTapped"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"}
 	],
 
 	bindings: [
@@ -212,7 +212,7 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins"], "placement")) { this.doGoHome(); return; }
 		this.$.closePlacementSection.set("showing", false);
 		this.updateClosingDocumentStatus();
 		this.updateSignedDocumentNames();
@@ -231,15 +231,15 @@ enyo.kind({
 	disableBeginClosingButton: function()
 	{
 		var disableFlag = false;
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Directors Resolution.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Directors Resolution.docx"] === undefined)
 		{
 			disableFlag = true;
 		}
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Subscription Acceptance.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Subscription Acceptance.docx"] === undefined)
 		{
 			disableFlag = true;
 		}
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Treasury Order.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Treasury Order.docx"] === undefined)
 		{
 			disableFlag = true;
 		}
@@ -248,31 +248,31 @@ enyo.kind({
 
 	requestCloseCompletedSubscriptions: function(inSender, inEvent)
 	{
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Directors Resolution.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Directors Resolution.docx"] === undefined)
 		{
 			alertify.error("Director's Resolution Not Generated");
 			return false;
 		}
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Subscription Acceptance.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Subscription Acceptance.docx"] === undefined)
 		{
 			alertify.error("Subscription Acceptance Not Generated");
 			return false;
 		}
-		if(quantum.preferences.get("placementInfo")._attachments["Unsigned - Treasury Order.docx"] === undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Unsigned - Treasury Order.docx"] === undefined)
 		{
 			alertify.error("Treasury Order Not Generated");
 			return false;
 		}
 
 		if (this.$.confirmClosePopup) {this.$.confirmClosePopup.destroy();}
-		this.createComponent({name: "confirmClosePopup", kind: "quantum.ConfirmPopup", onYes: "closeCompletedSubscriptions", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmClosePopup", kind: "lumberjack.ConfirmPopup", onYes: "closeCompletedSubscriptions", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmClosePopup.show("Begin Closing?");
 		return true;
 	},
 
 	saveClosingDate: function(inSender, inEvent)
 	{
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed for saving doc to database");
@@ -311,7 +311,7 @@ enyo.kind({
 		this.$.loadingPopup.show("Closing...");
 		this.saveClosingDate();
 		//First, make sure that we can log into the database.
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -324,10 +324,10 @@ enyo.kind({
 				return;
 			}
 
-			var settingsObj = quantum.preferences.get("placementInfo");
+			var settingsObj = lumberjack.preferences.get("placementInfo");
 
 			//Sanity Check Completed/Closed/Cancelled
-			var checkCollection = new quantum.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
+			var checkCollection = new lumberjack.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
 				return (settingsObj.dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds") || value.get("subscriptionInfo").subscriptionStatus === "complete" || value.get("subscriptionInfo").subscriptionStatus === "cancelled" || value.get("subscriptionInfo").subscriptionStatus === "closed";
 			}));
 
@@ -339,7 +339,7 @@ enyo.kind({
 			}
 
 			//Prepare collection
-			var filteredCollection = new quantum.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
+			var filteredCollection = new lumberjack.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
 				return (settingsObj.dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds") || value.get("subscriptionInfo").subscriptionStatus === "complete";
 			}));
 
@@ -389,7 +389,7 @@ enyo.kind({
 			if(duplicateFlag === true)
 			{
 				if (this.$.confirmClosePopup) { this.$.confirmClosePopup.destroy(); }
-				this.createComponent({name: "duplicateEmailPopup", kind: "quantum.DuplicateWarnPopup", onHide: "handlePopupHidden"} , {owner:this});
+				this.createComponent({name: "duplicateEmailPopup", kind: "lumberjack.DuplicateWarnPopup", onHide: "handlePopupHidden"} , {owner:this});
 				this.$.duplicateEmailPopup.show(duplicateEmails);
 			}
 
@@ -407,9 +407,9 @@ enyo.kind({
 				cacheBust: false,
 				contentType: "application/json",
 				method: "POST",
-				url: quantum.preferences.get("apiServer")+"closecompletedsubscriptions",
+				url: lumberjack.preferences.get("apiServer")+"closecompletedsubscriptions",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			};
 
@@ -449,13 +449,13 @@ enyo.kind({
 				cacheBust: false,
 				contentType: "application/json",
 				method: "POST",
-				url: quantum.preferences.get("apiServer")+"cancelclosingdocument",
+				url: lumberjack.preferences.get("apiServer")+"cancelclosingdocument",
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			};
 
-		ajaxProperties.postBody = {placementID: quantum.preferences.get("placementDatabase"), documentName: this.get("closingDocumentNamesCollection")[inEvent.index]};
+		ajaxProperties.postBody = {placementID: lumberjack.preferences.get("placementDatabase"), documentName: this.get("closingDocumentNamesCollection")[inEvent.index]};
 
 		var ajax = new enyo.Ajax(ajaxProperties);
 
@@ -482,10 +482,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Refreshing");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "refreshclosingdocuments",
+			url: lumberjack.preferences.get("apiServer") + "refreshclosingdocuments",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -508,7 +508,7 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 		}));
 
-		request.go({placementDB: quantum.preferences.get("placementDatabase"), closingDocumentID: quantum.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[inEvent.index]].adobe.agreementID});
+		request.go({placementDB: lumberjack.preferences.get("placementDatabase"), closingDocumentID: lumberjack.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[inEvent.index]].adobe.agreementID});
 	},
 
 	finalizePlacementButtonTapped: function(inSender, inEvent)
@@ -520,7 +520,7 @@ enyo.kind({
 		}
 
 		if (this.$.confirmClosePopup) {this.$.confirmClosePopup.destroy();}
-		this.createComponent({name: "confirmClosePopup", kind: "quantum.ConfirmPopup", onYes: "finalizePlacement", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmClosePopup", kind: "lumberjack.ConfirmPopup", onYes: "finalizePlacement", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmClosePopup.show("Finish Closing?");
 		return true;
 	},
@@ -528,15 +528,15 @@ enyo.kind({
 	finalizePlacementPost: function(inSender, inEvent)
 	{
 		var placementDBTarget = this.get("database").name.split("/")[this.get("database").name.split("/").length-1];
-		var contactDBTarget = quantum.preferences.get("contactDatabase");
+		var contactDBTarget = lumberjack.preferences.get("contactDatabase");
 
 		var ajaxProperties = {
 			cacheBust: false,
 			contentType: "application/json",
 			method: "POST",
-			url: quantum.preferences.get("apiServer")+"finalizeclosing",
+			url: lumberjack.preferences.get("apiServer")+"finalizeclosing",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		};
 
@@ -571,7 +571,7 @@ enyo.kind({
 	finalizePlacement: function(inSender, inEvent)
 	{
 		this.$.loadingPopup.show("Finalizing Close");
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 
 			if (err)
 			{
@@ -586,14 +586,14 @@ enyo.kind({
 			}
 
 			//Prepare collection
-			var filteredCollection = new quantum.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
+			var filteredCollection = new lumberjack.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
 				return value.get("subscriptionInfo").subscriptionStatus === "closed" || value.get("subscriptionInfo").subscriptionStatus === "cancelled";
 			}));
 
 			if(filteredCollection.length < this.get("subscriptionCollection").length)
 			{
 				//if (this.$.confirmClosePopup) this.$.confirmClosePopup.destroy();
-				//this.createComponent({name: "confirmClosePopup", kind: "quantum.ConfirmPopup", onYes: "finalizePlacementPost", onHide: "handlePopupHidden"} , {owner:this});
+				//this.createComponent({name: "confirmClosePopup", kind: "lumberjack.ConfirmPopup", onYes: "finalizePlacementPost", onHide: "handlePopupHidden"} , {owner:this});
 				//this.$.confirmClosePopup.show("Not All Subscribers are Closed, Proceed Anyway?");
 				//return;
 				alertify.error("Not All Subscribers are Closed or Cancelled");
@@ -639,15 +639,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Generating");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatesubscriptionacceptance",
+			url: lumberjack.preferences.get("apiServer") + "generatesubscriptionacceptance",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				placementDate: this.get("activeDate").valueOf()
 			}
 		});
@@ -673,12 +673,12 @@ enyo.kind({
 				return;
 			}
 
-			var output = quantum.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Subscription Acceptance.docx");
+			var output = lumberjack.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Subscription Acceptance.docx");
 
 			this.disableBeginClosingButton();
 		}));
-		request.go({placementDB: quantum.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
+		request.go({placementDB: lumberjack.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
 	},
 
 	handleGenerateResolution: function(inSender, inEvent)
@@ -686,15 +686,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Generating");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generateclosingresolution",
+			url: lumberjack.preferences.get("apiServer") + "generateclosingresolution",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				placementDate: this.get("activeDate").valueOf()
 			}
 		});
@@ -720,13 +720,13 @@ enyo.kind({
 				return;
 			}
 
-			var output = quantum.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " Directors Resolution to Close " + quantum.preferences.get("placementInfo").placementName + ".docx");
+			var output = lumberjack.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " Directors Resolution to Close " + lumberjack.preferences.get("placementInfo").placementName + ".docx");
 
 			this.disableBeginClosingButton();
 		}));
 
-		request.go({placementDB: quantum.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
+		request.go({placementDB: lumberjack.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
 	},
 
 	handleGenerateTreasuryOrder: function(inSender, inEvent)
@@ -734,15 +734,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Generating");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generateclosingtreasuryorder",
+			url: lumberjack.preferences.get("apiServer") + "generateclosingtreasuryorder",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			},
 			postBody: {
-				placementID: quantum.preferences.get("placementDatabase"),
+				placementID: lumberjack.preferences.get("placementDatabase"),
 				placementDate: this.get("activeDate").valueOf()
 			}
 		});
@@ -768,13 +768,13 @@ enyo.kind({
 				return;
 			}
 
-			var output = quantum.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Treasury Order.docx");
+			var output = lumberjack.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+			saveAs(output, this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Treasury Order.docx");
 
 			this.disableBeginClosingButton();
 		}));
 
-		request.go({placementDB: quantum.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
+		request.go({placementDB: lumberjack.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
 	},
 
 	handleGenerateCompletedSubscribersComputershareTemplate: function(inSender, inEvent)
@@ -782,10 +782,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Generating");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generatecomputersharereport",
+			url: lumberjack.preferences.get("apiServer") + "generatecomputersharereport",
 			cacheBust: false,
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			}
 		});
 
@@ -810,10 +810,10 @@ enyo.kind({
 				return;
 			}
 
-			var output = quantum.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-			saveAs(quantum.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"), this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Treasury File.xlsx");
+			var output = lumberjack.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+			saveAs(lumberjack.b64ToBlob(response.data, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"), this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Treasury File.xlsx");
 
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 				if (err)
 				{
 					alertify.error("Login Failed for saving doc to database");
@@ -854,14 +854,14 @@ enyo.kind({
 			}));
 
 		}));
-		request.go({placementDB: quantum.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
+		request.go({placementDB: lumberjack.preferences.get("placementDatabase"), placementDate: this.get("activeDate").valueOf()});
 	},
 
 	handleGenerateCompletedSubscribersCSVFile: function(inSender, inEvent)
 	{
 		//Filter collection to return complete subscribers only.
 		var filteredCollection = this.get("subscriptionCollection").filter(enyo.bind(this, function(value, index, array){
-			return value.get("subscriptionInfo").subscriptionStatus === "complete" || (quantum.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds");
+			return value.get("subscriptionInfo").subscriptionStatus === "complete" || (lumberjack.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds");
 		}));
 
 		if (filteredCollection.length === 0)
@@ -872,7 +872,7 @@ enyo.kind({
 
 		//collection.filter returns an array, so rebuild it into a collection, and get the raw objects from it so that
 		//we can edit them without affecting the underlying models.
-		this.doRequestGenerateCSVFile({rawCollection: new quantum.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Completed Subscribers List.csv"});
+		this.doRequestGenerateCSVFile({rawCollection: new lumberjack.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Completed Subscribers List.csv"});
 		this.disableBeginClosingButton();
 	},
 
@@ -880,7 +880,7 @@ enyo.kind({
 	{
 		//Filter collection to return complete subscribers only.
 		var filteredCollection = this.get("subscriptionCollection").filter(enyo.bind(this, function(value, index, array){
-			return (value.get("subscriptionInfo").subscriptionStatus === "complete" || (quantum.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds")) && value.get("contactInfo").addressInfo.country === "USA";
+			return (value.get("subscriptionInfo").subscriptionStatus === "complete" || (lumberjack.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds")) && value.get("contactInfo").addressInfo.country === "USA";
 		}));
 
 		if (filteredCollection.length === 0)
@@ -891,7 +891,7 @@ enyo.kind({
 
 		//collection.filter returns an array, so rebuild it into a collection, and get the raw objects from it so that
 		//we can edit them without affecting the underlying models.
-		this.doRequestGenerateCSVFile({rawCollection: new quantum.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Completed Subscribers List (USA).csv"});
+		this.doRequestGenerateCSVFile({rawCollection: new lumberjack.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Completed Subscribers List (USA).csv"});
 		this.disableBeginClosingButton();
 	},
 
@@ -899,7 +899,7 @@ enyo.kind({
 	{
 		//Filter collection to return complete subscribers only.
 		var filteredCollection = this.get("subscriptionCollection").filter(enyo.bind(this, function(value, index, array){
-			return (value.get("subscriptionInfo").subscriptionStatus === "complete" || (quantum.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds")) && value.get("contactInfo").addressInfo.country === "CAN";
+			return (value.get("subscriptionInfo").subscriptionStatus === "complete" || (lumberjack.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds")) && value.get("contactInfo").addressInfo.country === "CAN";
 		}));
 
 		if (filteredCollection.length === 0)
@@ -911,7 +911,7 @@ enyo.kind({
 		//collection.filter returns an array, so rebuild it into a collection, and get the raw objects from it so that
 		//we can edit them without affecting the underlying models.
 		this.disableBeginClosingButton();
-		this.doRequestGenerateCSVFile({rawCollection: new quantum.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + quantum.preferences.get("placementInfo").companyInfo.companyName + " " + quantum.preferences.get("placementInfo").placementName + " Completed Subscribers List (Canada).csv"});
+		this.doRequestGenerateCSVFile({rawCollection: new lumberjack.SubscriptionCollection(filteredCollection).raw(), filename: this.get("activeDate").format("YYYY-MM-DD") + " " + lumberjack.preferences.get("placementInfo").companyInfo.companyName + " " + lumberjack.preferences.get("placementInfo").placementName + " Completed Subscribers List (Canada).csv"});
 	},
 
 	hideClosePlacementSection: function()
@@ -923,8 +923,8 @@ enyo.kind({
 
 	showClosePlacementSection: function()
 	{
-		var checkCollection = new quantum.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
-			return value.get("subscriptionInfo").subscriptionStatus === "complete" || value.get("subscriptionInfo").subscriptionStatus === "cancelled" || value.get("subscriptionInfo").subscriptionStatus === "closed" || (quantum.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds");
+		var checkCollection = new lumberjack.SubscriptionCollection(this.get("subscriptionCollection").filter(function(value, index, array){
+			return value.get("subscriptionInfo").subscriptionStatus === "complete" || value.get("subscriptionInfo").subscriptionStatus === "cancelled" || value.get("subscriptionInfo").subscriptionStatus === "closed" || (lumberjack.preferences.get("placementInfo").dapPlacement && value.get("subscriptionInfo").subscriptionStatus === "completeDocsNoFunds");
 		}));
 
 		if(checkCollection.length != this.get("subscriptionCollection").length)
@@ -953,15 +953,15 @@ enyo.kind({
 		this.$.loadingPopup.show("Updating");
 
 		var request = new enyo.Ajax({
-		  url: quantum.preferences.get("apiServer") + "setplacementstatus",
+		  url: lumberjack.preferences.get("apiServer") + "setplacementstatus",
 		  method: "POST",
 		  cacheBust: false,
 		  contentType: "application/json",
 		  headers: {
-			"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+			"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 		  },
 		  postBody: {
-			placementID: quantum.preferences.get("placementDatabase"),
+			placementID: lumberjack.preferences.get("placementDatabase"),
 			placementStatus: newStatus
 		  }
 		});
@@ -1000,10 +1000,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-		  url: quantum.preferences.get("apiServer") + "getplacementstatus",
+		  url: lumberjack.preferences.get("apiServer") + "getplacementstatus",
 		  cacheBust: false,
 		  headers: {
-			"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+			"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 		  }
 		});
 
@@ -1033,12 +1033,12 @@ enyo.kind({
 			this.set("placementStatus", null);
 			this.set("placementStatus", response.placementStatus);
 		}));
-		request.go({placementID: quantum.preferences.get("placementDatabase")});
+		request.go({placementID: lumberjack.preferences.get("placementDatabase")});
 	},
 
 	updateSignedDocumentNames: function()
 	{
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response)
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response)
 		{
 			if (err)
 			{
@@ -1082,15 +1082,15 @@ enyo.kind({
 		var totalSigned = 0;
 		for(var i = 0; i < this.get("closingDocumentNamesCollection").length; i++)
 		{
-			if(quantum.preferences.get("placementInfo")._attachments[this.get("closingDocumentNamesCollection")[i].replace("Unsigned","Signed").replace(".docx",".pdf")] !== undefined)
+			if(lumberjack.preferences.get("placementInfo")._attachments[this.get("closingDocumentNamesCollection")[i].replace("Unsigned","Signed").replace(".docx",".pdf")] !== undefined)
 			{
 				this.get("closingDocumentStatusCollection")[i] = "Signed";
 				totalSigned = totalSigned + 1;
 			}
-			else if(quantum.preferences.get("placementInfo").closingDocuments !== undefined && 
-					quantum.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]] !== undefined && 
-					quantum.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]].adobe.agreementID !== undefined && 
-					quantum.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]].adobe.agreementID !== "")
+			else if(lumberjack.preferences.get("placementInfo").closingDocuments !== undefined && 
+					lumberjack.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]] !== undefined && 
+					lumberjack.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]].adobe.agreementID !== undefined && 
+					lumberjack.preferences.get("placementInfo").closingDocuments[this.get("closingDocumentHashCollection")[i]].adobe.agreementID !== "")
 			{
 				this.get("closingDocumentStatusCollection")[i] = "Sent For Signing";
 			}
@@ -1115,7 +1115,7 @@ enyo.kind({
 	{
 		this.shareholderLetterStatus = false;
 		this.alreadyMailed = false;
-		if(quantum.preferences.get("placementInfo")._attachments["Shareholder Letter.pdf"] !== undefined)
+		if(lumberjack.preferences.get("placementInfo")._attachments["Shareholder Letter.pdf"] !== undefined)
 		{
 			this.shareholderLetterStatus = true;
 			this.$.massMailError.set("showing", false);
@@ -1130,7 +1130,7 @@ enyo.kind({
 			this.$.massMailButton.set("disabled", true);
 		}
 
-		if(quantum.preferences.get("placementInfo").alreadyMailed)
+		if(lumberjack.preferences.get("placementInfo").alreadyMailed)
 		{
 			this.alreadyMailed = true;
 			this.$.massMailButton.set("disabled", true);
@@ -1182,7 +1182,7 @@ enyo.kind({
 	downloadClosingDocumentButtonTapped: function(inSender, inEvent)
 	{
 		this.$.loadingPopup.show("Downloading");
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response)
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response)
 		{
 			if (err)
 			{
@@ -1215,10 +1215,10 @@ enyo.kind({
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getclosingdocumentstatus",
+			url: lumberjack.preferences.get("apiServer") + "getclosingdocumentstatus",
 			cacheBust: false,
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1246,13 +1246,13 @@ enyo.kind({
 			this.$.documentStatusPopup.show(response.response);
 		}));
 
-		request.go({placementID: quantum.preferences.get("placementDatabase"), closingDocumentName: this.get("closingDocumentHashCollection")[inEvent.index]});
+		request.go({placementID: lumberjack.preferences.get("placementDatabase"), closingDocumentName: this.get("closingDocumentHashCollection")[inEvent.index]});
 	},
 
 	downloadSignedClosingDocumentButtonTapped: function(inSender, inEvent)
 	{
 		this.$.loadingPopup.show("Downloading");
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response)
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response)
 		{
 			if (err)
 			{
@@ -1284,7 +1284,7 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Sending Document");
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -1311,13 +1311,13 @@ enyo.kind({
 					cacheBust: false,
 					contentType: "application/json",
 					method: "POST",
-					url: quantum.preferences.get("apiServer")+"sendclosingdocument",
+					url: lumberjack.preferences.get("apiServer")+"sendclosingdocument",
 					headers: {
-						"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+						"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 					}
 				};
 
-				ajaxProperties.postBody = {directors: settingsDoc.companyInfo.directors, subscriptionAcceptanceInfo: settingsDoc.signingOfficers.subscriptionAcceptance, treasuryOrderSigningOfficers: settingsDoc.signingOfficers.treasuryOrder, placementID: quantum.preferences.get("placementDatabase"), documentName: this.get("closingDocumentNamesCollection")[inEvent.index], closeDate: moment(settingsDoc.closingDate).format("YYYY-MM-DD")};
+				ajaxProperties.postBody = {directors: settingsDoc.companyInfo.directors, subscriptionAcceptanceInfo: settingsDoc.signingOfficers.subscriptionAcceptance, treasuryOrderSigningOfficers: settingsDoc.signingOfficers.treasuryOrder, placementID: lumberjack.preferences.get("placementDatabase"), documentName: this.get("closingDocumentNamesCollection")[inEvent.index], closeDate: moment(settingsDoc.closingDate).format("YYYY-MM-DD")};
 
 				var ajax = new enyo.Ajax(ajaxProperties);
 
@@ -1368,16 +1368,16 @@ enyo.kind({
 		this.$.loadingPopup.show("Mailing...");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendshareholderletters",
+			url: lumberjack.preferences.get("apiServer") + "sendshareholderletters",
 			cacheBust: false,
 			contentType: "application/json",
 			method: "POST",
 			headers: {
-				"Authorization":"Bearer " + quantum.preferences.get("username") +":"+quantum.preferences.get("password")
+				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
 			}
 		});
 
-		request.postBody = {placementID: quantum.preferences.get("placementDatabase"), companyID: quantum.preferences.get("company")};
+		request.postBody = {placementID: lumberjack.preferences.get("placementDatabase"), companyID: lumberjack.preferences.get("company")};
 
 		request.error(enyo.bind(this, function(request, response) {
 			console.log(response);

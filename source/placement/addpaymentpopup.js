@@ -1,6 +1,6 @@
 enyo.kind({
-	kind: "quantum.Popup",
-	name: "quantum.AddPaymentPopup",
+	kind: "lumberjack.Popup",
+	name: "lumberjack.AddPaymentPopup",
 
 	published: {
 		activeDate: moment()
@@ -17,14 +17,14 @@ enyo.kind({
 	subComponents: [
 		{style: "padding: 10px;", components: [
 			{style: "font-size: 24px; text-align: center;", content: "Add Payment"},
-			{kind: "quantum.Input", name:"payerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 34px; width: 161px;", decoratorStyle: "width: 250px;", inputStyle: "width: 100%;", type:"text", label:"Payer Name", required:true},
+			{kind: "lumberjack.Input", name:"payerNameInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 34px; width: 161px;", decoratorStyle: "width: 250px;", inputStyle: "width: 100%;", type:"text", label:"Payer Name", required:true},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Applied Amount", style: "width: 140px; line-height: 34px;"},
-				{kind: "quantum.Input", name:"paymentAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 250px;", inputStyle: "margin-left: 10px; width: 250px;", type:"text", label:"$", required:true}
+				{kind: "lumberjack.Input", name:"paymentAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 250px;", inputStyle: "margin-left: 10px; width: 250px;", type:"text", label:"$", required:true}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Received Amount", style: "width: 140px; line-height: 34px;"},
-				{kind: "quantum.Input", name:"receivedAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 250px;", inputStyle: "margin-left: 10px; width: 250px;", type:"text", label:"$", required:true}
+				{kind: "lumberjack.Input", name:"receivedAmountInput", labelStyle:"color: white; display: inline-block; font-size: 20px; line-height: 34px;", decoratorStyle: "width: 250px;", inputStyle: "margin-left: 10px; width: 250px;", type:"text", label:"$", required:true}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Payment Type", style: "line-height: 38px; width: 160px;"},
@@ -46,8 +46,8 @@ enyo.kind({
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 				{content: "Date Received", style: "line-height: 34px; width: 160px;"},
 				{components: [
-					{kind: "quantum.Input", name: "dateReceivedInput", ontap: "handleDateReceivedInputTapped", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true, readonly: true},
-					{name: "calendarPopup", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged"}
+					{kind: "lumberjack.Input", name: "dateReceivedInput", ontap: "handleDateReceivedInputTapped", labelStyle: "", decoratorStyle: "width: 250px;", inputStyle: "width: 250px;", type:"text", required: true, readonly: true},
+					{name: "calendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged"}
 				]}
 			]},
 			{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
@@ -57,10 +57,10 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 10px;", components: [
-				{kind: "quantum.Button", enabledClasses: "button primary", content: "Add", ontap: "handleAddButtonTapped"},
-				{kind: "quantum.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
+				{kind: "lumberjack.Button", enabledClasses: "button primary", content: "Add", ontap: "handleAddButtonTapped"},
+				{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Cancel", ontap: "handleCancelButtonTapped"}
 			]},
-			{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+			{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 		]}
 	],
 
@@ -73,17 +73,17 @@ enyo.kind({
 	show: function()
 	{
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 	},
 
 	getPaymentAmount: function()
 	{
-		return quantum.parseFloat(quantum.formatCurrency(this.$.paymentAmountInput.get("value")));
+		return lumberjack.parseFloat(lumberjack.formatCurrency(this.$.paymentAmountInput.get("value")));
 	},
 
 	getReceivedAmount: function()
 	{
-		return quantum.parseFloat(quantum.formatCurrency(this.$.receivedAmountInput.get("value")));
+		return lumberjack.parseFloat(lumberjack.formatCurrency(this.$.receivedAmountInput.get("value")));
 	},
 
 	validateInputs: function()

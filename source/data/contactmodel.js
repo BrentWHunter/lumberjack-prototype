@@ -1,8 +1,8 @@
-/* global quantum */
+/* global lumberjack */
 
 //NOTE: Any time you update this model, be sure to update create contact from subscription in the contacts route of twilight
 enyo.kind({
-	name: "quantum.ContactModel",
+	name: "lumberjack.ContactModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -81,38 +81,38 @@ enyo.kind({
 		{
 			data.shareholderInfo = {};
 		}
-		data.shareholderInfo = new quantum.ContactShareholderInformationModel(data.shareholderInfo);
+		data.shareholderInfo = new lumberjack.ContactShareholderInformationModel(data.shareholderInfo);
 
 		if (!data.subscriberInfo)
 		{
 			data.subscriberInfo = {};
 		}
-		data.subscriberInfo = new quantum.ContactSubscriberInformationModel(data.subscriberInfo);
+		data.subscriberInfo = new lumberjack.ContactSubscriberInformationModel(data.subscriberInfo);
 
 		if (!data.warrantInfo)
 		{
 			data.warrantInfo = {};
 		}
-		data.warrantInfo = new quantum.ContactWarrantInformationModel(data.warrantInfo);
+		data.warrantInfo = new lumberjack.ContactWarrantInformationModel(data.warrantInfo);
 
 		if (!data.optionInfo)
 		{
 			data.optionInfo = {};
 		}
-		data.optionInfo = new quantum.ContactOptionInformationModel(data.optionInfo);
+		data.optionInfo = new lumberjack.ContactOptionInformationModel(data.optionInfo);
 
 		if (!data.buyerInfo)
 		{
 			data.buyerInfo = {};
 		}
-		data.buyerInfo = new quantum.ContactBuyerInformationModel(data.buyerInfo);
+		data.buyerInfo = new lumberjack.ContactBuyerInformationModel(data.buyerInfo);
 
 		return data;
 	}
 });
 
 enyo.kind({
-	name: "quantum.ContactBuyerInformationModel",
+	name: "lumberjack.ContactBuyerInformationModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -154,14 +154,14 @@ enyo.kind({
 		{
 			data.pendingTransactions = [];
 		}
-		data.pendingTransactions = new quantum.TransactionHistoryCollection(data.pendingTransactions);
+		data.pendingTransactions = new lumberjack.TransactionHistoryCollection(data.pendingTransactions);
 
 
 		if (!data.cancelledTransactions)
 		{
 			data.cancelledTransactions = [];
 		}
-		data.cancelledTransactions = new quantum.TransactionHistoryCollection(data.cancelledTransactions);
+		data.cancelledTransactions = new lumberjack.TransactionHistoryCollection(data.cancelledTransactions);
 
 		if (!data.accreditedInvestorQualification)
 		{
@@ -196,7 +196,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.ContactShareholderInformationModel",
+	name: "lumberjack.ContactShareholderInformationModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -219,20 +219,20 @@ enyo.kind({
 		{
 			data.transactionHistory = [];
 		}
-		data.transactionHistory = new quantum.TransactionHistoryCollection(data.transactionHistory);
+		data.transactionHistory = new lumberjack.TransactionHistoryCollection(data.transactionHistory);
 
 
 		if (!data.pendingTransactions)
 		{
 			data.pendingTransactions = [];
 		}
-		data.pendingTransactions = new quantum.TransactionHistoryCollection(data.pendingTransactions);
+		data.pendingTransactions = new lumberjack.TransactionHistoryCollection(data.pendingTransactions);
 
 		if (!data.cancelledTransactions)
 		{
 			data.cancelledTransactions = [];
 		}
-		data.cancelledTransactions = new quantum.TransactionHistoryCollection(data.cancelledTransactions);
+		data.cancelledTransactions = new lumberjack.TransactionHistoryCollection(data.cancelledTransactions);
 
 		return data;
 	},
@@ -276,7 +276,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.TransactionHistoryModel",
+	name: "lumberjack.TransactionHistoryModel",
 	kind: "enyo.Model",
 	attributes: {
 		timestamp: 0,
@@ -291,7 +291,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.ContactSubscriberInformationModel",
+	name: "lumberjack.ContactSubscriberInformationModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -305,21 +305,21 @@ enyo.kind({
 		{
 			data.activeSubscriptions = [];
 		}
-		data.activeSubscriptions = new quantum.ContactSubscriptionCollection(data.activeSubscriptions);
+		data.activeSubscriptions = new lumberjack.ContactSubscriptionCollection(data.activeSubscriptions);
 
 
 		if (!data.cancelledSubscriptions)
 		{
 			data.cancelledSubscriptions = [];
 		}
-		data.cancelledSubscriptions = new quantum.ContactSubscriptionCollection(data.cancelledSubscriptions);
+		data.cancelledSubscriptions = new lumberjack.ContactSubscriptionCollection(data.cancelledSubscriptions);
 		
 		return data;
 	}
 });
 
 enyo.kind({
-	name: "quantum.ContactSubscriptionModel",
+	name: "lumberjack.ContactSubscriptionModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -333,7 +333,7 @@ enyo.kind({
 
 //Warrants
 enyo.kind({
-	name: "quantum.ContactWarrantInformationModel",
+	name: "lumberjack.ContactWarrantInformationModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -358,7 +358,7 @@ enyo.kind({
 
 //Options
 enyo.kind({
-	name: "quantum.ContactOptionInformationModel",
+	name: "lumberjack.ContactOptionInformationModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	attributes: {
@@ -384,22 +384,22 @@ enyo.kind({
 //TODO: Create submodels for different roles - ie Shareholder, etc.
 
 enyo.kind({
-	name: "quantum.ContactCollection",
+	name: "lumberjack.ContactCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.ContactModel"
+	model: "lumberjack.ContactModel"
 });
 
 enyo.kind({
-	name: "quantum.TransactionHistoryCollection",
+	name: "lumberjack.TransactionHistoryCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.TransactionHistoryModel"
+	model: "lumberjack.TransactionHistoryModel"
 });
 
 enyo.kind({
-	name: "quantum.ContactSubscriptionCollection",
+	name: "lumberjack.ContactSubscriptionCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.ContactSubscriptionModel"
+	model: "lumberjack.ContactSubscriptionModel"
 });

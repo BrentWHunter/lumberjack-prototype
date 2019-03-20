@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.AdvisorDealer",
+	name: "lumberjack.AdvisorDealer",
 
 	published:
 	{
@@ -49,7 +49,7 @@ enyo.kind({
 				{name: "advisorJurisdictionPickerButton", style: "width: 300px;"},
 				{name: "advisorJurisdictionPicker", kind: "onyx.Picker"}
 			]},
-			{name: "addJurisdictionButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addJurisdictionButtonTapped"}
+			{name: "addJurisdictionButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Add Jurisdiction"), style: "width: 150px; height: 45px; margin-left: 10px;", ontap: "addJurisdictionButtonTapped"}
 		]}
 	],
 

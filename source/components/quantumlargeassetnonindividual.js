@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.LargeAssetNonIndividual",
+	name: "lumberjack.LargeAssetNonIndividual",
 
 	published:
 	{
@@ -50,7 +50,7 @@ enyo.kind({
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 			{content: "Date Formed", style: "line-height: 34px; width: 150px;"},
 			{components: [
-				{kind: "quantum.Input", name: "dateReceivedInput", labelStyle: "", decoratorStyle: "width: 300px;", inputStyle: "width: 300px;", type:"text", required: true, oninput: "handleDateReceivedInputChanged"}
+				{kind: "lumberjack.Input", name: "dateReceivedInput", labelStyle: "", decoratorStyle: "width: 300px;", inputStyle: "width: 300px;", type:"text", required: true, oninput: "handleDateReceivedInputChanged"}
 			]}
 		]}
 	],

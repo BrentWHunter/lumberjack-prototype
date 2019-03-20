@@ -1,6 +1,6 @@
-/* global quantum, numeral */
+/* global lumberjack, numeral */
 enyo.kind({
-	name: "quantum.SubscriberListPanel",
+	name: "lumberjack.SubscriberListPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -25,11 +25,11 @@ enyo.kind({
 				{name: "searchInput", style: "width: 100%;", kind: "onyx.Input", oninput: "handleSearchInputChanged"}
 			]},
 			{style: "margin-left: 10px; line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]},
 			{fit: true},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
+				{kind: "lumberjack.Button", style: "margin: 0; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
 					{kind: "enyo.Image", style: "width: 24px; height: 24px;", src: "assets/icons/filter-icon.png"}
 				]}
 			]}
@@ -72,20 +72,20 @@ enyo.kind({
 			]}
 		]},
 		{name: "noSubscriptionsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Subscriptions Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "changeFilterSettingsPopup", kind: "quantum.SubscriptionFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "changeFilterSettingsPopup", kind: "lumberjack.SubscriptionFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
 	],
 
 	setShowingForRoles: function()
 	{
-		//this.$.newSubscriptionButton.set("showing", quantum.hasRole(["admins","users"], "placement"));
-		this.$.verificationDocumentStatusHeader.set("showing", quantum.preferences.get("placementInfo").is506cFinancing);
-		this.$.verificationStatusHeader.set("showing", quantum.preferences.get("placementInfo").is506cFinancing);
+		//this.$.newSubscriptionButton.set("showing", lumberjack.hasRole(["admins","users"], "placement"));
+		this.$.verificationDocumentStatusHeader.set("showing", lumberjack.preferences.get("placementInfo").is506cFinancing);
+		this.$.verificationStatusHeader.set("showing", lumberjack.preferences.get("placementInfo").is506cFinancing);
 	},
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -97,7 +97,7 @@ enyo.kind({
 
 	handleChangeFilterSettingsButtonTapped: function(inSender, inEvent)
 	{
-		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new quantum.SubscriptionFilterSettingsModel({}));
+		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new lumberjack.SubscriptionFilterSettingsModel({}));
 		return;
 	},
 
@@ -128,7 +128,7 @@ enyo.kind({
 	*******************/
 
 	populateSubscriptions: function(){
-		if (!this.get("filterSettings")) {this.set("filterSettings", new quantum.SubscriptionFilterSettingsModel({}));}
+		if (!this.get("filterSettings")) {this.set("filterSettings", new lumberjack.SubscriptionFilterSettingsModel({}));}
 		if (this.get("subscriptionCollection")) {this.$.changeFilterSettingsPopup.set("countryCheckboxNames", this.get("subscriptionCollection").getSubscriberCountries());}
 
 		var results = this.get("subscriptionCollection").filter(enyo.bind(this, function(value, index, array){
@@ -172,13 +172,13 @@ enyo.kind({
 			}
 
 			//Test Minimum Subscription Value
-			if (filter.get("minSubscriptionValue") !== -1 && quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount) < filter.get("minSubscriptionValue"))
+			if (filter.get("minSubscriptionValue") !== -1 && lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount) < filter.get("minSubscriptionValue"))
 			{
 				allowedByFilterSettings = false;
 			}
 
 			//Test Maximum Subscription Value
-			if (filter.get("maxSubscriptionValue") !== -1 && quantum.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount) > filter.get("maxSubscriptionValue"))
+			if (filter.get("maxSubscriptionValue") !== -1 && lumberjack.parseFloat(value.get("subscriptionInfo").subscriberDollarAmount) > filter.get("maxSubscriptionValue"))
 			{
 				allowedByFilterSettings = false;
 			}
@@ -186,7 +186,7 @@ enyo.kind({
 			return searchResultFound && allowedByFilterSettings;
 		}));
 
-		this.set("filteredSubscriptionCollection", new quantum.SubscriptionCollection(results));
+		this.set("filteredSubscriptionCollection", new lumberjack.SubscriptionCollection(results));
 
 		this.$.noSubscriptionsLabel.set("showing", this.get("filteredSubscriptionCollection").length === 0);
 		this.$.subscriptionRepeater.set("showing", this.get("filteredSubscriptionCollection").length > 0);
@@ -196,7 +196,7 @@ enyo.kind({
 
 	setupSubscriptionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "placement")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
 		if (!inEvent.item) {return true;}
 
 		var getDocumentStatus = function(doc)
@@ -252,7 +252,7 @@ enyo.kind({
 
 		inEvent.item.$.subscriptionItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 
-		if (quantum.preferences.get("placementInfo").is506cFinancing)
+		if (lumberjack.preferences.get("placementInfo").is506cFinancing)
 		{
 			inEvent.item.$.verificationDocumentStatus.set("showing", true);
 			inEvent.item.$.verificationStatus.set("showing", true);
@@ -307,11 +307,11 @@ enyo.kind({
 		inEvent.item.$.contactPerson.set("content", refItem.get("contactInfo").corporateInfo.contactPerson ? refItem.get("contactInfo").corporateInfo.contactPerson : "");
 		inEvent.item.$.salespersonName.set("content", (refItem.get("subscriptionInfo").salespersonID != null && refItem.get("subscriptionInfo").salespersonID !== "") ? this.get("salespeople") ? this.get("salespeople")[refItem.get("subscriptionInfo").salespersonID].salespersonName: "" : "");
 		inEvent.item.$.email.set("content", refItem.get("contactInfo").emailAddress ? refItem.get("contactInfo").emailAddress : "");
-		inEvent.item.$.subscriptionStatus.set("content", quantum.subscriptionStatusLookup(refItem.get("subscriptionInfo").subscriptionStatus));
+		inEvent.item.$.subscriptionStatus.set("content", lumberjack.subscriptionStatusLookup(refItem.get("subscriptionInfo").subscriptionStatus));
 		inEvent.item.$.agreementSignatureStatusIcon.set("src", agreementSignatureStatusIconSrc);
 		inEvent.item.$.numShares.set("content", refItem.get("subscriptionInfo").numShares ? numeral(refItem.get("subscriptionInfo").numShares).format('0,0') : "0");
-		inEvent.item.$.subscriberDollarAmount.set("content", refItem.get("subscriptionInfo").subscriberDollarAmount ? "$" + quantum.formatCurrency(refItem.get("subscriptionInfo").subscriberDollarAmount) : "$0");
-		inEvent.item.$.fundsReceived.set("content", refItem.get("subscriptionInfo").fundsReceived ? "$" + quantum.formatCurrency(refItem.get("subscriptionInfo").fundsReceived) : "$0");
+		inEvent.item.$.subscriberDollarAmount.set("content", refItem.get("subscriptionInfo").subscriberDollarAmount ? "$" + lumberjack.formatCurrency(refItem.get("subscriptionInfo").subscriberDollarAmount) : "$0");
+		inEvent.item.$.fundsReceived.set("content", refItem.get("subscriptionInfo").fundsReceived ? "$" + lumberjack.formatCurrency(refItem.get("subscriptionInfo").fundsReceived) : "$0");
 		inEvent.item.$.country.set("content", refItem.get("contactInfo").addressInfo.country ? refItem.get("contactInfo").addressInfo.country : "");
 		inEvent.item.$.stateProvince.set("content", refItem.get("contactInfo").addressInfo.stateProvince ? refItem.get("contactInfo").addressInfo.stateProvince : "");
 		return true;

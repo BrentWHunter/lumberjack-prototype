@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionDetailPanel",
+	name: "lumberjack.OptionDetailPanel",
 	kind: "enyo.Scroller",
 	//fit: true,
 
@@ -30,21 +30,21 @@ enyo.kind({
 			{style: "font-size: 24px;", content: "Option Information"},
 			{fit: true},
 			{name: "editButtons", components: [
-				{name: "saveChangesButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Save Changes", ontap: "handleSaveEntryButtonTapped"},
-				{name: "previousEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
-				{name: "nextEntryButton", kind: "quantum.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
+				{name: "saveChangesButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Save Changes", ontap: "handleSaveEntryButtonTapped"},
+				{name: "previousEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Previous Entry", ontap: "handlePreviousEntryButtonTapped"},
+				{name: "nextEntryButton", kind: "lumberjack.Button", style: "margin: 0 0 0 10px;", content: "Next Entry", ontap: "handleNextEntryButtonTapped"}
 			]},
 			{name: "addButtons", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
-				{name: "addEntryButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: "Cancel", ontap: "handleCancelButtonTapped"},
+				{name: "addEntryButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-left: 10px;", content: "Add Entry", ontap: "handleSaveEntryButtonTapped"}
 			]}
 		]},
 		{kind:"enyo.FittableColumns", style: "padding-top: 5px;", components:[
 			{style: "width: 50%;", components: [
-				{kind: "quantum.Input", name:"dateIssuedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Option Issuance Date", required:true, ontap: "handleDateIssuedInputTapped", readonly:true},
-				{name: "calendarPopup", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged"},
-				{kind: "quantum.Input", name:"dateExpiresInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Expiration Date", required:true, ontap: "handleDateExpiresInputTapped", readonly:true},
-				{name: "calendarPopup2", kind: "quantum.CalendarPopup", onSelect: "calendarDateChanged2"},
+				{kind: "lumberjack.Input", name:"dateIssuedInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Option Issuance Date", required:true, ontap: "handleDateIssuedInputTapped", readonly:true},
+				{name: "calendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged"},
+				{kind: "lumberjack.Input", name:"dateExpiresInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Expiration Date", required:true, ontap: "handleDateExpiresInputTapped", readonly:true},
+				{name: "calendarPopup2", kind: "lumberjack.CalendarPopup", onSelect: "calendarDateChanged2"},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Option Status", style: "line-height: 38px; width: 170px;"},
 					{kind: "onyx.PickerDecorator", style: "margin-left: 10px; width: 350px;", components: [
@@ -58,35 +58,35 @@ enyo.kind({
 						]}
 					]}
 				]},
-				{name: "expiryEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 10px 0 0 180px;", content: "Expire Entry", ontap: "handleExpireEntryButtonTapped"},
-				{name: "deleteEntryButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 10px 0 0 10px;", content: "Revoke Entry", ontap: "handleDeleteEntryButtonTapped"},
-				{kind: "quantum.Input", name:"numSharesMaxInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Number of Shares", required:true, inputMaxLength:10, disabled:true},
-				{kind: "quantum.Input", name:"numSharesActiveInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Number of Active Shares", required:true, inputMaxLength:10, disabled:true},
-				{kind: "quantum.Input", name:"totalPriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Option Value", required:true, inputMaxLength:10, disabled:true},
-				{kind: "quantum.Input", name:"exercisedPriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Exercised Option Value", required:true, inputMaxLength:10, disabled:true},
-				{kind: "quantum.Input", name:"exercisePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Price per Share", onchange:"priceChange", required:true, inputMaxLength:10, onkeydown: "validateDecimalInput"},
+				{name: "expiryEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 10px 0 0 180px;", content: "Expire Entry", ontap: "handleExpireEntryButtonTapped"},
+				{name: "deleteEntryButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 10px 0 0 10px;", content: "Revoke Entry", ontap: "handleDeleteEntryButtonTapped"},
+				{kind: "lumberjack.Input", name:"numSharesMaxInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Number of Shares", required:true, inputMaxLength:10, disabled:true},
+				{kind: "lumberjack.Input", name:"numSharesActiveInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Number of Active Shares", required:true, inputMaxLength:10, disabled:true},
+				{kind: "lumberjack.Input", name:"totalPriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Total Option Value", required:true, inputMaxLength:10, disabled:true},
+				{kind: "lumberjack.Input", name:"exercisedPriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Exercised Option Value", required:true, inputMaxLength:10, disabled:true},
+				{kind: "lumberjack.Input", name:"exercisePriceInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", label:"Price per Share", onchange:"priceChange", required:true, inputMaxLength:10, onkeydown: "validateDecimalInput"},
 				{kind: "enyo.FittableColumns", style: "margin-top: 10px;", components: [
 					{content: "Exercise Currency", style: "line-height: 38px; width: 170px;"},
-					{kind: "quantum.CurrencyPicker", name: "exerciseCurrencyPicker", style: "margin-left: 10px; width: 350px;"}
+					{kind: "lumberjack.CurrencyPicker", name: "exerciseCurrencyPicker", style: "margin-left: 10px; width: 350px;"}
 				]}
 			]},
 			{style: "margin-left: 1%; width: 49%;", components: [
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Option Holder Details"},
 					{fit: true},
-					{name: "viewHolderButton", kind: "quantum.Button", style: "height: 30px;", content: "View Holder", ontap: "handleViewHolder"},
-					{name: "searchHolderButton", kind: "quantum.Button", style: "height: 30px;", content: "Search Holders", ontap: "handleSearchHolderButtonTapped"}
+					{name: "viewHolderButton", kind: "lumberjack.Button", style: "height: 30px;", content: "View Holder", ontap: "handleViewHolder"},
+					{name: "searchHolderButton", kind: "lumberjack.Button", style: "height: 30px;", content: "Search Holders", ontap: "handleSearchHolderButtonTapped"}
 				]},
-				{kind: "quantum.Input", name:"holderNameInput", columnStyle:"margin-top: 20px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", disabled:true, label:"Holder Name", required:true},
-				{kind: "quantum.Input", name:"holderEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", disabled:true, label:"Holder Email Address", required:true},
-				{kind: "quantum.Input", name:"holderPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", disabled:true, label:"Holder Phone Number", required:true},
-				{kind: "quantum.Input", name:"holderContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Holder Contact ID", required:true},
+				{kind: "lumberjack.Input", name:"holderNameInput", columnStyle:"margin-top: 20px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", disabled:true, label:"Holder Name", required:true},
+				{kind: "lumberjack.Input", name:"holderEmailInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"email", disabled:true, label:"Holder Email Address", required:true},
+				{kind: "lumberjack.Input", name:"holderPhoneInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"tel", disabled:true, label:"Holder Phone Number", required:true},
+				{kind: "lumberjack.Input", name:"holderContactIDInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 38px; width: 170px;", decoratorStyle: "margin-left: 10px; width: 350px;", inputStyle: "width: 100%;", type:"text", showing: false, label:"Holder Contact ID", required:true},
 				{name:"exerciseSection", components: [
 						{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 						{style: "font-size: 24px;", content: "Exercise Options"},
 						{fit: true}
 					]},
-					{name: "exerciseOptionsButton", kind: "quantum.Button", style: "height: 30px; margin-top:20px;", content: "Exercise Options", ontap: "handleExerciseOptionsButtonTapped"}
+					{name: "exerciseOptionsButton", kind: "lumberjack.Button", style: "height: 30px; margin-top:20px;", content: "Exercise Options", ontap: "handleExerciseOptionsButtonTapped"}
 				]}
 			]}
 		]},
@@ -95,7 +95,7 @@ enyo.kind({
 				{kind: "enyo.FittableColumns", style: "padding-bottom: 5px; border-bottom: 1px solid black;", components: [
 					{style: "font-size: 24px;", content: "Vesting Conditions"},
 					{fit: true},
-					{name: "searchVestingButton", kind: "quantum.Button", style: "height: 30px;", content: "Add Vesting Condition", ontap: "handleSearchVestingButtonTapped"}
+					{name: "searchVestingButton", kind: "lumberjack.Button", style: "height: 30px;", content: "Add Vesting Condition", ontap: "handleSearchVestingButtonTapped"}
 				]},
 				{name:"vestingRepeaterHeaders", kind: "enyo.FittableColumns", style: "background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
 					{content: "Vesting Type", style: "min-width: 100px;"},
@@ -104,14 +104,14 @@ enyo.kind({
 					{content: "Number of Shares", style: "width: 150px;"}
 				]},
 				{name:"vestingRepeater", kind:"enyo.Repeater", count:0, style: "width: 100%; border: 1px solid black;", onSetupItem: "setupVestingRepeaterItem", components: [
-					{name: "vestCalendarPopup", kind: "quantum.CalendarPopup", onSelect: "vestingCalendarDateChanged"},
+					{name: "vestCalendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "vestingCalendarDateChanged"},
 					{name: "vestingItem", style: "background-color: white; border-bottom: 1px solid black; padding: 5px;", selected: false, layoutKind: "enyo.FittableColumnsLayout", components: [
 						{name: "vestingType", style: "width: 100px; line-height: 34px;"},
-						{kind: "quantum.Input", name:"dateOfVest", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 38px;", decoratorStyle: "margin-left: 0px; width: 130px; margin-right: 10px;", inputStyle: "width: 100%;", type:"text", ontap:"handleDateOfVestInputTapped", readonly:true},
+						{kind: "lumberjack.Input", name:"dateOfVest", columnStyle:"margin-top: 0px;", labelStyle:"line-height: 38px;", decoratorStyle: "margin-left: 0px; width: 130px; margin-right: 10px;", inputStyle: "width: 100%;", type:"text", ontap:"handleDateOfVestInputTapped", readonly:true},
 						{name: "dateOfVestNonDate", style: "width: 140px; line-height: 34px;", content:"N/A"},
 						{name: "vestingEventDescription", style: "width: 300px; line-height: 34px;"},
-						{name: "numShares", kind:"quantum.Input", type:"text", required:true, style: "width: 174px; line-height: 34px;", onchange:"vestingSharesChange", onkeydown:"validateNumberInput"},
-						{name: "deleteButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 10px 10px; line-height: 30px; text-align:right;", content: "Delete", ontap: "deleteVestConditionButtonTapped"}
+						{name: "numShares", kind:"lumberjack.Input", type:"text", required:true, style: "width: 174px; line-height: 34px;", onchange:"vestingSharesChange", onkeydown:"validateNumberInput"},
+						{name: "deleteButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 10px 10px; line-height: 30px; text-align:right;", content: "Delete", ontap: "deleteVestConditionButtonTapped"}
 					]}
 				]},
 				{name:"vestingRepeaterReadOnlyHeaders", kind: "enyo.FittableColumns", style: "background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
@@ -128,7 +128,7 @@ enyo.kind({
 						{name: "vestingEventDescription", style: "width: 300px; line-height: 34px;"},
 						{name: "numShares", style: "width: 150px; line-height: 34px;"},
 						{name: "vestingStatus", style: "width: 90px; line-height: 34px; padding-right:15px;"},
-						{name: "vestButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Vest Shares", ontap: "vestConditionButtonTapped"}
+						{name: "vestButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Vest Shares", ontap: "vestConditionButtonTapped"}
 					]}
 				]},
 				{name: "noVestingLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Vesting Conditions"}
@@ -169,19 +169,19 @@ enyo.kind({
 				{name: "issuanceDocSignedTimestampLabel", style: "line-height: 30px; margin-left: 10px;"}
 			]},
 			{style: "margin-top: 10px;", components: [
-				{name: "generateDocumentButton", kind: "quantum.Button", content: "Generate Issuance Document", ontap: "handleGenerateDocumentButtonTapped"},
-				{name: "downloadUnsignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Download Unsigned Document", ontap: "handleDownloadUnsignedDocumentTapped"},
-				{name: "sendForSignatureButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Send for Signature", ontap: "handleSendForSignatureButtonTapped"},
-				{name: "viewDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"},
-				{name: "refreshDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Refresh Document Status", ontap: "handleRefreshDocumentStatusButtonTapped"},
-				{name: "viewSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"},
-				{name: "downloadSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"}
+				{name: "generateDocumentButton", kind: "lumberjack.Button", content: "Generate Issuance Document", ontap: "handleGenerateDocumentButtonTapped"},
+				{name: "downloadUnsignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Download Unsigned Document", ontap: "handleDownloadUnsignedDocumentTapped"},
+				{name: "sendForSignatureButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Send for Signature", ontap: "handleSendForSignatureButtonTapped"},
+				{name: "viewDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View Document Status", ontap: "handleViewDocumentStatusButtonTapped"},
+				{name: "refreshDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Refresh Document Status", ontap: "handleRefreshDocumentStatusButtonTapped"},
+				{name: "viewSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "View Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"},
+				{name: "downloadSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Download Signed Document", ontap: "handleDownloadSignedDocumentButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
-			{kind: "quantum.SupportingDocuments", name: "supportingDocuments", module: "option", style: "width: 50%", onAddDocument: "handleAddDocument", attachmentIndexKey: "attachmentID"},
+			{kind: "lumberjack.SupportingDocuments", name: "supportingDocuments", module: "option", style: "width: 50%", onAddDocument: "handleAddDocument", attachmentIndexKey: "attachmentID"},
 			{name:"paymentSectionWrapper", style: "width: 50%", components: [
-				{kind: "quantum.PaymentSection", name: "paymentSection", module: "option", style: "width: 100%", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", attachmentIndexKey: "attachmentID"}
+				{kind: "lumberjack.PaymentSection", name: "paymentSection", module: "option", style: "width: 100%", onAddPayment: "handleAddPayment", onAddRefund: "handleAddPayment", attachmentIndexKey: "attachmentID"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 25px;", components: [
@@ -198,21 +198,21 @@ enyo.kind({
 						{name: "exerciseStatus", style: "width: 200px; line-height: 34px;"},
 						{name: "exerciseNumShares", style: "width: 150px; line-height: 34px;"},
 						{name: "exerciseDate", style: "width: 90px; line-height: 34px;"},
-						{name: "exerciseDownloadUnsignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Download Unsigned Document", ontap: "handleExerciseDownloadUnsignedDocumentTapped"},
-						{name: "exerciseSendForSignatureButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Send for Signature", ontap: "handleExerciseSendForSignatureButtonTapped"},
-						{name: "exerciseViewDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "View Status", ontap: "handleExerciseViewDocumentStatusButtonTapped"},
-						{name: "exerciseRefreshDocumentStatusButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Refresh Status", ontap: "handleExerciseRefreshDocumentStatusButtonTapped"},
-						{name: "exerciseViewSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "View Signed Document", ontap: "handleExerciseDownloadSignedDocumentButtonTapped"},
-						{name: "exerciseDownloadSignedDocumentButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Download Signed Document", ontap: "handleExerciseDownloadSignedDocumentButtonTapped"},
-						{name: "cancelExerciseButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Cancel", ontap: "handleCancelExerciseButtonTapped"},
-						{name: "treasuryButton", kind: "quantum.Button", style: "margin-left: 10px; height:24px;", content: "Treasury Order", ontap: "handleTreasuryOrderButtonTapped"}
+						{name: "exerciseDownloadUnsignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Download Unsigned Document", ontap: "handleExerciseDownloadUnsignedDocumentTapped"},
+						{name: "exerciseSendForSignatureButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Send for Signature", ontap: "handleExerciseSendForSignatureButtonTapped"},
+						{name: "exerciseViewDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "View Status", ontap: "handleExerciseViewDocumentStatusButtonTapped"},
+						{name: "exerciseRefreshDocumentStatusButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Refresh Status", ontap: "handleExerciseRefreshDocumentStatusButtonTapped"},
+						{name: "exerciseViewSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "View Signed Document", ontap: "handleExerciseDownloadSignedDocumentButtonTapped"},
+						{name: "exerciseDownloadSignedDocumentButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Download Signed Document", ontap: "handleExerciseDownloadSignedDocumentButtonTapped"},
+						{name: "cancelExerciseButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Cancel", ontap: "handleCancelExerciseButtonTapped"},
+						{name: "treasuryButton", kind: "lumberjack.Button", style: "margin-left: 10px; height:24px;", content: "Treasury Order", ontap: "handleTreasuryOrderButtonTapped"}
 					]}
 				]},
 				{name: "noExerciseLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Exercises Recorded"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "documentStatusPopup", kind: "quantum.ViewAdobeSignDocumentStatusPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "documentStatusPopup", kind: "lumberjack.ViewAdobeSignDocumentStatusPopup"}
 	],
 	bindings: [
 		{from: ".dateIssued", to: ".$.dateIssuedInput.value", transform: function(v) {
@@ -267,7 +267,7 @@ enyo.kind({
 		{from: ".mode", to: ".$.searchVestingButton.showing", transform: function(v) { return v === "add"; }},
 		{from: ".mode", to: ".$.searchHolderButton.showing", transform: function(v) { return v === "add"; }},
 		{from: ".mode", to: ".$.viewHolderButton.showing", transform: function(v) { return v === "edit"; }},
-		{from: ".activeEntry", to:".ae", transform: function(v){if(v){return new quantum.OptionModel(v.raw());} else {return null;}}},
+		{from: ".activeEntry", to:".ae", transform: function(v){if(v){return new lumberjack.OptionModel(v.raw());} else {return null;}}},
 		{from: ".ae.status", to: ".$.optionStatusPicker.selected", transform: function(val) {
 			try
 			{
@@ -387,7 +387,7 @@ enyo.kind({
 			{
 				if (val != null && val !== "")
 				{
-					var count = quantum.parseInt(val);
+					var count = lumberjack.parseInt(val);
 
 					if(count > 0){
 						return false;
@@ -501,7 +501,7 @@ enyo.kind({
 				if (data != null) { return data; }
 				else { throw null; }
 			}
-			catch (err) { return new quantum.OptionEventCollection(); }
+			catch (err) { return new lumberjack.OptionEventCollection(); }
 		}},
 		{from: ".ae", to: ".exercise", transform: function(val) {
 			try
@@ -643,7 +643,7 @@ enyo.kind({
 	//Setup
 	activate: function(activeEntry)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
 
 		this.clearBorderError();
 
@@ -652,7 +652,7 @@ enyo.kind({
 		this.$.holderPhoneInput.set("value", "");
 		// The "activeEntry" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("activeEntry", null);
-		this.set("activeEntry", this.initEntryAttributes(new quantum.OptionModel({})));
+		this.set("activeEntry", this.initEntryAttributes(new lumberjack.OptionModel({})));
 		if (activeEntry != null) {
 			this.initEntryAttributes(activeEntry);
 			this.set("activeEntry", activeEntry);
@@ -695,7 +695,7 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], "option");
+		return lumberjack.hasRole(["admins","users"], "option");
 	},
 
 	initEntryAttributes: function(entry)
@@ -866,7 +866,7 @@ enyo.kind({
 			}
 
 			try{
-				var active = quantum.parseInt(this.$.numSharesActiveInput.get("value")) + quantum.parseInt(vestCondition.get("numShares"));
+				var active = lumberjack.parseInt(this.$.numSharesActiveInput.get("value")) + lumberjack.parseInt(vestCondition.get("numShares"));
 				this.$.numSharesActiveInput.set("value", active);
 				vestCondition.set("vested", true);
 
@@ -892,7 +892,7 @@ enyo.kind({
 			this.$.confirmDeleteVestingConditionPopup.hide();
 			this.$.confirmDeleteVestingConditionPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteVestingConditionPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "deleteVestCondition", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteVestingConditionPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "deleteVestCondition", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteVestingConditionPopup.show("Delete Vesting Condition? You must save entry to make this permament.", inEvent.index);
 	},
 
@@ -918,7 +918,7 @@ enyo.kind({
 		if(!inEvent.target.value){
 			conds.at(inEvent.index).set("numShares", 0);
 		}else{
-			var numSharesIn = quantum.parseInt(inEvent.target.value);
+			var numSharesIn = lumberjack.parseInt(inEvent.target.value);
 			conds.at(inEvent.index).set("numShares", numSharesIn);
 			inEvent.target.value = numSharesIn;
 		}
@@ -927,12 +927,12 @@ enyo.kind({
 		var active = 0;
 
 		var totalPrice = 0;
-		var price = quantum.parseFloat(this.$.exercisePriceInput.get("value"));
+		var price = lumberjack.parseFloat(this.$.exercisePriceInput.get("value"));
 
 		for(var i = 0; i < conds.length; i++){
-			total += quantum.parseInt(conds.at(i).get("numShares"));
+			total += lumberjack.parseInt(conds.at(i).get("numShares"));
 			if(conds.at(i).get("type") === "immediate"){
-				active += quantum.parseInt(conds.at(i).get("numShares"));
+				active += lumberjack.parseInt(conds.at(i).get("numShares"));
 			}
 		}
 
@@ -945,7 +945,7 @@ enyo.kind({
 
 	priceChange:function(inSender, inEvent)
 	{
-		var price = quantum.parseFloat(inEvent.target.value).toFixed(2);
+		var price = lumberjack.parseFloat(inEvent.target.value).toFixed(2);
 
 		var total = this.$.numSharesMaxInput.get("value");
 
@@ -961,11 +961,11 @@ enyo.kind({
 
 		for (var key in this.$)
 		{
-			if(this.$[key].kind === "quantum.Input")
+			if(this.$[key].kind === "lumberjack.Input")
 			{
 				this.$[key].clearBorderError();
 			}
-			else if (this.$[key].kind === "quantum.CurrencyPicker")
+			else if (this.$[key].kind === "lumberjack.CurrencyPicker")
 			{
 				this.$[key].applyStyle("border", null);
 			}
@@ -1031,7 +1031,7 @@ enyo.kind({
 		if(!this.$.numSharesMaxInput.validate()){isValid = false;}
 		if(!this.$.exercisePriceInput.validate()){isValid = false;}
 		var priceRaw = this.$.exercisePriceInput.get("value");
-		var price = quantum.parseFloat(priceRaw);
+		var price = lumberjack.parseFloat(priceRaw);
 		if (price <= 0)
 		{
 			isValid = false;
@@ -1041,7 +1041,7 @@ enyo.kind({
 
 		var flagAsInvalid = function(control, doNotUseParent) {
 			isValid = false;
-			if (control.kind === "quantum.Input")
+			if (control.kind === "lumberjack.Input")
 			{
 				control.setBorderError();
 			}
@@ -1102,7 +1102,7 @@ enyo.kind({
 			}
 
 			for(var i = 0; i < conds.length; i++){
-				if(!conds.at(i).get("numShares") || quantum.parseInt(conds.at(i).get("numShares")) <= 0){
+				if(!conds.at(i).get("numShares") || lumberjack.parseInt(conds.at(i).get("numShares")) <= 0){
 					isValid = false;
 					this.$.vestingRepeater.children[i].$.numShares.setBorderError();
 				}
@@ -1147,7 +1147,7 @@ enyo.kind({
 			ae.numSharesExercised = 0;
 			ae.holderContactID = this.$.holderContactIDInput.get("value");
 
-			var exPrice = quantum.parseFloat(ae.exercisePrice);
+			var exPrice = lumberjack.parseFloat(ae.exercisePrice);
 			totalPrice = exPrice * ae.numSharesMax;
 			ae.purchasePriceTotal = totalPrice;
 
@@ -1235,7 +1235,7 @@ enyo.kind({
 			};
 		});
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -1280,13 +1280,13 @@ enyo.kind({
 			cacheBust: false,
 			contentType:"application/json",
 			method:"POST",
-			url:quantum.preferences.get("apiServer") + "addoptiontocontact",
+			url:lumberjack.preferences.get("apiServer") + "addoptiontocontact",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		};
 
-		ajaxProperties.postBody = {companyID: quantum.preferences.get("company"), optionID: optionID, contactID: contactID};
+		ajaxProperties.postBody = {companyID: lumberjack.preferences.get("company"), optionID: optionID, contactID: contactID};
 
 		var ajax = new enyo.Ajax(ajaxProperties);
 
@@ -1342,7 +1342,7 @@ enyo.kind({
 				this.$.next_saveChangesPopup.hide();
 				this.$.next_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "next_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "next_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "nextEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.next_saveChangesPopup.show("Save changes?");
 		}
 		else { this.nextEntry(inSender, inEvent); }
@@ -1362,7 +1362,7 @@ enyo.kind({
 				this.$.previous_saveChangesPopup.hide();
 				this.$.previous_saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "previous_saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "previous_saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "handleSaveEntryButtonTapped", onNo: "previousEntry", onHide: "handlePopupHidden"} , {owner:this});
 			this.$.previous_saveChangesPopup.show("Save changes?");
 		}
 		else { this.previousEntry(inSender, inEvent); }
@@ -1427,8 +1427,8 @@ enyo.kind({
 			this.$.shareholderSearchPopup.destroy();
 		}
 
-		this.createComponent({name: "shareholderSearchPopup", kind: "quantum.ShareholderSearchPopup", allowNewContact: false, enableSearch: true, searchRoles:["optionholder"], onShareholderSelected: "handleHolderSelected", onHide: "handlePopupHidden", title: "Search Option Holders"});
-		this.$.shareholderSearchPopup.show(this.$.holderNameInput.get("value"), quantum.preferences.get("company"));
+		this.createComponent({name: "shareholderSearchPopup", kind: "lumberjack.ShareholderSearchPopup", allowNewContact: false, enableSearch: true, searchRoles:["optionholder"], onShareholderSelected: "handleHolderSelected", onHide: "handlePopupHidden", title: "Search Option Holders"});
+		this.$.shareholderSearchPopup.show(this.$.holderNameInput.get("value"), lumberjack.preferences.get("company"));
 	},
 
 	handleHolderSelected: function(inSender, inEvent)
@@ -1463,8 +1463,8 @@ enyo.kind({
 			this.$.vestingConditionSearchPopup.destroy();
 		}
 
-		this.createComponent({name: "vestingConditionSearchPopup", kind: "quantum.VestingConditionSearchPopup", allowNewCondition: true, enableSearch: true, onConditionSelected: "handleConditionSelected", onHide: "handlePopupHidden", onCreateNewCondition:"handleCreateNewCondition"});
-		this.$.vestingConditionSearchPopup.show("", quantum.preferences.get("company"));
+		this.createComponent({name: "vestingConditionSearchPopup", kind: "lumberjack.VestingConditionSearchPopup", allowNewCondition: true, enableSearch: true, onConditionSelected: "handleConditionSelected", onHide: "handlePopupHidden", onCreateNewCondition:"handleCreateNewCondition"});
+		this.$.vestingConditionSearchPopup.show("", lumberjack.preferences.get("company"));
 	},
 
 	handleConditionSelected: function(inSender, inEvent)
@@ -1475,7 +1475,7 @@ enyo.kind({
 
 		var condition = inEvent.condition;
 
-		var cond = new quantum.OptionVestingConditionModel({});
+		var cond = new lumberjack.OptionVestingConditionModel({});
 
 		cond.set("type", condition.get("type"));
 		cond.set("numShares", 0);
@@ -1501,13 +1501,13 @@ enyo.kind({
 			this.$.vestingCreationPopup.destroy();
 		}
 
-		this.createComponent({name: "vestingCreationPopup", kind: "quantum.VestingCreationPopup", onHide: "handlePopupHidden", onCreateNewCondition:"handleNewCondition"});
+		this.createComponent({name: "vestingCreationPopup", kind: "lumberjack.VestingCreationPopup", onHide: "handlePopupHidden", onCreateNewCondition:"handleNewCondition"});
 		this.$.vestingCreationPopup.show();
 	},
 
 	handleNewCondition:function(inSender, inEvent)
 	{
-		var addedCondition = new quantum.VestingEventModel({});
+		var addedCondition = new lumberjack.VestingEventModel({});
 
 		addedCondition.set("name", inEvent.name);
 		addedCondition.set("description", inEvent.description);
@@ -1517,13 +1517,13 @@ enyo.kind({
 			cacheBust: false,
 			contentType:"application/json",
 			method:"POST",
-			url:quantum.preferences.get("apiServer") + "addvestingcondition",
+			url:lumberjack.preferences.get("apiServer") + "addvestingcondition",
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		};
 
-		ajaxProperties.postBody = {model: addedCondition, companyID: quantum.preferences.get("company")};
+		ajaxProperties.postBody = {model: addedCondition, companyID: lumberjack.preferences.get("company")};
 
 		var ajax = new enyo.Ajax(ajaxProperties);
 
@@ -1535,7 +1535,7 @@ enyo.kind({
 
 				var condition = response.condition;
 
-				var cond = new quantum.OptionVestingConditionModel({});
+				var cond = new lumberjack.OptionVestingConditionModel({});
 
 				cond.set("type", condition.type);
 				cond.set("numShares", 0);
@@ -1565,7 +1565,7 @@ enyo.kind({
 	//Delete
 	handleDeleteEntryButtonTapped:function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins"], "option")) { return; }
 
 		var fundsPaid = this.$.paymentSection.calculateFundsPaid();
 		if(fundsPaid > 0)
@@ -1579,7 +1579,7 @@ enyo.kind({
 			this.$.confirmDeleteEntryPopup.hide();
 			this.$.confirmDeleteEntryPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeleteEntryPopup", kind: "quantum.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeleteEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "deleteEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeleteEntryPopup.show("Revoke Entry? This cannot be undone.");
 	},
 
@@ -1587,17 +1587,17 @@ enyo.kind({
 	{
 		this.$.loadingPopup.show("Updating Contact Information.");
 		var contactRequest = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "removeoptionfromcontact",
+			url: lumberjack.preferences.get("apiServer") + "removeoptionfromcontact",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				contactID: this.get("activeEntry").get("holderContactID"),
 				optionID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1621,16 +1621,16 @@ enyo.kind({
 
 			alertify.success("Successfully updated contact record.");
 			var optionRequest = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "deleteoption",
+				url: lumberjack.preferences.get("apiServer") + "deleteoption",
 				method: "POST",
 				cacheBust: false,
 				contentType: "application/json",
 				postBody: {
-					companyID: quantum.preferences.get("company"),
+					companyID: lumberjack.preferences.get("company"),
 					optionID: this.get("activeEntry").get("_id")
 				},
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			});
 
@@ -1674,7 +1674,7 @@ enyo.kind({
 	//Expire
 	handleExpireEntryButtonTapped:function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins"], "option")) { return; }
 
 		var fundsPaid = this.$.paymentSection.calculateFundsPaid();
 		if(fundsPaid > 0)
@@ -1701,7 +1701,7 @@ enyo.kind({
 			this.$.confirmExpiryEntryPopup.hide();
 			this.$.confirmExpiryEntryPopup.destroy();
 		}
-		this.createComponent({name: "confirmExpiryEntryPopup", kind: "quantum.ConfirmPopup", onYes: "expireEntry", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmExpiryEntryPopup", kind: "lumberjack.ConfirmPopup", onYes: "expireEntry", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmExpiryEntryPopup.show("Expire Entry?");
 	},
 
@@ -1710,16 +1710,16 @@ enyo.kind({
 		this.$.loadingPopup.show();
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "expireoption",
+			url: lumberjack.preferences.get("apiServer") + "expireoption",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1807,14 +1807,14 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getissuancedocumentstatus",
+			url: lumberjack.preferences.get("apiServer") + "getissuancedocumentstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1843,7 +1843,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			optionID: this.get("activeEntry").get("_id")
 		});
 	},
@@ -1879,21 +1879,21 @@ enyo.kind({
 
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show($L("Generating..."));
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generateissuancedocument",
+			url: lumberjack.preferences.get("apiServer") + "generateissuancedocument",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				contactID: this.get("activeEntry").get("holderContactID"),
 				optionID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1928,20 +1928,20 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show($L("Cancelling..."));
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelissuancedocument",
+			url: lumberjack.preferences.get("apiServer") + "cancelissuancedocument",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -1977,20 +1977,20 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Sending");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendissuancedocument",
+			url: lumberjack.preferences.get("apiServer") + "sendissuancedocument",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id")
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2025,14 +2025,14 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "refreshissuancedocstatus",
+			url: lumberjack.preferences.get("apiServer") + "refreshissuancedocstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2061,7 +2061,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			optionID: this.get("activeEntry").get("_id")
 		});
 	},
@@ -2071,7 +2071,7 @@ enyo.kind({
 		if (this.get("activeEntry").get("_attachments") && this.get("activeEntry").get("_attachments")[inEvent.documentID])
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -2135,7 +2135,7 @@ enyo.kind({
 				this.$.saveChangesPopup.hide();
 				this.$.saveChangesPopup.destroy();
 			}
-			this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
+			this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYes: "saveAndAction", action: inEvent.callback, onHide: "handlePopupHidden"} , {owner:this});
 			this.$.saveChangesPopup.show("Must save changes before generating document. Save changes?");
 		}
 		else { inEvent.callback(); }
@@ -2155,8 +2155,8 @@ enyo.kind({
 			this.$.exercisePopup.destroy();
 		}
 
-		this.createComponent({name: "exercisePopup", kind: "quantum.OptionExercisePopup", onHide: "handlePopupHidden", onExercise:"handleExercise"});
-		this.$.exercisePopup.set("activeShares", quantum.parseInt(this.get("activeEntry").get("numSharesActive")));
+		this.createComponent({name: "exercisePopup", kind: "lumberjack.OptionExercisePopup", onHide: "handlePopupHidden", onExercise:"handleExercise"});
+		this.$.exercisePopup.set("activeShares", lumberjack.parseInt(this.get("activeEntry").get("numSharesActive")));
 		this.$.exercisePopup.show();
 	},
 
@@ -2164,21 +2164,21 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Sending");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "generateexercisedocument",
+			url: lumberjack.preferences.get("apiServer") + "generateexercisedocument",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id"),
 				shareCount : inEvent.shares
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2280,14 +2280,14 @@ enyo.kind({
 
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "getexercisedocumentstatus",
+			url: lumberjack.preferences.get("apiServer") + "getexercisedocumentstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2316,7 +2316,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			optionID: this.get("activeEntry").get("_id"),
 			attachmentID: exRecord.get("exerciseDoc").unsignedAttachmentID
 		});
@@ -2351,21 +2351,21 @@ enyo.kind({
 
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "cancelexerciseoption",
+			url: lumberjack.preferences.get("apiServer") + "cancelexerciseoption",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id"),
 				attachmentID: exRecord.get("exerciseDoc").unsignedAttachmentID
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2398,21 +2398,21 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Sending");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "sendexercisedocument",
+			url: lumberjack.preferences.get("apiServer") + "sendexercisedocument",
 			method: "POST",
 			cacheBust: false,
 			contentType: "application/json",
 			postBody: {
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				optionID: this.get("activeEntry").get("_id"),
 				attachmentID: exRecord.get("exerciseDoc").unsignedAttachmentID
 			},
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2447,14 +2447,14 @@ enyo.kind({
 	{
 		if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
 		if (this.$.loadingPopup) { this.$.loadingPopup.destroy(); }
-		this.createComponent({name: "loadingPopup", kind: "quantum.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "loadingPopup", kind: "lumberjack.LoadingPopup", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.loadingPopup.show("Loading");
 
 		var request = new enyo.Ajax({
-			url: quantum.preferences.get("apiServer") + "refreshexercisedocstatus",
+			url: lumberjack.preferences.get("apiServer") + "refreshexercisedocstatus",
 			cacheBust: false,
 			headers:{
-				"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+				"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 			}
 		});
 
@@ -2483,7 +2483,7 @@ enyo.kind({
 		}));
 
 		request.go({
-			companyID: quantum.preferences.get("company"),
+			companyID: lumberjack.preferences.get("company"),
 			optionID: this.get("activeEntry").get("_id"),
 			attachmentID: exRecord.get("exerciseDoc").unsignedAttachmentID
 		});
@@ -2567,13 +2567,13 @@ enyo.kind({
 	//History
 	addHistoryRecord: function(historyRecord)
 	{
-		var history = new quantum.OptionEventModel({});
+		var history = new lumberjack.OptionEventModel({});
 
 		history.set("type", historyRecord.type);
 		history.set("numShares", historyRecord.numShares);
 
 		if(!this.get("ae").get("history")){
-			this.get("ae").set("history", new quantum.OptionEventCollection());
+			this.get("ae").set("history", new lumberjack.OptionEventCollection());
 		}
 
 		this.get("vestingHistory").add(history);
@@ -2600,7 +2600,7 @@ enyo.kind({
 			this.$.treasuryPopup.destroy();
 		}
 
-		this.createComponent({name: "treasuryPopup", kind: "quantum.OptionTreasuryOrderPopup", onHide: "handlePopupHidden"});
+		this.createComponent({name: "treasuryPopup", kind: "lumberjack.OptionTreasuryOrderPopup", onHide: "handlePopupHidden"});
 		this.$.treasuryPopup.set("exerciseRecord", exRecord);
 		this.$.treasuryPopup.set("activeEntry", this.get("activeEntry"));
 		this.$.treasuryPopup.set("database", this.get("database"));

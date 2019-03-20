@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ContactsView",
+	name: "lumberjack.ContactsView",
 	kind: "FittableRows",
 	fit: true,
 
@@ -21,7 +21,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -38,17 +38,17 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Contacts Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Contacts Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.ContactListPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
-			{name: "addContactPanel", kind: "quantum.ContactDetailPanel", mode: "add", onGoBack: "handleGoBack"},
-			{name: "contactDetailPanel", kind: "quantum.ContactDetailPanel", onGoBack: "handleGoBack"}
+			{name: "dashboardPanel", kind: "lumberjack.ContactListPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
+			{name: "addContactPanel", kind: "lumberjack.ContactDetailPanel", mode: "add", onGoBack: "handleGoBack"},
+			{name: "contactDetailPanel", kind: "lumberjack.ContactDetailPanel", onGoBack: "handleGoBack"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -65,17 +65,17 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.addContactMenuItem.set("showing", quantum.hasRole(["admins"], "contact"));
+		this.$.addContactMenuItem.set("showing", lumberjack.hasRole(["admins"], "contact"));
 	},
 
 	rendered: function(inSender, inEvent){
 		this.set("showing", false);
-		this.set("database", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("contactDatabase"), {skip_setup: true}));
-		this.$.versionString.set("content", quantum.versionString);
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
+		this.set("database", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("contactDatabase"), {skip_setup: true}));
+		this.$.versionString.set("content", lumberjack.versionString);
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.setShowingForRoles();
 		this.resize();
 		this.$.loadingPopup.show();
@@ -85,15 +85,15 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 			this.dashboardButtonTapped();
 			this.resize();
-			quantum.preferences.set("lastModule", "contact");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "contact");
+			lumberjack.preferences.commit();
 			if (this.get("targetContact"))
 			{
 				var filteredCollection = this.get("contactCollection").filter(enyo.bind(this, function(value, index, array){
 					return value.get("_id") === this.get("targetContact");
 				}));
 
-				filteredCollection = new quantum.ContactCollection(filteredCollection);
+				filteredCollection = new lumberjack.ContactCollection(filteredCollection);
 
 				if (filteredCollection.length > 0)
 				{
@@ -104,7 +104,7 @@ enyo.kind({
 	},
 
 	addContactButtonTapped: function(inSender, inEvent){
-		if (!quantum.hasRole(["admins","users"], "contact")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "contact")) { return; }
 
 		for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
 		{
@@ -117,10 +117,10 @@ enyo.kind({
 		}
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "addContact", icon: "assets/icons/add-subscriber-icon.png", content: "Add Contact", ontap: "addContactBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "addContact", icon: "assets/icons/add-subscriber-icon.png", content: "Add Contact", ontap: "addContactBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("addContactPanel"));
-		this.$.addContactPanel.activate(new quantum.ContactModel({}));
+		this.$.addContactPanel.activate(new lumberjack.ContactModel({}));
 	},
 
 	addContactBreadcrumbTapped: function(inSender, inEvent){
@@ -160,7 +160,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -204,10 +204,10 @@ enyo.kind({
 	},
 
 	handleViewItemDetail: function(inSender, inEvent){
-		if (!quantum.hasRole(["admins","users","auditors"], "contact")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "contact")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "contactDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Contact Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "contactDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Contact Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.contactDetailPanel.set("contactCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("contactDetailPanel"));
@@ -226,7 +226,7 @@ enyo.kind({
 		this.set("contactCollection", null);
 
 		//Get data from database and load it into collection
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -239,7 +239,7 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
+			lumberjack.preferences.set("roles", response.roles);
 
 			this.get("database").query("onlyDocs", {include_docs: true}, enyo.bind(this, function(err, response){
 				if (err)
@@ -280,11 +280,11 @@ enyo.kind({
 					    return 0;
 					});
 
-					this.set("contactCollection", new quantum.ContactCollection(sortedDocs));
+					this.set("contactCollection", new lumberjack.ContactCollection(sortedDocs));
 				}
 				else
 				{
-					this.set("contactCollection", new quantum.ContactCollection());
+					this.set("contactCollection", new lumberjack.ContactCollection());
 				}
 
 				callback();
@@ -311,11 +311,11 @@ enyo.kind({
 			return 0;
 		};
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: quantum.preferences.get("contactDatabase")
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: lumberjack.preferences.get("contactDatabase")
 			}
 		}));
 
@@ -355,7 +355,7 @@ enyo.kind({
 				//Update the existing model and collection.
 
 				// The ugly hack of manually calling "parse" below is necessary since enyo doesn't call the model's "parse" on a merge.
-				this.get("contactCollection").add(new quantum.ContactModel().parse(change.doc), {merge: true});
+				this.get("contactCollection").add(new lumberjack.ContactModel().parse(change.doc), {merge: true});
 				this.get("contactCollection").sort(sortByDisplayNameFunction);
 
 				if (this.$.dataPanels.getActive() === this.$.dashboardPanel) {

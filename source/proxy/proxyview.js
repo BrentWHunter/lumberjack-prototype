@@ -1,7 +1,7 @@
-/* global quantum,PouchDB,alertify,Papa,saveAs,console */
+/* global lumberjack,PouchDB,alertify,Papa,saveAs,console */
 
 enyo.kind({
-	name: "quantum.ProxyView",
+	name: "lumberjack.ProxyView",
 	kind: "FittableRows",
 	fit: true,
 
@@ -30,7 +30,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{name: "leftButton", kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", ontap: "buttonfix", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{name: "leftMenu", kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{name: "leftMenu", kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -55,19 +55,19 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Proxies Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Proxies Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.ProxyDashboardPanel", onViewItemDetail: "handleViewItemDetail"},
-			{name: "listPanel", kind: "quantum.ProxyListPanel", onViewItemDetail: "handleViewItemDetail"},
-			{name: "detailPanel", kind: "quantum.ProxyDetailPanel", onGoBack: "handleGoBack"},
-			{name: "proxyInfoPanel", kind: "quantum.ProxyInfoPanel"}
+			{name: "dashboardPanel", kind: "lumberjack.ProxyDashboardPanel", onViewItemDetail: "handleViewItemDetail"},
+			{name: "listPanel", kind: "lumberjack.ProxyListPanel", onViewItemDetail: "handleViewItemDetail"},
+			{name: "detailPanel", kind: "lumberjack.ProxyDetailPanel", onGoBack: "handleGoBack"},
+			{name: "proxyInfoPanel", kind: "lumberjack.ProxyInfoPanel"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "closedProxiesPopup", kind: "quantum.SelectClosedProxyPopup", onProxySelected: "handleClosedProxySelected", onCancel: "handleClosedProxyCancelled"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "closedProxiesPopup", kind: "lumberjack.SelectClosedProxyPopup", onProxySelected: "handleClosedProxySelected", onCancel: "handleClosedProxyCancelled"},
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -99,20 +99,20 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.editEntryButton.set("showing", quantum.hasRole(["admins","users","auditors"], "proxy"));
-		this.$.proxyInfoMenuItem.set("showing", quantum.hasRole(["admins"], "proxy"));
-		this.$.generateReportMenuItem.set("showing", quantum.hasRole(["admins"], "proxy"));
+		this.$.editEntryButton.set("showing", lumberjack.hasRole(["admins","users","auditors"], "proxy"));
+		this.$.proxyInfoMenuItem.set("showing", lumberjack.hasRole(["admins"], "proxy"));
+		this.$.generateReportMenuItem.set("showing", lumberjack.hasRole(["admins"], "proxy"));
 	},
 
 	rendered: function(inSender, inEvent)
 	{
-		if(!quantum.preferences.get("proxyDatabase") && !this.get("targetProxy")){
+		if(!lumberjack.preferences.get("proxyDatabase") && !this.get("targetProxy")){
 			this.set("showing", false);
 			if (this.$.selectProxyPopup) {this.$.selectProxyPopup.hide();}
 			if (this.$.selectProxyPopup) {this.$.selectProxyPopup.destroy();}
 			this.createComponent({
 				name: "selectProxyPopup",
-				kind: "quantum.SelectProxyPopup",
+				kind: "lumberjack.SelectProxyPopup",
 				onError: "handleSelectProxyError",
 				onProxySelected: "handleProxySelected",
 				onClosedProxySelected: "handleShowClosedProxiesPopup",
@@ -125,12 +125,12 @@ enyo.kind({
 		else
 		{
 			this.set("showing", false);
-			this.set("database", new PouchDB(quantum.preferences.get("server") + (this.get("targetProxy") || quantum.preferences.get("proxyDatabase")), {skip_setup: true}));
-			this.$.versionString.set("content", quantum.versionString);
-			this.$.companyName.set("content", quantum.preferences.get("companyName"));
+			this.set("database", new PouchDB(lumberjack.preferences.get("server") + (this.get("targetProxy") || lumberjack.preferences.get("proxyDatabase")), {skip_setup: true}));
+			this.$.versionString.set("content", lumberjack.versionString);
+			this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 			this.inherited(arguments);
-			quantum.fixShim();
+			lumberjack.fixShim();
 			this.$.loadingPopup.show();
 			this.populateProxies(enyo.bind(this, function(){
 				this.setShowingForRoles();
@@ -138,8 +138,8 @@ enyo.kind({
 				this.$.loadingPopup.hide();
 				this.dashboardButtonTapped();
 				this.resize();
-				quantum.preferences.set("lastModule", "proxy");
-				quantum.preferences.commit();
+				lumberjack.preferences.set("lastModule", "proxy");
+				lumberjack.preferences.commit();
 				if (this.get("targetProxy"))
 				{
 					var filteredCollection = this.get("proxyCollection").filter(enyo.bind(this, function(value, index, array){
@@ -169,7 +169,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -198,7 +198,7 @@ enyo.kind({
 
 	dashboardButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -210,7 +210,7 @@ enyo.kind({
 
 	editEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -225,7 +225,7 @@ enyo.kind({
 				}
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "proxies", icon: "assets/icons/list-icon.png", content: "Proxies", ontap: "proxiesBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "proxies", icon: "assets/icons/list-icon.png", content: "Proxies", ontap: "proxiesBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
 			this.$.listPanel.activate();
@@ -252,7 +252,7 @@ enyo.kind({
 		alertify.error("Not Implemented Yet");
 		return;
 
-		// if (!quantum.hasRole(["admins"], "proxy")) { return; }
+		// if (!lumberjack.hasRole(["admins"], "proxy")) { return; }
 
 		// this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		// {
@@ -274,15 +274,15 @@ enyo.kind({
 
 	handleSelectProxyError: function(inSender, inEvent)
 	{
-		quantum.preferences.set("lastModule", "");
+		lumberjack.preferences.set("lastModule", "");
 		this.doRequestChangeModule();
 	},
 
 	handleProxySelected: function(inSender, inEvent)
 	{
 		this.$.selectProxyPopup.hide();
-		quantum.preferences.set("proxyDatabase", inEvent.proxy);
-		quantum.preferences.commit({success: enyo.bind(this, function(){
+		lumberjack.preferences.set("proxyDatabase", inEvent.proxy);
+		lumberjack.preferences.commit({success: enyo.bind(this, function(){
 			//Slight pause here to give the UI time to refresh
 			setTimeout(enyo.bind(this, function(){this.render();}), 50);
 		})});
@@ -295,10 +295,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "proxyDetail", icon: "assets/icons/proxy-detail-icon.png", content: "Proxy Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "proxyDetail", icon: "assets/icons/proxy-detail-icon.png", content: "Proxy Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.detailPanel.set("proxyCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("detailPanel"));
@@ -307,10 +307,10 @@ enyo.kind({
 
 	proxyInformationButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins"], "proxy")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "proxyInformation", icon: "assets/icons/information-icon.png", content: "Proxy Information", ontap: "proxyInformationBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "proxyInformation", icon: "assets/icons/information-icon.png", content: "Proxy Information", ontap: "proxyInformationBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("proxyInfoPanel"));
 		this.$.proxyInfoPanel.activate();
@@ -364,10 +364,10 @@ enyo.kind({
 
 	handleGoHome: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy"))
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy"))
 		{
-			quantum.preferences.set("lastModule", "");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "");
+			lumberjack.preferences.commit();
 			this.doRequestChangeModule();
 		}
 		else
@@ -399,8 +399,8 @@ enyo.kind({
 				}
 				else
 				{
-					quantum.preferences.set("proxyDatabase", inEvent.selected.database);
-					quantum.preferences.commit({success: enyo.bind(this, function(){
+					lumberjack.preferences.set("proxyDatabase", inEvent.selected.database);
+					lumberjack.preferences.commit({success: enyo.bind(this, function(){
 						//Slight pause here to give the UI time to refresh
 						setTimeout(enyo.bind(this, function(){this.render();}), 50);
 					})});
@@ -413,8 +413,8 @@ enyo.kind({
 
 	handleClosedProxySelected: function(inSender, inEvent)
 	{
-		quantum.preferences.set("proxyDatabase", inEvent.database);
-		quantum.preferences.commit({success: enyo.bind(this, function(){
+		lumberjack.preferences.set("proxyDatabase", inEvent.database);
+		lumberjack.preferences.commit({success: enyo.bind(this, function(){
 			//Slight pause here to give the UI time to refresh
 			setTimeout(enyo.bind(this, function(){this.render();}), 50);
 		})});
@@ -422,7 +422,7 @@ enyo.kind({
 
 	handleClosedProxyCancelled: function(inSender, inEvent)
 	{
-		if(!quantum.preferences.get("proxyDatabase") && !this.get("targetProxy")){
+		if(!lumberjack.preferences.get("proxyDatabase") && !this.get("targetProxy")){
 			//If we don't have a proxy database at this point. Just re-render. It will force a proper re-pick of the database.
 			this.render();
 		}
@@ -430,7 +430,7 @@ enyo.kind({
 		{
 			var activeProxy = null;
 			this.$.proxyDatabasePicker.controls.forEach(enyo.bind(this, function(value, index, array){
-				if (value.database && (value.database === quantum.preferences.get("proxyDatabase") || value.database === this.get("targetProxy"))){
+				if (value.database && (value.database === lumberjack.preferences.get("proxyDatabase") || value.database === this.get("targetProxy"))){
 					activeProxy = value;
 				}
 			}));
@@ -448,7 +448,7 @@ enyo.kind({
 		this.set("proxyCollection", null);
 
 		//Get data from database and load it into collection
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -461,17 +461,17 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
+			lumberjack.preferences.set("roles", response.roles);
 
 			this.set("loadingData", true);
 			this.$.proxyDatabasePicker.set("selected", null);
 			this.$.proxyDatabasePicker.destroyClientControls();
 
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "getproxydropdowndata",
+				url: lumberjack.preferences.get("apiServer") + "getproxydropdowndata",
 				cacheBust: false,
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 		    });
 
@@ -487,7 +487,7 @@ enyo.kind({
 		    }));
 
 		    request.response(enyo.bind(this, function(request, response){
-				quantum.preferences.set("proxies", response.proxyEvents);
+				lumberjack.preferences.set("proxies", response.proxyEvents);
 
 				if (response.proxyEvents.length > 1)
 				{
@@ -503,8 +503,8 @@ enyo.kind({
 						}
 						else
 						{
-							if (response.proxyEvents[i].proxyID === quantum.preferences.get("proxyDatabase")) {closedProxiesSelected = false;}
-							proxies.push({database: response.proxyEvents[i].proxyID, content: response.proxyEvents[i].proxyName, active: this.get("targetProxy") ? response.proxyEvents[i].proxyID === this.get("targetProxy") : response.proxyEvents[i].proxyID === quantum.preferences.get("proxyDatabase")});
+							if (response.proxyEvents[i].proxyID === lumberjack.preferences.get("proxyDatabase")) {closedProxiesSelected = false;}
+							proxies.push({database: response.proxyEvents[i].proxyID, content: response.proxyEvents[i].proxyName, active: this.get("targetProxy") ? response.proxyEvents[i].proxyID === this.get("targetProxy") : response.proxyEvents[i].proxyID === lumberjack.preferences.get("proxyDatabase")});
 						}
 					}
 
@@ -560,8 +560,8 @@ enyo.kind({
 								}
 								else if (rows[i].doc._id === "settings")
 								{
-									quantum.preferences.set("proxyInfo", rows[i].doc);
-									// console.log(quantum.preferences.get(proxyInfo));
+									lumberjack.preferences.set("proxyInfo", rows[i].doc);
+									// console.log(lumberjack.preferences.get(proxyInfo));
 								}
 								else if (rows[i].doc._id === "alreadyMailed")
 								{
@@ -594,7 +594,7 @@ enyo.kind({
 						this.set("proxyCollection", new enyo.Collection(sortedDocs));
 
 						this.$.listPanel.handleClearSearchButtonTapped();
-						quantum.preferences.commit();
+						lumberjack.preferences.commit();
 						callback();
 					}
 
@@ -602,7 +602,7 @@ enyo.kind({
 				}));
 		    }));
 
-		    request.go({companyID: quantum.preferences.get("company")});
+		    request.go({companyID: lumberjack.preferences.get("company")});
 		}));
 	},
 
@@ -624,7 +624,7 @@ enyo.kind({
 			return 0;
 		};
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, result){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, result){
 			if (err)
 			{
 				//Fail "silently".
@@ -728,8 +728,8 @@ enyo.kind({
 					}
 					else if (change.doc._id === "settings")
 					{
-						quantum.preferences.set("proxyInfo", change.doc);
-						quantum.preferences.commit();
+						lumberjack.preferences.set("proxyInfo", change.doc);
+						lumberjack.preferences.commit();
 					}
 					else
 					{

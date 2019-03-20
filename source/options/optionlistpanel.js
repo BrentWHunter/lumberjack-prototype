@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionListPanel",
+	name: "lumberjack.OptionListPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -30,26 +30,26 @@ enyo.kind({
 				{style: "margin-left: 10px; margin-right: 10px; width: 100px;", kind: "onyx.InputDecorator", components: [
 					{name: "fromDateInput", style: "width: 100%;", kind: "onyx.Input", ontap: "handleFromDateInputTapped", attributes: {readonly:true}}
 				]},
-				{name: "fromCalendarPopup", kind: "quantum.CalendarPopup", onSelect: "fromCalendarDateChanged"}
+				{name: "fromCalendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "fromCalendarDateChanged"}
 			]},
 			{style: "line-height: 38px; font-size: 18px;", content: "To:"},
 			{components: [
 				{style: "margin-left: 10px; margin-right: 10px; width: 100px;", kind: "onyx.InputDecorator", components: [
 					{name: "toDateInput", style: "width: 100%;", kind: "onyx.Input", ontap: "handleToDateInputTapped", attributes: {readonly:true}}
 				]},
-				{name: "toCalendarPopup", kind: "quantum.CalendarPopup", onSelect: "toCalendarDateChanged"}
+				{name: "toCalendarPopup", kind: "lumberjack.CalendarPopup", onSelect: "toCalendarDateChanged"}
 			]},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]},
 			{fit: true},
 			{style: "line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin-right: 4px; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
+				{kind: "lumberjack.Button", style: "margin-right: 4px; padding: 2px 6px 3px;", ontap: "handleChangeFilterSettingsButtonTapped", components: [
 					{kind: "enyo.Image", style: "width: 24px; height: 24px;", src: "assets/icons/filter-icon.png"}
 				]}
 			]},
 			{style: "line-height: 34px;", showing: false, name: "newTransferButton", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "New Option", ontap: "handleNewOptionButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "New Option", ontap: "handleNewOptionButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px; background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
@@ -75,8 +75,8 @@ enyo.kind({
 			]}
 		]},
 		{name: "noOptionsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Options Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
-		{name: "changeFilterSettingsPopup", kind: "quantum.OptionFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
+		{name: "changeFilterSettingsPopup", kind: "lumberjack.OptionFilterSettingsPopup", onFilterSettingsChanged: "handleFilterSettingsChanged"}
 	],
 
 	bindings: [
@@ -90,12 +90,12 @@ enyo.kind({
 
 	setShowingForRoles: function()
 	{
-		this.$.newTransferButton.set("showing", quantum.hasRole(["admins","users"], "option"));
+		this.$.newTransferButton.set("showing", lumberjack.hasRole(["admins","users"], "option"));
 	},
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -107,7 +107,7 @@ enyo.kind({
 
 	handleChangeFilterSettingsButtonTapped: function(inSender, inEvent)
 	{
-		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new quantum.OptionFilterSettingsModel({}));
+		this.$.changeFilterSettingsPopup.show(this.get("filterSettings") || new lumberjack.OptionFilterSettingsModel({}));
 		return;
 	},
 
@@ -173,7 +173,7 @@ enyo.kind({
 
 	populateOptions: function()
 	{
-		if (!this.get("filterSettings")) {this.set("filterSettings", new quantum.OptionFilterSettingsModel({}));}
+		if (!this.get("filterSettings")) {this.set("filterSettings", new lumberjack.OptionFilterSettingsModel({}));}
 		var filteredByDate = this.get("optionCollection").filter(function(element) {
 			try
 			{
@@ -196,7 +196,7 @@ enyo.kind({
 
 		if (this.$.searchInput.get("value") !== "")
 		{
-			var results = new quantum.OptionCollection(filteredByDate).filter(function(element) {
+			var results = new lumberjack.OptionCollection(filteredByDate).filter(function(element) {
 				var searchValue = this.$.searchInput.get("value").toLowerCase();
 				var containsSearchValue = function(str) {
 					try
@@ -216,11 +216,11 @@ enyo.kind({
 				);
 			}, this);
 
-			this.set("filteredOptionCollection", new quantum.OptionCollection(results));
+			this.set("filteredOptionCollection", new lumberjack.OptionCollection(results));
 		}
 		else
 		{
-			this.set("filteredOptionCollection", new quantum.OptionCollection(filteredByDate));
+			this.set("filteredOptionCollection", new lumberjack.OptionCollection(filteredByDate));
 		}
 
 		this.$.noOptionsLabel.set("showing", this.get("filteredOptionCollection").length === 0);
@@ -231,7 +231,7 @@ enyo.kind({
 
 	setupOptionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { return; }
 
 		if (!inEvent.item) {return true;}
 

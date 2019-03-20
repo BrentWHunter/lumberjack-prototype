@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.PaymentSection",
+	name: "lumberjack.PaymentSection",
 
 	published: {
 		activeEntry: null,
@@ -32,16 +32,16 @@ enyo.kind({
 					{name: "amount", style: "width: 150px; line-height: 34px;"},
 					{name: "paymentType", style: "width: 200px; line-height: 34px;"},
 					{name: "dateReceived", style: "width: 90px; line-height: 34px;"},
-					{name: "viewButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewPaymentButtonTapped"},
-					{name: "downloadButton", kind: "quantum.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadPaymentButtonTapped"},
-					{name: "deleteButton", kind: "quantum.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deletePaymentButtonTapped"}
+					{name: "viewButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin: 0 0 0 10px; line-height: 30px;", content: "View", ontap: "viewPaymentButtonTapped"},
+					{name: "downloadButton", kind: "lumberjack.Button", enabledClasses: "button bg-darkViolet fg-white", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Download", ontap: "downloadPaymentButtonTapped"},
+					{name: "deleteButton", kind: "lumberjack.Button", enabledClasses: "button danger", style: "margin: 0 0 0 10px; line-height: 30px;", content: "Delete", ontap: "deletePaymentButtonTapped"}
 				]}
 			]},
 			{name: "noPaymentsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Payments Received"},
-			{name: "addPaymentButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-top: 10px;", content: "Add Payment", ontap: "handleAddPaymentButtonTapped"},
-			{name: "addRefundButton", kind: "quantum.Button", enabledClasses: "button primary", style: "margin-top: 10px; margin-left: 10px;", content: "Reverse Payment", ontap: "handleAddRefundButtonTapped"}
+			{name: "addPaymentButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-top: 10px;", content: "Add Payment", ontap: "handleAddPaymentButtonTapped"},
+			{name: "addRefundButton", kind: "lumberjack.Button", enabledClasses: "button primary", style: "margin-top: 10px; margin-left: 10px;", content: "Reverse Payment", ontap: "handleAddRefundButtonTapped"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"},
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"},
 	],
 
 	bindings:[
@@ -57,7 +57,7 @@ enyo.kind({
 
 	rendered: function()
 	{
-		if(!quantum.hasRole(["admins"], this.get("module")))
+		if(!lumberjack.hasRole(["admins"], this.get("module")))
 		{
 			this.$.addRefundButton.set("showing", false);
 		}
@@ -65,14 +65,14 @@ enyo.kind({
 
 	setupPaymentRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], this.get("module"))) { return; }
+		if (!lumberjack.hasRole(["admins","users"], this.get("module"))) { return; }
 
 		if (!inEvent.item) {return true;}
 
 		inEvent.item.$.paymentItem.applyStyle("background-color", inEvent.index % 2 === 0 ? "white" : "lightgrey");
 
-		inEvent.item.$.amount.set("content", "$" + quantum.formatCurrency(this.get("paymentsReceived")[inEvent.index].amount));
-		inEvent.item.$.paymentType.set("content", quantum.paymentTypeLookup(this.get("paymentsReceived")[inEvent.index].paymentType));
+		inEvent.item.$.amount.set("content", "$" + lumberjack.formatCurrency(this.get("paymentsReceived")[inEvent.index].amount));
+		inEvent.item.$.paymentType.set("content", lumberjack.paymentTypeLookup(this.get("paymentsReceived")[inEvent.index].paymentType));
 		inEvent.item.$.dateReceived.set("content", this.get("paymentsReceived")[inEvent.index].receivedDate);
 
 		inEvent.item.$.deleteButton.set("showing", this.canEdit());
@@ -105,7 +105,7 @@ enyo.kind({
 					that.$.showDocumentPopup.hide();
 					that.$.showDocumentPopup.destroy();
 				}
-				that.createComponent({name: "showDocumentPopup", kind: "quantum.docxPopup"}, {owner:that});
+				that.createComponent({name: "showDocumentPopup", kind: "lumberjack.docxPopup"}, {owner:that});
 				that.$.showDocumentPopup.$.main.addContent(DOCXfileContents);
 				that.$.showDocumentPopup.show();
 			}
@@ -123,7 +123,7 @@ enyo.kind({
 
 	viewPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], this.get("module"))) { return; }
+		if (!lumberjack.hasRole(["admins","users"], this.get("module"))) { return; }
 
 		var attachmentIndexKey = this.get("attachmentIndexKey");
 
@@ -138,7 +138,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Loading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -178,7 +178,7 @@ enyo.kind({
 
 	downloadPaymentButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], this.get("module"))) { return; }
+		if (!lumberjack.hasRole(["admins","users"], this.get("module"))) { return; }
 
 		var attachmentIndexKey = this.get("attachmentIndexKey");
 
@@ -190,7 +190,7 @@ enyo.kind({
 		else
 		{
 			this.$.loadingPopup.show("Downloading");
-			this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response) {
+			this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response) {
 				if (err)
 				{
 					alertify.error("Login Failed");
@@ -228,7 +228,7 @@ enyo.kind({
 			this.$.confirmDeletePaymentPopup.hide();
 			this.$.confirmDeletePaymentPopup.destroy();
 		}
-		this.createComponent({name: "confirmDeletePaymentPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "deletePayment", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "confirmDeletePaymentPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "deletePayment", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.confirmDeletePaymentPopup.show("Delete? You must save entry to make this permament.", inEvent.index);
 	},
 
@@ -270,7 +270,7 @@ enyo.kind({
 
 	canEdit: function()
 	{
-		return quantum.hasRole(["admins","users"], this.get("module"));
+		return lumberjack.hasRole(["admins","users"], this.get("module"));
 	},
 
 	calculateFundsPaid: function()
@@ -278,7 +278,7 @@ enyo.kind({
 		var fundsReceived = 0;
 		for(var i = 0; i < this.get("paymentsReceived").length; i++)
 		{
-			fundsReceived = fundsReceived + quantum.parseFloat(this.get("paymentsReceived")[i].amount);
+			fundsReceived = fundsReceived + lumberjack.parseFloat(this.get("paymentsReceived")[i].amount);
 		}
 		return fundsReceived;
 	},
@@ -291,7 +291,7 @@ enyo.kind({
 			this.$.addPaymentPopup.hide();
 			this.$.addPaymentPopup.destroy();
 		}
-		this.createComponent({name: "addPaymentPopup", kind: "quantum.AddPaymentPopup", onAddPayment: "", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addPaymentPopup", kind: "lumberjack.AddPaymentPopup", onAddPayment: "", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addPaymentPopup.show();
 	},
 
@@ -303,7 +303,7 @@ enyo.kind({
 			this.$.addRefundPopup.hide();
 			this.$.addRefundPopup.destroy();
 		}
-		this.createComponent({name: "addRefundPopup", kind: "quantum.AddRefundPopup", defaultRefund: this.calculateFundsPaid(), onAddRefund: "", onHide: "handlePopupHidden"} , {owner:this});
+		this.createComponent({name: "addRefundPopup", kind: "lumberjack.AddRefundPopup", defaultRefund: this.calculateFundsPaid(), onAddRefund: "", onHide: "handlePopupHidden"} , {owner:this});
 		this.$.addRefundPopup.show();
 	},
 

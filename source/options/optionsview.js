@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionsView",
+	name: "lumberjack.OptionsView",
 	kind: "FittableRows",
 	fit: true,
 
@@ -25,7 +25,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", layoutKind: "enyo.FittableColumnsLayout", style: "background: black; border: 1px solid black; padding: 0px 0px;", noStretch: true, components: [
 			{kind: "onyx.MenuDecorator", style: "margin: 0 10px 0 0; padding: 10px;", classes: "breadcrumb modules-breadcrumb", components: [
 				{kind: "onyx.IconButton", src: "assets/icons/modules-button-icon.png"},
-				{kind: "quantum.IconMenu", onChangeModule: "handleChangeModule"}
+				{kind: "lumberjack.IconMenu", onChangeModule: "handleChangeModule"}
 			]},
 			{kind: "enyo.Image", style: "height: 40px;", src: "assets/logo.png"},
 			{name: "companyName", style: "color: white; margin-left: 15px; font-size: 24px; font-family: Tahoma, sans-serif;"},
@@ -44,18 +44,18 @@ enyo.kind({
 			]}
 		]},
 		{name: "breadcrumbToolbar", kind: "onyx.Toolbar", style: "background: #333333; border: none; padding: 0;", components: [
-			{kind: "quantum.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Options Home", last: true, ontap: "dashboardButtonTapped"}
+			{kind: "lumberjack.Breadcrumb", type: "dashboard", icon: "assets/icons/home-icon.png", content: "Options Home", last: true, ontap: "dashboardButtonTapped"}
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
-			{name: "dashboardPanel", kind: "quantum.OptionsDashboardPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
-			{name: "listPanel", kind: "quantum.OptionListPanel", onViewItemDetail: "handleViewItemDetail", onCreateNewOption: "createOptionButtonTapped"},
-			{name: "createOptionPanel", kind: "quantum.OptionDetailPanel", mode: "add", onGoBack: "handleGoBack"},
-			{name: "optionDetailPanel", kind: "quantum.OptionDetailPanel", mode:"edit", onGoBack: "handleGoBack"}
+			{name: "dashboardPanel", kind: "lumberjack.OptionsDashboardPanel", onGoBack: "handleGoBack", onViewItemDetail: "handleViewItemDetail"},
+			{name: "listPanel", kind: "lumberjack.OptionListPanel", onViewItemDetail: "handleViewItemDetail", onCreateNewOption: "createOptionButtonTapped"},
+			{name: "createOptionPanel", kind: "lumberjack.OptionDetailPanel", mode: "add", onGoBack: "handleGoBack"},
+			{name: "optionDetailPanel", kind: "lumberjack.OptionDetailPanel", mode:"edit", onGoBack: "handleGoBack"}
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -77,13 +77,13 @@ enyo.kind({
 	rendered: function(inSender, inEvent)
 	{
 		this.set("showing", false);
-		this.set("database", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("optionDatabase"), {skip_setup: true}));
-		this.set("contactDatabase", new PouchDB(quantum.preferences.get("server") + quantum.preferences.get("contactDatabase"), {skip_setup: true}));
-		this.$.companyName.set("content", quantum.preferences.get("companyName"));
-		this.$.versionString.set("content", quantum.versionString);
+		this.set("database", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("optionDatabase"), {skip_setup: true}));
+		this.set("contactDatabase", new PouchDB(lumberjack.preferences.get("server") + lumberjack.preferences.get("contactDatabase"), {skip_setup: true}));
+		this.$.companyName.set("content", lumberjack.preferences.get("companyName"));
+		this.$.versionString.set("content", lumberjack.versionString);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("dashboardPanel")); //Workaround for "wrong" panel being set when the view is loaded.
 		this.inherited(arguments);
-		quantum.fixShim();
+		lumberjack.fixShim();
 		this.setShowingForRoles();
 		this.resize();
 		this.$.loadingPopup.show();
@@ -92,15 +92,15 @@ enyo.kind({
 			this.$.loadingPopup.hide();
 			this.dashboardButtonTapped();
 			this.resize();
-			quantum.preferences.set("lastModule", "option");
-			quantum.preferences.commit();
+			lumberjack.preferences.set("lastModule", "option");
+			lumberjack.preferences.commit();
 			if (this.get("targetOption"))
 			{
 				var filteredCollection = this.get("optionCollection").filter(enyo.bind(this, function(value, index, array){
 					return value.get("_id") === this.get("targetOption");
 				}));
 
-				filteredCollection = new quantum.OptionCollection(filteredCollection);
+				filteredCollection = new lumberjack.OptionCollection(filteredCollection);
 
 				if (filteredCollection.length > 0)
 				{
@@ -113,7 +113,7 @@ enyo.kind({
 	// Toolbar Handlers
 	setShowingForRoles: function()
 	{
-		this.$.createOptionMenuItem.set("showing", quantum.hasRole(["admins"], "option"));
+		this.$.createOptionMenuItem.set("showing", lumberjack.hasRole(["admins"], "option"));
 	},
 
 	handleChangeCompany: function(inSender, inEvent)
@@ -134,7 +134,7 @@ enyo.kind({
 
 	optionsButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -150,7 +150,7 @@ enyo.kind({
 				}
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "options", icon: "assets/icons/list-icon.png", content: "Options", ontap: "optionsBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "options", icon: "assets/icons/list-icon.png", content: "Options", ontap: "optionsBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
 			this.$.listPanel.activate();
@@ -159,7 +159,7 @@ enyo.kind({
 
 	createOptionButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users"], "option")) { return; }
 
 		for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
 		{
@@ -172,10 +172,10 @@ enyo.kind({
 		}
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "createOption", icon: "assets/icons/create-option-icon.png", content: "Create Option", ontap: "createOptionBreadcrumbTapped", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "createOption", icon: "assets/icons/create-option-icon.png", content: "Create Option", ontap: "createOptionBreadcrumbTapped", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("createOptionPanel"));
-		this.$.createOptionPanel.activate(new quantum.OptionModel({}));
+		this.$.createOptionPanel.activate(new lumberjack.OptionModel({}));
 	},
 
 	createOptionMenuItemTapped: function(inSender, inEvent)
@@ -214,7 +214,7 @@ enyo.kind({
 
 	optionButtonTapped: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { return; }
 
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
@@ -230,7 +230,7 @@ enyo.kind({
 				}
 			}
 			this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-			this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "options", icon: "assets/icons/list-icon.png", content: "Options", ontap: "optionsBreadcrumbTapped", last: true}, {owner: this});
+			this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "options", icon: "assets/icons/list-icon.png", content: "Options", ontap: "optionsBreadcrumbTapped", last: true}, {owner: this});
 			this.$.breadcrumbToolbar.render();
 			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
 			this.$.listPanel.activate();
@@ -240,10 +240,10 @@ enyo.kind({
 	//Repeater Handlers
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { return; }
 
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "quantum.Breadcrumb", type: "optionDetail", icon: "assets/icons/options-icon.png", content: "Option Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "optionDetail", icon: "assets/icons/options-icon.png", content: "Option Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
 		this.$.optionDetailPanel.set("optionCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("optionDetailPanel"));
@@ -263,7 +263,7 @@ enyo.kind({
 		{
 			if (_panel.canEdit() && _panel.isDirty())
 			{
-				this.createComponent({name: "saveChangesPopup", kind: "quantum.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
+				this.createComponent({name: "saveChangesPopup", kind: "lumberjack.ConfirmPopup", onYesWithReturnValue: "executeReturnValue_yes", onNoWithReturnValue: "executeReturnValue_no", onHide: "handlePopupHidden"}, {owner:this});
 				this.$.saveChangesPopup.show("Save changes?", {
 					yes: function() { _panel.handleSaveEntryButtonTapped(inSender, inEvent, {callback:callback}); },
 					no: callback
@@ -311,7 +311,7 @@ enyo.kind({
 	populateOptions:function(callback){
 		this.set("optionCollection", null);
 
-		this.get("database").login(quantum.preferences.get("username"), quantum.preferences.get("password"), enyo.bind(this, function(err, response){
+		this.get("database").login(lumberjack.preferences.get("username"), lumberjack.preferences.get("password"), enyo.bind(this, function(err, response){
 			if (err)
 			{
 				alertify.error("Login Failed");
@@ -324,7 +324,7 @@ enyo.kind({
 				return;
 			}
 
-			quantum.preferences.set("roles", response.roles);
+			lumberjack.preferences.set("roles", response.roles);
 
 			this.get("database").query("onlyDocs", {include_docs: true}, enyo.bind(this, function(err, response){
 				if (err)
@@ -370,12 +370,12 @@ enyo.kind({
 					});
 
 					this.set("optionsRaw", sortedDocs);
-					this.set("optionCollection", new quantum.OptionCollection());
+					this.set("optionCollection", new lumberjack.OptionCollection());
 					this.populateContactData(holderContactIDArray, callback);
 				}
 				else
 				{
-					this.set("optionCollection", new quantum.OptionCollection());
+					this.set("optionCollection", new lumberjack.OptionCollection());
 					callback();
 					this.updateChangesFeed();
 				}
@@ -424,7 +424,7 @@ enyo.kind({
 			}
 		}
 
-		this.set("optionCollection", new quantum.OptionCollection(options));
+		this.set("optionCollection", new lumberjack.OptionCollection(options));
 		callback();
 		this.updateChangesFeed();
 	},
@@ -449,11 +449,11 @@ enyo.kind({
 			return 0;
 		};
 
-		this.set("changesFeed", io(quantum.preferences.get("apiServer"), {
+		this.set("changesFeed", io(lumberjack.preferences.get("apiServer"), {
 			query: {
-				username: quantum.preferences.get("username"),
-				password: quantum.preferences.get("password"),
-				target: quantum.preferences.get("optionDatabase")
+				username: lumberjack.preferences.get("username"),
+				password: lumberjack.preferences.get("password"),
+				target: lumberjack.preferences.get("optionDatabase")
 			}
 		}));
 
@@ -493,7 +493,7 @@ enyo.kind({
 			  	} else if (findResult && findResult.attributes._rev !== change.doc._rev){
 					//Update the existing model and collection.
 					// The ugly hack of manually calling "parse" below is necessary since enyo doesn't call the model's "parse" on a merge.
-					this.get("optionCollection").add(new quantum.OptionModel().parse(change.doc), {merge: true});
+					this.get("optionCollection").add(new lumberjack.OptionModel().parse(change.doc), {merge: true});
 					this.get("optionCollection").sort(sortByDateIssuedFunction);
 
 					if (this.$.dataPanels.getActive() === this.$.dashboardPanel) {
@@ -551,10 +551,10 @@ enyo.kind({
 		}else{
 			var contactID = option.holderContactID;
 			var request = new enyo.Ajax({
-				url: quantum.preferences.get("apiServer") + "findcontactbyid",
+				url: lumberjack.preferences.get("apiServer") + "findcontactbyid",
 				cacheBust: false,
 				headers:{
-					"Authorization": "Bearer " + quantum.preferences.get("username") + ":" + quantum.preferences.get("password")
+					"Authorization": "Bearer " + lumberjack.preferences.get("username") + ":" + lumberjack.preferences.get("password")
 				}
 			});
 
@@ -590,7 +590,7 @@ enyo.kind({
 			}));
 
 			request.go({
-				companyID: quantum.preferences.get("company"),
+				companyID: lumberjack.preferences.get("company"),
 				searchID: contactID
 			});
 		}

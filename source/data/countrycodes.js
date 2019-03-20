@@ -1,5 +1,5 @@
 enyo.singleton({
-name: "quantum.CountryCodes",
+name: "lumberjack.CountryCodes",
 published:
 {
 countries: [

@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionsDashboardPanel",
+	name: "lumberjack.OptionsDashboardPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -26,7 +26,7 @@ enyo.kind({
 				{name: "searchInput", style: "width: 100%;", kind: "onyx.Input", oninput: "handleSearchInputChanged"}
 			]},
 			{style: "margin-left: 10px; line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]}
 		]},
 		{kind: "enyo.FittableColumns", style: "margin-top: 10px; background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black;", components: [
@@ -52,7 +52,7 @@ enyo.kind({
 			]}
 		]},
 		{name: "noOptionsLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Options Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -63,7 +63,7 @@ enyo.kind({
 	},
 	activate: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -118,11 +118,11 @@ enyo.kind({
 				return false;
 			}));
 
-			this.set("filteredOptionCollection", new quantum.OptionCollection(results));
+			this.set("filteredOptionCollection", new lumberjack.OptionCollection(results));
 		}
 		else
 		{
-			this.set("filteredOptionCollection", new quantum.OptionCollection(activeOptions));
+			this.set("filteredOptionCollection", new lumberjack.OptionCollection(activeOptions));
 		}
 
 		this.$.noOptionsLabel.set("showing", this.get("filteredOptionCollection").length === 0);
@@ -133,7 +133,7 @@ enyo.kind({
 
 	setupOptionRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "option")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "option")) { return; }
 
 		if (!inEvent.item) {return true;}
 

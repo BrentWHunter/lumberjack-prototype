@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.docxPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.docxPopup",
+	kind: "lumberjack.Popup",
 
 	published: {
 		activeDate: moment(),
@@ -20,9 +20,9 @@ enyo.kind({
 				{name: "main", allowHtml: true}
 			]},
 			{style: "text-align: center; margin-top: 10px;", components: [
-				{kind: "quantum.Button", style: "margin-left: 10px;", content: "Exit", ontap: "handleCancelButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin-left: 10px;", content: "Exit", ontap: "handleCancelButtonTapped"}
 			]},
-			//{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+			//{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 		]}
 	],
 

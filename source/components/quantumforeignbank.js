@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.ForeignBank",
+	name: "lumberjack.ForeignBank",
 
 	published:
 	{
@@ -32,7 +32,7 @@ enyo.kind({
 				]}
 			]}
 		]},
-		{kind: "quantum.Input", name:"jurisdictionInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Jurisdiction", required:true, oninput: "handleJurisdictionInputChanged"}
+		{kind: "lumberjack.Input", name:"jurisdictionInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 140px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Jurisdiction", required:true, oninput: "handleJurisdictionInputChanged"}
 	],
 
 	bindings:[

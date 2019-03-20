@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.PreferencesModel",
+	name: "lumberjack.PreferencesModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	source: enyo.LocalStorageSource.create(),

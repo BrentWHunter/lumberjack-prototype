@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.WarrantFilterSettingsPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.WarrantFilterSettingsPopup",
+	kind: "lumberjack.Popup",
 
 	events: {
 		onFilterSettingsChanged: ""
@@ -24,34 +24,34 @@ enyo.kind({
 				{style: "font-size: 20px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Warrant Statuses"},
 				{kind: "enyo.FittableColumns", style: "padding-top: 5px;" , components: [
 					{components: [
-						{kind:"quantum.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"checkAllStatuses"},
-						{kind:"quantum.Checkbox", name:"onlyActionableStatusesCheckbox", content:"Only Actionable Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"checkOnlyActionableStatuses"}
+						{kind:"lumberjack.Checkbox", name:"allStatusesCheckbox", content:"All Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"checkAllStatuses"},
+						{kind:"lumberjack.Checkbox", name:"onlyActionableStatusesCheckbox", content:"Only Actionable Statuses", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange:"checkOnlyActionableStatuses"}
 					]},
 					{style: "margin-left: 20px;", components: [
-						{kind:"quantum.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
-						{kind:"quantum.Checkbox", name:"activeCheckbox", content:"Active", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
-						{kind:"quantum.Checkbox", name:"pendingTransactionCheckbox", content:"Active - Pending Transaction", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"newCheckbox", content:"New", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"activeCheckbox", content:"Active", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"pendingTransactionCheckbox", content:"Active - Pending Transaction", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
 					]},
 					{style: "margin-left: 20px;", components: [
-						{kind:"quantum.Checkbox", name:"exercisedCheckbox", content:"Exercised", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
-						{kind:"quantum.Checkbox", name:"splitCheckbox", content:"Split", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
-						{kind:"quantum.Checkbox", name:"exhaustedCheckbox", content:"Exhausted", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
-						{kind:"quantum.Checkbox", name:"expiredCheckbox", content:"Expired", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"}
+						{kind:"lumberjack.Checkbox", name:"exercisedCheckbox", content:"Exercised", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"splitCheckbox", content:"Split", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"exhaustedCheckbox", content:"Exhausted", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"},
+						{kind:"lumberjack.Checkbox", name:"expiredCheckbox", content:"Expired", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", onchange: "onStatusCheckedChange"}
 					]}
 				]},
 				{style: "font-size: 20px; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid black;", content: "Additional Settings"},
 				{kind: "enyo.FittableColumns", style: "padding-top: 5px;" , components: [
 					{components: [
-						{kind:"quantum.Checkbox", name:"onlyRootWarrantsCheckbox", content:"Only Root Warrants", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"}
+						{kind:"lumberjack.Checkbox", name:"onlyRootWarrantsCheckbox", content:"Only Root Warrants", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;"}
 					]}
 				]}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "cancelButton", kind: "quantum.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
-				{name: "saveButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Save"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "saveButtonTapped"}
+				{name: "cancelButton", kind: "lumberjack.Button", content: $L("Cancel"), style: "width: 100px; height: 40px;", ontap: "cancelButtonTapped"},
+				{name: "saveButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Save"), style: "margin-left: 10px; width: 100px; height: 40px;", ontap: "saveButtonTapped"}
 			]}
 		]},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	bindings: [
@@ -139,7 +139,7 @@ enyo.kind({
 
 		// The "filterSettings" must be set BOTH to null AND to a new model in order to ensure that all binding are actually refreshed.
 		this.set("filterSettings", null);
-		this.set("filterSettings", new quantum.WarrantFilterSettingsModel({}));
+		this.set("filterSettings", new lumberjack.WarrantFilterSettingsModel({}));
 		if (filterSettings != null) { this.set("filterSettings", filterSettings); }
 	},
 

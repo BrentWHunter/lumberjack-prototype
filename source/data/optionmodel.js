@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.OptionModel",
+	name: "lumberjack.OptionModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -18,9 +18,9 @@ enyo.kind({
 		status: "",// "created", "active", "exhausted", "expired", "cancelled"
 		issuanceDoc: null,// <Object>
 		// Option has collection of vesting conditions, and past events.
-		vesting: null,// <quantum.OptionVestingConditionCollection>
-		history: null,// <quantum.OptionEventCollection>
-		exercise: null,// <quantum.OptionExerciseCollection>
+		vesting: null,// <lumberjack.OptionVestingConditionCollection>
+		history: null,// <lumberjack.OptionEventCollection>
+		exercise: null,// <lumberjack.OptionExerciseCollection>
 		documentsReceived: null,// <Array>
 		paymentsReceived: null// <Array>
 	},
@@ -70,29 +70,29 @@ enyo.kind({
 
 		if (!data.vesting)
 		{
-			data.vesting = new quantum.OptionVestingConditionCollection();
+			data.vesting = new lumberjack.OptionVestingConditionCollection();
 		}
 		else
 		{
-			data.vesting = new quantum.OptionVestingConditionCollection(data.vesting);
+			data.vesting = new lumberjack.OptionVestingConditionCollection(data.vesting);
 		}
 
 		if (!data.history)
 		{
-			data.history = new quantum.OptionEventCollection();
+			data.history = new lumberjack.OptionEventCollection();
 		}
 		else
 		{
-			data.history = new quantum.OptionEventCollection(data.history);
+			data.history = new lumberjack.OptionEventCollection(data.history);
 		}
 
 		if (!data.exercise)
 		{
-			data.exercise = new quantum.OptionExerciseCollection();
+			data.exercise = new lumberjack.OptionExerciseCollection();
 		}
 		else
 		{
-			data.exercise = new quantum.OptionExerciseCollection(data.exercise);
+			data.exercise = new lumberjack.OptionExerciseCollection(data.exercise);
 		}
 
 		if (!data.documentsReceived)
@@ -110,14 +110,14 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.OptionCollection",
+	name: "lumberjack.OptionCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.OptionModel"
+	model: "lumberjack.OptionModel"
 });
 
 enyo.kind({
-	name: "quantum.OptionVestingConditionModel",
+	name: "lumberjack.OptionVestingConditionModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -141,14 +141,14 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.OptionVestingConditionCollection",
+	name: "lumberjack.OptionVestingConditionCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.OptionVestingConditionModel"
+	model: "lumberjack.OptionVestingConditionModel"
 });
 
 enyo.kind({
-	name: "quantum.OptionEventModel",
+	name: "lumberjack.OptionEventModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "date",
@@ -157,7 +157,7 @@ enyo.kind({
 		numShares: 0,
 		date: null,// <number>
 		// Option event may have a document associated with it, and one or more payments if it is an exercise event.
-		payments: null,// <quantum.OptionPaymentCollection>
+		payments: null,// <lumberjack.OptionPaymentCollection>
 		doc: null// <Object>
 	},
 
@@ -191,11 +191,11 @@ enyo.kind({
 
 		if (!data.payments)
 		{
-			data.payments = new quantum.OptionPaymentCollection();
+			data.payments = new lumberjack.OptionPaymentCollection();
 		}
 		else
 		{
-			data.payments = new quantum.OptionPaymentCollection(data.payments);
+			data.payments = new lumberjack.OptionPaymentCollection(data.payments);
 		}
 
 		if (!data.doc)
@@ -208,14 +208,14 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.OptionEventCollection",
+	name: "lumberjack.OptionEventCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.OptionEventModel"
+	model: "lumberjack.OptionEventModel"
 });
 
 enyo.kind({
-	name: "quantum.OptionPaymentModel",
+	name: "lumberjack.OptionPaymentModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "fileName",
@@ -240,14 +240,14 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.OptionPaymentCollection",
+	name: "lumberjack.OptionPaymentCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.OptionPaymentModel"
+	model: "lumberjack.OptionPaymentModel"
 });
 
 enyo.kind({
-	name: "quantum.OptionExerciseModel",
+	name: "lumberjack.OptionExerciseModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -297,15 +297,15 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.OptionExerciseCollection",
+	name: "lumberjack.OptionExerciseCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.OptionExerciseModel"
+	model: "lumberjack.OptionExerciseModel"
 });
 
 //Model for vesting conditions in the library, that are used as a base for adding conditions to an option.
 enyo.kind({
-	name: "quantum.VestingEventModel",
+	name: "lumberjack.VestingEventModel",
 	kind: "enyo.Model",
 	options: { parse: true },
 	primaryKey: "_id",
@@ -318,8 +318,8 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "quantum.VestingEventCollection",
+	name: "lumberjack.VestingEventCollection",
 	kind: "enyo.Collection",
 	options: { parse: true },
-	model: "quantum.VestingEventModel"
+	model: "lumberjack.VestingEventModel"
 });

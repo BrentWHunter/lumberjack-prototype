@@ -1,6 +1,6 @@
-/* global quantum, numeral */
+/* global lumberjack, numeral */
 enyo.kind({
-	name: "quantum.ProxyListPanel",
+	name: "lumberjack.ProxyListPanel",
 	kind: "enyo.Scroller",
 	fit: true,
 
@@ -25,7 +25,7 @@ enyo.kind({
 				{name: "searchInput", style: "width: 100%;", kind: "onyx.Input", oninput: "handleSearchInputChanged"}
 			]},
 			{style: "margin-left: 10px; line-height: 34px;", components: [
-				{kind: "quantum.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
+				{kind: "lumberjack.Button", style: "margin: 0;", content: "Clear Search", ontap: "handleClearSearchButtonTapped"}
 			]}
 		]},
 		{name: "headerColumns", kind: "enyo.FittableColumns", style: "margin-top: 10px; background-color: #343434; color: white; padding: 5px; margin-top: 10px; border: 1px solid black; min-width: 1490px;", components: [
@@ -51,7 +51,7 @@ enyo.kind({
 			]}
 		]},
 		{name: "noProxiesLabel", style: "text-align: center; padding: 10px; border: 1px solid black;", showing: false, content: "No Proxies Found"},
-		{name: "loadingPopup", kind: "quantum.LoadingPopup"}
+		{name: "loadingPopup", kind: "lumberjack.LoadingPopup"}
 	],
 
 	setShowingForRoles: function()
@@ -61,7 +61,7 @@ enyo.kind({
 
 	activate: function()
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { this.doGoHome(); return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { this.doGoHome(); return; }
 
 		this.setShowingForRoles();
 
@@ -187,7 +187,7 @@ enyo.kind({
 
 	setupProxyRepeaterItem: function(inSender, inEvent)
 	{
-		if (!quantum.hasRole(["admins","users","auditors"], "proxy")) { return; }
+		if (!lumberjack.hasRole(["admins","users","auditors"], "proxy")) { return; }
 		if (!inEvent.item) {return true;}
 
 		var getDocumentStatus = function(doc)

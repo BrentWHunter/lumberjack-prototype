@@ -1,6 +1,6 @@
 enyo.kind({
-	name: "quantum.ViewAdobeSignDocumentStatusPopup",
-	kind: "quantum.Popup",
+	name: "lumberjack.ViewAdobeSignDocumentStatusPopup",
+	kind: "lumberjack.Popup",
 
 	published: {
 		documentStatus: null,
@@ -65,7 +65,7 @@ enyo.kind({
 				]}
 			]},
 			{style: "text-align: center; margin-top: 15px;", components: [
-				{name: "doneButton", kind: "quantum.Button", enabledClasses: "button primary", content: $L("Done"), style: "width: 100px; height: 40px;", ontap: "doneButtonTapped"}
+				{name: "doneButton", kind: "lumberjack.Button", enabledClasses: "button primary", content: $L("Done"), style: "width: 100px; height: 40px;", ontap: "doneButtonTapped"}
 			]}
 		]}
 	],

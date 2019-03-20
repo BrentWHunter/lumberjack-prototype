@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Button",
+	name: "lumberjack.Button",
 
 	kind: 'enyo.ToolDecorator',
 

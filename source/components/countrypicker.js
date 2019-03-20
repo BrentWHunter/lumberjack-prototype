@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.CountryPicker",
+	name: "lumberjack.CountryPicker",
 
 	published: 
 	{

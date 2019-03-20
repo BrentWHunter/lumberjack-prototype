@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.CountryCheckboxes",
+	name: "lumberjack.CountryCheckboxes",
 	kind: enyo.Control,
   
 	published: {
@@ -49,7 +49,7 @@ enyo.kind({
 
 			var checked = this.get("allCountriesChecked") || this.get("checkedCountries").indexOf(value) !== -1;
 
-			activeColumn.components.push({name: value + "Checkbox", kind: "quantum.Checkbox", style: "margin-left: 10px;", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", content: value, onchange: "checkBoxesForCountry", checked: checked});
+			activeColumn.components.push({name: value + "Checkbox", kind: "lumberjack.Checkbox", style: "margin-left: 10px;", columnStyle:"margin-top: 10px;", contentStyle:"margin-left:10px;", content: value, onchange: "checkBoxesForCountry", checked: checked});
 		}));
 
 		fieldsToAdd.push(activeColumn);

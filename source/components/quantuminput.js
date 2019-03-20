@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.Input",
+	name: "lumberjack.Input",
 	published:
 	{
 		disabled: false,

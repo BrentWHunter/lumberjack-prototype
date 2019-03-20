@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "quantum.InvestmentFund",
+	name: "lumberjack.InvestmentFund",
 
 	published:
 	{
@@ -14,10 +14,10 @@ enyo.kind({
 	_validated: true,
 
 	components:[
-		{kind: "quantum.Input", name:"advisorNameInput", columnStyle:"margin-top: 5px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Advisor Name", required:true, oninput: "handleAdvisorNameChanged"},
-		{kind: "quantum.Input", name:"jurisdictionsRegisteredInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Jurisdictions Registered", required:true, oninput: "handlejurisdictionsRegisteredChanged"},
-		{kind: "quantum.Input", name:"categoriesOfRegistrationInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Categories of Registration", required:true, oninput: "handleCategoriesOfRegistrationChanged"},
-		{kind: "quantum.Input", name:"basisOfExemptionInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Basis of Exemption", required:true, oninput: "handleBasisOfExemptionChanged"}
+		{kind: "lumberjack.Input", name:"advisorNameInput", columnStyle:"margin-top: 5px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Advisor Name", required:true, oninput: "handleAdvisorNameChanged"},
+		{kind: "lumberjack.Input", name:"jurisdictionsRegisteredInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Jurisdictions Registered", required:true, oninput: "handlejurisdictionsRegisteredChanged"},
+		{kind: "lumberjack.Input", name:"categoriesOfRegistrationInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Categories of Registration", required:true, oninput: "handleCategoriesOfRegistrationChanged"},
+		{kind: "lumberjack.Input", name:"basisOfExemptionInput", columnStyle:"margin-top: 10px;", labelStyle:"line-height: 30px; width: 170px;", decoratorStyle: "margin-left: 10px;", inputStyle: "width: 300px;", type:"text", label:"Basis of Exemption", required:true, oninput: "handleBasisOfExemptionChanged"}
 	],
 
 	bindings:[
