@@ -4,8 +4,8 @@ enyo.kind({
 	options: { parse: true },
 	source: enyo.LocalStorageSource.create(),
 	attributes: {
-		id: "quantumPreferencesModel",
-		server: "http://dev.greenhill.local:5984/",
+		id: "lumberjackPreferencesModel",
+		server: "http://192.168.78.89:5984/",
 		apiServer: "http://localhost:3000/",
 		placementDatabase: "",
 		transferDatabase: "",

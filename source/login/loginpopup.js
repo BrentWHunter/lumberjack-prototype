@@ -72,7 +72,7 @@ enyo.kind({
 			cacheBust: false,
 			contentType: "application/json",
 			method: "POST",
-			url: lumberjack.preferences.get("apiServer") + "auth/login"
+			url: lumberjack.preferences.get("server") + "_session"
 		};
 
 		ajaxProperties.postBody = loginData;
@@ -104,75 +104,17 @@ enyo.kind({
 			}
 			else
 			{
-				var roles = response.roles;
+				alertify.success("Logged In");
 
-				if(roles.indexOf("newUser") !== -1)
-				{
-					if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
-					alertify.error("Failed to Log In");
-					console.log("New Users, login invalid.");
-				}
-				else
-				{
-					alertify.success("Logged In");
+				lumberjack.preferences.set("roles", response.roles);
+				lumberjack.preferences.set("username", this.$.usernameInput.get("value"));
+				lumberjack.preferences.set("password", this.$.passwordInput.get("value"));
 
-					lumberjack.preferences.set("roles", response.roles);
-					lumberjack.preferences.set("userData", response);
-					lumberjack.preferences.set("username", response.token);
-					lumberjack.preferences.set("password", response.password);
-
-					this.getCompanies();
-				}
+				this.doLoginSuccess();
 			}
 		}, this);
 
 		ajax.go();
-	},
-
-	getCompanies: function()
-	{
-		var request = new enyo.Ajax({
-			url: lumberjack.preferences.get("apiServer") + "getcompanies",
-			cacheBust: false,
-			headers:{
-				"Authorization":"Bearer " + lumberjack.preferences.get("username") +":"+lumberjack.preferences.get("password")
-			}
-		});
-
-		request.error(enyo.bind(this, function(request, response){
-			if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
-			this.$.loginFailedLabel.set("content", $L("Failed to load companies"));
-			this.$.loginFailedLabel.show();
-			return true;
-		}));
-
-		request.response(enyo.bind(this, function(request, response)
-		{
-			if(response.error)
-			{
-				if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
-				this.$.loginFailedLabel.set("content", response.detail);
-				this.$.loginFailedLabel.show();
-				console.log(response);
-				return true;
-			}
-			if (this.$.loadingPopup) { this.$.loadingPopup.hide(); }
-
-			if(response.companies.length === 0)
-			{
-				this.$.loginFailedLabel.set("content", "No Assigned Companies");
-				this.$.loginFailedLabel.show();
-				return true;
-			}
-			else
-			{
-				this.doLoginSuccess();
-			}
-
-			this.hide();
-		}));
-
-		request.go();
 	},
 
 	handleKeyUp: function(inSender, inEvent)
