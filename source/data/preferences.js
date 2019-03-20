@@ -7,7 +7,7 @@ enyo.kind({
 		id: "lumberjackPreferencesModel",
 		server: "http://192.168.78.89:5984/",
 		apiServer: "http://localhost:3000/",
-		placementDatabase: "",
+		issuerDatabase: "issuers",
 		transferDatabase: "",
 		contactDatabase: "",
 		optionDatabase: "",
