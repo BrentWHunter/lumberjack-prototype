@@ -5,7 +5,7 @@ enyo.depends(
     "assignpaymentpopup.js",
     "subscriptionfiltersettingspopup.js",
     "issuerlistpanel.js",
-    "subscriberdetailpanel.js",
+    "issuerdetailpanel.js",
     "dashboardpanel.js",
     "closeplacementpanel.js",
     "csvexportpanel.js",

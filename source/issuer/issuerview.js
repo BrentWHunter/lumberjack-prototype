@@ -48,7 +48,7 @@ enyo.kind({
 		]},
 		{name: "dataPanels", kind: "enyo.Panels", fit: true, draggable: false, components: [
 			{name: "listPanel", kind: "lumberjack.IssuerListPanel", onViewItemDetail: "handleViewItemDetail", onAddNewSubscription: "addEntryButtonTapped"},
-			{name: "detailPanel", kind: "lumberjack.SubscriberDetailPanel", onGoBack: "handleGoBack"},
+			{name: "detailPanel", kind: "lumberjack.IssuerDetailPanel", onGoBack: "handleGoBack"},
 		]},
 		{kind: "onyx.Toolbar", style: "background: #333333; border: 1px solid #333333;", components: [
 			{name: "versionString", style: "font-size: 10px; text-align: center; width: 100%;"}
@@ -157,8 +157,6 @@ enyo.kind({
 
 	dashboardButtonTapped: function(inSender, inEvent)
 	{
-		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
-
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
 			this.clearBreadcrumbs(1);
@@ -169,8 +167,6 @@ enyo.kind({
 
 	editEntryButtonTapped: function(inSender, inEvent)
 	{
-		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
-
 		this.navigateAway(inSender, inEvent, enyo.bind(this, function()
 		{
 			for (var i = 0; i < this.$.breadcrumbToolbar.controls.length; i++)
@@ -215,12 +211,10 @@ enyo.kind({
 
 	handleViewItemDetail: function(inSender, inEvent)
 	{
-		if (!lumberjack.hasRole(["admins","users","auditors"], "placement")) { return; }
-
 		this.$.breadcrumbToolbar.controls[this.$.breadcrumbToolbar.controls.length - 1].set("last", false);
-		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "subscriberDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Subscriber Detail", last: true}, {owner: this});
+		this.$.breadcrumbToolbar.createComponent({kind: "lumberjack.Breadcrumb", type: "subscriberDetail", icon: "assets/icons/subscriber-detail-icon.png", content: "Issuer Detail", last: true}, {owner: this});
 		this.$.breadcrumbToolbar.render();
-		this.$.detailPanel.set("subscriptionCollection", inEvent.collection);
+		this.$.detailPanel.set("issuerCollection", inEvent.collection);
 		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("detailPanel"));
 		this.$.detailPanel.activate(inEvent.item);
 	},
@@ -258,18 +252,9 @@ enyo.kind({
 
 	handleGoHome: function(inSender, inEvent)
 	{
-		if (!lumberjack.hasRole(["admins","users","auditors"], "placement"))
-		{
-			lumberjack.preferences.set("lastModule", "");
-			lumberjack.preferences.commit();
-			this.doRequestChangeModule();
-		}
-		else
-		{
-			this.clearBreadcrumbs(1);
-			this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
-			this.$.listPanel.activate();
-		}
+		this.clearBreadcrumbs(1);
+		this.$.dataPanels.setIndex(this.$.dataPanels.selectPanelByName("listPanel"));
+		this.$.listPanel.activate();
 	},
 
 	handleLogout: function(inSender, inEvent)
@@ -301,7 +286,7 @@ enyo.kind({
 
 			lumberjack.preferences.set("roles", response.roles);
 
-			this.get("database").query("onlyDocIds", {include_docs: true}, enyo.bind(this, function(err, response){
+			this.get("database").query("onlyDocIds", {include_docs: true, limit: 10 /* TODO: TEMP */}, enyo.bind(this, function(err, response){
 				if (err)
 				{
 					alertify.error("All docs get failed");
